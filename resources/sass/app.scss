@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'index';
+
+.header {
+    height: 20vh;
+    background-color: rgba(228, 220, 220,0.5);
+}
