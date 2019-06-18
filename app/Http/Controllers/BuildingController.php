@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\FO;
+use App\Building;
 use Illuminate\Http\Request;
 
-class FOController extends Controller
+class BuildingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class FOController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\FO  $fO
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function show(FO $fO)
+    public function show(Building $building)
     {
         //
     }
@@ -52,10 +52,10 @@ class FOController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\FO  $fO
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(FO $fO)
+    public function edit(Building $building)
     {
         //
     }
@@ -64,10 +64,10 @@ class FOController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\FO  $fO
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FO $fO)
+    public function update(Request $request, Building $building)
     {
         //
     }
@@ -75,10 +75,10 @@ class FOController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\FO  $fO
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FO $fO)
+    public function destroy(Building $building)
     {
         //
     }
