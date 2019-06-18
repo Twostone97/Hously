@@ -10203,13 +10203,33 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.index__container {
+  background-color: rgba(228, 220, 220, 0.5);
+  margin: 4rem auto;
+}
+
 body {
-  background-image: url("../img/background-homepage.jpg");
   background-size: cover;
-  background-color: green;
+  background-color: gray;
 }
 
 .header {
   height: 20vh;
   background-color: rgba(228, 220, 220, 0.5);
+}
+
+.header__logo {
+  height: 19vh;
+}
+
+.navigation {
+  height: 5vh;
+  background-color: rgba(0, 0, 0, 0.71);
+  color: #fff;
+  line-height: 5vh;
+  text-align: center;
+}
+
+.navigation div {
+  margin: 0 auto;
 }

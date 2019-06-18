@@ -1,0 +1,27 @@
+
+
+body {
+    background-size: cover;
+    background-color: gray;
+}
+
+.header {
+    height: 20vh;
+    background-color: rgba(228, 220, 220,0.5);
+}
+
+.header__logo {
+    height: 19vh;
+}
+
+.navigation {
+    height: 5vh;
+    background-color: rgba(0, 0, 0, 0.71);
+    color:#fff;
+    line-height: 5vh;
+    text-align: center;
+}
+
+.navigation div {
+    margin: 0 auto;
+}
