@@ -10214,12 +10214,27 @@ body {
 }
 
 .header {
-  height: 20vh;
+  min-height: 20vh;
   background-color: rgba(228, 220, 220, 0.5);
 }
 
 .header__logo {
   height: 19vh;
+}
+
+.header__login {
+  position: relative;
+}
+.header__login .header__login__authenticated {
+  max-width: 150px;
+  margin-left: auto;
+}
+.header__login .header__login__authenticated a.dropdown-toggle {
+  color: white;
+  font-size: 1.5rem;
+}
+.header__login .header__login__authenticated ul {
+  list-style: none;
 }
 
 .header__login input {
