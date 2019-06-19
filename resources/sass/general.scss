@@ -14,6 +14,11 @@ body {
     height: 19vh;
 }
 
+.header__login input {
+    display: inline-block;
+    max-width:150px;
+}
+
 .navigation {
     height: 5vh;
     background-color: rgba(0, 0, 0, 0.71);

@@ -17,9 +17,31 @@
                 </div>
                 <div class="header__login col-md-3">
                     <p><strong>Log in</strong></p>
-                    <form action="">
-                        <label for="username">Username: <input type="email" name="username" id="username"></label>
-                        <label for="username">Password: <input type="password" name="password" id="password"></label>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email" required autocomplete="email" autofocus>
+                        @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="password" required autocomplete="current-password">
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                        
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Login') }}
+                        </button>
+
+                        @if (Route::has('password.request'))
+                        <br>    
+                        <a class="btn btn-link text-light" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
                     </form>
                 </div>
                 <div class="header__register col-md-3">
