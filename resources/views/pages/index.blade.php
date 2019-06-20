@@ -14,7 +14,7 @@
 
 @section ('content')
 <section class="container index__container">
-    <h1>Welcome to Hously</h1>
+<h1>Welcome to Hously</h1>
     <p>Meet a great app which will make your life as resident much easier</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad adipisci provident doloremque quibusdam eveniet aut autem? Reprehenderit magnam ducimus ipsum explicabo consequuntur, atque laudantium rerum, eveniet porro quam enim ipsam!
     Amet illum repellat iste numquam tenetur sunt unde vitae ratione possimus dolorum at dolorem eveniet enim aliquam, voluptate aperiam. Amet voluptas expedita sit reiciendis qui, quidem totam sunt laborum assumenda!
