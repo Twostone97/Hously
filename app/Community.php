@@ -10,4 +10,9 @@ class Community extends Model
     {
         return $this->belongsToMany('App\User', 'user_community');
     }
+
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');
+    }
 }

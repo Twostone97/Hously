@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Flat;
+use App\Owner;
 
-class FlatsSeeder extends Seeder
+class OwnerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,9 @@ class FlatsSeeder extends Seeder
      */
     public function run()
     {
-        Flat::create([
-            'building_id'     => 1,
-            'floor'    => 1,
+        Owner::create([
+            'user_id'     => 2,
+            'building_id'    => 1,
         ]);
     }
 }
