@@ -18,7 +18,7 @@ class BuildingSeeder extends Seeder
             'house_number'    => 1,
             'postal'    => 11100,
             'owner_id'    => 1,
-            'construction_date' => 2019-06-20,
+            'construction_date' => '2019-06-20',
             'floors_above_ground' => 1,
             'floors_bellow_ground' => 0,
             'heating' => 1,
