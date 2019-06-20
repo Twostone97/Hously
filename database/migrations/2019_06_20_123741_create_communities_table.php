@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOwnersTable extends Migration
+class CreateCommunitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateOwnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('owners', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('chat_id');
             $table->unsignedBigInteger('building_id');
+            $table->text('community_name');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateOwnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('owners');
+        Schema::dropIfExists('communities');
     }
 }
