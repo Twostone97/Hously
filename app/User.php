@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function resident()
+    {
+        return $this->belongsTo('App\Resident');
+    }
+    
+    public function owner()
+    {
+        return $this->belongsTo('App\Owner');
+    }
+
+    public function communities()
+    {
+        return $this->belongsToMany('App\Community', 'user_community');
+    }
 }
