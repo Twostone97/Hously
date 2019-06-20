@@ -1,3 +1,12 @@
+<?php
+    if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        $profil = 'owner';
+    } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        $profil = 'administrator';
+    } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        $profil = 'resident';
+    }
+?>
 @extends('layouts.app')
 
 @section('content')
@@ -15,6 +24,7 @@
                     @endif
 
                     You are logged in {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}!
+                    You are {{$profil}} around here!
                 </div>
             </div>
         </div>
