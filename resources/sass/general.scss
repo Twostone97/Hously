@@ -9,12 +9,16 @@ header {
     background-color: rgba(228, 220, 220,0.5);
 }
 
+
+body.modal__open {
+    overflow: hidden;
+}
+
 .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     max-width: 1144px;
-    min-height: 20vh;
     margin:0 auto;
 
 
@@ -36,62 +40,147 @@ header {
             background-position: center;
         }
     }
-    
-    &__login {
-        position:relative;
+
+    &__links {
         flex: 0 0 100%;
         @media screen and (min-width:576px) {
-            flex: 0 0 75%;
+            flex: 0 0 25%;
         }
 
-        input {
-            display: inline-block;
-            max-width:150px;
-        }
-
-        &__authenticated {
-            max-width: 150px;
-            margin:0 auto;
-
+        &__container {
+            display: flex;
+            justify-content: center;
             @media screen and (min-width:576px) {
-                max-width: 150px;
-                margin: initial;
-                margin-left: auto;
+                justify-content: flex-end;
             }
+            align-items: center;
+            height: 100%;
 
-                a.dropdown-toggle {
-                    color:white;
-                    font-size: 1rem;
-
-                    @media screen and (min-width:576px) {
-                        font-size: 1.5rem;
-                    }
-
-                    }
-                ul {
-                    list-style: none;
+            div{
+                margin-right:1.5rem;
+                margin-bottom: 1.5rem;
+                font-size: 1.2rem;
+                cursor: pointer;
+                a {
+                    color: black;
+                    text-decoration: none;
                 }
+            }
         }
     }
+
+}
+
+.auth__overlay {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top:0px;
+    background-color: rgba(47, 46, 46, 0.5);
+    &.modal__open {
+        display: flex;
+    }
+
+    &__modal {
+        display: none;
+        position: relative;
+        width: 95%;
+        max-height: 90vh;
+        @media screen and (min-width:576px) {
+            width: 50%;
+        }
+        margin: 0 auto;
+        padding:5%;
+        background-color:#fff;
+        box-shadow: 20px 18px 48px -8px rgba(0,0,0,0.75);
+        
+        &.modal__register {
+            overflow: scroll;
+            @media screen and (min-width:576px) {
+                overflow: hidden;
+            }
+        }
+
+        &.modal__open {
+            display: block;
+        }
+
+        &__close {
+            position: absolute;
+            top:6px;
+            right:18px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        form {
+            margin-top: 2rem;
+        }
+    }
+
+
 }
 
 .navigation {
     width: 100%;
-    height: 5vh;
+    // height: 5vh;
     background-color: rgba(0, 0, 0, 0.71);
     color:#fff;
     line-height: 5vh;
     text-align: center;
+    overflow: hidden;
+
+    &__toggler{
+        display: block;
+        @media screen and (min-width:576px) {
+            display: none;
+        }
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fff;
+        margin: 6px auto;
+        cursor: pointer;
+        transition: 0.5s ease-in;
+
+        &.open {
+            transform: rotate(180deg);
+        }
+    }
 
     &__items {
         display: flex;
+        @media screen and (min-width:576px) {
+            height: auto;
+            flex-direction: row;
+            justify-content: space-around;
+            
+        }
+        flex-direction: column;
+        justify-content: flex-start;
         max-width: 1144px;
-        justify-content: space-around;
+        height: 0;
         margin: 0 auto;
+        transition: 0.5s ease-in;
+
         div {
             flex: 0 0 30%;
         }
+
+        &.open {
+            height: 120px;
+            @media screen and (min-width:576px) {
+                height: auto;
+            }
+        }
     }
+
+
 }
 
 
