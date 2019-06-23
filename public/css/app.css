@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu&display=swap);@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10210,14 +10210,11 @@ h3 {
 
 * {
   box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
 }
 
 header {
   background-color: rgba(228, 220, 220, 0.5);
-}
-header svg {
-  width: 250px;
-  background-position: center;
 }
 
 .header {
@@ -10232,14 +10229,38 @@ header svg {
   margin: 0 auto;
 }
 .header__logo {
-  height: 19vh;
-  -webkit-flex: 0 0 50%;
-          flex: 0 0 50%;
+  -webkit-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+@media screen and (min-width: 576px) {
+  .header__logo {
+    -webkit-flex: 0 0 25%;
+            flex: 0 0 25%;
+  }
+}
+.header__logo svg {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  background-position: center;
+}
+@media screen and (min-width: 768px) {
+  .header__logo svg {
+    width: 80%;
+    margin: initial;
+    margin-right: auto;
+  }
 }
 .header__login {
   position: relative;
-  -webkit-flex: 0 0 50%;
-          flex: 0 0 50%;
+  -webkit-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+@media screen and (min-width: 576px) {
+  .header__login {
+    -webkit-flex: 0 0 75%;
+            flex: 0 0 75%;
+  }
 }
 .header__login input {
   display: inline-block;
@@ -10247,11 +10268,23 @@ header svg {
 }
 .header__login__authenticated {
   max-width: 150px;
-  margin-left: auto;
+  margin: 0 auto;
+}
+@media screen and (min-width: 576px) {
+  .header__login__authenticated {
+    max-width: 150px;
+    margin: initial;
+    margin-left: auto;
+  }
 }
 .header__login__authenticated a.dropdown-toggle {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+@media screen and (min-width: 576px) {
+  .header__login__authenticated a.dropdown-toggle {
+    font-size: 1.5rem;
+  }
 }
 .header__login__authenticated ul {
   list-style: none;

@@ -1,14 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif; 
 }
 
 header {
     background-color: rgba(228, 220, 220,0.5);
-
-    svg {
-        width: 250px;
-        background-position: center;
-    }
 }
 
 .header {
@@ -21,13 +19,30 @@ header {
 
 
     &__logo {
-        height: 19vh;
-        flex: 0 0 50%;
+        flex: 0 0 100%;
+        @media screen and (min-width:576px) {
+            flex: 0 0 25%;
+        }
+
+        svg {
+            display: block;
+            margin:0 auto;
+            width: 150px;
+            @media screen and (min-width:768px) {
+                width: 80%;
+                margin: initial;
+                margin-right: auto;
+            }
+            background-position: center;
+        }
     }
     
     &__login {
         position:relative;
-        flex: 0 0 50%;
+        flex: 0 0 100%;
+        @media screen and (min-width:576px) {
+            flex: 0 0 75%;
+        }
 
         input {
             display: inline-block;
@@ -36,11 +51,22 @@ header {
 
         &__authenticated {
             max-width: 150px;
-            margin-left: auto;
+            margin:0 auto;
+
+            @media screen and (min-width:576px) {
+                max-width: 150px;
+                margin: initial;
+                margin-left: auto;
+            }
 
                 a.dropdown-toggle {
                     color:white;
-                    font-size: 1.5rem;
+                    font-size: 1rem;
+
+                    @media screen and (min-width:576px) {
+                        font-size: 1.5rem;
+                    }
+
                     }
                 ul {
                     list-style: none;
