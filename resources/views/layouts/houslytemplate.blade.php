@@ -76,11 +76,21 @@
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email" required autocomplete="email" autofocus>
                 @error('email')
                             <span class="invalid-feedback" role="alert">
+                                <script> 
+                                    document.querySelector('body').classList.add('modal__open');
+                                    document.querySelector('.auth__overlay').classList.add('modal__open');
+                                    document.querySelector('.modal__login').classList.add('modal__open');
+                               </script>
                                 <strong>{{ $message }}</strong>
                             </span>
                 @enderror
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="password" required autocomplete="current-password">
                 @error('password')
+                <script> 
+                        document.querySelector('body').classList.add('modal__open');
+                        document.querySelector('.auth__overlay').classList.add('modal__open');
+                        document.querySelector('.modal__login').classList.add('modal__open');
+                </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

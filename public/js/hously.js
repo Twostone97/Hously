@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         document.querySelector('.modal__login').classList.add('modal__open');
     });
 
+    //login modal close
     document.querySelector('#login__close').addEventListener('click',()=>{
         document.querySelector('body').classList.remove('modal__open');
         document.querySelector('.auth__overlay').classList.remove('modal__open');
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         document.querySelector('.modal__register').classList.add('modal__open');
     });
 
+    //register modal open
     document.querySelector('#register__close').addEventListener('click',()=>{
         document.querySelector('body').classList.remove('modal__open');
         document.querySelector('.auth__overlay').classList.remove('modal__open');
