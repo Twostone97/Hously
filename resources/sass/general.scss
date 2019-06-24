@@ -5,9 +5,6 @@
     font-family: 'Ubuntu', sans-serif; 
 }
 
-header {
-    background-color: rgba(228, 220, 220,0.5);
-}
 
 
 body.modal__open {
@@ -16,40 +13,51 @@ body.modal__open {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    @media screen and (min-width:576px) {
+        justify-content: space-between;
+    }
     flex-wrap: wrap;
     max-width: 1144px;
     margin:0 auto;
+    overflow: hidden;
 
 
     &__logo {
-        flex: 0 0 100%;
+        flex: 0 1 25%;
+        height: 10vh;
         @media screen and (min-width:576px) {
-            flex: 0 0 25%;
+            flex: 0 1 40%;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
-        svg {
+        img {
             display: block;
-            margin:0 auto;
-            width: 150px;
-            @media screen and (min-width:768px) {
-                width: 80%;
-                margin: initial;
-                margin-right: auto;
+            margin-right: auto;
+            margin-left: 2rem;
+            padding: 5px;
+            max-width: 70px;
+            @media screen and (min-width:1144px) {
+                margin-left: 0;
             }
             background-position: center;
         }
     }
 
     &__links {
-        flex: 0 0 100%;
+        flex: 0 1 50%;
+        height: 10vh;
         @media screen and (min-width:576px) {
-            flex: 0 0 25%;
+            flex: 0 1 40%;
         }
 
         &__container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             @media screen and (min-width:576px) {
                 justify-content: flex-end;
             }
@@ -58,8 +66,7 @@ body.modal__open {
 
             div{
                 margin-right:1.5rem;
-                margin-bottom: 1.5rem;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 cursor: pointer;
                 a {
                     color: black;
@@ -79,6 +86,7 @@ body.modal__open {
     width: 100vw;
     height: 100vh;
     top:0px;
+    z-index: 10;
     background-color: rgba(47, 46, 46, 0.5);
     &.modal__open {
         display: flex;
@@ -126,11 +134,22 @@ body.modal__open {
 }
 
 .navigation {
-    width: 100%;
-    // height: 5vh;
-    background-color: rgba(0, 0, 0, 0.71);
+    position: absolute;
+    top:15px;
+    right:15px;
+    min-width: 50px;
+    min-height: 50px;
+    
+    @media screen and (min-width:576px) {
+        position: initial;
+        min-width: initial;
+        min-height: initial;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    background-color: rgba(0, 0, 0, 0.2);
     color:#fff;
-    line-height: 5vh;
     text-align: center;
     overflow: hidden;
 
@@ -156,6 +175,8 @@ body.modal__open {
     &__items {
         display: flex;
         @media screen and (min-width:576px) {
+            width: initial;
+            max-width: 1144px;
             height: auto;
             flex-direction: row;
             justify-content: space-around;
@@ -163,24 +184,35 @@ body.modal__open {
         }
         flex-direction: column;
         justify-content: flex-start;
-        max-width: 1144px;
+        width: 0;
         height: 0;
         margin: 0 auto;
+        overflow: hidden;
         transition: 0.5s ease-in;
 
         div {
             flex: 0 0 30%;
+            &:hover {
+                background-color: #1879bf;
+            }
         }
 
         &.open {
             height: 120px;
+            width: 120px;
             @media screen and (min-width:576px) {
                 height: auto;
             }
         }
     }
+}
 
-
+main {
+    max-width: 1144px;
+    margin:3rem auto;
+    @media screen and (max-width:1143px) {
+        width: 95%;
+    }
 }
 
 

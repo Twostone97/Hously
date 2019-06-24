@@ -30,7 +30,8 @@
     <header>
         <div class="header">
             <div class="header__logo">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" height="100%" width="100%" viewBox="0 50 300 200"><g id="svg-container" transform="matrix(2.86,0,0,2.86,-51.253101139068605,165.89496242523194)"><g id="surrounding_shape" transform="matrix(1,0,0,1,24.818958282470703,-23.578244795799257)"><rect width="40.14220590267181" height="37.68726023985545" fill="transparent" stroke-width="2" stroke="#da5100" data-shape-id="custom" surrounded-groups="symbols" fill-type="outline" id="surrounding_shape_0"></rect></g><g id="headline" transform="matrix(1,0,0,1,5.5734710693359375,0)"><text data-font-id="1077" font-family="playfair_italic" id="headline_0" transform="matrix(1,0,0,1,63.48461538461538,0)" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}"><tspan id="headline_0_word_0" fill="#000000" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}">Hously</tspan></text></g><g id="symbols" transform="matrix(2.428571387918504,0,0,2.428571387918504,31.39018435546491,7.921807048397751)"><text data-font-id="1249" font-family="hero__bold" id="symbols_0" transform="matrix(1.074698580771455,0,0,1.074698580771455,-0.4108421942430027,0.4108421942430027)" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}"><tspan id="symbols_0_word_0" fill="#517ca4" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}">H</tspan></text></g></g><defs><style>@font-face {font-family: playfair_italic;src: url(https://pismo.tailorbrands.com/v2/px_fonts/playfair_italic)}</style><style>@font-face {font-family: hero__bold;src: url(https://pismo.tailorbrands.com/v2/px_fonts/hero__bold)}</style></defs></svg>     
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" height="100%" width="100%" viewBox="0 50 700 200"><g id="svg-container" transform="matrix(2.86,0,0,2.86,-51.253101139068605,165.89496242523194)"><g id="surrounding_shape" transform="matrix(1,0,0,1,24.818958282470703,-23.578244795799257)"><rect width="40.14220590267181" height="37.68726023985545" fill="transparent" stroke-width="2" stroke="#da5100" data-shape-id="custom" surrounded-groups="symbols" fill-type="outline" id="surrounding_shape_0"></rect></g><g id="symbols" transform="matrix(2.428571387918504,0,0,2.428571387918504,31.39018435546491,7.921807048397751)"><text data-font-id="1249" font-family="hero__bold" id="symbols_0" transform="matrix(1.074698580771455,0,0,1.074698580771455,-0.4108421942430027,0.4108421942430027)" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}"><tspan id="symbols_0_word_0" fill="#517ca4" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}">H</tspan></text></g></g><defs><style>@font-face {font-family: playfair_italic;src: url(https://pismo.tailorbrands.com/v2/px_fonts/playfair_italic)}</style><style>@font-face {font-family: hero__bold;src: url(https://pismo.tailorbrands.com/v2/px_fonts/hero__bold)}</style></defs></svg> --}}
+                <div><img src="img/hously-logo.svg" alt="logo"></div>
             </div>
             
             <div class="header__links">
@@ -47,7 +48,7 @@
                             onclick="
                             event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            <img src="img/logout__ico.svg" alt="logout">
                         </a>
                     </div>
                 </div>
