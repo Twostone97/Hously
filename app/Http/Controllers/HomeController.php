@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Chat;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class HomeController extends Controller
 {
@@ -42,7 +44,6 @@ class HomeController extends Controller
         $chat->warning = false;
         $chat->image = $request->image;
         $chat->save();
-
         return redirect(action('HomeController@index'));
     }
 }

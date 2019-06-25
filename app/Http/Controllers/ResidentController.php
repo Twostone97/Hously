@@ -24,7 +24,7 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,8 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resident = new Resident;
+        $resident = $request
     }
 
     /**
