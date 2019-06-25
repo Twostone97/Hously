@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
     
-    //navigation toggle
-    document.querySelector('.navigation__toggler').addEventListener('click',(event)=>{
-        event.target.classList.toggle('open');
-        document.querySelector('.navigation__items').classList.toggle("open");
-    })
+    console.log('DOM loaded');
+
 
     //login modal open
     document.querySelector('#login__open').addEventListener('click',()=>{
@@ -39,7 +36,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 //VEGAS library (jQuery)
 
-$("body").vegas({
+$(".bg__vegas").vegas({
     slides: [
         { src: "../img/slide1.jpg" },
         { src: "../img/slide2.jpg" }
