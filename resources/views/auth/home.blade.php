@@ -67,6 +67,12 @@
                         <h4>Jméno: {{$current_user->first_name}} {{$current_user->last_name}}</h4><br>
                         <h4>Telefoní číslo: {{$current_user->phone_number}}</h4><br>
                         <h4>E-mail: {{$current_user->email}}</h4><br>
+                        <h4>Nájemné: {{$resident->rental}} KČ</h4><br>
+                        <h4>Smlouva: {{$contract->name}}</h4><br>
+                        <h4>Začátek smlouvy: {{$date}}</h4><br>
+                        @if ($resident->contract_id == 2)
+                        <h4>Konec smlouvy: {{$resident->end_of_current_rent}}</h4><br>
+                        @endif
                     </div>
                 </div>
             @endif

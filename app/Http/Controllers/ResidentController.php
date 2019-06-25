@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Resident;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
 
 class ResidentController extends Controller
 {
@@ -35,7 +37,15 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resident = new Resident;
+        $resident->user_id = $request->user_id;
+        $resident->flat_id = $request->flat_id;
+        $resident->begining_of_first_rent = $request->begining_of_first_rent;
+        $resident->begining_of_current_rent = $request->begining_of_current_rent;
+        $resident->contract_id = $request->contract_id;
+        $resident->end_of_current_rent = $request->end_of_current_rent;
+        $request->number_of_residents = $request->number_of_residents;
+        $resident->file = $request->file;
     }
 
     /**

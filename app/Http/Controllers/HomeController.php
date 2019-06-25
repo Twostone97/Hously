@@ -30,7 +30,13 @@ class HomeController extends Controller
         $users = DB::table('users')->get();
         $communities = DB::table('communities')->get();
         $current_user = DB::table('users')->where('id', '=', Auth::user()->id)->first();
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user'));
+        $resident = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
+        $contract = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
+        $date = explode('-' ,$resident->begining_of_current_rent);
+        $date = "{$date[2]}. {$date[1]}. {$date[0]}";
+        
+        
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract'));
     }
 
     public function save(Request $request)
