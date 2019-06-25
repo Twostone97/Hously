@@ -47,10 +47,11 @@ class HomeController extends Controller
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
+        $rentcontracts      = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
-        $flats          = DB::table('flats')->where('building_id', '=', $building);
+        $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats'));
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts'));
     }
 
     public function chat(Request $request)

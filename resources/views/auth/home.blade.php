@@ -100,29 +100,59 @@
 
             @if ($profil == 'administrator' )
             <div class="card">
-                    <div class="card-header"><p>Moje údaje</p></div>
+                    <div class="card-header"><p>Registrace obyvatele</p></div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="/resident" method="post">
+                        <form action="/resident" method="post" enctype="multipart/form-data">
                         @csrf
                         <label for="user_id"></label>
                         <select name="user_id">
                             @foreach ($users as $user)
                                 <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
                             @endforeach
-                        </select>
+                        </select><br>
                         
-                        <label for="user_id"></label>
-                        <select name="user_id">
-                            @foreach ($users as $user)
-                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
+                        <label for="flat_id"></label>
+                        <select name="flat_id">
+                            @foreach ($flats as $flat)
+                                <option value="{{$flat->id}}">byt: {{$flat->id}}</option>
                             @endforeach
-                        </select>
+                        </select><br>
 
+                        <input type="hidden" name="building_id" value="{{$building}}">
+
+                        <label for="begining_of_first_rent">Začátek prvního nájemního obdobý</label>
+                        <input type="date" name="begining_of_first_rent"><br>
+
+                        <label for="begining_of_current_rent">Začátek aktuálního nájemního obdobý</label>
+                        <input type="date" name="begining_of_current_rent"><br>
+
+                        <label for="contract_id">Smlouva</label>
+                        <select name="contract_id">
+                            @foreach ($rentcontracts as $contract)
+                                <option value="{{$contract->id}}">{{$contract->name}}</option>
+                            @endforeach
+                        </select><br>
+                        
+                        {{-- @if ($contract == 2) --}}
+                        <label for="end_of_current_rent">Konec aktuálního nájemního obdobý</label>
+                        <input type="date" name="end_of_current_rent"><br>
+                        {{-- @endif --}}
+
+                        <label for="number_of_residents">Počet osob</label>
+                        <input type="number" name="number_of_residents"><br>
+
+                        <label for="rental">Nájemné (kč)</label>
+                        <input type="number" name="rental"><br>
+
+                        <label for="file">Nájemní smlouva</label>
+                        <input type="file" name="file"><br>
+
+                        <input type="submit" value="Registrovat">
                         </form>
                     </div>
                 </div>

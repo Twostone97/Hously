@@ -40,13 +40,17 @@ class ResidentController extends Controller
         $resident = new Resident;
         $resident->user_id = $request->user_id;
         $resident->flat_id = $request->flat_id;
+        $resident->building_id = $request->building_id;
         $resident->begining_of_first_rent = $request->begining_of_first_rent;
         $resident->begining_of_current_rent = $request->begining_of_current_rent;
         $resident->contract_id = $request->contract_id;
         $resident->end_of_current_rent = $request->end_of_current_rent;
-        $request->number_of_residents = $request->number_of_residents;
-        $resident->file = $request->file;
+        $resident->number_of_residents = $request->number_of_residents;
+        $resident->rental = $request->rental;
+        $resident->file = $request->file('file')->store('contract', 'local');
         $resident->save();
+
+        return redirect(action('HomeController@index'));
     }
 
     /**

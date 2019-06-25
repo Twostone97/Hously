@@ -37,5 +37,14 @@ class UserSeeder extends Seeder
             'email'    => 'obyvatel@obyvatel.com',
             'password' => bcrypt('123456789')
         ]);
+
+        User::create([
+            'first_name'     => 'Nina',
+            'last_name'    => 'Nováková',
+            'birth_date'    => '2001-01-01',
+            'phone_number'    => 147258369,
+            'email'    => 'nova@nova.com',
+            'password' => bcrypt('123456789')
+        ]);
     }
 }

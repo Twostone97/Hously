@@ -16,5 +16,40 @@ class FlatsSeeder extends Seeder
             'building_id'     => 1,
             'floor'    => 1,
         ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 1,
+        ]);
+        
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 2,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 2,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 2,
+        ]);
+        
+        Flat::create([
+            'building_id'     => 1,
+            'floor'    => 2,
+        ]);
     }
 }
