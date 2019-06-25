@@ -11,6 +11,11 @@ body.modal__open {
     overflow: hidden;
 }
 
+header {
+    background-color: rgba(0, 0, 0, 0.2);
+    color:#fff;
+}
+
 .header {
     display: flex;
     justify-content: flex-start;
@@ -69,7 +74,7 @@ body.modal__open {
                 font-size: 1rem;
                 cursor: pointer;
                 a {
-                    color: black;
+                    color: #fff;
                     text-decoration: none;
                 }
             }
@@ -148,8 +153,6 @@ body.modal__open {
         height: 30px;
         line-height: 30px;
     }
-    background-color: rgba(0, 0, 0, 0.2);
-    color:#fff;
     text-align: center;
     overflow: hidden;
 

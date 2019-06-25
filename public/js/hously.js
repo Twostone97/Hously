@@ -36,3 +36,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     
 })
+
+//VEGAS library (jQuery)
+
+$("body").vegas({
+    slides: [
+        { src: "../img/slide1.jpg" },
+        { src: "../img/slide2.jpg" }
+    ],
+    overlay: '/vendor/vegas/overlays/06.png'
+});

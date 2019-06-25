@@ -25,6 +25,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- END  -->
 
+    <!-- VEGAS Library: -->
+    <link rel="stylesheet" href="/vendor/vegas/vegas.min.css">
+
+    
+
 </head>
 <body>
     <header>
@@ -219,6 +224,8 @@
     <main>
     @yield('content')
     </main>
+    <script src="/vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="/vendor/vegas/vegas.js"></script>
     <script src="/js/hously.js"></script>
 </body>
 </html>

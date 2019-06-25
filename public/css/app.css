@@ -4398,8 +4398,6 @@ input[type=button].btn-block {
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
@@ -10246,6 +10244,11 @@ body.modal__open {
   overflow: hidden;
 }
 
+header {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
 .header {
   display: -webkit-flex;
   display: flex;
@@ -10326,7 +10329,7 @@ body.modal__open {
   cursor: pointer;
 }
 .header__links__container div a {
-  color: black;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -10391,8 +10394,6 @@ body.modal__open {
   right: 15px;
   min-width: 50px;
   min-height: 50px;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #fff;
   text-align: center;
   overflow: hidden;
 }
