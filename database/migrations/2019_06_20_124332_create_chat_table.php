@@ -19,7 +19,7 @@ class CreateChatTable extends Migration
             $table->unsignedBigInteger('community_id');
             $table->text('text');
             $table->boolean('warning');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

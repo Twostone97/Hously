@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Contract;
 
 class ContractSeeder extends Seeder
 {
@@ -11,12 +12,12 @@ class ContractSeeder extends Seeder
      */
     public function run()
     {
-        Flat::create([
+        Contract::create([
             'name'     => 'Na Dobu Neurčitou',
             'type'    => 'Nájemní',
         ]);
 
-        Flat::create([
+        Contract::create([
             'name'     => 'Na Dobu Určitou',
             'type'    => 'Nájemní',
         ]);
