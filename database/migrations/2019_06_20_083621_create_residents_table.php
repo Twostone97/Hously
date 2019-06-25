@@ -17,6 +17,7 @@ class CreateResidentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('flat_id');
+            $table->unsignedBigInteger('building_id');
             $table->date('begining_of_first_rent');
             $table->date('begining_of_current_rent');
             $table->unsignedBigInteger('contract_id');

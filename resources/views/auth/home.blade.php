@@ -13,18 +13,39 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
+        <div class="card">
+                <div class="card-header"><p>Nástěnka</p></div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
-                        </div>
+                        </div>    
                     @endif
+                    
+                    @foreach ($notices as $notice)
+                    @if ($notice->permanent == 1)
+                    <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3></div>
+                    @endif
+                    @endforeach
+                    @foreach ($notices as $notice)
+                    @if ($notice->permanent == 0)
+                    <h3>{{$notice->text}}</h3>
+                    @endif
+                    @endforeach
+                    @if ($profil == 'administrator')
+                    <form action="/notice" method="post">
+                            @csrf
+                            <label for="notice">Zpráva</label>
+                            <input type="text" name="notice">
 
-                    You are logged in {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}!
-                    You are {{$profil}} around here!
+                            <input type="hidden" name="noticeboard" value="{{$noticeboard->id}}">
+    
+                            <label for="text">Permanentní</label>
+                            <input type="radio" name="permanent">
+    
+                            <input type="submit" value="Odeslat">
+                        </form>
+                    @endif
                 </div>
             </div>
             <div class="card">
@@ -42,7 +63,7 @@
                     @endif
                     @endforeach
                     @endforeach
-                    <form action="" method="post">
+                    <form action="/chat" method="post">
                         @csrf
                         <label for="text">Zpráva</label>
                         <input type="text" name="text">

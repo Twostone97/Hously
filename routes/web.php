@@ -20,4 +20,5 @@ Route::get('/','WebController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/home', 'HomeController@save');
+Route::post('/notice', 'HomeController@notice');
+Route::post('/chat', 'HomeController@chat');
