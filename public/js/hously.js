@@ -39,7 +39,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 $(".bg__vegas").vegas({
     slides: [
         { src: "../img/slide1.jpg" },
-        { src: "../img/slide2.jpg" }
+        { src: "../img/slide2.jpg" },
+        { src: "../img/slide3.jpg" },
+        { src: "../img/slide4.jpg" },
+        { src: "../img/slide5.jpg" },
     ],
-    overlay: '/vendor/vegas/overlays/06.png'
+    overlay: '/vendor/vegas/overlays/01.png',
+    transition: 'zoomOut',
+    transitionDuration:3000
 });
