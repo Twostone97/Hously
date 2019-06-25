@@ -29,7 +29,6 @@
             </div>
             <div class="card">
                 <div class="card-header">Chat</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
