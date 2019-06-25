@@ -33,29 +33,29 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="#"><img src="img/hously-logo.svg" alt="logo"> Hously</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">About Hously <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Available Appartments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Involved Houses</a>
-                </li>
-                </ul>
-                <div class="navbar-text">
-                    @guest
-                    <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
-                    <div id="register__open"><a class="nav-link" href="#">Register</a></div>
-                    @else
-                    <div>{{ Auth::user()->first_name }}   
+        <div class="header__logo">
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" height="100%" width="100%" viewBox="0 50 700 200"><g id="svg-container" transform="matrix(2.86,0,0,2.86,-51.253101139068605,165.89496242523194)"><g id="surrounding_shape" transform="matrix(1,0,0,1,24.818958282470703,-23.578244795799257)"><rect width="40.14220590267181" height="37.68726023985545" fill="transparent" stroke-width="2" stroke="#da5100" data-shape-id="custom" surrounded-groups="symbols" fill-type="outline" id="surrounding_shape_0"></rect></g><g id="symbols" transform="matrix(2.428571387918504,0,0,2.428571387918504,31.39018435546491,7.921807048397751)"><text data-font-id="1249" font-family="hero__bold" id="symbols_0" transform="matrix(1.074698580771455,0,0,1.074698580771455,-0.4108421942430027,0.4108421942430027)" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}"><tspan id="symbols_0_word_0" fill="#517ca4" svgjs:data="{&quot;leading&quot;:&quot;1.3&quot;}">H</tspan></text></g></g><defs><style>@font-face {font-family: playfair_italic;src: url(https://pismo.tailorbrands.com/v2/px_fonts/playfair_italic)}</style><style>@font-face {font-family: hero__bold;src: url(https://pismo.tailorbrands.com/v2/px_fonts/hero__bold)}</style></defs></svg> --}}
+                <div><img src="img/hously-logo.svg" alt="logo"></div>
+        </div>
+        <div class="header__menu">
+            <div class="header__menu__navigation">
+                    <div class="navigation__toggler"></div>
+                    <div class="navigation__items">
+                        <div>About Hously</div>
+                        <div>Available Appartments</div>
+                        <div>Involved Houses</div>
+                    </div>
+            </div> 
+            <div class="header__menu__links">
+                @guest
+                <div class="header__links__container">
+                    <div id="login__open"><a href="#">Login</a></div>
+                    <div id="register__open"><a href="#">Sign up</a></div>
+                </div>
+                @else
+                <div class="header__menu__links__container">
+                    <div>{{ Auth::user()->first_name }}</div>
+                    <div>
                         <a href="{{ route('logout') }}"
                             onclick="
                             event.preventDefault();
@@ -63,13 +63,13 @@
                             <img src="img/logout__ico.svg" alt="logout">
                         </a>
                     </div>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                    </form>                            
-                    @endguest
                 </div>
-            </div>
-        </nav>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+                </form>                            
+                @endguest
+            </div>          
+        </div>
         
     </header>
     <div class="auth__overlay">
@@ -221,7 +221,9 @@
                     </form> 
         </div>
     </div>
-    @yield('content') 
+    <main>
+    @yield('content')
+    </main>
     <script src="/vendor/jquery/jquery-3.4.1.min.js"></script>
     <script src="/vendor/vegas/vegas.js"></script>
     <script src="/js/hously.js"></script>
