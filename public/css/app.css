@@ -4349,7 +4349,6 @@ input[type=button].btn-block {
   position: relative;
   display: -webkit-flex;
   display: flex;
-  margin-bottom: 20px;
   -webkit-flex-direction: column;
           flex-direction: column;
   min-width: 0;
@@ -4358,7 +4357,6 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  
 }
 .card > hr {
   margin-right: 0;
@@ -10221,8 +10219,16 @@ h3 {
   -webkit-align-items: center;
           align-items: center;
   color: #fff;
+  text-align: center;
+}
+.index__main__promo h1, .index__main__promo h5 {
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.96);
+}
+.index__main__promo h1 {
+  font-size: 3rem;
 }
 .index__main__promo h5 {
+  font-size: 1.5rem;
   font-style: italic;
 }
 .index__main__features {
@@ -10232,14 +10238,14 @@ h3 {
           justify-content: space-around;
   -webkit-align-items: center;
           align-items: center;
-  max-width: 800px;
+  max-width: 70vmax;
   min-height: 30vh;
   margin: 0 auto;
 }
 .index__main__features__item {
   -webkit-flex: 0 1 14vmax;
           flex: 0 1 14vmax;
-  height: 7vmax;
+  min-height: 7vmax;
   background-color: rgba(24, 121, 191, 0.7);
   color: #fff;
   border: 0.5px solid #8b8b8b;
@@ -10247,7 +10253,7 @@ h3 {
 .index__main__features__item:hover {
   background-color: #1879bf;
 }
-.index__main__features__item div {
+.index__main__features__item > div {
   display: -webkit-flex;
   display: flex;
   height: 100%;
@@ -10255,6 +10261,10 @@ h3 {
           justify-content: center;
   -webkit-align-items: center;
           align-items: center;
+  text-align: center;
+}
+.index__main__features__item > div i {
+  font-size: 2rem;
 }
 
 * {
