@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header">Chat</div>
+                <div class="card-header"><p>Chat</p><select>@foreach ($communities as $community)<option>{{$community->community_name}}</option>@endforeach</select></div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -38,7 +38,7 @@
                     @foreach ($chats as $chat)
                     @foreach ($users as $user)
                     @if ($user->id == $chat->user_id)
-                    <h3>{{$user->first_name}} {{$user->last_name}}</h3><h2>{{$chat->text}}</h2><br>    
+                    <h3>{{$user->first_name}} {{$user->last_name}}</h3><h2>{{$chat->text}}</h2><img src="{{$chat->image}}"><br>    
                     @endif
                     @endforeach
                     @endforeach
@@ -54,6 +54,22 @@
                     </form>
                 </div>
             </div>
+
+            @if ($profil == 'resident' )
+            <div class="card">
+                    <div class="card-header"><p>Moje údaje</p></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <h4>Jméno: {{$current_user->first_name}} {{$current_user->last_name}}</h4><br>
+                        <h4>Telefoní číslo: {{$current_user->phone_number}}</h4><br>
+                        <h4>E-mail: {{$current_user->email}}</h4><br>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -28,7 +28,9 @@ class HomeController extends Controller
     {
         $chats = DB::table('chats')->where('community_id', '=', 1)->orderBy('created_at', 'asc')->get();
         $users = DB::table('users')->get();
-        return view('Auth/home', compact('chats', 'users'));
+        $communities = DB::table('communities')->get();
+        $current_user = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user'));
     }
 
     public function save(Request $request)
