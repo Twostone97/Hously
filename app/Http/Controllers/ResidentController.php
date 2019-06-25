@@ -46,6 +46,7 @@ class ResidentController extends Controller
         $resident->end_of_current_rent = $request->end_of_current_rent;
         $request->number_of_residents = $request->number_of_residents;
         $resident->file = $request->file;
+        $resident->save();
     }
 
     /**

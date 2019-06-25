@@ -97,6 +97,36 @@
                     </div>
                 </div>
             @endif
+
+            @if ($profil == 'administrator' )
+            <div class="card">
+                    <div class="card-header"><p>Moje údaje</p></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form action="/resident" method="post">
+                        @csrf
+                        <label for="user_id"></label>
+                        <select name="user_id">
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
+                            @endforeach
+                        </select>
+                        
+                        <label for="user_id"></label>
+                        <select name="user_id">
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
+                            @endforeach
+                        </select>
+
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -48,9 +48,9 @@ class HomeController extends Controller
         $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
+        $flats          = DB::table('flats')->where('building_id', '=', $building);
         
-        
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard'));
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats'));
     }
 
     public function chat(Request $request)
