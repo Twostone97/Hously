@@ -135,6 +135,15 @@ main {
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );            
         }
 
+        &.bg__gradient-light {
+            background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.21) 23%, rgba(0,0,0,0.29) 49%, rgba(0,0,0,0.21) 76%, rgba(231,56,39,0) 100%);
+            background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0)), color-stop(23%, rgba(0,0,0,0.21)), color-stop(49%, rgba(0,0,0,0.29)), color-stop(76%, rgba(0,0,0,0.21)), color-stop(100%, rgba(231,56,39,0)));
+            background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.21) 23%, rgba(0,0,0,0.29) 49%, rgba(0,0,0,0.21) 76%, rgba(231,56,39,0) 100%);
+            background: -o-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.21) 23%, rgba(0,0,0,0.29) 49%, rgba(0,0,0,0.21) 76%, rgba(231,56,39,0) 100%);
+            background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.21) 23%, rgba(0,0,0,0.29) 49%, rgba(0,0,0,0.21) 76%, rgba(231,56,39,0) 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.21) 23%, rgba(0,0,0,0.29) 49%, rgba(0,0,0,0.21) 76%, rgba(231,56,39,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#e73827', GradientType=1 );
+        }
     }
 }
 

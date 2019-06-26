@@ -34,7 +34,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/"><img src="img/hously-logo.svg" alt="logo"> Hously</a>
+            <a class="navbar-brand" href="/"><img src="../img/hously-logo.svg" alt="logo"> Hously</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

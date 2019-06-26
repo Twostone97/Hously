@@ -1,0 +1,38 @@
+.page__main__dash {
+    display:flex;
+    justify-content: space-between;
+
+    &__item {
+        min-height: 25vh;
+        background-color: $sand-brown;
+        color: black;
+        margin: 2rem 0;
+
+        &.i__mid {
+            flex: 0 1 45%;
+        }
+
+        &.i__small {
+            flex: 0 1 25%;
+        }
+
+        &.i__big {
+            flex: 0 1 70%;
+        }
+
+        &__head{
+            width: 100%;
+            background-color: $orange;
+            color: white;
+            text-align: center;
+        }
+
+        &__body{
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+
+    }
+}
