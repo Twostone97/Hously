@@ -10,13 +10,13 @@
 @section ('content')
 <main class="bg__vegas">
     <script src="https://kit.fontawesome.com/8e20837f84.js"></script>
-    <section class="index__main">
-        <div class="index__main__promo">
+    <section class="page__main">
+        <div class="page__main__promo">
             <h1>Here you are home</h1>
             <h5>The only app your house will love</h5>
         </div>
-        <div class="index__main__features">
-            <div class="index__main__features__item">
+        <div class="page__main__features">
+            <div class="page__main__features__item">
                 <div>
                     <div>
                         <i class="fas fa-info-circle"></i>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="index__main__features__item">
+            <div class="page__main__features__item">
                 <div>
                     <div>
                         <i class="fas fa-home"></i>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="index__main__features__item">
+            <div class="page__main__features__item">
                 <div>
                     <div>
                         <i class="fas fa-user"></i>

@@ -16,6 +16,8 @@
 // });
 
 Route::get('/','WebController@index');
+Route::get('/flats','WebController@flats');
+Route::get('/about','WebController@about');
 
 Auth::routes();
 

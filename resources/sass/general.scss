@@ -1,11 +1,24 @@
+/*FONTS & PALLETE*/
+
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu&display=swap');
 
+
+//Pallette
+$base-blue:#1879BF;
+$secondary-blue:#2F3259;
+$tertiary-blue:#0715F2;
+$sand-brown:#C7844C;
+$orange:#F25007;
+
+/*General styles start here*/
 * {
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif; 
 }
 
-
+body {
+    font-size:18px;
+}
 
 body.modal__open {
     overflow: hidden !important;
@@ -15,12 +28,16 @@ header {
     background-color: rgba(0, 0, 0, 1);
     color:#fff;
 
-    nav {
+    .navbar {
+
        .navbar-brand img {
         width: 50px;
        }
-       .navbar-text div {
+       .navbar-text #login__open, .navbar-text #register__open{
            display: inline-block;
+           a:hover {
+               color:$orange;
+           }
            img {
                height: 30px;
                margin-left: 10px;
@@ -87,11 +104,40 @@ header {
 main {
     width:100%;
     margin: 0;
+    min-height: 100vh;
+
+    &.bg__secondary{
+        background-image: url('../img/slide4.jpg');
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    &.bg__wall{
+        background-image: url('../img/wallbackground.jpg');
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
 
     section {
         max-width: 1144px;
         margin:0 auto;
+
+        &.bg__gradient {
+            background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.54) 33%, rgba(0,0,0,0.7) 53%, rgba(0,0,0,0.53) 73%, rgba(0,0,0,0.5) 77%, rgba(0,0,0,0) 100%);
+            background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0)), color-stop(28%, rgba(0,0,0,0.5)), color-stop(33%, rgba(0,0,0,0.54)), color-stop(53%, rgba(0,0,0,0.7)), color-stop(73%, rgba(0,0,0,0.53)), color-stop(77%, rgba(0,0,0,0.5)), color-stop(100%, rgba(0,0,0,0)));
+            background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.54) 33%, rgba(0,0,0,0.7) 53%, rgba(0,0,0,0.53) 73%, rgba(0,0,0,0.5) 77%, rgba(0,0,0,0) 100%);
+            background: -o-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.54) 33%, rgba(0,0,0,0.7) 53%, rgba(0,0,0,0.53) 73%, rgba(0,0,0,0.5) 77%, rgba(0,0,0,0) 100%);
+            background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.54) 33%, rgba(0,0,0,0.7) 53%, rgba(0,0,0,0.53) 73%, rgba(0,0,0,0.5) 77%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.54) 33%, rgba(0,0,0,0.7) 53%, rgba(0,0,0,0.53) 73%, rgba(0,0,0,0.5) 77%, rgba(0,0,0,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );            
+        }
+
     }
 }
+
+
 
 
