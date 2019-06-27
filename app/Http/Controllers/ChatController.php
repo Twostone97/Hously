@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use Auth;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -35,7 +36,15 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chat = new Chat;
+        $chat->user_id = Auth::user()->id;
+        $chat->community_id = 1;
+        $chat->text = $request->text;
+        $chat->warning = false;
+        $chat->image = $request->image;
+        $chat->save();
+        
+        return redirect(action('HomeController@index'));
     }
 
     /**

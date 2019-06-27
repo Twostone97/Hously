@@ -1,4 +1,5 @@
 <?php
+    //Získání profilu uživatele
     if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
         $profil = 'owner';
     } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
@@ -22,18 +23,18 @@
                         </div>    
                     @endif
                     
-                    @foreach ($notices as $notice)
+                    @foreach ($notices as $notice)              {{-- Permanentní upozornění --}}
                     @if ($notice->permanent == 1)
                     <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3></div>
                     @endif
                     @endforeach
                     @foreach ($notices as $notice)
-                    @if ($notice->permanent == 0)
+                    @if ($notice->permanent == 0)               {{-- Běžné upozornění ubíhající jako chat--}}
                     <h3>{{$notice->text}}</h3>
                     @endif
                     @endforeach
-                    @if ($profil == 'administrator')
-                    <form action="/notice" method="post">
+                    @if ($profil == 'administrator')            {{-- Zobrazí se pouze profilu "administrator" --}}
+                    <form action="/notice" method="post">       {{-- Formulář pro přidání upozornění        Zpracovává NoticeController@store --}}
                             @csrf
                             <label for="notice">Zpráva</label>
                             <input type="text" name="notice">
@@ -63,7 +64,7 @@
                     @endif
                     @endforeach
                     @endforeach
-                    <form action="/chat" method="post">
+                    <form action="/chat" method="post">         {{-- Formulář pro přidání zprávy        Zpracovává ChatController@store --}}
                         @csrf
                         <label for="text">Zpráva</label>
                         <input type="text" name="text"><br>
@@ -76,7 +77,7 @@
                 </div>
             </div>
 
-            @if ($profil == 'resident' )
+            @if ($profil == 'resident' )                    {{-- Zobrazí se pouze profilu "resident" --}}
             <div class="card">
                     <div class="card-header"><p>Moje údaje</p></div>
                     <div class="card-body">
@@ -118,19 +119,19 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="/resident" method="post" enctype="multipart/form-data">
+                        <form action="/resident" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci obyvatele       Zpracovává ResidentController@store --}}
                         @csrf
                         <label for="user_id"></label>
                         <select name="user_id">
                             @foreach ($users as $user)
-                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
+                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>       {{-- Výběr z uživatelů --}}
                             @endforeach
                         </select><br>
                         
                         <label for="flat_id"></label>
                         <select name="flat_id">
                             @foreach ($flats as $flat)
-                                <option value="{{$flat->id}}">byt: {{$flat->id}}</option>
+                                <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->id}}</option>       {{-- Výběr z bytů --}}
                             @endforeach
                         </select><br>
 
@@ -149,7 +150,7 @@
                             @endforeach
                         </select><br>
                         
-                        {{-- @if ($contract == 2) --}}
+                        {{-- @if ($contract == 2) --}}  {{-- If bude v reaktu --}}
                         <label for="end_of_current_rent">Konec aktuálního nájemního obdobý</label>
                         <input type="date" name="end_of_current_rent"><br>
                         {{-- @endif --}}
@@ -171,15 +172,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    const values = [13.5, 12.1, 10.9]
-
-    const result = [];
-
-    values.forEach(value => {
-        result.push(Math.round(value));
-    });
-    console.log(result);
-</script>
 @endsection

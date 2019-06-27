@@ -23,8 +23,8 @@ Route::get('/app/dashboard','WebController@dashboard');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/notice', 'HomeController@notice');
-Route::post('/chat', 'HomeController@chat');
+Route::post('/notice', 'NoticeController@store');
+Route::post('/chat', 'ChatController@store');
 Route::post('/resident', 'ResidentController@store');
 
 Route::get('/storage/contract/{file_id}.pdf', 'ResidentController@index');

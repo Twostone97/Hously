@@ -35,7 +35,17 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $notice = new Notice;
+        $notice->noticeboard_id = $request->noticeboard;
+        if ($request->permanent == 'on') {
+            $notice->permanent = true;
+        } else {
+            $notice->permanent = false;   
+        }
+        $notice->text = $request->notice;
+        $notice->save();
+
+        return redirect(action('HomeController@index'));
     }
 
     /**

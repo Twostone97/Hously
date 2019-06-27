@@ -61,32 +61,4 @@ class HomeController extends Controller
         
         return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id'));
     }
-
-    public function chat(Request $request)
-    {
-        $chat = new Chat;
-        $chat->user_id = Auth::user()->id;
-        $chat->community_id = 1;
-        $chat->text = $request->text;
-        $chat->warning = false;
-        $chat->image = $request->image;
-        $chat->save();
-        
-        return redirect(action('HomeController@index'));
-    }
-
-    public function notice(Request $request)
-    {
-        $notice = new Notice;
-        $notice->noticeboard_id = $request->noticeboard;
-        if ($request->permanent == 'on') {
-            $notice->permanent = true;
-        } else {
-            $notice->permanent = false;   
-        }
-        $notice->text = $request->notice;
-        $notice->save();
-
-        return redirect(action('HomeController@index'));
-    }
 }
