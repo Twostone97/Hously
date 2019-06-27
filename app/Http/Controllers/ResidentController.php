@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Resident;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use Auth;
 use DB;
 
@@ -14,9 +16,11 @@ class ResidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($file_id)
     {
-        //
+        return Storage::download("contract/{$file_id}.pdf");
+
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -47,7 +51,9 @@ class ResidentController extends Controller
         $resident->end_of_current_rent = $request->end_of_current_rent;
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
-        $resident->file = $request->file('file')->store('contract', 'local');
+        $resident->file = $request->file('file')->storeAs(
+            'contract', "{$request->flat_id}.pdf"
+        );
         $resident->save();
 
         return redirect(action('HomeController@index'));
