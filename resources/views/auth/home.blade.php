@@ -59,7 +59,7 @@
                     @foreach ($chats as $chat)
                     @foreach ($users as $user)
                     @if ($user->id == $chat->user_id)
-                    <h3>{{$user->first_name}} {{$user->last_name}}</h3><h2>{{$chat->text}}</h2><img src="{{$chat->image}}"><br>    
+                    <h3>{{$user->first_name}} {{$user->last_name}}</h3><h2>{{$chat->text}}</h2><img class="image" src="{{$chat->image}}"><br>    
                     @endif
                     @endforeach
                     @endforeach

@@ -15,7 +15,7 @@ class ChatSeeder extends Seeder
         Chat::create([
             'user_id'     => 1,
             'community_id'    => 1,
-            'text'     => 'Výtah je rozbytý!',
+            'text'     => 'Výtah je rozbitý!',
             'warning'    => true,
             'image'    => null,
         ]);
