@@ -31,6 +31,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         document.querySelector('.modal__register').classList.remove('modal__open');
     });
 
+
+    //navigation hiding on scroll
+    let previousOffset=0;
+
+    window.addEventListener('scroll',()=>{
+        if(window.pageYOffset > 100) {
+            if(window.pageYOffset>previousOffset) {
+                console.log('true');
+                document.querySelector('nav').classList.add('hideonscroll');
+                previousOffset=window.pageYOffset;
+            } else {
+                console.log('false');
+                document.querySelector('nav').classList.remove('hideonscroll');
+                previousOffset=window.pageYOffset;
+            }
+        }
+        
+    })
     
 })
 

@@ -29,6 +29,17 @@ header {
     background-color: rgba(0, 0, 0, 1);
     color:#fff;
 
+    nav {
+        transition: height 0.5s ease-out;
+        height: 80px;
+    }
+
+    nav.hideonscroll{
+        height: 0;
+        overflow:hidden;
+        padding: 0;
+    }
+
     .navbar {
         background-color: $gray;
 
