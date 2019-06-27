@@ -1,6 +1,7 @@
 .page__main {
     width: 100%;
     min-height: 100vh;
+    padding-bottom: 3rem;
     
 
     &__promo {
@@ -26,6 +27,17 @@
             font-style: italic;
         }
     }
+
+    &__info {
+        display: block;
+        width: 100%;
+        height: 40vh;
+        margin-bottom: 2rem;
+        background-color: rgba($gray,0.6);
+        color: white;
+        text-align: center;
+    }
+
     &__features {
         display: flex;
         justify-content: space-around;
@@ -41,7 +53,7 @@
             border: 0.5px solid rgb(139, 139, 139);
 
             &:hover {
-            background-color: rgba($secondary-blue,0.7);
+            background-color: $orange;
             }
             >div{
                 display: flex;
@@ -64,6 +76,7 @@
         align-items: center;
         width: 80%;
         margin:0 auto;
+        color: #fff;
 
         
         &__bubble {

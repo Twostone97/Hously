@@ -33,7 +33,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <a class="navbar-brand" href="/"><img src="../img/hously-logo.svg" alt="logo"> Hously</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -221,7 +221,10 @@
                     </form> 
         </div>
     </div>
-    @yield('content') 
+    @yield('content')
+    <footer>
+        <div>© 2019 Hously</div>
+    </footer> 
     <script src="/vendor/jquery/jquery-3.4.1.min.js"></script>
     <script src="/vendor/vegas/vegas.js"></script>
     <script src="/js/hously.js"></script>

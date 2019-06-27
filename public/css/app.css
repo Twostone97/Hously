@@ -10222,6 +10222,9 @@ header {
   background-color: black;
   color: #fff;
 }
+header .navbar {
+  background-color: #343a40;
+}
 header .navbar .navbar-brand img {
   width: 50px;
 }
@@ -10323,9 +10326,24 @@ main section.bg__gradient-light {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#000000", endColorstr="#e73827", GradientType=1 );
 }
 
+footer {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 5vh;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #343a40;
+  color: white;
+  font-size: 1.5rem;
+}
+
 .page__main {
   width: 100%;
   min-height: 100vh;
+  padding-bottom: 3rem;
 }
 .page__main__promo {
   display: -webkit-flex;
@@ -10351,6 +10369,15 @@ main section.bg__gradient-light {
   font-size: 1.5rem;
   font-style: italic;
 }
+.page__main__info {
+  display: block;
+  width: 100%;
+  height: 40vh;
+  margin-bottom: 2rem;
+  background-color: rgba(52, 58, 64, 0.6);
+  color: white;
+  text-align: center;
+}
 .page__main__features {
   display: -webkit-flex;
   display: flex;
@@ -10371,7 +10398,7 @@ main section.bg__gradient-light {
   border: 0.5px solid #8b8b8b;
 }
 .page__main__features__item:hover {
-  background-color: rgba(47, 50, 89, 0.7);
+  background-color: #F25007;
 }
 .page__main__features__item > div {
   display: -webkit-flex;
@@ -10397,6 +10424,7 @@ main section.bg__gradient-light {
           align-items: center;
   width: 80%;
   margin: 0 auto;
+  color: #fff;
 }
 .page__main__timeline__bubble {
   position: relative;

@@ -15,7 +15,12 @@
             <h1>About Hously</h1>
             <h5>Join us on our journey</h5>
         </div>
+        <div class="page__main__info">
+                <h2>How it works</h2>
+                <h5>Here should be some nice infographics</h5>
+        </div>
         <div class="page__main__timeline">
+                <h2>Our history</h2>
             <div class="page__main__timeline__bubble b__right">
                 <h3>We started as student project</h3>
                 <p>We started in summer 2009 during a coding Bootcamp. In team of four we prepared the minimal project which we then presented to investors</p>
