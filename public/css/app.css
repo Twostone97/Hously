@@ -10222,6 +10222,15 @@ header {
   background-color: black;
   color: #fff;
 }
+header nav {
+  transition: height 0.5s ease-out;
+  height: 80px;
+}
+header nav.hideonscroll {
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+}
 header .navbar {
   background-color: #343a40;
 }
