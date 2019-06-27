@@ -26,3 +26,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/notice', 'HomeController@notice');
 Route::post('/chat', 'HomeController@chat');
 Route::post('/resident', 'ResidentController@store');
+
+Route::get('/storage/contract/{file_id}.pdf', 'ResidentController@index');

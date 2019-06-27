@@ -66,7 +66,7 @@
                     <form action="/chat" method="post">
                         @csrf
                         <label for="text">Zpráva</label>
-                        <input type="text" name="text">
+                        <input type="text" name="text"><br>
 
                         <label for="text">Odkaz na obrázek</label>
                         <input type="url" name="image">
@@ -94,6 +94,17 @@
                         @if ($resident->contract_id == 2)
                         <h4>Konec smlouvy: {{$resident->end_of_current_rent}}</h4><br>
                         @endif
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><p>Moje Soubory</p></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <a href="/storage/contract/{{$file_id}}.pdf">Nájemní Smlouva</a>
                     </div>
                 </div>
             @endif
@@ -160,4 +171,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    const values = [13.5, 12.1, 10.9]
+
+    const result = [];
+
+    values.forEach(value => {
+        result.push(Math.round(value));
+    });
+    console.log(result);
+</script>
 @endsection
