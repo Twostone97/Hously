@@ -14,6 +14,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
         <div class="card">
                 <div class="card-header"><p>Nástěnka</p></div>
                 <div class="card-body">
@@ -49,6 +50,7 @@
                     @endif
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-header"><p>Chat</p><select>@foreach ($communities as $community)<option>{{$community->community_name}}</option>@endforeach</select></div>
                 <div class="card-body">
@@ -78,7 +80,7 @@
             </div>
 
             @if ($profil == 'resident' )                    {{-- Zobrazí se pouze profilu "resident" --}}
-            <div class="card">
+                <div class="card">
                     <div class="card-header"><p>Moje údaje</p></div>
                     <div class="card-body">
                         @if (session('status'))
@@ -97,6 +99,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-header"><p>Moje Soubory</p></div>
                     <div class="card-body">
@@ -169,7 +172,122 @@
                     </div>
                 </div>
             @endif
+
+            <div class="card">
+                <div class="card-header"><p>Test Mapy.cz</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <div id="mapa" style="width:600px; height:400px;"></div>                                <!-- Mapy.cz Api -->
+                    <script type="text/javascript">
+                        var stred = SMap.Coords.fromWGS84(14.41, 50.08);
+                        var mapa = new SMap(JAK.gel("mapa"), stred, 10);
+                        mapa.addDefaultLayer(SMap.DEF_BASE).enable();
+                        mapa.addDefaultControls();	      	      
+                    </script>
+                </div>
+            </div>
+
+            @if ($profil == 'owner' ||  $profil == 'administrator')
+            <div class="card">
+                <div class="card-header"><p>Tato budova</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    
+                    <table>
+                            <th>Budova</th>
+                        <thead>
+                            <th>Položka</th>
+                            <th>Hodnota</th>                            
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Město</td>
+                                <td>{{$this_building->city}}</td>
+                            </tr>
+                            <tr>
+                                <td>Číslo popisné</td>
+                                <td>{{$this_building->house_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Počet podlaží</td>
+                                <td>{{$this_building->floors_above_ground + $this_building->floors_bellow_ground}}</td>
+                            </tr>
+                            <tr>
+                                <td>Výtah</td>
+                                <td>@if ($this_building->elevator == 1)
+                                    Ano
+                                @else
+                                    Ne
+                                @endif</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                    
+                    <table>
+                        <th>Bytové jednotky</th>
+                            <tbody>
+                                @foreach ($flats as $flat)
+                                @if ($flat->residential == 1)
+                                    
+                                @foreach ($residents as $resid)
+                                <tr>
+                                    <td>Patro: {{$flat->floor}}</td>
+                                    <td>Číslo bytu: {{$flat->number}}</td>
+                                    <td>Obyvatel:
+                                        @if ($resid->flat_id == $flat->id)
+                                            <?php $r = DB::table('users')->where('id', '=', $resid->user_id)->first(); $name = "{$r->first_name} {$r->last_name}" ?>
+                                            {{$name}}
+                                        @endif
+                                    </td>
+                                </tr>    
+                                @endforeach
+                                @endif
+                                @endforeach
+                                
+                            </tbody>
+                    </table>
+
+                    <table>
+                            <th>Nebytové jednotky</th>
+                                <tbody>
+                                    @foreach ($flats as $flat)
+                                    @if ($flat->residential == 0)
+                                    @foreach ($residents as $resid)
+                                    <tr>
+                                        <td>Patro: {{$flat->floor}}</td>
+                                        <td>Číslo bytu: {{$flat->number}}</td>
+                                        <td>Obyvatel:
+                                            @if ($resid->flat_id == $flat->id)
+                                                <?php $r = DB::table('users')->where('id', '=', $resid->user_id)->first(); $name = "{$r->first_name} {$r->last_name}" ?>
+                                                {{$name}}
+                                            @endif
+                                        </td>
+                                    </tr>    
+                                    @endforeach
+                                    @endif
+                                    @endforeach
+                                    
+                                </tbody>
+                        </table>
+
+                </div>
+            </div>
+            @endif
+
         </div>
     </div>
 </div>
 @endsection
+
+
+
+

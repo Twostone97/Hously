@@ -25,6 +25,7 @@ class CreateBuildingsTable extends Migration
             $table->integer('floors_bellow_ground');
             $table->boolean('heating');
             $table->boolean('gas');
+            $table->boolean('elevator');
             $table->timestamps();
         });
     }

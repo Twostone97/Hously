@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+	<script src="https://api.mapy.cz/loader.js"></script>                       <!-- Mapy.cz Api Loader -->
+	<script>Loader.load()</script>
+
+
+
 </head>
 <body>
     <div id="app">

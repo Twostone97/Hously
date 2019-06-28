@@ -19,10 +19,11 @@ class BuildingSeeder extends Seeder
             'postal'    => 11100,
             'owner_id'    => 1,
             'construction_date' => '2019-06-20',
-            'floors_above_ground' => 1,
-            'floors_bellow_ground' => 0,
+            'floors_above_ground' => 2,
+            'floors_bellow_ground' => 1,
             'heating' => 1,
             'gas' => 1,
+            'elevator' => 1,
         ]);
     }
 }

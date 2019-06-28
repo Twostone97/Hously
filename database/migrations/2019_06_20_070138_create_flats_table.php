@@ -17,6 +17,8 @@ class CreateFlatsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('building_id');
             $table->integer('floor');
+            $table->integer('number');
+            $table->boolean('residential');
             $table->timestamps();
         });
     }

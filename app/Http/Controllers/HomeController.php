@@ -33,7 +33,6 @@ class HomeController extends Controller
         $owner         = DB::table('owners')->where('user_id', '=', Auth::user()->id)->first();
         $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
 
-
                         //Speciální data dostupná pouze danému profilu
                         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
                             $building = $owner->building_id;
@@ -48,6 +47,8 @@ class HomeController extends Controller
                             $file           = Storage::url("contract/{$file_id}.pdf");
                         }
 
+        $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
+        $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
         $chats          = DB::table('chats')->where('community_id', '=', 1)->orderBy('created_at', 'asc')->get();
         $users          = DB::table('users')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
@@ -57,8 +58,6 @@ class HomeController extends Controller
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         
-        
-        
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id'));
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents'));
     }
 }
