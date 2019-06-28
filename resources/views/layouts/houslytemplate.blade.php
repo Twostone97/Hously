@@ -55,7 +55,7 @@
                     <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
                     <div id="register__open"><a class="nav-link" href="#">Register</a></div>
                     @else
-                    <div>{{ Auth::user()->first_name }}   
+                    <div>{{ Auth::user()->first_name }}
                         <a href="{{ route('logout') }}"
                             onclick="
                             event.preventDefault();

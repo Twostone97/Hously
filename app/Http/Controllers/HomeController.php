@@ -42,7 +42,7 @@ class HomeController extends Controller
                             $building = $resident->building_id;
                             $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
                             $date           = explode('-' ,$resident->begining_of_current_rent);
-                            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na dd. mm. YY
+                            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
                             $file_id        = $resident->flat_id;
                             $file           = Storage::url("contract/{$file_id}.pdf");
                         }
@@ -54,7 +54,7 @@ class HomeController extends Controller
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
-        $rentcontracts      = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
+        $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         

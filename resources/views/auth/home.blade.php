@@ -134,7 +134,9 @@
                         <label for="flat_id"></label>
                         <select name="flat_id">
                             @foreach ($flats as $flat)
-                                <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->id}}</option>       {{-- Výběr z bytů --}}
+                            @if ($flat->residential == 1)
+                            <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->number}}</option>       {{-- Výběr z bytových jednotek --}}
+                            @endif
                             @endforeach
                         </select><br>
 
@@ -234,52 +236,63 @@
                     
                     <table>
                         <th>Bytové jednotky</th>
-                            <tbody>
-                                @foreach ($flats as $flat)
-                                @if ($flat->residential == 1)
-                                    
-                                @foreach ($residents as $resid)
-                                <tr>
-                                    <td>Patro: {{$flat->floor}}</td>
-                                    <td>Číslo bytu: {{$flat->number}}</td>
-                                    <td>Obyvatel:
-                                        @if ($resid->flat_id == $flat->id)
-                                            <?php $r = DB::table('users')->where('id', '=', $resid->user_id)->first(); $name = "{$r->first_name} {$r->last_name}" ?>
-                                            {{$name}}
-                                        @endif
-                                    </td>
-                                </tr>    
-                                @endforeach
-                                @endif
-                                @endforeach
-                                
-                            </tbody>
-                    </table>
-
-                    <table>
-                            <th>Nebytové jednotky</th>
-                                <tbody>
-                                    @foreach ($flats as $flat)
-                                    @if ($flat->residential == 0)
-                                    @foreach ($residents as $resid)
-                                    <tr>
-                                        <td>Patro: {{$flat->floor}}</td>
-                                        <td>Číslo bytu: {{$flat->number}}</td>
-                                        <td>Obyvatel:
+                        <tbody>
+                            @foreach ($flats as $flat)
+                            @if ($flat->residential == 1)
+                            <tr>
+                                <td>Patro: {{$flat->floor}}</td>
+                                <td>Číslo bytu: {{$flat->number}}</td>
+                                <td>Obyvatel: 
+                                        @foreach ($residents as $resid)
                                             @if ($resid->flat_id == $flat->id)
                                                 <?php $r = DB::table('users')->where('id', '=', $resid->user_id)->first(); $name = "{$r->first_name} {$r->last_name}" ?>
                                                 {{$name}}
                                             @endif
-                                        </td>
-                                    </tr>    
-                                    @endforeach
+                                        @endforeach                                    
+                                </td>
+                            </tr>    
+                            
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <th>Nebytové jednotky</th>
+                        <tbody>
+                            @foreach ($flats as $flat)
+                            @if ($flat->residential == 0)
+                            <tr>
+                                <td>Patro: {{$flat->floor}}</td>
+                                <td>Číslo bytu: {{$flat->number}}</td>
+                                <td>Obyvatel:
+                                    @foreach ($residents as $resid)
+                                    @if ($resid->flat_id == $flat->id)
+                                        <?php $r = DB::table('users')->where('id', '=', $resid->user_id)->first(); $name = "{$r->first_name} {$r->last_name}" ?>
+                                        {{$name}}
                                     @endif
                                     @endforeach
-                                    
-                                </tbody>
-                        </table>
-
+                                </td>
+                            </tr>
+                            
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+            @endif
+
+            @if ($profil == 'owner' ||  $profil == 'administrator')
+            <div class="card">
+                <div class="card-header"><p>Databáze Obyvatel</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
             </div>
             @endif
 
