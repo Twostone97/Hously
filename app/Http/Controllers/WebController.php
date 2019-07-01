@@ -17,4 +17,8 @@ class WebController extends Controller
     public function dashboard() {
         return view ('/app/dashboard');
     }
+
+    public function map() {
+        return view ('/test/map'); //pro Michala na testovani mapy
+    }
 }
