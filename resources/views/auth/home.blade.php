@@ -175,24 +175,6 @@
                 </div>
             @endif
 
-            <div class="card">
-                <div class="card-header"><p>Test Mapy.cz</p></div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div id="mapa" style="width:600px; height:400px;"></div>                                <!-- Mapy.cz Api -->
-                    <script type="text/javascript">
-                        var stred = SMap.Coords.fromWGS84(14.41, 50.08);
-                        var mapa = new SMap(JAK.gel("mapa"), stred, 10);
-                        mapa.addDefaultLayer(SMap.DEF_BASE).enable();
-                        mapa.addDefaultControls();	      	      
-                    </script>
-                </div>
-            </div>
-
             @if ($profil == 'owner' ||  $profil == 'administrator')
             <div class="card">
                 <div class="card-header"><p>Tato budova</p></div>
@@ -292,7 +274,37 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                
+                    <table>
+                        <th>Obyvatelé</th>
+                        <tbody>
+                            @foreach ($users as $user)
+                            @foreach ($residents as $resident)
+                                @if ($resident->user_id === $user->id)
+                                <tr>
+                                    <td>Jméno: {{$user->first_name}} {{$user->last_name}}</td>
+                                    <td>Datum narození: {{$user->birth_date}}</td>
+                                </tr>
+                                @endif
+                            @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
 
+                    <table>
+                        <th>Nájemní smlouvy</th>
+                        <tbody>
+                            @foreach ($users as $user)
+                                @foreach ($residents as $resident)
+                                @if ($user->id == $resident->user_id)
+                                        <td><a href="/storage/contract/{{$resident->id}}.pdf"> {{$user->first_name}} {{$user->last_name}}</a></td>
+                                    </tr>
+                                @endif
+                                @endforeach
+                            @endforeach
+
+                        </tbody>
+                    </table>
             </div>
             @endif
 
