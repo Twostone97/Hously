@@ -48,6 +48,7 @@ class HomeController extends Controller
                         }
 
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
+        $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
         $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
         $chats          = DB::table('chats')->where('community_id', '=', 1)->orderBy('created_at', 'asc')->get();
         $users          = DB::table('users')->get();
@@ -58,6 +59,26 @@ class HomeController extends Controller
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents'));
+        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
     }
+
+    public function test()
+    {        
+        $users = DB::table('users')->get();    // Laravel to REACT (get method for laravel | default for REACT)
+        return $users->toJson();
+        
+        // axios.post('/test', {               REACT to Laravel   (post method for laravel | post method for REACT)
+        //     firstName: 'Fred',
+        //     lastName: 'Flintstone'
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
+
+
+    }
+
 }
