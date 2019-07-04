@@ -30,7 +30,8 @@
             </div>
         </div>
     </section>
-<script src="/js/mapa.js"></script>   
+    
+    <script src="/js/mapa.js"></script>   
 </main>
 
 @endsection

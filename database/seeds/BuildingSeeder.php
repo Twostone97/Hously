@@ -13,8 +13,8 @@ class BuildingSeeder extends Seeder
     public function run()
     {
         Building::create([
-            'city'     => 'Testerov',
-            'street'    => 'Testovací',
+            'city'     => 'Praha',
+            'street'    => 'Vaclavske namesti',
             'house_number'    => 1,
             'postal'    => 11100,
             'owner_id'    => 1,

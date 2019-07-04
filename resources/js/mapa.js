@@ -1,12 +1,22 @@
 
-const listofAdress=["U hajovny 11, 18200, Praha","Václavské náměstí 1, Praha",]
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("funguje na res")
-    const mapa = document.querySelector("#game");
+const scriptPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    document.body.appendChild(script);
+    script.onload = resolve;
+    script.onerror = reject;
+    script.async = true;
+    script.src = 'https://api.mapy.cz/loader.js"';
+   
+  })
+  scriptPromise.then(fetch("./test/map/api")).then(res=>res.json).then(()=>{
+  
+    
+    console.log(scriptPromise)
+    const listofAdress=["U hajovny 11, 18200, Praha","Václavské náměstí 1, Praha",]
+    console.log("jsme v tady res")
 
-const mapaObsah=()=>{
 
     const center =SMap.Coords.fromWGS84(14.4676344,50.1281042);
     const map = new SMap(JAK.gel("map"), center, 12);
@@ -34,9 +44,9 @@ const mapaObsah=()=>{
     listofAdress.map(element=>{
         new SMap.Geocoder(element, odpoved);
     })
-    }
-mapa.appendChild(mapaObsah);
-}
+    
+
+  });
 
 
 // new SMap.Geocoder("U hajovny 11, Praha", odpoved);
@@ -47,4 +57,3 @@ mapa.appendChild(mapaObsah);
 
 
 
-)
