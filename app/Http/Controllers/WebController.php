@@ -24,7 +24,7 @@ class WebController extends Controller
   
       
     public function mapApi(){
-        $building = DB::table('Building')->get();    
+    $building = DB::table('buildings')->get();    
         return $building->toJson();
 
     }

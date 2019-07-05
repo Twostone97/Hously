@@ -21,6 +21,7 @@ Route::get('/about','WebController@about');
 Route::get('/app/dashboard','WebController@dashboard');
 Route::get('/test/map','WebController@map');
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
