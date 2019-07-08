@@ -62,23 +62,68 @@ class HomeController extends Controller
         return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
     }
 
-    public function test()
-    {        
-        $users = DB::table('users')->get();    // Laravel to REACT (get method for laravel | default for REACT)
-        return $users->toJson();
+    public function api()
+    {
+        $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
+        $owner         = DB::table('owners')->where('user_id', '=', Auth::user()->id)->first();
+        $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
         
-        // axios.post('/test', {               REACT to Laravel   (post method for laravel | post method for REACT)
-        //     firstName: 'Fred',
-        //     lastName: 'Flintstone'
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
+        $contract = null;
+        $date = null;
+        $file_id = null;
+        $file = null;
+                        //Speciální data dostupná pouze danému profilu
+                        if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                            $profil = 'owner';
+                            $building = $owner->building_id;
+                        } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                            $profil = 'administrator';
+                            $building = $administrator->building_id;
+                        } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                            $profil = 'resident';
+                            $building = $resident->building_id;
+                            $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
+                            $date           = explode('-' ,$resident->begining_of_current_rent);
+                            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+                            $file_id        = $resident->flat_id;
+                            $file           = Storage::url("contract/{$file_id}.pdf");
+                        }
 
+        $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
+        $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
+        $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
+        $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
+        $users          = DB::table('users')->get();
+        $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+        $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+        $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
+        $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
+        $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
+        $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
 
+        foreach ($residents as $resid) {
+            $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
+        }
+        
+        $data = [
+            "profile" => $profil,
+            "residents" => $residents,
+            "owners" => $owners,
+            "communities" => $communities,
+            "chats" => $chats,
+            "current_user" => $current_user,
+            "this_building" => $this_building,
+            "noticeboard" => $noticeboard,
+            "notices" => $notices,
+            "rentcontracts" => $rentcontracts,
+            "flats" => $flats,
+            "contract" => $contract,
+            "date" => $date,
+            "contract_id" => $file_id,
+            "contract_url" => $file,
+            "residents_in_flat" => $residents_in_flats,
+        ];
+        return response()->json($data, 200);
     }
 
 }
