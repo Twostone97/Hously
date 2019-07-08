@@ -1,5 +1,5 @@
 .page__main__dash {
-    display:flex;
+    display: flex;
     justify-content: space-between;
 
     &__item {
@@ -20,19 +20,17 @@
             flex: 0 1 70%;
         }
 
-        &__head{
+        &__head {
             width: 100%;
             background-color: $orange;
             color: white;
             text-align: center;
         }
 
-        &__body{
+        &__body {
             justify-content: center;
             align-items: center;
             text-align: center;
         }
-
-
     }
 }
