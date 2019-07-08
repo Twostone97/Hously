@@ -16,4 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/test/map/api','WebController@mapApi');
+
+
+// Route::get('/test/map/api','WebController@mapApi');

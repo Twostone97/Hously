@@ -23,7 +23,7 @@ Route::get('/test/map','WebController@map');
 
 
 Auth::routes();
-
+Route::get('/test/map/api','WebController@mapApi');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@api');
 Route::post('/notice', 'NoticeController@store');
