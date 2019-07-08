@@ -105,7 +105,7 @@ class HomeController extends Controller
             $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
         }
         
-        $data = [
+        $data = (object) [
             "profile" => $profil,
             "residents" => $residents,
             "owners" => $owners,
@@ -123,7 +123,13 @@ class HomeController extends Controller
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
         ];
+        dd($data);
         return response()->json($data, 200);
+    }
+
+    public function reacttest() 
+    {
+        return view("reacttest");
     }
 
 }
