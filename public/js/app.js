@@ -1688,10 +1688,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--5-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -49320,8 +49320,8 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_5_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/babel-loader/lib??ref--5-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_5_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -49350,7 +49350,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleNotFoundError: Module not found: Error: Can't resolve '../img/slide4.jpg' in 'D:\\Bootcamp\\Hously\\resources\\sass'\n    at factory.create (D:\\Bootcamp\\Hously\\node_modules\\webpack\\lib\\Compilation.js:821:10)\n    at factory (D:\\Bootcamp\\Hously\\node_modules\\webpack\\lib\\NormalModuleFactory.js:397:22)\n    at resolver (D:\\Bootcamp\\Hously\\node_modules\\webpack\\lib\\NormalModuleFactory.js:130:21)\n    at asyncLib.parallel (D:\\Bootcamp\\Hously\\node_modules\\webpack\\lib\\NormalModuleFactory.js:224:22)\n    at D:\\Bootcamp\\Hously\\node_modules\\neo-async\\async.js:2830:7\n    at D:\\Bootcamp\\Hously\\node_modules\\neo-async\\async.js:6877:13\n    at normalResolver.resolve (D:\\Bootcamp\\Hously\\node_modules\\webpack\\lib\\NormalModuleFactory.js:214:25)\n    at doResolve (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:184:12)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at resolver.doResolve (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:37:5)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at resolver.doResolve (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:42:38)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn43 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at resolver.doResolve (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:42:38)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn1 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at hook.callAsync (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\Bootcamp\\Hously\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at fs.stat (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\DirectoryExistsPlugin.js:22:13)\n    at process.nextTick (D:\\Bootcamp\\Hously\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:73:15)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
 
 /***/ }),
 
@@ -49361,10 +49361,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Bootcamp\Hously\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map
