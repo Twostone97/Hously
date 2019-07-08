@@ -24,7 +24,7 @@ Route::get('/test/map','WebController@map');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'HomeController@test');
+Route::get('/test', 'HomeController@foo');
 Route::post('/notice', 'NoticeController@store');
 Route::post('/chat', 'ChatController@store');
 Route::post('/resident', 'ResidentController@store');
