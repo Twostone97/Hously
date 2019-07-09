@@ -26,6 +26,7 @@ class CreateBuildingsTable extends Migration
             $table->boolean('heating');
             $table->boolean('gas');
             $table->boolean('elevator');
+            $table->string('house_rules')->nullable();
             $table->timestamps();
         });
     }

@@ -217,6 +217,9 @@
                         <label for="elevator">Výtah(počet)</label>
                         <input type="number" name="elevator"><br>
 
+                        <label for="file">Textový soubor pravidel domu</label>
+                        <input type="file" name="file"><br>
+
                         <input type="submit" value="Registrovat">
                         </form>
                     </div>
@@ -245,6 +248,10 @@
                                 <td>{{$this_building->city}}</td>
                             </tr>
                             <tr>
+                                <td>Ulice</td>
+                                <td>{{$this_building->street}}</td>
+                            </tr>
+                            <tr>
                                 <td>Číslo popisné</td>
                                 <td>{{$this_building->house_number}}</td>
                             </tr>
@@ -253,12 +260,21 @@
                                 <td>{{$this_building->floors_above_ground + $this_building->floors_bellow_ground}}</td>
                             </tr>
                             <tr>
-                                <td>Výtah</td>
-                                <td>@if ($this_building->elevator == 1)
+                                <td>Vytápění</td>
+                                <td>@if ($this_building->heating == 1)
                                     Ano
                                 @else
                                     Ne
                                 @endif</td>
+                            </tr>
+                            <tr>
+                                <td>Výtah</td>
+                                <td>{{$this_building->elevator}} (krát)</td>
+                            </tr>
+
+                            <tr>
+                                <td>Vlastník</td>
+                                <td>{{$this_building->owner_id}}</td>
                             </tr>
                         </tbody>
                         

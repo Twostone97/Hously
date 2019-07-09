@@ -82,7 +82,9 @@ class BuildingController extends Controller
      */
     public function update(Request $request, Building $building)
     {
-        //
+        $request->file('file')->storeAs(
+            'house_rules', "{$request->id}.txt"
+        );
     }
 
     /**
