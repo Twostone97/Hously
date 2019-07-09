@@ -24841,14 +24841,48 @@ var DashboardAdmin = function DashboardAdmin() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
   var apidata = _ref.apidata;
   console.log("Dashboard COmmon notices:", apidata.notices);
+  /*zdravime Inventi HOOOOOKS */
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      commun_id = _useState2[0],
+      setcommun_id = _useState2[1];
+
+  var handleCommunityIDChange = function handleCommunityIDChange(e) {
+    setcommun_id(Number(e.target.value));
+  };
+
+  console.log(apidata.chats);
+  var getCommunityChat = apidata.chats ? apidata.chats.map(function (chat) {
+    return chat.community_id === commun_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ")) : "";
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... ");
   var notices = apidata.notices ? apidata.notices.map(function (notice) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
+  var communities = apidata.communities ? apidata.communities.map(function (community) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: community.id
+    }, community.community_name));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "",
+    disabled: true,
+    selected: true,
+    hidden: true
+  }, "Loading communities");
+  console.log("communities:", communities);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__common"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -24858,15 +24892,10 @@ var DashboardCommon = function DashboardCommon(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "chats"
   }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleCommunityIDChange,
     name: "chats",
     id: "chats"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "1"
-  }, "Chat 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "2"
-  }, "Chat 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "3"
-  }, "Chat 3"))))));
+  }, communities)), getCommunityChat)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
