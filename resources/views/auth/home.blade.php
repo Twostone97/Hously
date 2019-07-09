@@ -175,6 +175,54 @@
                 </div>
             @endif
 
+            @if ($profil == 'administrator' )
+            <div class="card">
+                    <div class="card-header"><p>Registrace Budovy</p></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form action="/building" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci budovy       Zpracovává BuildingController@store --}}
+                        @csrf
+
+                        <label for="city">Město</label>
+                        <input type="text" name="city"><br>
+
+                        <label for="street">Ulice</label>
+                        <input type="text" name="street"><br>
+
+                        <label for="house_number">Číslo popisné</label>
+                        <input type="number" name="house_number"><br>
+                        
+                        <label for="postal">Poštovní směrovací číslo</label>
+                        <input type="number" name="postal"><br>
+                        
+                        <label for="construction_date">Datum výstavby</label>
+                        <input type="date" name="construction_date"><br>
+
+                        <label for="floors_above_ground">Počet nadzemních pater</label>
+                        <input type="number" name="floors_above_ground"><br>
+
+                        <label for="floors_bellow_ground">Počet nadzemních pater</label>
+                        <input type="number" name="floors_bellow_ground"><br>
+
+                        <label for="heating">Vytápění</label>
+                        <input type="checkbox" name="heating"><br>
+
+                        <label for="gas">Plyn</label>
+                        <input type="checkbox" name="gas"><br>
+
+                        <label for="elevator">Výtah(počet)</label>
+                        <input type="number" name="elevator"><br>
+
+                        <input type="submit" value="Registrovat">
+                        </form>
+                    </div>
+                </div>
+            @endif
+
             @if ($profil == 'owner' ||  $profil == 'administrator')
             <div class="card">
                 <div class="card-header"><p>Tato budova</p></div>
