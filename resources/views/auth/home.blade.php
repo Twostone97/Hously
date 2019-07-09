@@ -1,13 +1,3 @@
-<?php
-    //Získání profilu uživatele
-    if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
-        $profil = 'owner';
-    } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
-        $profil = 'administrator';
-    } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
-        $profil = 'resident';
-    }
-?>
 @extends('layouts.app')
 
 @section('content')
@@ -15,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-        <div class="card">
+            @if ($profil == 'owner' ||  $profil == 'administrator' || $profil == 'resident')
+            <div class="card">
                 <div class="card-header"><p>Nástěnka</p></div>
                 <div class="card-body">
                     @if (session('status'))
@@ -41,16 +32,18 @@
                             <input type="text" name="notice">
 
                             <input type="hidden" name="noticeboard" value="{{$noticeboard->id}}">
-    
+
                             <label for="text">Permanentní</label>
                             <input type="radio" name="permanent">
-    
+
                             <input type="submit" value="Odeslat">
                         </form>
                     @endif
                 </div>
             </div>
+            @endif
 
+            @if ($profil == 'owner' ||  $profil == 'administrator' || $profil == 'resident')
             <div class="card">
                 <div class="card-header"><p>Chat</p><select>@foreach ($communities as $community)<option>{{$community->community_name}}</option>@endforeach</select></div>
                 <div class="card-body">
@@ -78,6 +71,7 @@
                     </form>
                 </div>
             </div>
+            @endif
 
             @if ($profil == 'resident' )                    {{-- Zobrazí se pouze profilu "resident" --}}
                 <div class="card">
@@ -217,9 +211,6 @@
                         <label for="elevator">Výtah(počet)</label>
                         <input type="number" name="elevator"><br>
 
-                        <label for="file">Textový soubor pravidel domu</label>
-                        <input type="file" name="file"><br>
-
                         <input type="submit" value="Registrovat">
                         </form>
                     </div>
@@ -329,6 +320,27 @@
             </div>
             @endif
 
+            @if ($profil == 'owner' ||  $profil == 'administrator' || $profil == 'resident')
+            <div class="card">
+                <div class="card-header"><p>Pravidla domu</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                        <p>{!!$rules!!}</p>
+                    <form action="/updatebuilding" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <label for="file">Textový soubor pravidel domu</label>
+                        <input type="file" name="file"><br>
+                        <input type="hidden" name="id" value="{{$building}}"><br>
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+            </div>
+            @endif
+
             @if ($profil == 'owner' ||  $profil == 'administrator')
             <div class="card">
                 <div class="card-header"><p>Databáze Obyvatel</p></div>
@@ -372,7 +384,96 @@
             </div>
             @endif
 
+            @if ($profil == 'superuser')
+            <nav class="navigace">
+            <div class="row justify-content-between">
+                <a href="#users">Uživatelé</a>
+                <a href="#buildings">Budovy</a>
+            </div>
+            </nav>
+            @endif
+
+            @if ($profil == 'superuser')
+            <div class="card">
+                <div class="card-header"><p id="users">Uživatelé</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @foreach ($users as $user)
+                    
+                    <div class="card">
+                            <form action="su/edit/user/{{$user->id}}" method="post">
+                            <div class="card-header"><input type="text" name="first_name" value="{{$user->first_name}}"><input type="text" name="last_name" value="{{$user->last_name}}"><label for="">ID: {{$user->id}}</label></div>
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            
+                            <div class="row justify-content-around"><label for="birth_date">Datum narození:</label><input type="date" name="birth_date" value="{{$user->birth_date}}"><br></div>
+                            <div class="row justify-content-around"><label for="phone_number">Telefoní číslo:</label><input type="number" name="phone_number" value="{{$user->phone_number}}"><br></div>
+                                <div class="row justify-content-around"><label for="email">Email:</label><input type="text" name="email" value="{{$user->email}}"><br></div>
+
+                                    <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                        </form>
+                        <form action="su/delete/user/{{$user->id}}" method="post">
+                            <input type="submit" value="Smazat">
+                        </form>
+                        </div>
+                    </div>
+                    @endforeach
+                
+                </div>
+            </div>
+            @endif
+
+            
+            @if ($profil == 'superuser')
+            <div class="card">
+                <div class="card-header"><p id="buildings">Budovy</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @foreach ($allbuildings as $building)
+                    
+                    <div class="card">
+                            <form action="su/edit/building/{{$building->id}}" method="post">
+                        <div class="card-header"><label for="city">Město:</label><input type="text" name="city" value="{{$building->city}}"><label for="street">Ulice:</label><input type="text" name="street" value="{{$building->street}}"><label for="">ID: {{$building->id}}</label></div>
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            
+                            <div class="row justify-content-around"><label for="house_number">Číslo popisné:</label><input type="number" name="house_number" value="{{$building->house_number}}"><br></div>
+                            <div class="row justify-content-around"><label for="postal">Poštovní směrovací číslo:</label><input type="number" name="postal" value="{{$building->postal}}"><br></div>
+                                <div class="row justify-content-around"><label for="owner_id">ID Vlastníka:</label><input type="text" name="owner_id" value="{{$building->owner_id}}" placeholder="nemám vlastníka"><br></div>
+
+                                    <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                        </form>
+                        <form action="su/delete/building/{{$building->id}}" method="post">
+                            <input type="submit" value="Smazat">
+                        </form>
+                        </div>
+                    </div>
+                    @endforeach
+                
+                </div>
+            </div>
+            @endif
+
         </div>
+    </div>
     </div>
 </div>
 @endsection

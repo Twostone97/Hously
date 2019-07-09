@@ -4986,6 +4986,7 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin: 10px;
 }
 
 .card > hr {
@@ -11529,5 +11530,18 @@ footer {
   text-align: center;
 }
 
+.navigace {
+  position: fixed;
+  top: 0;
+  left: 35%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 30vw;
+  padding: 0 20px 0 20px;
+}
+
+.navigace a {
+  color: white;
+}
 
 /*# sourceMappingURL=app.css.map*/

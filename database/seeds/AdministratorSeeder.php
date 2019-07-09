@@ -13,7 +13,7 @@ class AdministratorSeeder extends Seeder
     public function run()
     {
         Administrator::create([
-            'user_id'     => 1,
+            'user_id'     => 2,
             'building_id'    => 1,
         ]);
     }

@@ -85,6 +85,8 @@ class BuildingController extends Controller
         $request->file('file')->storeAs(
             'house_rules', "{$request->id}.txt"
         );
+        return redirect(action('HomeController@index'));
+        
     }
 
     /**
