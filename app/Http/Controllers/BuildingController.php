@@ -35,7 +35,20 @@ class BuildingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $building = new Building;
+        $building->city = $request->city;
+        $building->street = $request->street;
+        $building->house_number = $request->house_number;
+        $building->postal = $request->postal;
+        $building->construction_date = $request->construction_date;
+        $building->floors_above_ground = $request->floors_above_ground;
+        $building->floors_bellow_ground = $request->floors_bellow_ground;
+        $building->gas = $request->gas == "on" ? 1 : 0 ;
+        $building->heating = $request->heating == "on" ? 1 : 0 ;
+        $building->elevator = $request->elevator;
+        $building->save();
+
+        return redirect(action('HomeController@index'));
     }
 
     /**

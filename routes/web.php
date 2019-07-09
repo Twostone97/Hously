@@ -30,5 +30,6 @@ Route::get('/api', 'HomeController@api');
 Route::post('/notice', 'NoticeController@store');
 Route::post('/chat', 'ChatController@store');
 Route::post('/resident', 'ResidentController@store');
+Route::post('/building', 'BuildingController@store');
 
 Route::get('/storage/contract/{file_id}.pdf', 'ResidentController@index');

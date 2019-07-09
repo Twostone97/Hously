@@ -19,7 +19,7 @@ class CreateBuildingsTable extends Migration
             $table->string('street');
             $table->integer('house_number');
             $table->integer('postal');
-            $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('owner_id')->nullable();
             $table->date('construction_date');
             $table->integer('floors_above_ground');
             $table->integer('floors_bellow_ground');
