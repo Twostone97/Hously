@@ -18,11 +18,14 @@ class ResidentController extends Controller
      */
     public function index($file_id)
     {
-        return Storage::download("contract/{$file_id}.pdf");
+     
+        
+    return response((Storage::get("/contract/{$file_id}.pdf")))->header('Content-Type',"pdf");
+        // return redirect(action('HomeController@index'));
 
-        return redirect(action('HomeController@index'));
+      
     }
-
+  
     /**
      * Show the form for creating a new resource.
      *

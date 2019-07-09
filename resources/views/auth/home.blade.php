@@ -345,7 +345,7 @@
                             @foreach ($users as $user)
                                 @foreach ($residents as $resident)
                                 @if ($user->id == $resident->user_id)
-                                        <td><a href="/storage/contract/{{$resident->id}}.pdf"> {{$user->first_name}} {{$user->last_name}}</a></td>
+                                        <td><a href="/storage/contract/{{$resident->id}}.pdf" target="_blank"> {{$user->first_name}} {{$user->last_name}}</a></td>
                                     </tr>
                                 @endif
                                 @endforeach
