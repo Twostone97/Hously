@@ -46,6 +46,9 @@ class BuildingController extends Controller
         $building->gas = $request->gas == "on" ? 1 : 0 ;
         $building->heating = $request->heating == "on" ? 1 : 0 ;
         $building->elevator = $request->elevator;
+        $building->house_rules = $request->file('file')->storeAs(
+            'house_rules', "{$request->city}_{$request->street}_{$request->house_number}.txt"
+        );
         $building->save();
 
         return redirect(action('HomeController@index'));
