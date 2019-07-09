@@ -13,7 +13,7 @@ class ResidentSeeder extends Seeder
     public function run()
     {
         Resident::create([
-            'user_id'     => 3,
+            'user_id'     => 4,
             'flat_id'    => 1,
             'building_id' => 1,
             'begining_of_first_rent'    => '2001-01-01',

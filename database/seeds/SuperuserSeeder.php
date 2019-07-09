@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Owner;
+use App\Superuser;
 
-class OwnerSeeder extends Seeder
+class SuperuserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,8 @@ class OwnerSeeder extends Seeder
      */
     public function run()
     {
-        Owner::create([
-            'user_id'     => 3,
-            'building_id'    => 1,
+        Superuser::create([
+            'user_id'     => 1,
         ]);
     }
 }
