@@ -60,7 +60,7 @@ class HomeController extends Controller
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
+        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
     }
 
     public function api()
