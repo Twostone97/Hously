@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use DB;
 class WebController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('dashboard','map');
+    }
+
     public function index() {
         return view ('/pages/index');
     }

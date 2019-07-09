@@ -23,10 +23,17 @@ Route::get('/test/map','WebController@map');
 
 
 Auth::routes();
+// api
+
 Route::get('/test/map/api','WebController@mapApi');
+Route::get('/api', 'HomeController@api');
+
+// *************************************
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@reacttest');
-Route::get('/api', 'HomeController@api');
+
 Route::post('/notice', 'NoticeController@store');
 Route::post('/chat', 'ChatController@store');
 Route::post('/resident', 'ResidentController@store');
