@@ -24816,46 +24816,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-<<<<<<< HEAD
-var DashboardMain = function DashboardMain(_ref) {
-  var apidata = _ref.apidata,
-      loading = _ref.loading;
-  console.log("Dashboard Log: ", apidata);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, loading ? "nacitam se vole" : apidata.profile)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Latest chats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My personal information")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My legal documents")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-=======
 var DashboardAdmin = function DashboardAdmin() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__admin"
->>>>>>> feat/jakub
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__big"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Information about house"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Some data about the house")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -24982,17 +24945,9 @@ var App = function App() {
     fetch("http://www.hously.test/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-<<<<<<< HEAD
       return setapi(data);
     })["finally"](setloading(false));
   }, []);
-=======
-      console.log(data);
-      setapi(data);
-    });
-  }, []); // return <>{api.residents.items[0].id}</>;
-
->>>>>>> feat/jakub
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
