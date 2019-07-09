@@ -24803,6 +24803,76 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./resources/js/components/DashboardAdmin.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/DashboardAdmin.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardAdmin = function DashboardAdmin() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash dash__admin"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__big"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Information about house"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Some data about the house")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__small"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Important files"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Here will be a list of files"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardAdmin);
+
+/***/ }),
+
+/***/ "./resources/js/components/DashboardCommon.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/DashboardCommon.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommon = function DashboardCommon(_ref) {
+  var apidata = _ref.apidata;
+  console.log("Dashboard COmmon notices:", apidata.notices);
+  var notices = apidata.notices ? apidata.notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash dash__common"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "chats"
+  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "chats",
+    id: "chats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "1"
+  }, "Chat 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "2"
+  }, "Chat 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "3"
+  }, "Chat 3"))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
+
+/***/ }),
+
 /***/ "./resources/js/components/DashboardMain.js":
 /*!**************************************************!*\
   !*** ./resources/js/components/DashboardMain.js ***!
@@ -24814,66 +24884,19 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardAdmin.js */ "./resources/js/components/DashboardAdmin.js");
+/* harmony import */ var _DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DashboardCommon.js */ "./resources/js/components/DashboardCommon.js");
 
 
-var DashboardMain = function DashboardMain() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Newsfeed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Latest chats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My personal information")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My legal documents")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "House Rules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Important house data")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Address book")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Hously communities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))));
+
+
+var DashboardMain = function DashboardMain(_ref) {
+  var apidata = _ref.apidata;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    apidata: apidata
+  }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    apidata: apidata
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardMain);
@@ -24917,12 +24940,10 @@ var App = function App() {
     fetch("http://www.hously.test/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-      return setapi(data);
+      console.log(data);
+      setapi(data);
     });
-  }, []);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(api);
-  }, [api]); // return <>{api.residents.items[0].id}</>;
+  }, []); // return <>{api.residents.items[0].id}</>;
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"

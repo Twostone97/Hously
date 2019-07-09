@@ -9,12 +9,12 @@ const App = () => {
     useEffect(() => {
         fetch("http://www.hously.test/api")
             .then(resp => resp.json())
-            .then(data => setapi(data));
+            .then(data => {
+                console.log(data);
+                setapi(data);
+            });
     }, []);
 
-    useEffect(() => {
-        console.log(api);
-    }, [api]);
     // return <>{api.residents.items[0].id}</>;
 
     return (
