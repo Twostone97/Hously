@@ -1,16 +1,15 @@
 import React from "react";
 
-const DashboardMain = () => {
+const DashboardMain = ({ apidata, loading }) => {
+    console.log("Dashboard Log: ", apidata);
     return (
         <>
             <div className="page__main__dash">
                 <div className="page__main__dash__item i__mid">
                     <div className="page__main__dash__item__head">
-                        <h4>Newsfeed</h4>
+                        <h4>{loading ? "nacitam se vole" : apidata.profile}</h4>
                     </div>
-                    <div className="page__main__dash__item__body">
-                        React will load this
-                    </div>
+                    <div className="page__main__dash__item__body" />
                 </div>
                 <div className="page__main__dash__item i__mid">
                     <div className="page__main__dash__item__head">

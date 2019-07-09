@@ -24816,16 +24816,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var DashboardMain = function DashboardMain() {
+var DashboardMain = function DashboardMain(_ref) {
+  var apidata = _ref.apidata,
+      loading = _ref.loading;
+  console.log("Dashboard Log: ", apidata);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Newsfeed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, loading ? "nacitam se vole" : apidata.profile)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item__head"
@@ -24913,23 +24916,25 @@ var App = function App() {
       api = _useState2[0],
       setapi = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setloading = _useState4[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetch("http://www.hously.test/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
       return setapi(data);
-    });
+    })["finally"](setloading(false));
   }, []);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(api);
-  }, [api]); // return <>{api.residents.items[0].id}</>;
-
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__promo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DashboardMain__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    apidata: api
+    apidata: api,
+    loading: loading
   }));
 };
 

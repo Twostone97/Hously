@@ -148,7 +148,6 @@ class HomeController extends Controller
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
         ];
-        dd($data);
         return response()->json($data, 200);
     }
 }

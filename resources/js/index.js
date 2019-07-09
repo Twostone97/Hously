@@ -5,17 +5,14 @@ import DashboardMain from "./components/DashboardMain";
 const App = () => {
     //ahoj do Inventi: HOOOOOOOOOOOOOOKS
     const [api, setapi] = useState([]);
+    const [loading, setloading] = useState(true);
 
     useEffect(() => {
         fetch("http://www.hously.test/api")
             .then(resp => resp.json())
-            .then(data => setapi(data));
+            .then(data => setapi(data))
+            .finally(setloading(false));
     }, []);
-
-    useEffect(() => {
-        console.log(api);
-    }, [api]);
-    // return <>{api.residents.items[0].id}</>;
 
     return (
         <section className="page__main bg__gradient-light">
@@ -23,7 +20,7 @@ const App = () => {
                 <h1>Hously Dashboard</h1>
                 <h5>Dear User, welcome to your kingdom</h5>
             </div>
-            <DashboardMain apidata={api} />
+            <DashboardMain apidata={api} loading={loading} />
         </section>
     );
 };
