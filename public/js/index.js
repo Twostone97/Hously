@@ -24816,7 +24816,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var DashboardAdmin = function DashboardAdmin() {
+var DashboardAdmin = function DashboardAdmin(_ref) {
+  var apidata = _ref.apidata,
+      isLoading = _ref.isLoading;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__admin"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -24852,7 +24854,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
-  var apidata = _ref.apidata;
+  var apidata = _ref.apidata,
+      isLoading = _ref.isLoading;
   console.log("Dashboard COmmon notices:", apidata.notices);
   /*zdravime Inventi HOOOOOKS */
 
@@ -24919,11 +24922,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DashboardMain = function DashboardMain(_ref) {
-  var apidata = _ref.apidata;
+  var apidata = _ref.apidata,
+      isLoading = _ref.isLoading;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    apidata: apidata
+    apidata: apidata,
+    isLoading: isLoading
   }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    apidata: apidata
+    apidata: apidata,
+    isLoading: isLoading
   }));
 };
 
@@ -24982,7 +24988,7 @@ var App = function App() {
     className: "page__main__promo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DashboardMain__WEBPACK_IMPORTED_MODULE_2__["default"], {
     apidata: api,
-    loading: loading
+    isLoading: loading
   }));
 };
 

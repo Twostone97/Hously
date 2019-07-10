@@ -1,6 +1,13 @@
 {
+<<<<<<< HEAD
     "/js/index.js": "/js/index.js",
     "/css/app.css": "/css/app.css",
     "/js/index.js.map": "/js/index.js.map",
     "/css/app.css.map": "/css/app.css.map"
+=======
+    "/js/index.js": "/js/index.js?id=23e8e79af5a981f3c845",
+    "/css/app.css": "/css/app.css?id=6719489f1d6423623dcc",
+    "/js/index.js.map": "/js/index.js.map?id=59d8ee67a7446923421f",
+    "/css/app.css.map": "/css/app.css.map?id=a180da0b713fe6ef7d3f"
+>>>>>>> feat/jakub
 }
