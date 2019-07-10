@@ -15,7 +15,7 @@ const DashboardMain = ({ apidata, isLoading }) => {
         );
         return (
             <>
-                <DashboardCommon apidata={apidata} isLoading={isLoading} />
+                <DashboardCommon apidata={apidata} />
                 {apidata.profile === "administrator" && (
                     <DashboardAdmin apidata={apidata} />
                 )}

@@ -24955,59 +24955,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/DashboardCommonChats.js */ "./resources/js/components/common/DashboardCommonChats.js");
 /* harmony import */ var _common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/DashboardCommonHNews.js */ "./resources/js/components/common/DashboardCommonHNews.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
-  var apidata = _ref.apidata,
-      isLoading = _ref.isLoading;
-
-  /*zdravime Inventi HOOOOOKS */
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
-      _useState2 = _slicedToArray(_useState, 2),
-      commun_id = _useState2[0],
-      setcommun_id = _useState2[1];
-
-  var handleCommunityIDChange = function handleCommunityIDChange(e) {
-    setcommun_id(Number(e.target.value));
-  };
-
+  var apidata = _ref.apidata;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__common"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    apidata: apidata,
-    isLoading: isLoading
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "chats"
-  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    onChange: handleCommunityIDChange,
-    name: "chats",
-    id: "chats"
-  }, !isLoading ? apidata.communities.map(function (community) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: community.id
-    }, community.community_name));
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "",
-    disabled: true,
-    selected: true,
-    hidden: true
-  }, "Loading communities"))), !isLoading && apidata.chats.filter(function (chat) {
-    return chat.community_id === commun_id;
-  }).map(function (chat) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ");
-  }), isLoading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
+    apidata: apidata
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    apidata: apidata
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
@@ -25040,8 +25000,7 @@ var DashboardMain = function DashboardMain(_ref) {
   } else {
     console.log("*****************API LOADING DONE, rendering dashboard ******************");
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      apidata: apidata,
-      isLoading: isLoading
+      apidata: apidata
     }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
       apidata: apidata
     }));
@@ -25063,10 +25022,52 @@ var DashboardMain = function DashboardMain(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var DashboardCommonChats = function DashboardCommonChats() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+
+var DashboardCommonChats = function DashboardCommonChats(_ref) {
+  var _ref$apidata = _ref.apidata,
+      communities = _ref$apidata.communities,
+      chats = _ref$apidata.chats,
+      users = _ref$apidata.users;
+
+  /*zdravime Inventi HOOOOOKS */
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      commun_id = _useState2[0],
+      setcommun_id = _useState2[1];
+
+  var handleCommunityIDChange = function handleCommunityIDChange(e) {
+    setcommun_id(Number(e.target.value));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "chats"
+  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleCommunityIDChange,
+    name: "chats",
+    id: "chats"
+  }, communities.map(function (community) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: community.id
+    }, community.community_name));
+  }))), chats.filter(function (chat) {
+    return chat.community_id === commun_id;
+  }).map(function (chat) {
+    var chatUser = users.filter(function (user) {
+      return user.id === chat.user_id;
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
@@ -25086,18 +25087,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var DashboardCommonHNews = function DashboardCommonHNews(_ref) {
-  var apidata = _ref.apidata,
-      isLoading = _ref.isLoading;
-  var notices = !isLoading ? apidata.notices.map(function (notice) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
+var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
+  var _ref$apidata$notices = _ref.apidata.notices,
+      notices = _ref$apidata$notices === void 0 ? [] : _ref$apidata$notices;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
+  }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHNews);
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHouseNews);
 
 /***/ }),
 
