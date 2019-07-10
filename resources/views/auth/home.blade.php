@@ -102,7 +102,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <a href="/storage/contract/{{$file_id}}.pdf">Nájemní Smlouva</a>
+                        <a href="/storage/contract/{{$file_id}}.pdf" target="_blank">Nájemní Smlouva</a>
                     </div>
                 </div>
             @endif
@@ -162,54 +162,6 @@
 
                         <label for="file">Nájemní smlouva</label>
                         <input type="file" name="file"><br>
-
-                        <input type="submit" value="Registrovat">
-                        </form>
-                    </div>
-                </div>
-            @endif
-
-            @if ($profil == 'administrator' )
-            <div class="card">
-                    <div class="card-header"><p>Registrace Budovy</p></div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <form action="/building" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci budovy       Zpracovává BuildingController@store --}}
-                        @csrf
-
-                        <label for="city">Město</label>
-                        <input type="text" name="city"><br>
-
-                        <label for="street">Ulice</label>
-                        <input type="text" name="street"><br>
-
-                        <label for="house_number">Číslo popisné</label>
-                        <input type="number" name="house_number"><br>
-                        
-                        <label for="postal">Poštovní směrovací číslo</label>
-                        <input type="number" name="postal"><br>
-                        
-                        <label for="construction_date">Datum výstavby</label>
-                        <input type="date" name="construction_date"><br>
-
-                        <label for="floors_above_ground">Počet nadzemních pater</label>
-                        <input type="number" name="floors_above_ground"><br>
-
-                        <label for="floors_bellow_ground">Počet nadzemních pater</label>
-                        <input type="number" name="floors_bellow_ground"><br>
-
-                        <label for="heating">Vytápění</label>
-                        <input type="checkbox" name="heating"><br>
-
-                        <label for="gas">Plyn</label>
-                        <input type="checkbox" name="gas"><br>
-
-                        <label for="elevator">Výtah(počet)</label>
-                        <input type="number" name="elevator"><br>
 
                         <input type="submit" value="Registrovat">
                         </form>
@@ -389,6 +341,8 @@
             <div class="row justify-content-between">
                 <a href="#users">Uživatelé</a>
                 <a href="#buildings">Budovy</a>
+                <a href="#owners">Vlastníci</a>
+                <a href="#admins">Správci</a>
             </div>
             </nav>
             @endif
@@ -407,6 +361,7 @@
                     
                     <div class="card">
                             <form action="su/edit/user/{{$user->id}}" method="post">
+                                @csrf
                             <div class="card-header"><input type="text" name="first_name" value="{{$user->first_name}}"><input type="text" name="last_name" value="{{$user->last_name}}"><label for="">ID: {{$user->id}}</label></div>
                         <div class="card-body">
                             @if (session('status'))
@@ -422,6 +377,7 @@
                                     <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
                         </form>
                         <form action="su/delete/user/{{$user->id}}" method="post">
+                            @csrf
                             <input type="submit" value="Smazat">
                         </form>
                         </div>
@@ -443,10 +399,56 @@
                         </div>
                     @endif
 
+                    <div class="card">
+                            <div class="card-header"><p>Registrace Budovy</p></div>
+                            <div class="card-body">
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                <form action="/building" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci budovy       Zpracovává BuildingController@store --}}
+                                @csrf
+        
+                                <label for="city">Město</label>
+                                <input type="text" name="city"><br>
+        
+                                <label for="street">Ulice</label>
+                                <input type="text" name="street"><br>
+        
+                                <label for="house_number">Číslo popisné</label>
+                                <input type="number" name="house_number"><br>
+                                
+                                <label for="postal">Poštovní směrovací číslo</label>
+                                <input type="number" name="postal"><br>
+                                
+                                <label for="construction_date">Datum výstavby</label>
+                                <input type="date" name="construction_date"><br>
+        
+                                <label for="floors_above_ground">Počet nadzemních pater</label>
+                                <input type="number" name="floors_above_ground"><br>
+        
+                                <label for="floors_bellow_ground">Počet nadzemních pater</label>
+                                <input type="number" name="floors_bellow_ground"><br>
+        
+                                <label for="heating">Vytápění</label>
+                                <input type="checkbox" name="heating"><br>
+        
+                                <label for="gas">Plyn</label>
+                                <input type="checkbox" name="gas"><br>
+        
+                                <label for="elevator">Výtah(počet)</label>
+                                <input type="number" name="elevator"><br>
+        
+                                <input type="submit" value="Registrovat">
+                                </form>
+                            </div>
+                        </div>
+
                     @foreach ($allbuildings as $building)
-                    
                     <div class="card">
                             <form action="su/edit/building/{{$building->id}}" method="post">
+                                @csrf
                         <div class="card-header"><label for="city">Město:</label><input type="text" name="city" value="{{$building->city}}"><label for="street">Ulice:</label><input type="text" name="street" value="{{$building->street}}"><label for="">ID: {{$building->id}}</label></div>
                         <div class="card-body">
                             @if (session('status'))
@@ -457,11 +459,43 @@
                             
                             <div class="row justify-content-around"><label for="house_number">Číslo popisné:</label><input type="number" name="house_number" value="{{$building->house_number}}"><br></div>
                             <div class="row justify-content-around"><label for="postal">Poštovní směrovací číslo:</label><input type="number" name="postal" value="{{$building->postal}}"><br></div>
-                                <div class="row justify-content-around"><label for="owner_id">ID Vlastníka:</label><input type="text" name="owner_id" value="{{$building->owner_id}}" placeholder="nemám vlastníka"><br></div>
+                            @if ($building->owner_id === null)
+                            <div class="row justify-content-around"><label for="owner_id">ID Vlastníka:</label>
+                            <select name="owner_id" value="{{$building->owner_id}}">
+                                <option value="">Nemám vlastníka</option>
+                                @foreach ($allowners as $owner)
+                                    @foreach ($users as $user)
+                                        @if ($owner->user_id === $user->id)
+                                            <option value="{{$owner->id}}">{{$owner->id}} {{$user->first_name}} {{$user->last_name}}</option> 
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            </select><br>    
+                            </div>    
+                            @else
+                            <div class="row justify-content-around"><label for="owner_id">ID Vlastníka:</label><input type="number" name="owner_id" value="{{$building->owner_id}}" placeholder="nemám vlastníka"><br></div>    
+                            @endif
+                            
+                            
+                            
+                            <div class="row justify-content-around"><label for="floors_above_ground">Pater nad zemí:</label><input type="number" name="floors_above_ground" value="{{$building->floors_above_ground}}"><br></div>
+                            <div class="row justify-content-around"><label for="floors_bellow_ground">Pater pod zemí:</label><input type="number" name="floors_bellow_ground" value="{{$building->floors_bellow_ground}}"><br></div>
+                            <label for="heating">Vytápění:</label>
+                            <select name="heating" value="{{$building->heating}}">
+                                    <option value="1">Ano</option>
+                                    <option value="0">Ne</option>
+                            </select><br>
+                            <label for="gas">Plyn:</label>
+                            <select name="gas" value="{{$building->gas}}">
+                                    <option value="1">Ano</option>
+                                    <option value="0">Ne</option>
+                            </select><br>
+                            <div class="row justify-content-around"><label for="elevator">Výtahů:</label><input type="number" name="elevator" value="{{$building->elevator}}"><br></div>
 
-                                    <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                            <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
                         </form>
                         <form action="su/delete/building/{{$building->id}}" method="post">
+                            @csrf
                             <input type="submit" value="Smazat">
                         </form>
                         </div>
@@ -471,6 +505,256 @@
                 </div>
             </div>
             @endif
+
+            @if ($profil == 'superuser')
+            <div class="card">
+                <div class="card-header"><p id="owners">Vlastníci</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div class="card">
+                        <div class="card-header"><p>Registrace Vlastníka</p></div>
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <form action="/owner" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci budovy       Zpracovává BuildingController@store --}}
+                            @csrf
+
+                            <select name="user_id">
+                                <option value="0">Výběr Uživatele</option>
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}">{{$user->id}} {{$user->first_name}} {{$user->last_name}}</option>
+                                @endforeach
+                            </select><br>
+
+                            <select name="building_id">
+                                    <option value="0">Výběr Budovy</option>
+                                    @foreach ($allbuildings as $building)
+                                        <option value="{{$building->id}}">{{$building->id}} {{$building->city}} {{$building->street}} {{$building->house_number}}</option>
+                                    @endforeach
+                                </select><br>
+
+                            <input type="submit" value="Registrovat">
+                            </form>
+                        </div>
+                    </div>
+
+                    @foreach ($allowners as $owner)
+                    @foreach ($users as $user)
+                    @if ($owner->user_id === $user->id) 
+                    <div class="card">
+                        <form action="su/edit/owner/{{$owner->id}}" method="post">
+                            @csrf
+                        <div class="card-header"><label for="">ID: {{$owner->id}} {{$user->first_name}} {{$user->last_name}}</label></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        
+                        <div class="row justify-content-around"><label for="user_id">ID Uživatele:</label><input type="number" name="user_id" value="{{$owner->user_id}}"><br></div>
+                        <div class="row justify-content-around"><label for="building_id">ID Budovy:</label><input type="number" name="building_id" value="{{$owner->building_id}}"><br></div>
+
+                                <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                    </form>
+                    <form action="su/delete/owner/{{$owner->id}}" method="post">
+                        @csrf
+                        <input type="submit" value="Smazat">
+                    </form>
+                    </div>
+                </div>
+                    @endif
+                    @endforeach
+                    @endforeach
+                
+                </div>
+            </div>
+            @endif
+
+            @if ($profil == 'superuser')
+            <div class="card">
+                <div class="card-header"><p id="admins">Správci</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div class="card">
+                        <div class="card-header"><p>Registrace Správce</p></div>
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <form action="/admin" method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <select name="user_id">
+                                <option value="0">Výběr Uživatele</option>
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}">{{$user->id}} {{$user->first_name}} {{$user->last_name}}</option>
+                                @endforeach
+                            </select><br>
+
+                            <select name="building_id">
+                                    <option value="0">Výběr Budovy</option>
+                                    @foreach ($allbuildings as $building)
+                                        <option value="{{$building->id}}">{{$building->id}} {{$building->city}} {{$building->street}} {{$building->house_number}}</option>
+                                    @endforeach
+                                </select><br>
+
+                            <input type="submit" value="Registrovat">
+                            </form>
+                        </div>
+                    </div>
+
+                    @foreach ($alladmins as $admin)
+                    @foreach ($users as $user)
+                    @if ($admin->user_id === $user->id) 
+                    <div class="card">
+                        <form action="su/edit/admin/{{$admin->id}}" method="post">
+                            @csrf
+                        <div class="card-header"><label for="{{$admin->id}}">ID: {{$admin->id}} {{$user->first_name}} {{$user->last_name}}</label></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        
+                        <div class="row justify-content-around"><label for="user_id">ID Uživatele:</label><input type="number" name="user_id" value="{{$admin->user_id}}"><br></div>
+                        <div class="row justify-content-around"><label for="building_id">ID Budovy:</label><input type="number" name="building_id" value="{{$admin->building_id}}"><br></div>
+
+                                <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                    </form>
+                    <form action="su/delete/admin/{{$admin->id}}" method="post">
+                        @csrf
+                        <input type="submit" value="Smazat">
+                    </form>
+                    </div>
+                </div>
+                    @endif
+                    @endforeach
+                    @endforeach
+                
+                </div>
+            </div>
+            @endif
+
+
+            {{-- @if ($profil == 'superuser')
+            <div class="card">
+                <div class="card-header"><p id="admins">Obyvatelé</p></div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div class="card">
+                            <div class="card-header"><p>Registrace obyvatele</p></div>
+                            <div class="card-body">
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                <form action="/resident" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <label for="user_id"></label>
+                                <select name="user_id">
+                                    @foreach ($users as $user)
+                                        <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
+                                    @endforeach
+                                </select><br>
+                                
+                                <label for="flat_id"></label>
+                                <select name="flat_id">
+                                    @foreach ($flats as $flat)
+                                    @if ($flat->residential == 1)
+                                    <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->number}}</option>
+                                    @endif
+                                    @endforeach
+                                </select><br>
+        
+                                <input type="hidden" name="building_id" value="{{$building}}">
+        
+                                <label for="begining_of_first_rent">Začátek prvního nájemního obdobý</label>
+                                <input type="date" name="begining_of_first_rent"><br>
+        
+                                <label for="begining_of_current_rent">Začátek aktuálního nájemního obdobý</label>
+                                <input type="date" name="begining_of_current_rent"><br>
+        
+                                <label for="contract_id">Smlouva</label>
+                                <select name="contract_id">
+                                    @foreach ($rentcontracts as $contract)
+                                        <option value="{{$contract->id}}">{{$contract->name}}</option>
+                                    @endforeach
+                                </select><br>
+                                
+                                <label for="end_of_current_rent">Konec aktuálního nájemního obdobý</label>
+                                <input type="date" name="end_of_current_rent"><br>
+        
+                                <label for="number_of_residents">Počet osob</label>
+                                <input type="number" name="number_of_residents"><br>
+        
+                                <label for="rental">Nájemné (kč)</label>
+                                <input type="number" name="rental"><br>
+        
+                                <label for="file">Nájemní smlouva</label>
+                                <input type="file" name="file"><br>
+        
+                                <input type="submit" value="Registrovat">
+                                </form>
+                            </div>
+                        </div>
+
+                    @foreach ($allresidents as $resident)
+                    @foreach ($users as $user)
+                    @if ($resident->user_id === $user->id) 
+                    <div class="card">
+                        <form action="su/edit/admin/{{$resident->id}}" method="post">
+                            @csrf
+                        <div class="card-header"><label for="{{$resident->id}}">ID: {{$resident->id}} {{$user->first_name}} {{$user->last_name}}</label></div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        
+                        <div class="row justify-content-around"><label for="user_id">ID Uživatele:</label><input type="number" name="user_id" value="{{$resident->user_id}}"><br></div>
+                        <div class="row justify-content-around"><label for="building_id">ID Budovy:</label><input type="number" name="building_id" value="{{$resident->building_id}}"><br></div>
+
+                                <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                    </form>
+                    <form action="su/delete/resident/{{$resident->id}}" method="post">
+                        @csrf
+                        <input type="submit" value="Smazat">
+                    </form>
+                    </div>
+                </div>
+                    @endif
+                    @endforeach
+                    @endforeach
+                
+                </div>
+            </div>
+            @endif --}}
+
+
 
         </div>
     </div>

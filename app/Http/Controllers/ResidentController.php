@@ -18,10 +18,13 @@ class ResidentController extends Controller
      */
     public function index($file_id)
     {
-     
+    
         
-    return response((Storage::get("/contract/{$file_id}.pdf")))->header('Content-Type',"pdf");
-        // return redirect(action('HomeController@index'));
+    
+        
+        // return response((Storage::get("contract/{$file_id}.pdf")))->header('Content-Type',"pdf");
+        return Storage::download("contract/{$file_id}.pdf");
+        return redirect(action('HomeController@index'));
 
       
     }
@@ -81,7 +84,12 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        //
+        DB::table('residents')
+        ->where('id', $id)
+        ->update([
+            'user_id' => $request->user_id,
+            'building_id' => $request->building_id,]);
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -102,8 +110,11 @@ class ResidentController extends Controller
      * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resident $resident)
+    public function destroy(Resident $resident, $id)
     {
-        //
+        DB::table('residents')
+        ->where('id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }

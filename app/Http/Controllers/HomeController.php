@@ -62,6 +62,7 @@ class HomeController extends Controller
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
@@ -79,6 +80,7 @@ class HomeController extends Controller
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
@@ -99,6 +101,7 @@ class HomeController extends Controller
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
@@ -111,7 +114,7 @@ class HomeController extends Controller
             $allbuildings   = DB::table('buildings')->get();
         }
         
-        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'allresidents', 'allbuildings'));
+        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings'));
     }
 
     public function api()
@@ -187,5 +190,27 @@ class HomeController extends Controller
             "residents_in_flat" => $residents_in_flats,
         ];
         return response()->json($data, 200);
+    }
+
+    public function edit (Request $request ,$id)
+    {
+        DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'birth_date' => $request->birth_date, 
+                'phone_number' => $request->phone_number, 
+                'email' => $request->email, 
+                'email' => $request->email]);
+            return redirect(action('HomeController@index'));
+    }
+
+    public function destroy ($id)
+    {
+        DB::table('users')
+            ->where('id', $id)
+            ->delete();
+            return redirect(action('HomeController@index'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Building;
 use Illuminate\Http\Request;
+use DB;
 
 class BuildingController extends Controller
 {
@@ -68,9 +69,22 @@ class BuildingController extends Controller
      * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(Building $building)
+    public function edit(Request $request, Building $building, $id)
     {
-        //
+        DB::table('buildings')
+        ->where('id', $id)
+        ->update([
+            'city' => $request->city,
+            'street' => $request->street, 
+            'house_number' => $request->house_number, 
+            'postal' => $request->postal, 
+            'owner_id' => $request->owner_id,
+            'floors_above_ground' => $request->floors_above_ground, 
+            'floors_bellow_ground' => $request->floors_bellow_ground, 
+            'heating' => $request->heating, 
+            'gas' => $request->gas, 
+            'elevator' => $request->elevator]);
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -95,8 +109,11 @@ class BuildingController extends Controller
      * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Building $building)
+    public function destroy(Building $building, $id)
     {
-        //
+        DB::table('buildings')
+        ->where('id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }

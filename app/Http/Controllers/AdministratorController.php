@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Administrator;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,12 @@ class AdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $admin = new Administrator;
+        $admin->user_id = $request->user_id;
+        $admin->building_id = $request->building_id;
+        $admin->save();
+
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -57,7 +63,12 @@ class AdministratorController extends Controller
      */
     public function edit(Administrator $administrator)
     {
-        //
+        DB::table('administrators')
+        ->where('id', $id)
+        ->update([
+            'user_id' => $request->user_id,
+            'building_id' => $request->building_id,]);
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -78,8 +89,11 @@ class AdministratorController extends Controller
      * @param  \App\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Administrator $administrator)
+    public function destroy(Administrator $administrator, $id)
     {
-        //
+        DB::table('administrators')
+        ->where('id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }

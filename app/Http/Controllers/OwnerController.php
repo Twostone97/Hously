@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Owner;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,12 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $owner = new Owner;
+        $owner->user_id = $request->user_id;
+        $owner->building_id = $request->building_id;
+        $owner->save();
+
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -55,9 +61,14 @@ class OwnerController extends Controller
      * @param  \App\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Owner $owner)
+    public function edit(Owner $owner, $id)
     {
-        //
+        DB::table('owners')
+        ->where('id', $id)
+        ->update([
+            'user_id' => $request->user_id,
+            'building_id' => $request->building_id,]);
+        return redirect(action('HomeController@index'));
     }
 
     /**
@@ -78,8 +89,11 @@ class OwnerController extends Controller
      * @param  \App\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Owner $owner)
+    public function destroy(Owner $owner, $id)
     {
-        //
+        DB::table('owners')
+        ->where('id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }
