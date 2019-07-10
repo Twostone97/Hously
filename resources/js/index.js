@@ -8,7 +8,7 @@ const App = () => {
     const [loading, setloading] = useState(true);
 
     useEffect(() => {
-        fetch("http://www.hously.test/api")
+        fetch("/api")
             .then(resp => resp.json())
             .then(data => setapi(data))
             .finally(setloading(false));

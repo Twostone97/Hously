@@ -24866,9 +24866,6 @@ var DashboardCommon = function DashboardCommon(_ref) {
   };
 
   console.log(apidata.chats);
-  var getCommunityChat = apidata.chats ? apidata.chats.map(function (chat) {
-    return chat.community_id === commun_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ")) : "";
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... ");
   var notices = apidata.notices ? apidata.notices.map(function (notice) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
@@ -24895,7 +24892,9 @@ var DashboardCommon = function DashboardCommon(_ref) {
     onChange: handleCommunityIDChange,
     name: "chats",
     id: "chats"
-  }, communities)), getCommunityChat)));
+  }, communities)), apidata.chats ? apidata.chats.map(function (chat) {
+    return chat.community_id === commun_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ")) : "";
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
@@ -24971,7 +24970,7 @@ var App = function App() {
       setloading = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch("http://www.hously.test/api").then(function (resp) {
+    fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
       return setapi(data);

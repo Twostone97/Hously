@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DashboardCommon = ({ apidata }) => {
+const DashboardCommon = ({ apidata: { chats = [] } }) => {
     console.log("Dashboard COmmon notices:", apidata.notices);
     /*zdravime Inventi HOOOOOKS */
     const [commun_id, setcommun_id] = useState(1);
@@ -8,19 +8,6 @@ const DashboardCommon = ({ apidata }) => {
         setcommun_id(Number(e.target.value));
     };
     console.log(apidata.chats);
-    const getCommunityChat = apidata.chats ? (
-        apidata.chats.map(chat => {
-            return chat.community_id === commun_id ? (
-                <>
-                    <div>{chat.text} </div>
-                </>
-            ) : (
-                ""
-            );
-        })
-    ) : (
-        <h4> Loading ... </h4>
-    );
 
     let notices = apidata.notices ? (
         apidata.notices.map(notice => (
@@ -66,7 +53,11 @@ const DashboardCommon = ({ apidata }) => {
                             {communities}
                         </select>
                     </label>
-                    {getCommunityChat}
+                    {chats.length > 0 &&
+                        apidata.chats
+                            .filter(chat => chat.community_id === commun_id)
+                            .map(chat => <div>{chat.text} </div>)}
+                    {chats.length === 0 && <h4> Loading ... </h4>}
                 </div>
             </div>
         </>
