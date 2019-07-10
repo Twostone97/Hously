@@ -60,7 +60,7 @@ class HomeController extends Controller
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
         
-        return view('Auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
+        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners'));
     }
 
     public function api()
@@ -86,6 +86,7 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            // moje admin**********************************************
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
@@ -94,7 +95,9 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
-        } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        }
+        // *****************************************************************
+        elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
             $building = $resident->building_id;
@@ -113,6 +116,7 @@ class HomeController extends Controller
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->get();
+
         foreach ($residents as $resid) {
             $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
         }
@@ -134,6 +138,7 @@ class HomeController extends Controller
             "contract_id" => $file_id,
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
+            "users"=>$users
         ];
         return response()->json($data, 200);
     }
