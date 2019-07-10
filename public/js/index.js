@@ -25043,10 +25043,25 @@ __webpack_require__.r(__webpack_exports__);
 var DashboardMain = function DashboardMain(_ref) {
   var apidata = _ref.apidata,
       isLoading = _ref.isLoading;
+<<<<<<< HEAD
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
     apidata: apidata,
     isLoading: isLoading
   }));
+=======
+
+  if (isLoading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Please wait..."));
+  } else {
+    console.log("*****************API LOADING DONE, rendering dashboard ******************");
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      apidata: apidata,
+      isLoading: isLoading
+    }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      apidata: apidata
+    }));
+  }
+>>>>>>> ce2a6d35b4817e874398c916bf477beb585112ce
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardMain);
@@ -25140,6 +25155,11 @@ var App = function App() {
       loading = _useState4[0],
       setloading = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      errorFetch = _useState6[0],
+      setErrorFetch = _useState6[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetch("/api").then(function (resp) {
       return resp.json();
@@ -25148,11 +25168,17 @@ var App = function App() {
         data: data
       });
       setapi(data);
+    })["catch"](function () {
+      setErrorFetch(true);
     })["finally"](function () {
       setloading(false);
     });
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  return errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "page__main bg__gradient-light"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__promo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Fetching data failed"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__promo"
