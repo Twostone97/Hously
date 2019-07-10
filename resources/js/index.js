@@ -6,6 +6,7 @@ const App = () => {
     //ahoj do Inventi: HOOOOOOOOOOOOOOKS
     const [api, setapi] = useState({});
     const [loading, setloading] = useState(true);
+    const [errorFetch, setErrorFetch] = useState(false);
 
     useEffect(() => {
         fetch("/api")
@@ -14,12 +15,21 @@ const App = () => {
                 console.log({ data });
                 setapi(data);
             })
+            .catch(() => {
+                setErrorFetch(true);
+            })
             .finally(() => {
                 setloading(false);
             });
     }, []);
 
-    return (
+    return errorFetch ? (
+        <section className="page__main bg__gradient-light">
+            <div className="page__main__promo">
+                <h1>Fetching data failed</h1>
+            </div>
+        </section>
+    ) : (
         <section className="page__main bg__gradient-light">
             <div className="page__main__promo">
                 <h1>Hously Dashboard</h1>
