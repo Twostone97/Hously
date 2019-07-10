@@ -5,7 +5,7 @@ import DashboardCommon from "./DashboardCommon.js";
 const DashboardMain = ({ apidata, isLoading }) => {
     return (
         <>
-            <DashboardCommon apidata={apidata} isLoading={isLoading} />
+            {/* <DashboardCommon apidata={apidata} isLoading={isLoading} /> */}
             {apidata.profile === "administrator" && (
                 <DashboardAdmin apidata={apidata} isLoading={isLoading} />
             )}

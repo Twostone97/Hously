@@ -1,13 +1,6 @@
 {
-<<<<<<< HEAD
-    "/js/index.js": "/js/index.js",
-    "/css/app.css": "/css/app.css",
-    "/js/index.js.map": "/js/index.js.map",
-    "/css/app.css.map": "/css/app.css.map"
-=======
-    "/js/index.js": "/js/index.js?id=23e8e79af5a981f3c845",
+    "/js/index.js": "/js/index.js?id=4a57278dfea197cac08d",
     "/css/app.css": "/css/app.css?id=6719489f1d6423623dcc",
-    "/js/index.js.map": "/js/index.js.map?id=59d8ee67a7446923421f",
-    "/css/app.css.map": "/css/app.css.map?id=a180da0b713fe6ef7d3f"
->>>>>>> feat/jakub
+    "/js/index.js.map": "/js/index.js.map?id=df4e56c23517285ae5a7",
+    "/css/app.css.map": "/css/app.css.map?id=34e6799ec018e1da8dfa"
 }
