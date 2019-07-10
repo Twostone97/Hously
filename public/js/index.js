@@ -24843,6 +24843,8 @@ var DashboardAdmin = function DashboardAdmin(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/DashboardCommonChats.js */ "./resources/js/components/common/DashboardCommonChats.js");
+/* harmony import */ var _common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/DashboardCommonHNews.js */ "./resources/js/components/common/DashboardCommonHNews.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -24853,12 +24855,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var DashboardCommon = function DashboardCommon(_ref) {
   var apidata = _ref.apidata,
       isLoading = _ref.isLoading;
-  console.log("Dashboard COmmon notices:", apidata.notices);
-  /*zdravime Inventi HOOOOOKS */
 
+  /*zdravime Inventi HOOOOOKS */
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
       _useState2 = _slicedToArray(_useState, 2),
       commun_id = _useState2[0],
@@ -24868,11 +24871,20 @@ var DashboardCommon = function DashboardCommon(_ref) {
     setcommun_id(Number(e.target.value));
   };
 
-  console.log(apidata.chats);
-  var notices = apidata.notices ? apidata.notices.map(function (notice) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
-  var communities = apidata.communities ? apidata.communities.map(function (community) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash dash__common"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    apidata: apidata,
+    isLoading: isLoading
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "chats"
+  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleCommunityIDChange,
+    name: "chats",
+    id: "chats"
+  }, !isLoading ? apidata.communities.map(function (community) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: community.id
     }, community.community_name));
@@ -24881,23 +24893,11 @@ var DashboardCommon = function DashboardCommon(_ref) {
     disabled: true,
     selected: true,
     hidden: true
-  }, "Loading communities");
-  console.log("communities:", communities);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash dash__common"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "chats"
-  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    onChange: handleCommunityIDChange,
-    name: "chats",
-    id: "chats"
-  }, communities)), apidata.chats ? apidata.chats.map(function (chat) {
-    return chat.community_id === commun_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ")) : "";
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
+  }, "Loading communities"))), !isLoading && apidata.chats.filter(function (chat) {
+    return chat.community_id === commun_id;
+  }).map(function (chat) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ");
+  }), isLoading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
@@ -24937,6 +24937,55 @@ var DashboardMain = function DashboardMain(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/common/DashboardCommonChats.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonChats.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonChats = function DashboardCommonChats() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
+
+/***/ }),
+
+/***/ "./resources/js/components/common/DashboardCommonHNews.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonHNews.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonHNews = function DashboardCommonHNews(_ref) {
+  var apidata = _ref.apidata,
+      isLoading = _ref.isLoading;
+  var notices = !isLoading ? apidata.notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHNews);
+
+/***/ }),
+
 /***/ "./resources/js/index.js":
 /*!*******************************!*\
   !*** ./resources/js/index.js ***!
@@ -24965,7 +25014,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
   //ahoj do Inventi: HOOOOOOOOOOOOOOKS
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState2 = _slicedToArray(_useState, 2),
       api = _useState2[0],
       setapi = _useState2[1];
@@ -24979,8 +25028,13 @@ var App = function App() {
     fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-      return setapi(data);
-    })["finally"](setloading(false));
+      console.log({
+        data: data
+      });
+      setapi(data);
+    })["finally"](function () {
+      setloading(false);
+    });
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"
