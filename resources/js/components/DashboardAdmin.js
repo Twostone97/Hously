@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardAdmin = () => {
+const DashboardAdmin = ({ apidata, isLoading }) => {
     return (
         <>
             <div className="page__main__dash dash__admin">

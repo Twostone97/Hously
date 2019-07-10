@@ -20,7 +20,7 @@ const App = () => {
                 <h1>Hously Dashboard</h1>
                 <h5>Dear User, welcome to your kingdom</h5>
             </div>
-            <DashboardMain apidata={api} loading={loading} />
+            <DashboardMain apidata={api} isLoading={loading} />
         </section>
     );
 };

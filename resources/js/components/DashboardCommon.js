@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DashboardCommon = ({ apidata }) => {
+const DashboardCommon = ({ apidata, isLoading }) => {
     console.log("Dashboard COmmon notices:", apidata.notices);
     /*zdravime Inventi HOOOOOKS */
     const [commun_id, setcommun_id] = useState(1);
