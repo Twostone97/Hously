@@ -24825,8 +24825,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var DashboardAdmin = function DashboardAdmin(_ref) {
-  var apidata = _ref.apidata,
-      isLoading = _ref.isLoading;
+  var apidata = _ref.apidata;
   console.log("hello kitty");
   console.log("apidata", apidata);
   console.log("residenlist", apidata.users);
@@ -24840,12 +24839,12 @@ var DashboardAdmin = function DashboardAdmin(_ref) {
     setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
   };
 
-  isSmlouvaNaDobuUrcitou ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+  isSmlouvaNaDobuUrcitou && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     "for": "end_of_current_rent"
   }, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
     name: "end_of_current_rent"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)) : console.log("funguju");
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item dash__admin"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
