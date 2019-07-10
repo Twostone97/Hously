@@ -24968,8 +24968,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
-  var _ref$apidata$chats = _ref.apidata.chats,
-      chats = _ref$apidata$chats === void 0 ? [] : _ref$apidata$chats,
+  var apidata = _ref.apidata,
       isLoading = _ref.isLoading;
 
   /*zdravime Inventi HOOOOOKS */
@@ -24995,7 +24994,6 @@ var DashboardCommon = function DashboardCommon(_ref) {
     onChange: handleCommunityIDChange,
     name: "chats",
     id: "chats"
-<<<<<<< HEAD
   }, !isLoading ? apidata.communities.map(function (community) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: community.id
@@ -25010,13 +25008,6 @@ var DashboardCommon = function DashboardCommon(_ref) {
   }).map(function (chat) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ");
   }), isLoading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
-=======
-  }, communities)), chats.length > 0 && apidata.chats.filter(function (chat) {
-    return chat.community_id === commun_id;
-  }).map(function (chat) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chat.text, " ");
-  }), chats.length === 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " Loading ... "))));
->>>>>>> michal
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
@@ -25043,12 +25034,6 @@ __webpack_require__.r(__webpack_exports__);
 var DashboardMain = function DashboardMain(_ref) {
   var apidata = _ref.apidata,
       isLoading = _ref.isLoading;
-<<<<<<< HEAD
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    apidata: apidata,
-    isLoading: isLoading
-  }));
-=======
 
   if (isLoading) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Please wait..."));
@@ -25061,7 +25046,6 @@ var DashboardMain = function DashboardMain(_ref) {
       apidata: apidata
     }));
   }
->>>>>>> ce2a6d35b4817e874398c916bf477beb585112ce
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardMain);
@@ -25210,8 +25194,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\js\index.js */"./resources/js/index.js");
-module.exports = __webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
