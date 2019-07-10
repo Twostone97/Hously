@@ -4,14 +4,19 @@ import DashboardMain from "./components/DashboardMain";
 
 const App = () => {
     //ahoj do Inventi: HOOOOOOOOOOOOOOKS
-    const [api, setapi] = useState([]);
+    const [api, setapi] = useState({});
     const [loading, setloading] = useState(true);
 
     useEffect(() => {
         fetch("/api")
             .then(resp => resp.json())
-            .then(data => setapi(data))
-            .finally(setloading(false));
+            .then(data => {
+                console.log({ data });
+                setapi(data);
+            })
+            .finally(() => {
+                setloading(false);
+            });
     }, []);
 
     return (
