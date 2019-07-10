@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DashboardAdmin = ({ apidata, isLoading }) => {
+const DashboardAdmin = ({ apidata }) => {
     console.log("hello kitty");
     console.log("apidata", apidata);
     console.log("residenlist", apidata.users);
@@ -11,7 +11,7 @@ const DashboardAdmin = ({ apidata, isLoading }) => {
         setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
     };
 
-    isSmlouvaNaDobuUrcitou ? (
+    isSmlouvaNaDobuUrcitou && (
         <>
             <label for="end_of_current_rent">
                 Konec aktuálního nájemního obdobý
@@ -19,8 +19,6 @@ const DashboardAdmin = ({ apidata, isLoading }) => {
             <input type="date" name="end_of_current_rent" />
             <br />
         </>
-    ) : (
-        console.log("funguju")
     );
 
     return (
@@ -97,6 +95,9 @@ const DashboardAdmin = ({ apidata, isLoading }) => {
                                 <br />
                             </>
                         )}
+
+                        {/* <label>Počet osob</label>
+                        <input type="number" name="number_of_residents"><br> */}
                     </form>
                 </div>
 
