@@ -2,15 +2,16 @@ import React from "react";
 const BuildingInfo = ({ data, owners, users, flats, residents }) => {
     return (
         <>
-            <div className="card">
-                <div className="card-header">
-                    <p>Tato budova</p>
+            <div className="page__main__dash__item i__full">
+                <div className="page__main__dash__item__head">
+                    <h3>Tato budova</h3>
                 </div>
-                <div className="card-body">
+                <div className="page__main__dash__item__body">
                     <table>
                         <thead>
-                            <th>Položka</th>
-                            <th>Hodnota</th>
+                            <tr>
+                                <th colSpan="2">Informace o budově</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -60,7 +61,7 @@ const BuildingInfo = ({ data, owners, users, flats, residents }) => {
                     </table>
                     <table>
                         <thead>
-                            <th>Bytové jednotky</th>
+                            <th colSpan="3">Bytové jednotky</th>
                         </thead>
 
                         <tbody>
@@ -111,7 +112,7 @@ const BuildingInfo = ({ data, owners, users, flats, residents }) => {
                     </table>
                     <table>
                         <thead>
-                            <th>Nebytové jednotky</th>
+                            <th colSpan="3">Nebytové jednotky</th>
                         </thead>
 
                         <tbody>
