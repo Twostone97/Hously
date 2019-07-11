@@ -50,6 +50,27 @@
             text-align: center;
             padding: 1rem;
         }
+
+        table {
+            width: 90%;
+            margin: 0 auto;
+
+            thead {
+                background-color: rgba($secondary-blue, 0.7);
+                color: #fff;
+            }
+
+            td {
+                min-width: 25%;
+            }
+        }
+
+        .form__registerbuilding {
+            display: flex;
+            width: 70%;
+            margin: 0 auto;
+            justify-content: space-around;
+        }
     }
 
     .chat__container {
