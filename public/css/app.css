@@ -11493,9 +11493,13 @@ footer {
           justify-content: space-between;
 }
 
+.page__main__dash .scrollable {
+  overflow: auto;
+}
+
 .page__main__dash__item {
   min-height: 25vh;
-  background-color: #c7844c;
+  background-color: rgba(24, 121, 191, 0.5);
   color: black;
   margin: 2rem 0;
 }
@@ -11517,7 +11521,7 @@ footer {
 
 .page__main__dash__item__head {
   width: 100%;
-  background-color: #f25007;
+  background-color: #1879bf;
   color: white;
   text-align: center;
 }
@@ -11528,6 +11532,53 @@ footer {
   -webkit-align-items: center;
           align-items: center;
   text-align: center;
+  padding: 1rem;
+}
+
+.page__main__dash .chat__container {
+  height: 25vh;
+}
+
+.page__main__dash .chat__bubble {
+  position: relative;
+  background: #2f3259;
+  color: #fff;
+  border-radius: 0.4em;
+  width: 50%;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.page__main__dash .chat__bubble:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 21px solid transparent;
+  margin-top: -21px;
+}
+
+.page__main__dash .chat__bubble.b__left {
+  margin-left: 40%;
+}
+
+.page__main__dash .chat__bubble.b__left:after {
+  left: 0;
+  border-right-color: #2f3259;
+  border-left: 0;
+  margin-left: -21px;
+}
+
+.page__main__dash .chat__bubble.b__right {
+  margin-right: 40%;
+}
+
+.page__main__dash .chat__bubble.b__right:after {
+  right: 0;
+  border-left-color: #2f3259;
+  border-right: 0;
+  margin-right: -21px;
 }
 
 .navigace {
