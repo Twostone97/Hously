@@ -17,16 +17,10 @@ class ResidentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($file_id)
-    {
-    
-        
-    
-        
-        return response((Storage::get("contract/{$file_id}.pdf")))->header('Content-Type',"pdf");
-        return Storage::download("contract/{$file_id}.pdf");
-        return redirect(action('HomeController@index'));
-
-      
+    {   
+        return response((Storage::get("contract/{$file_id}.pdf")))->header('Content-Type', 'application/pdf');
+        // return Storage::download("contract/{$file_id}.pdf");
+        // return redirect(action('HomeController@index'));
     }
   
     /**
