@@ -57,8 +57,8 @@ fetch("./map/api")
                     src: "../img/hously-logo-small.png"
                 },
                 {
-                    width: "25px",
-                    height: "25px"
+                    width: "35px",
+                    height: "35px"
                 }
             );
             znacka.appendChild(obrazek);
@@ -71,9 +71,9 @@ fetch("./map/api")
                                         </div>`;
 
             card.getBody().innerHTML = geocoder._query;
-            card.getFooter().innerHTML = `<a href src="/building_id${
+            card.getFooter().innerHTML = `<a href="/houses#${
                 geocoder._options.card_id
-            }">home</a>`;
+            }" src="/building_id${geocoder._options.card_id}">home</a>`;
             const marker = new SMap.Marker(pozice, null, { url: znacka });
             marker.decorate(SMap.Marker.Feature.Card, card);
 

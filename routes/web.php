@@ -20,13 +20,13 @@ Route::get('/flats','WebController@flats');
 Route::get('/about','WebController@about');
 Route::get('/app/dashboard','WebController@dashboard');
 Route::get('/test/map','WebController@map');
-
+Route::get('/houses', 'WebController@houses');
 
 Auth::routes();
 
 // api
 
-Route::get('/test/map/api','WebController@mapApi');
+Route::get('/map/api','WebController@mapApi');
 Route::get('/api', 'HomeController@api');
 
 // *************************************
