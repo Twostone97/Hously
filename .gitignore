@@ -11,9 +11,9 @@ npm-debug.log
 yarn-error.log
 
 #problematic files
- /css/app.css   
+/css/app.css   
 /css/app.css.map   
 /js/index.js  
 /js/index.js.
 public/mix-manifest.json
- public/js/index.js
+public/js/index.js

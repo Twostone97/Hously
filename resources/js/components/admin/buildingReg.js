@@ -48,7 +48,7 @@ const BuildingReg = () => {
                 <input type="number" name="elevator" />
                 <br />
 
-                <label>Textový soubor pravidel domu</label>
+                <label>Pravidla domu</label>
                 <input type="file" name="file" />
                 <br />
 
