@@ -52,6 +52,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        
+                    @if (is_null($chats))
+                    <h3>There is nothing here</h3><br>    
+                    @else
                     @foreach ($chats as $chat)
                     @foreach ($users as $user)
                     @if ($user->id == $chat->user_id)
@@ -59,6 +63,7 @@
                     @endif
                     @endforeach
                     @endforeach
+                    @endif
                     <form action="/chat" method="post">         {{-- Formulář pro přidání zprávy        Zpracovává ChatController@store --}}
                         @csrf
                         <label for="text">Zpráva</label>
@@ -356,7 +361,39 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card">
+                        <div class="card-header"><p id="users">Registrace uživatele</p></div>
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                    <form action="/user" method="post" enctype="multipart/form-data">
+                        @csrf
 
+                        <label for="first_name">Jméno</label>
+                        <input type="text" name="first_name"><br>
+
+                        <label for="last_name">Příjmení</label>
+                        <input type="text" name="last_name"><br>
+
+                        <label for="birth_date">Datum narození</label>
+                        <input type="date" name="birth_date"><br>
+                        
+                        <label for="phone_number">Telefoní číslo</label>
+                        <input type="number" name="phone_number"><br>
+                        
+                        <label for="email">E-mail</label>
+                        <input type="text" name="email"><br>
+
+                        <label for="password">Heslo</label>
+                        <input type="password" name="password"><br>
+
+                        <input type="submit" value="Registrovat" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
                     @foreach ($users as $user)
                     
                     <div class="card">
@@ -374,12 +411,15 @@
                             <div class="row justify-content-around"><label for="phone_number">Telefoní číslo:</label><input type="number" name="phone_number" value="{{$user->phone_number}}"><br></div>
                                 <div class="row justify-content-around"><label for="email">Email:</label><input type="text" name="email" value="{{$user->email}}"><br></div>
 
-                                    <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                                <div class="row justify-content-around">
+
+                                    <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                         </form>
                         <form action="su/delete/user/{{$user->id}}" method="post">
                             @csrf
-                            <input type="submit" value="Smazat">
+                            <input type="submit" value="Smazat" class="btn btn-danger">
                         </form>
+                    </div>
                         </div>
                     </div>
                     @endforeach
@@ -440,7 +480,7 @@
                                 <label for="elevator">Výtah(počet)</label>
                                 <input type="number" name="elevator"><br>
         
-                                <input type="submit" value="Registrovat">
+                                <input type="submit" value="Registrovat" class="btn btn-primary">
                                 </form>
                             </div>
                         </div>
@@ -492,12 +532,16 @@
                             </select><br>
                             <div class="row justify-content-around"><label for="elevator">Výtahů:</label><input type="number" name="elevator" value="{{$building->elevator}}"><br></div>
 
-                            <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                            <div class="row justify-content-around">
+
+                            <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                         </form>
                         <form action="su/delete/building/{{$building->id}}" method="post">
                             @csrf
-                            <input type="submit" value="Smazat">
+                            <input type="submit" value="Smazat" class="btn btn-danger">
                         </form>
+
+                    </div>
                         </div>
                     </div>
                     @endforeach
@@ -541,7 +585,7 @@
                                     @endforeach
                                 </select><br>
 
-                            <input type="submit" value="Registrovat">
+                            <input type="submit" value="Registrovat" class="btn btn-primary">
                             </form>
                         </div>
                     </div>
@@ -563,12 +607,15 @@
                         <div class="row justify-content-around"><label for="user_id">ID Uživatele:</label><input type="number" name="user_id" value="{{$owner->user_id}}"><br></div>
                         <div class="row justify-content-around"><label for="building_id">ID Budovy:</label><input type="number" name="building_id" value="{{$owner->building_id}}"><br></div>
 
-                                <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                        <div class="row justify-content-around">
+
+                                <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                     </form>
                     <form action="su/delete/owner/{{$owner->id}}" method="post">
                         @csrf
-                        <input type="submit" value="Smazat">
+                        <input type="submit" value="Smazat" class="btn btn-danger">
                     </form>
+                </div>
                     </div>
                 </div>
                     @endif
@@ -614,7 +661,7 @@
                                     @endforeach
                                 </select><br>
 
-                            <input type="submit" value="Registrovat">
+                            <input type="submit" value="Registrovat" class="btn btn-primary">
                             </form>
                         </div>
                     </div>
@@ -636,12 +683,15 @@
                         <div class="row justify-content-around"><label for="user_id">ID Uživatele:</label><input type="number" name="user_id" value="{{$admin->user_id}}"><br></div>
                         <div class="row justify-content-around"><label for="building_id">ID Budovy:</label><input type="number" name="building_id" value="{{$admin->building_id}}"><br></div>
 
-                                <div class="row justify-content-left"><input type="submit" value="Uložit změny"></div>
+                        <div class="row justify-content-around">
+
+                                <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                     </form>
                     <form action="su/delete/admin/{{$admin->id}}" method="post">
                         @csrf
-                        <input type="submit" value="Smazat">
+                        <input type="submit" value="Smazat" class="btn btn-danger">
                     </form>
+                </div>
                     </div>
                 </div>
                     @endif

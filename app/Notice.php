@@ -8,6 +8,6 @@ class Notice extends Model
 {
     public function noticeboard()
     {
-        return $this->belongsTo('App\Noticeboard');
+        return $this->belongsTo('App\Noticeboard', 'id' , 'noticeboard_id');
     }
 }
