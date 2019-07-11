@@ -24814,56 +24814,131 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-<<<<<<< HEAD
-var DashboardMain = function DashboardMain(_ref) {
+
+var DashboardAdmin = function DashboardAdmin(_ref) {
   var apidata = _ref.apidata,
-      loading = _ref.loading;
-  console.log("Dashboard Log: ", apidata);
+      isLoading = _ref.isLoading;
+  console.log("hello kitty");
+  console.log("apidata", apidata);
+  console.log("residenlist", apidata.users);
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isSmlouvaNaDobuUrcitou = _useState2[0],
+      setisSmlouvaNaDobuUrcitou = _useState2[1];
+
+  var changeInput = function changeInput() {
+    setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
+  };
+
+  isSmlouvaNaDobuUrcitou ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    "for": "end_of_current_rent"
+  }, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "end_of_current_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)) : console.log("funguju");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
+    className: "page__main__dash__item dash__admin"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, loading ? "nacitam se vole" : apidata.profile)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Latest chats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My personal information")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "My legal documents")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item__body"
-  }, "React will load this"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash"
-=======
-var DashboardAdmin = function DashboardAdmin() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash dash__admin"
->>>>>>> feat/jakub
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: " page__main__dash__item i__big"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "/resident",
+    method: "post",
+    encType: "multipart/form-data"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "user_id"
+  }, apidata.users.map(function (user) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: user.id
+    }, "".concat(user.first_name) + " " + "".concat(user.last_name));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "flat_id"
+  }, apidata.flats.map(function (flat) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: flat.id
+    }, "patro: " + "".concat(flat.floor) + " \u010D\xEDslo bytu: " + "".concat(flat.number));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "building_id",
+    value: apidata.this_building.id
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek prvn\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "begining_of_first_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "begining_of_current_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "contract_id",
+    onChange: changeInput
+  }, apidata.rentcontracts.map(function (contract) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: contract.id
+    }, "typ: " + "".concat(contract.name));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), isSmlouvaNaDobuUrcitou && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    "for": "end_of_current_rent"
+  }, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "end_of_current_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Information about house"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Some data about the house")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Information about house in work"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Some data about the house in work")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__small"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Important files"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Here will be a list of files"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardAdmin);
+{
+  /* // <form action="/resident" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci obyvatele       Zpracovává ResidentController@store --}}
+  // @csrf
+  // <label for="user_id"></label>
+  // <select name="user_id">
+  //     @foreach ($users as $user)
+  //         <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>       {{-- Výběr z uživatelů --}}
+  //     @endforeach
+  // </select><br>
+  // <label for="flat_id"></label>
+  // <select name="flat_id">
+  //     @foreach ($flats as $flat)
+  //     @if ($flat->residential == 1)
+  //     <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->number}}</option>       {{-- Výběr z bytových jednotek --}}
+  //     @endif
+  //     @endforeach
+  // </select><br>
+  // <input type="hidden" name="building_id" value="{{$building}}">
+  // <label for="begining_of_first_rent">Začátek prvního nájemního obdobý</label>
+  // <input type="date" name="begining_of_first_rent"><br>
+  // <label for="begining_of_current_rent">Začátek aktuálního nájemního obdobý</label>
+  // <input type="date" name="begining_of_current_rent"><br>
+  // <label for="contract_id">Smlouva</label>
+  // <select name="contract_id">
+  //     @foreach ($rentcontracts as $contract)
+  //         <option value="{{$contract->id}}">{{$contract->name}}</option>
+  //     @endforeach
+  // </select><br>
+  // {{-- @if ($contract == 2) --}}  {{-- If bude v reaktu --}}
+  // <label for="end_of_current_rent">Konec aktuálního nájemního obdobý</label>
+  // <input type="date" name="end_of_current_rent"><br>
+  // {{-- @endif --}}
+  
+  
+  // <label for="number_of_residents">Počet osob</label>
+  // <input type="number" name="number_of_residents"><br>
+  // <label for="rental">Nájemné (kč)</label>
+  // <input type="number" name="rental"><br>
+  // <label for="file">Nájemní smlouva</label>
+  // <input type="file" name="file"><br>
+  // <input type="submit" value="Registrovat">
+  // </form> */
+}
 
 /***/ }),
 
@@ -24878,32 +24953,21 @@ var DashboardAdmin = function DashboardAdmin() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/DashboardCommonChats.js */ "./resources/js/components/common/DashboardCommonChats.js");
+/* harmony import */ var _common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/DashboardCommonHNews.js */ "./resources/js/components/common/DashboardCommonHNews.js");
+
+
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
   var apidata = _ref.apidata;
-  console.log("Dashboard COmmon notices:", apidata.notices);
-  var notices = apidata.notices ? apidata.notices.map(function (notice) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Loading news...\"");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__common"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "chats"
-  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "chats",
-    id: "chats"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "1"
-  }, "Chat 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "2"
-  }, "Chat 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "3"
-  }, "Chat 3"))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    apidata: apidata
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    apidata: apidata
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommon);
@@ -24928,15 +24992,112 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DashboardMain = function DashboardMain(_ref) {
-  var apidata = _ref.apidata;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    apidata: apidata
-  }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    apidata: apidata
-  }));
+  var apidata = _ref.apidata,
+      isLoading = _ref.isLoading;
+
+  if (isLoading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Please wait..."));
+  } else {
+    console.log("*****************API LOADING DONE, rendering dashboard ******************");
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardCommon_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      apidata: apidata
+    }), apidata.profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardAdmin_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      apidata: apidata
+    }));
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardMain);
+
+/***/ }),
+
+/***/ "./resources/js/components/common/DashboardCommonChats.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonChats.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var DashboardCommonChats = function DashboardCommonChats(_ref) {
+  var _ref$apidata = _ref.apidata,
+      communities = _ref$apidata.communities,
+      chats = _ref$apidata.chats,
+      users = _ref$apidata.users;
+
+  /*zdravime Inventi HOOOOOKS */
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      commun_id = _useState2[0],
+      setcommun_id = _useState2[1];
+
+  var handleCommunityIDChange = function handleCommunityIDChange(e) {
+    setcommun_id(Number(e.target.value));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "chats"
+  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleCommunityIDChange,
+    name: "chats",
+    id: "chats"
+  }, communities.map(function (community) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: community.id
+    }, community.community_name));
+  }))), chats.filter(function (chat) {
+    return chat.community_id === commun_id;
+  }).map(function (chat) {
+    var chatUser = users.filter(function (user) {
+      return user.id === chat.user_id;
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
+
+/***/ }),
+
+/***/ "./resources/js/components/common/DashboardCommonHNews.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonHNews.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
+  var _ref$apidata$notices = _ref.apidata.notices,
+      notices = _ref$apidata$notices === void 0 ? [] : _ref$apidata$notices;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__mid"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHouseNews);
 
 /***/ }),
 
@@ -24968,7 +25129,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
   //ahoj do Inventi: HOOOOOOOOOOOOOOKS
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState2 = _slicedToArray(_useState, 2),
       api = _useState2[0],
       setapi = _useState2[1];
@@ -24978,28 +25139,36 @@ var App = function App() {
       loading = _useState4[0],
       setloading = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      errorFetch = _useState6[0],
+      setErrorFetch = _useState6[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch("http://www.hously.test/api").then(function (resp) {
+    fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-<<<<<<< HEAD
-      return setapi(data);
-    })["finally"](setloading(false));
-  }, []);
-=======
-      console.log(data);
+      console.log({
+        data: data
+      });
       setapi(data);
+    })["catch"](function () {
+      setErrorFetch(true);
+    })["finally"](function () {
+      setloading(false);
     });
-  }, []); // return <>{api.residents.items[0].id}</>;
-
->>>>>>> feat/jakub
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, []);
+  return errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "page__main bg__gradient-light"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__promo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Fetching data failed"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "page__main bg__gradient-light"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__promo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_DashboardMain__WEBPACK_IMPORTED_MODULE_2__["default"], {
     apidata: api,
-    loading: loading
+    isLoading: loading
   }));
 };
 
