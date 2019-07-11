@@ -24955,18 +24955,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/DashboardCommonChats.js */ "./resources/js/components/common/DashboardCommonChats.js");
 /* harmony import */ var _common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/DashboardCommonHNews.js */ "./resources/js/components/common/DashboardCommonHNews.js");
+/* harmony import */ var _common_DashboardCommonUserInfo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/DashboardCommonUserInfo.js */ "./resources/js/components/common/DashboardCommonUserInfo.js");
+/* harmony import */ var _common_DashboardCommonUserDocuments_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/DashboardCommonUserDocuments.js */ "./resources/js/components/common/DashboardCommonUserDocuments.js");
+
+
 
 
 
 
 var DashboardCommon = function DashboardCommon(_ref) {
-  var apidata = _ref.apidata;
+  var apidata = _ref.apidata,
+      _ref$apidata = _ref.apidata,
+      chats = _ref$apidata.chats,
+      current_user = _ref$apidata.current_user,
+      communities = _ref$apidata.communities,
+      contract = _ref$apidata.contract,
+      contract_id = _ref$apidata.contract_id,
+      contract_url = _ref$apidata.contract_url,
+      notices = _ref$apidata.notices,
+      users = _ref$apidata.users;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__common"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    apidata: apidata
+    notices: notices
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonChats_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    apidata: apidata
+    chats: chats,
+    communities: communities,
+    users: users
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash dash__common"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonUserInfo_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    user: current_user,
+    contract: contract
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonUserDocuments_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    contract_id: contract_id,
+    contract_url: contract_url
   })));
 };
 
@@ -25033,10 +25056,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var DashboardCommonChats = function DashboardCommonChats(_ref) {
-  var _ref$apidata = _ref.apidata,
-      communities = _ref$apidata.communities,
-      chats = _ref$apidata.chats,
-      users = _ref$apidata.users;
+  var communities = _ref.communities,
+      chats = _ref.chats,
+      users = _ref.users;
 
   /*zdravime Inventi HOOOOOKS */
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
@@ -25088,8 +25110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
-  var _ref$apidata$notices = _ref.apidata.notices,
-      notices = _ref$apidata$notices === void 0 ? [] : _ref$apidata$notices;
+  var notices = _ref.notices;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices.map(function (notice) {
@@ -25098,6 +25119,72 @@ var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHouseNews);
+
+/***/ }),
+
+/***/ "./resources/js/components/common/DashboardCommonUserDocuments.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonUserDocuments.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonUserDocuments = function DashboardCommonUserDocuments(_ref) {
+  var contract_id = _ref.contract_id,
+      contract_url = _ref.contract_url;
+
+  if (!contract_id || !contract_url) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "page__main__dash__item i__small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My documents"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Error: no contract data..."));
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__small"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My documents"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract ID: "), contract_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Full Document: "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: contract_url
+  }, "Download")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonUserDocuments);
+
+/***/ }),
+
+/***/ "./resources/js/components/common/DashboardCommonUserInfo.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonUserInfo.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonUserInfo = function DashboardCommonUserInfo(_ref) {
+  var user = _ref.user,
+      contract = _ref.contract;
+
+  if (!user || !contract) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "page__main__dash__item i__big"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Error: no user or contract data..."));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "page__main__dash__item i__big"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Name: "), user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Email: "), user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Phone: "), user.phone_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Birth Date: "), user.birth_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Type: "), contract.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Scope: "), contract.name));
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonUserInfo);
 
 /***/ }),
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DashboardCommonChats = ({ apidata: { communities, chats, users } }) => {
+const DashboardCommonChats = ({ communities, chats, users }) => {
     /*zdravime Inventi HOOOOOKS */
     const [commun_id, setcommun_id] = useState(1);
     const handleCommunityIDChange = e => {

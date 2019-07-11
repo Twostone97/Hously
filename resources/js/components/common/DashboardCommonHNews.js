@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardCommonHouseNews = ({ apidata: { notices = [] } }) => {
+const DashboardCommonHouseNews = ({ notices }) => {
     return (
         <div className="page__main__dash__item i__mid">
             <h3>House news</h3>
