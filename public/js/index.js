@@ -24977,7 +24977,10 @@ var UserList = function UserList(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Databaze obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, residents.map(function (resident) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Name: " + "".concat(users[resident.user_id - 1].first_name) + " " + "".concat(users[resident.user_id - 1].last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flats.map(function (flat) {
       if (flat.id == resident.flat_id) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Flat number:" + "".concat(flat.number));
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Contact: " + "".concat(users[resident.user_id - 1].email)));
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Contact: " + "".concat(users[resident.user_id - 1].email)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "/storage/contract/".concat(resident.user_id, ".pdf"),
+      target: "_blank"
+    }, "N\xE1jemn\xED Smlouva")));
   })));
 };
 
@@ -25129,6 +25132,14 @@ var BuildingReg = function BuildingReg() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -25147,21 +25158,54 @@ var UserReg = function UserReg(_ref) {
       isSmlouvaNaDobuUrcitou = _useState2[0],
       setisSmlouvaNaDobuUrcitou = _useState2[1];
 
+  var body = {};
+
   var changeInput = function changeInput() {
     setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
   };
 
+  var handleSubmit = function handleSubmit(e) {
+    var _console;
+
+    e.preventDefault();
+    var data = new FormData(e.target);
+    console.log("data", e);
+
+    (_console = console).log.apply(_console, ["body"].concat(_toConsumableArray(data)));
+
+    fetch("/resident", {
+      method: "post",
+      body: data
+    });
+  }; // token
+
+
+  var metaList = document.querySelectorAll("meta");
+  var token = "";
+  metaList.forEach(function (meta) {
+    if (meta.name == "csrf-token") {
+      token = meta.content;
+    }
+
+    console.log("token", token);
+  }); // ***************************-
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    action: "/resident",
-    method: "post",
-    encType: "multipart/form-data"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    // action="/resident"
+    // method="post"
+    encType: "multipart/form-data",
+    onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: token
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "user_id"
   }, apidata.users.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: user.id
     }, "".concat(user.first_name) + " " + "".concat(user.last_name));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Flat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "flat_id"
   }, apidata.flats.map(function (flat) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -25238,6 +25282,11 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
       commun_id = _useState2[0],
       setcommun_id = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(chats),
+      _useState4 = _slicedToArray(_useState3, 2),
+      listOfChats = _useState4[0],
+      setlistOfChats = _useState4[1];
+
   var handleCommunityIDChange = function handleCommunityIDChange(e) {
     setcommun_id(Number(e.target.value));
   };
@@ -25260,7 +25309,7 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
     }, community.community_name));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chat__container scrollable"
-  }, chats.filter(function (chat) {
+  }, listOfChats.filter(function (chat) {
     return chat.community_id === commun_id;
   }).map(function (chat, index) {
     var chatUser = users.filter(function (user) {
@@ -25269,7 +25318,41 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: index % 2 == 0 ? "chat__bubble b__left" : "chat__bubble b__right"
     }, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
-  }))));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      e.target[0].value = "";
+      fetch("/chat", {
+        method: "post",
+        body: data
+      }).then(function () {
+        fetch("/api").then(function (resp) {
+          return resp.json();
+        }).then(function (data) {
+          return setlistOfChats(data.chats);
+        });
+      });
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "text"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "community_id",
+    value: commun_id
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "image",
+    value: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Send")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
@@ -25459,9 +25542,6 @@ var App = function App() {
     fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-      console.log({
-        data: data
-      });
       setapi(data);
     })["catch"](function () {
       setErrorFetch(true);

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const DashboardCommonChats = ({ communities, chats, users }) => {
     /*zdravime Inventi HOOOOOKS */
     const [commun_id, setcommun_id] = useState(1);
+    const [listOfChats, setlistOfChats] = useState(chats);
     const handleCommunityIDChange = e => {
         setcommun_id(Number(e.target.value));
     };
@@ -32,7 +33,7 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                 </label>
 
                 <div className="chat__container scrollable">
-                    {chats
+                    {listOfChats
                         .filter(chat => chat.community_id === commun_id)
                         .map((chat, index) => {
                             const chatUser = users.filter(
@@ -52,6 +53,40 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                                 </div>
                             );
                         })}
+                    <form
+                        encType="multipart/form-data"
+                        onSubmit={e => {
+                            e.preventDefault();
+                            const data = new FormData(e.target);
+                            e.target[0].value = "";
+                            fetch("/chat", {
+                                method: "post",
+                                body: data
+                            }).then(() => {
+                                fetch("/api")
+                                    .then(resp => resp.json())
+                                    .then(data => setlistOfChats(data.chats));
+                            });
+                        }}
+                    >
+                        <input type="text" name="text" />
+                        <input
+                            type="hidden"
+                            name="community_id"
+                            value={commun_id}
+                        />
+                        <input type="hidden" name="image" value="" />
+                        <input
+                            type="hidden"
+                            name="_token"
+                            value={
+                                document.querySelector(
+                                    'meta[name="csrf-token"]'
+                                ).content
+                            }
+                        />
+                        <button type="submit">Send</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -11617,5 +11617,10 @@ footer {
   margin-right: -21px;
 }
 
+#map {
+  min-width: 50vw;
+  min-height: 25vw;
+}
+
 
 /*# sourceMappingURL=app.css.map*/

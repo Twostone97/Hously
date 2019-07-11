@@ -64,33 +64,11 @@ const BuildingReg = () => {
                         <input type="file" name="file" />
                         <br />
 
-<<<<<<< HEAD
-                <label>Vytápění</label>
-                <input type="checkbox" name="heating" />
-                <br />
-
-                <label>Plyn</label>
-                <input type="checkbox" name="gas" />
-                <br />
-
-                <label>Výtah(počet)</label>
-                <input type="number" name="elevator" />
-                <br />
-
-                <label>Pravidla domu</label>
-                <input type="file" name="file" />
-                <br />
-
-                <input type="submit" value="Registrovat" />
-            </form>
-            <br />
-=======
                         <input type="submit" value="Registrovat" />
                     </form>
                     <br />
                 </div>
             </div>
->>>>>>> feat/jakub
         </>
     );
 };
