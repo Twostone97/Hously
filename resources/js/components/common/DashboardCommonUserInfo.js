@@ -17,23 +17,27 @@ const DashboardCommonUserInfo = ({ user, profile }) => {
                         : "page__main__dash__item i__big"
                 }
             >
-                <h3>My info</h3>
-                <p>
-                    <strong>Name: </strong>
-                    {user.first_name} {user.last_name}
-                </p>
-                <p>
-                    <strong>Email: </strong>
-                    {user.email}
-                </p>
-                <p>
-                    <strong>Phone: </strong>
-                    {user.phone_number}
-                </p>
-                <p>
-                    <strong>Birth Date: </strong>
-                    {user.birth_date}
-                </p>
+                <div className="page__main__dash__item__head">
+                    <h3>My info</h3>
+                </div>
+                <div className="page__main__dash__item__body">
+                    <p>
+                        <strong>Name: </strong>
+                        {user.first_name} {user.last_name}
+                    </p>
+                    <p>
+                        <strong>Email: </strong>
+                        {user.email}
+                    </p>
+                    <p>
+                        <strong>Phone: </strong>
+                        {user.phone_number}
+                    </p>
+                    <p>
+                        <strong>Birth Date: </strong>
+                        {user.birth_date}
+                    </p>
+                </div>
             </div>
         );
     }

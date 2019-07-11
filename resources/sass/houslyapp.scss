@@ -1,3 +1,12 @@
+.house__rules {
+    width: 90%;
+    min-height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba($base-blue, 0.1);
+    border: 0;
+}
+
 .page__main__dash {
     display: flex;
     justify-content: space-between;

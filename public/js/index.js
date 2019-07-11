@@ -24873,6 +24873,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_DashboardCommonHNews_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/DashboardCommonHNews.js */ "./resources/js/components/common/DashboardCommonHNews.js");
 /* harmony import */ var _common_DashboardCommonUserInfo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/DashboardCommonUserInfo.js */ "./resources/js/components/common/DashboardCommonUserInfo.js");
 /* harmony import */ var _common_DashboardCommonUserDocuments_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/DashboardCommonUserDocuments.js */ "./resources/js/components/common/DashboardCommonUserDocuments.js");
+/* harmony import */ var _common_DashboardCommonHouseRules_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./common/DashboardCommonHouseRules.js */ "./resources/js/components/common/DashboardCommonHouseRules.js");
+
 
 
 
@@ -24890,6 +24892,7 @@ var DashboardCommon = function DashboardCommon(_ref) {
       contract_url = _ref$apidata.contract_url,
       notices = _ref$apidata.notices,
       profile = _ref$apidata.profile,
+      rules = _ref$apidata.rules,
       users = _ref$apidata.users;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash dash__common"
@@ -24908,6 +24911,8 @@ var DashboardCommon = function DashboardCommon(_ref) {
     contract: contract,
     contract_id: contract_id,
     contract_url: contract_url
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_DashboardCommonHouseRules_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    rules: rules
   })));
 };
 
@@ -25277,6 +25282,37 @@ var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/common/DashboardCommonHouseRules.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/common/DashboardCommonHouseRules.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var DashboardCommonHouseRules = function DashboardCommonHouseRules(_ref) {
+  var rules = _ref.rules;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__full"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House Rules")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__body scrollable"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    className: "house__rules",
+    readOnly: true
+  }, rules)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHouseRules);
+
+/***/ }),
+
 /***/ "./resources/js/components/common/DashboardCommonUserDocuments.js":
 /*!************************************************************************!*\
   !*** ./resources/js/components/common/DashboardCommonUserDocuments.js ***!
@@ -25303,9 +25339,13 @@ var DashboardCommonUserDocuments = function DashboardCommonUserDocuments(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__small"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My documents"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract ID: "), contract_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Type: "), contract.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Scope: "), contract.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Full Document: "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My documents")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract ID: "), contract_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Type: "), contract.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Contract Scope: "), contract.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Full Document: "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: contract_url
-  }, "Download")));
+  }, "Download"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonUserDocuments);
@@ -25336,7 +25376,11 @@ var DashboardCommonUserInfo = function DashboardCommonUserInfo(_ref) {
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: profile === "administrator" ? "page__main__dash__item i__full" : "page__main__dash__item i__big"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Name: "), user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Email: "), user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Phone: "), user.phone_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Birth Date: "), user.birth_date));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "page__main__dash__item__head"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My info")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "page__main__dash__item__body"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Name: "), user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Email: "), user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Phone: "), user.phone_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Birth Date: "), user.birth_date)));
   }
 };
 

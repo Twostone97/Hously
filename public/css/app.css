@@ -11485,6 +11485,15 @@ footer {
   margin-top: -21px;
 }
 
+.house__rules {
+  width: 90%;
+  min-height: 300px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(24, 121, 191, 0.1);
+  border: 0;
+}
+
 .page__main__dash {
   display: -webkit-flex;
   display: flex;
