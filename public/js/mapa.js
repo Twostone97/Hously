@@ -24,7 +24,10 @@ fetch("./map/api")
         //**********************************************- */
         //vytvoreni nove mapy
         const center = SMap.Coords.fromWGS84(14.4304, 50.07975);
-        const map = new SMap(JAK.gel("map"), center, 11);
+        const map = new SMap(JAK.gel("map"), center, 11, {
+            height: "50vh",
+            width: "100vw"
+        });
 
         map.addDefaultLayer(SMap.DEF_BASE).enable();
         map.addDefaultControls();
