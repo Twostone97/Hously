@@ -24,6 +24,10 @@
             flex: 0 1 70%;
         }
 
+        &.i__full {
+            flex: 0 1 100%;
+        }
+
         &__head {
             width: 100%;
             background-color: $base-blue;

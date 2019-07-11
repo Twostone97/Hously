@@ -1,16 +1,22 @@
 import React from "react";
 
-const DashboardCommonUserInfo = ({ user, contract }) => {
-    if (!user || !contract) {
+const DashboardCommonUserInfo = ({ user, profile }) => {
+    if (!user) {
         return (
             <div className="page__main__dash__item i__big">
                 <h3>My info</h3>
-                <p>Error: no user or contract data...</p>
+                <p>Error: no user data...</p>
             </div>
         );
     } else {
         return (
-            <div className="page__main__dash__item i__big">
+            <div
+                className={
+                    profile === "administrator"
+                        ? "page__main__dash__item i__full"
+                        : "page__main__dash__item i__big"
+                }
+            >
                 <h3>My info</h3>
                 <p>
                     <strong>Name: </strong>
@@ -27,14 +33,6 @@ const DashboardCommonUserInfo = ({ user, contract }) => {
                 <p>
                     <strong>Birth Date: </strong>
                     {user.birth_date}
-                </p>
-                <p>
-                    <strong>Contract Type: </strong>
-                    {contract.type}
-                </p>
-                <p>
-                    <strong>Contract Scope: </strong>
-                    {contract.name}
                 </p>
             </div>
         );

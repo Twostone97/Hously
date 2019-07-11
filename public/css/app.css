@@ -4986,7 +4986,6 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  margin: 10px;
 }
 
 .card > hr {
@@ -11519,6 +11518,11 @@ footer {
           flex: 0 1 70%;
 }
 
+.page__main__dash__item.i__full {
+  -webkit-flex: 0 1 100%;
+          flex: 0 1 100%;
+}
+
 .page__main__dash__item__head {
   width: 100%;
   background-color: #1879bf;
@@ -11581,18 +11585,5 @@ footer {
   margin-right: -21px;
 }
 
-.navigace {
-  position: fixed;
-  top: 0;
-  left: 0%;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 30vw;
-  padding: 0 20px 0 20px;
-}
-
-.navigace a {
-  color: white;
-}
 
 /*# sourceMappingURL=app.css.map*/
