@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 
 const UserReg = ({ apidata }) => {
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
-    const [submit, setSubmit] = useState(null);
+    let body = {};
 
     const changeInput = () => {
         setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
     };
     const handleSubmit = e => {
         e.preventDefault();
-        setSubmit(e.target.value);
-        console.log("input", e.target.value);
-        console.log("submit", submit);
+        body = e.target.value;
+        const data = new FormData(e.target);
+        console.log("data", e);
+        console.log("body", ...data);
+        let correctedData = [...data];
+        fetch("/resident", {
+            method: "post",
+            body: correctedData
+        });
     };
     const metaList = document.querySelectorAll("meta");
     let token = "";
@@ -27,12 +33,12 @@ const UserReg = ({ apidata }) => {
             <h4>Registrace obyvatel</h4>
 
             <form
-                action="/resident"
-                method="post"
+                // action="/resident"
+                // method="post"
                 encType="multipart/form-data"
                 onSubmit={handleSubmit}
             >
-                <input type="hidden" name="csrf-token" />
+                <input type="hidden" name="_token" value={token} />
                 <label>Name</label>
                 <select name="user_id">
                     {apidata.users.map(user => {
