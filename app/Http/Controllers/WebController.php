@@ -27,6 +27,10 @@ class WebController extends Controller
     public function map() {
         return view ('/test/map'); //pro Michala na testovani mapy
     }
+
+    public function houses() {
+        return view ('/pages/houses'); //oficiální mapa s funkčnímy odkazy a seznamem domů
+    }
   
       
     public function mapApi(){
