@@ -11492,6 +11492,10 @@ footer {
           justify-content: space-between;
 }
 
+.page__main__dash .scrollable {
+  overflow: auto;
+}
+
 .page__main__dash__item {
   min-height: 25vh;
   background-color: rgba(24, 121, 191, 0.5);
@@ -11528,6 +11532,10 @@ footer {
           align-items: center;
   text-align: center;
   padding: 1rem;
+}
+
+.page__main__dash .chat__container {
+  height: 25vh;
 }
 
 .page__main__dash .chat__bubble {

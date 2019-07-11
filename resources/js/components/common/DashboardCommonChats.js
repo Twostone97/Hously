@@ -31,15 +31,21 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                     </select>
                 </label>
 
-                <div>
+                <div className="chat__container scrollable">
                     {chats
                         .filter(chat => chat.community_id === commun_id)
-                        .map(chat => {
+                        .map((chat, index) => {
                             const chatUser = users.filter(
                                 user => user.id === chat.user_id
                             );
                             return (
-                                <div className="chat__bubble b__left">
+                                <div
+                                    className={
+                                        index % 2 == 0
+                                            ? "chat__bubble b__left"
+                                            : "chat__bubble b__right"
+                                    }
+                                >
                                     {chatUser[0].first_name}{" "}
                                     {chatUser[0].last_name} <br />
                                     <em>{chat.text}</em>
