@@ -23,6 +23,7 @@ Route::get('/test/map','WebController@map');
 
 
 Auth::routes();
+
 // api
 
 Route::get('/test/map/api','WebController@mapApi');
