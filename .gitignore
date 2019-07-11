@@ -9,3 +9,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+#problematic files
+ /css/app.css   
+/css/app.css.map   
+/js/index.js  
+/js/index.js.map
