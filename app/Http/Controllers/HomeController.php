@@ -158,6 +158,7 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
@@ -167,6 +168,7 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
@@ -178,6 +180,7 @@ class HomeController extends Controller
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         }
                         
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
@@ -200,7 +203,7 @@ class HomeController extends Controller
             "current_user" => $current_user,
             "this_building" => $this_building,
             "noticeboard" => $noticeboard,
-            "notices" => $notices,
+            "notices" => $notices,  
             "rentcontracts" => $rentcontracts,
             "flats" => $flats,
             "contract" => $contract,
@@ -208,7 +211,8 @@ class HomeController extends Controller
             "contract_id" => $file_id,
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
-            "users"=>$users
+            "users"=>$users,
+            "rules"=>$rules
         ];
         return response()->json($data, 200);
     }
