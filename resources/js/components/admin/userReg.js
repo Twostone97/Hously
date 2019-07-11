@@ -2,10 +2,25 @@ import React, { useState, useEffect } from "react";
 
 const UserReg = ({ apidata }) => {
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
+    const [submit, setSubmit] = useState(null);
 
     const changeInput = () => {
         setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
     };
+    const handleSubmit = e => {
+        e.preventDefault();
+        setSubmit(e.target.value);
+        console.log("input", e.target.value);
+        console.log("submit", submit);
+    };
+    const metaList = document.querySelectorAll("meta");
+    let token = "";
+    metaList.forEach(meta => {
+        if (meta.name == "csrf-token") {
+            token = meta.content;
+        }
+        console.log("token", token);
+    });
 
     return (
         <>
@@ -15,7 +30,10 @@ const UserReg = ({ apidata }) => {
                 action="/resident"
                 method="post"
                 encType="multipart/form-data"
+                onSubmit={handleSubmit}
             >
+                <input type="hidden" name="csrf-token" />
+                <label>Name</label>
                 <select name="user_id">
                     {apidata.users.map(user => {
                         return (
@@ -28,7 +46,7 @@ const UserReg = ({ apidata }) => {
                     })}
                 </select>
                 <br />
-
+                <label>Flat</label>
                 <select name="flat_id">
                     {apidata.flats.map(flat => {
                         return (

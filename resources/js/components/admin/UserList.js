@@ -31,6 +31,16 @@ const UserList = ({ residents, users, flats }) => {
                                 {`Contact: ` +
                                     `${users[resident.user_id - 1].email}`}
                             </div>
+                            <div>
+                                <a
+                                    href={`/storage/contract/${
+                                        resident.user_id
+                                    }.pdf`}
+                                    target="_blank"
+                                >
+                                    Nájemní Smlouva
+                                </a>
+                            </div>
                         </li>
                     );
                 })}
