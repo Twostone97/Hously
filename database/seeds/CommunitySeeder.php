@@ -22,5 +22,11 @@ class CommunitySeeder extends Seeder
             'building_id'    => 1,
             'community_name'    => 'Zábava',
         ]);
+
+        Community::create([
+            'chat_id'     => 3,
+            'building_id'    => 2,
+            'community_name'    => 'Obecná komunita',
+        ]);
     }
 }

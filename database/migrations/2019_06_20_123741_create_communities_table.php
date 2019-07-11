@@ -15,7 +15,7 @@ class CreateCommunitiesTable extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('chat_id');
+            $table->unsignedBigInteger('chat_id')->nullable();
             $table->unsignedBigInteger('building_id');
             $table->text('community_name');
             $table->timestamps();

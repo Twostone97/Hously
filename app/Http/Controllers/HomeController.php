@@ -50,6 +50,9 @@ class HomeController extends Controller
         $residents  = null; 
         $users = null;
 
+
+
+
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $owner         = DB::table('owners')->where('user_id', '=', Auth::user()->id)->first();
@@ -58,8 +61,6 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
-            $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
-            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
             $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
@@ -76,10 +77,8 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
-            $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
-            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
             $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
-            $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
+            $notices        = $noticeboard !== null ? DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get() : null;
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
@@ -97,8 +96,6 @@ class HomeController extends Controller
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
-            $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
-            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
             $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
@@ -114,6 +111,12 @@ class HomeController extends Controller
             $allowners      = DB::table('owners')->get();
             $alladmins      = DB::table('administrators')->get();
             $allbuildings   = DB::table('buildings')->get();
+        }
+
+        $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+        foreach ($communities as $community)
+        {
+            $chats[]    = DB::table('chats')->where('community_id', '=', $community->id)->orderBy('created_at', 'asc')->get();
         }
         
         return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings'));
@@ -142,11 +145,7 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
-<<<<<<< HEAD
-            // moje admin**********************************************
-=======
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
->>>>>>> feat/david
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
@@ -155,14 +154,8 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
-<<<<<<< HEAD
-        }
-        // *****************************************************************
-        elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
-=======
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
->>>>>>> feat/david
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
             $building = $resident->building_id;

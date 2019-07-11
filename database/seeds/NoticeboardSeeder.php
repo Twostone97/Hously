@@ -15,5 +15,9 @@ class NoticeboardSeeder extends Seeder
         Noticeboard::create([
             'building_id'    => 1,
         ]);
+        
+        Noticeboard::create([
+            'building_id'    => 2,
+        ]);
     }
 }

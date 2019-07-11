@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Building;
+use App\Noticeboard;
+use App\Community;
 use Illuminate\Http\Request;
 use DB;
 
@@ -48,6 +50,16 @@ class BuildingController extends Controller
         $building->heating = $request->heating == "on" ? 1 : 0 ;
         $building->elevator = $request->elevator;
         $building->save();
+
+        $thisbuilding =  DB::table('buildings')->orderBy('id', 'desc')->first();
+
+        $noticeboard = new Noticeboard;
+        $noticeboard->building_id = $thisbuilding->id;
+        $noticeboard->save();
+
+        $community = new Community;
+        $community->building_id = $thisbuilding->id;
+        $community->save();
 
         return redirect(action('HomeController@index'));
     }

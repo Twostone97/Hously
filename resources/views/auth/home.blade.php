@@ -14,17 +14,22 @@
                             {{ session('status') }}
                         </div>    
                     @endif
+
+                    @if (is_null($notices))
+                        <h3>There is nothing here</h3><br> 
+                    @else
+                        @foreach ($notices as $notice)              {{-- Permanentní upozornění --}}
+                        @if ($notice->permanent == 1)
+                        <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3></div>
+                        @endif
+                        @endforeach
+                        @foreach ($notices as $notice)
+                        @if ($notice->permanent == 0)               {{-- Běžné upozornění ubíhající jako chat--}}
+                        <h3>{{$notice->text}}</h3>
+                        @endif
+                        @endforeach
                     
-                    @foreach ($notices as $notice)              {{-- Permanentní upozornění --}}
-                    @if ($notice->permanent == 1)
-                    <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3></div>
                     @endif
-                    @endforeach
-                    @foreach ($notices as $notice)
-                    @if ($notice->permanent == 0)               {{-- Běžné upozornění ubíhající jako chat--}}
-                    <h3>{{$notice->text}}</h3>
-                    @endif
-                    @endforeach
                     @if ($profil == 'administrator')            {{-- Zobrazí se pouze profilu "administrator" --}}
                     <form action="/notice" method="post">       {{-- Formulář pro přidání upozornění        Zpracovává NoticeController@store --}}
                             @csrf
