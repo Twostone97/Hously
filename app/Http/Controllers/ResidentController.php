@@ -84,12 +84,6 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        DB::table('residents')
-        ->where('id', $id)
-        ->update([
-            'user_id' => $request->user_id,
-            'building_id' => $request->building_id,]);
-        return redirect(action('HomeController@index'));
     }
 
     /**

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Chat;
+use App\User;
 use App\Notice;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
@@ -91,7 +93,7 @@ class HomeController extends Controller
             $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
             $date           = explode('-' ,$resident->begining_of_current_rent);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-            $file_id        = $resident->flat_id;
+            $file_id        = $resident->id;
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
@@ -140,6 +142,7 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
@@ -148,6 +151,7 @@ class HomeController extends Controller
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
@@ -155,7 +159,7 @@ class HomeController extends Controller
             $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
             $date           = explode('-' ,$resident->begining_of_current_rent);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-            $file_id        = $resident->flat_id;
+            $file_id        = $resident->id;
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
@@ -190,6 +194,20 @@ class HomeController extends Controller
             "residents_in_flat" => $residents_in_flats,
         ];
         return response()->json($data, 200);
+    }
+
+
+    public function store (Request $request)
+    {
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->birth_date = $request->birth_date;
+        $user->phone_number = $request->phone_number;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect(action('HomeController@index'));
     }
 
     public function edit (Request $request ,$id)

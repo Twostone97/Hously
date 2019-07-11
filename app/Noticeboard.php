@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Noticeboard extends Model
 {
+
     public function building()
     {
-        return $this->hasOne('App\Building');
+        return $this->belongsTo('App\Building', 'id', 'building_id');
     }
 
     public function notices()

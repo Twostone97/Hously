@@ -40,6 +40,8 @@ Route::post('/resident', 'ResidentController@store');
 Route::post('/owner', 'OwnerController@store');
 Route::post('/admin', 'AdministratorController@store');
 Route::post('/building', 'BuildingController@store');
+Route::post('/user', 'HomeController@store');
+
 Route::post('/updatebuilding', 'BuildingController@update');
 
 Route::get('/storage/contract/{file_id}.pdf', 'ResidentController@index');
