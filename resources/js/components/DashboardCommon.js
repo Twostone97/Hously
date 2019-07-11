@@ -14,6 +14,7 @@ const DashboardCommon = ({
         contract_id,
         contract_url,
         notices,
+        profile,
         users
     }
 }) => {
@@ -30,12 +31,15 @@ const DashboardCommon = ({
             <div className="page__main__dash dash__common">
                 <DashboardCommonUserInfo
                     user={current_user}
-                    contract={contract}
+                    profile={profile}
                 />
-                <DashboardCommonUserDocuments
-                    contract_id={contract_id}
-                    contract_url={contract_url}
-                />
+                {profile !== "administrator" && (
+                    <DashboardCommonUserDocuments
+                        contract={contract}
+                        contract_id={contract_id}
+                        contract_url={contract_url}
+                    />
+                )}
             </div>
         </>
     );

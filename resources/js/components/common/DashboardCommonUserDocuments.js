@@ -1,6 +1,10 @@
 import React from "react";
 
-const DashboardCommonUserDocuments = ({ contract_id, contract_url }) => {
+const DashboardCommonUserDocuments = ({
+    contract_id,
+    contract_url,
+    contract
+}) => {
     if (!contract_id || !contract_url) {
         return (
             <div className="page__main__dash__item i__small">
@@ -16,6 +20,14 @@ const DashboardCommonUserDocuments = ({ contract_id, contract_url }) => {
             <p>
                 <strong>Contract ID: </strong>
                 {contract_id}
+            </p>
+            <p>
+                <strong>Contract Type: </strong>
+                {contract.type}
+            </p>
+            <p>
+                <strong>Contract Scope: </strong>
+                {contract.name}
             </p>
             <p>
                 <strong>Full Document: </strong>{" "}
