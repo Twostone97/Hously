@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Chat;
 use Auth;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class ChatController extends Controller
     {
         $chat = new Chat;
         $chat->user_id = Auth::user()->id;
-        $chat->community_id = 1;
+        $chat->community_id = $request->community_id;
         $chat->text = $request->text;
         $chat->warning = false;
         $chat->image = $request->image;
@@ -87,8 +88,11 @@ class ChatController extends Controller
      * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chat $chat)
+    public function destroy(Chat $chat, $id)
     {
-        //
+        DB::table('chats')
+        ->where('user_id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }

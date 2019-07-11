@@ -69,6 +69,12 @@ class HomeController extends Controller
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
+            $community      = DB::table('communities')->where('building_id', '=', $building)->orderBy('id')->first();
+            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+            foreach ($communities as $community)
+            {
+                $chats[]    = DB::table('chats')->where('community_id', '=', $community->id)->orderBy('created_at', 'asc')->get();
+            }
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
@@ -84,6 +90,12 @@ class HomeController extends Controller
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
+            }
+            $community      = DB::table('communities')->where('building_id', '=', $building)->orderBy('id')->first();
+            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+            foreach ($communities as $community)
+            {
+                $chats[]    = DB::table('chats')->where('community_id', '=', $community->id)->orderBy('created_at', 'asc')->get();
             }
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
@@ -104,6 +116,12 @@ class HomeController extends Controller
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
+            $community      = DB::table('communities')->where('building_id', '=', $building)->orderBy('id')->first();
+            $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+            foreach ($communities as $community)
+            {
+                $chats[]    = DB::table('chats')->where('community_id', '=', $community->id)->orderBy('created_at', 'asc')->get();
+            }
         } elseif (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $profil = 'superuser';
             $users          = DB::table('users')->get();
@@ -112,14 +130,8 @@ class HomeController extends Controller
             $alladmins      = DB::table('administrators')->get();
             $allbuildings   = DB::table('buildings')->get();
         }
-
-        $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
-        foreach ($communities as $community)
-        {
-            $chats[]    = DB::table('chats')->where('community_id', '=', $community->id)->orderBy('created_at', 'asc')->get();
-        }
         
-        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings'));
+        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community'));
     }
 
     public function api()
@@ -200,6 +212,8 @@ class HomeController extends Controller
         ];
         return response()->json($data, 200);
     }
+
+
 
 
     public function store (Request $request)

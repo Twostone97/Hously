@@ -55,3 +55,5 @@ Route::post('/su/delete/user/{id}', 'HomeController@destroy');
 Route::post('/su/delete/building/{id}', 'BuildingController@destroy');
 Route::post('/su/delete/owner/{id}', 'OwnerController@destroy');
 Route::post('/su/delete/admin/{id}', 'AdministratorController@destroy');
+Route::post('/su/delete/notice/{id}', 'NoticeController@destroy');
+Route::post('/su/delete/chat/{id}', 'ChatController@destroy');

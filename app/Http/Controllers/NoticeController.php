@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Notice;
 use Illuminate\Http\Request;
 
@@ -88,8 +89,11 @@ class NoticeController extends Controller
      * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notice $notice)
+    public function destroy(Notice $notice, $id)
     {
-        //
+        DB::table('notices')
+        ->where('id', $id)
+        ->delete();
+        return redirect(action('HomeController@index'));
     }
 }

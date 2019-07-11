@@ -20,12 +20,22 @@
                     @else
                         @foreach ($notices as $notice)              {{-- Permanentní upozornění --}}
                         @if ($notice->permanent == 1)
-                        <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3></div>
+                        
+                        <div class="card-header"><h3><strong>{{$notice->text}}</strong></h3>
+                    </div>
                         @endif
                         @endforeach
                         @foreach ($notices as $notice)
                         @if ($notice->permanent == 0)               {{-- Běžné upozornění ubíhající jako chat--}}
+                        <div class="row justify-content-around">
                         <h3>{{$notice->text}}</h3>
+                        @if ($profil === 'administrator')
+                        <form action="su/delete/notice/{{$notice->id}}" method="post">
+                            @csrf
+                            <input type="submit" value="Smazat" class="btn btn-danger">
+                        </form>    
+                        @endif
+                        <div>
                         @endif
                         @endforeach
                     
@@ -58,13 +68,21 @@
                         </div>
                     @endif
                         
-                    @if (is_null($chats))
+                    @if (is_null($chats[0]))
                     <h3>There is nothing here</h3><br>    
                     @else
-                    @foreach ($chats as $chat)
+                    @foreach ($chats[0] as $chat)
                     @foreach ($users as $user)
                     @if ($user->id == $chat->user_id)
-                    <h3>{{$user->first_name}} {{$user->last_name}}</h3><h2>{{$chat->text}}</h2><img class="image" src="{{$chat->image}}"><br>    
+                    <h3>{{$user->first_name}} {{$user->last_name}}</h3>
+                    <div class="row justify-content-between"><h2>{{$chat->text}}</h2><img class="image" src="{{$chat->image}}"><br>
+                    @if ($profil === 'administrator' || $user->id === $current_user->id)
+                    <form action="su/delete/chat/{{$user->id}}" method="post">
+                        @csrf
+                        <input type="submit" value="Smazat" class="btn btn-danger">
+                    </form>
+                    @endif
+                </div>
                     @endif
                     @endforeach
                     @endforeach
@@ -73,7 +91,7 @@
                         @csrf
                         <label for="text">Zpráva</label>
                         <input type="text" name="text"><br>
-
+                        <input type="hidden" name="community_id" value="{{$community->id}}">
                         <label for="text">Odkaz na obrázek</label>
                         <input type="url" name="image">
 
@@ -131,7 +149,7 @@
                         <label for="user_id"></label>
                         <select name="user_id">
                             @foreach ($users as $user)
-                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>       {{-- Výběr z uživatelů --}}
+                                <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>       Výběr z uživatelů
                             @endforeach
                         </select><br>
                         
@@ -292,6 +310,7 @@
                         </div>
                     @endif
                         <p>{!!$rules!!}</p>
+                    @if ($profil === 'administrator')
                     <form action="/updatebuilding" method="post" enctype="multipart/form-data">
                         @csrf
                         <label for="file">Textový soubor pravidel domu</label>
@@ -299,6 +318,7 @@
                         <input type="hidden" name="id" value="{{$building}}"><br>
                         <input type="submit" value="Upload">
                     </form>
+                    @endif
                 </div>
             </div>
             @endif
