@@ -25072,7 +25072,11 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Chat section")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "chats"
   }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     onChange: handleCommunityIDChange,
@@ -25082,14 +25086,16 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: community.id
     }, community.community_name));
-  }))), chats.filter(function (chat) {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chats.filter(function (chat) {
     return chat.community_id === commun_id;
   }).map(function (chat) {
     var chatUser = users.filter(function (user) {
       return user.id === chat.user_id;
     });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
-  }));
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "chat__bubble b__left"
+    }, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
@@ -25113,9 +25119,13 @@ var DashboardCommonHouseNews = function DashboardCommonHouseNews(_ref) {
   var notices = _ref.notices;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__mid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news"), notices.map(function (notice) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "House news")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__body"
+  }, notices.map(function (notice) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Updated: ", notice.updated_at));
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonHouseNews);
