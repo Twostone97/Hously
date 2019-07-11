@@ -24814,131 +24814,47 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+/* harmony import */ var _admin_userReg_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/userReg.js */ "./resources/js/components/admin/userReg.js");
+/* harmony import */ var _admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/buildingReg.js */ "./resources/js/components/admin/buildingReg.js");
+/* harmony import */ var _admin_buildingInfo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin/buildingInfo.js */ "./resources/js/components/admin/buildingInfo.js");
+/* harmony import */ var _admin_UserList_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/UserList.js */ "./resources/js/components/admin/UserList.js");
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 var DashboardAdmin = function DashboardAdmin(_ref) {
-  var apidata = _ref.apidata,
-      isLoading = _ref.isLoading;
+  var apidata = _ref.apidata;
   console.log("hello kitty");
   console.log("apidata", apidata);
   console.log("residenlist", apidata.users);
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isSmlouvaNaDobuUrcitou = _useState2[0],
-      setisSmlouvaNaDobuUrcitou = _useState2[1];
-
-  var changeInput = function changeInput() {
-    setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
-  };
-
-  isSmlouvaNaDobuUrcitou ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    "for": "end_of_current_rent"
-  }, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "date",
-    name: "end_of_current_rent"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)) : console.log("funguju");
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item dash__admin"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: " page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    action: "/resident",
-    method: "post",
-    encType: "multipart/form-data"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "user_id"
-  }, apidata.users.map(function (user) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: user.id
-    }, "".concat(user.first_name) + " " + "".concat(user.last_name));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "flat_id"
-  }, apidata.flats.map(function (flat) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: flat.id
-    }, "patro: " + "".concat(flat.floor) + " \u010D\xEDslo bytu: " + "".concat(flat.number));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "building_id",
-    value: apidata.this_building.id
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek prvn\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "date",
-    name: "begining_of_first_rent"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "date",
-    name: "begining_of_current_rent"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "contract_id",
-    onChange: changeInput
-  }, apidata.rentcontracts.map(function (contract) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: contract.id
-    }, "typ: " + "".concat(contract.name));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), isSmlouvaNaDobuUrcitou && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    "for": "end_of_current_rent"
-  }, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "date",
-    name: "end_of_current_rent"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Information about house in work"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Some data about the house in work")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_userReg_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    apidata: apidata
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: " page__main__dash__item i__big"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: " page__main__dash__item i__big"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingInfo_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    data: apidata.this_building,
+    owners: apidata.owners,
+    users: apidata.users,
+    flats: apidata.flats,
+    residents: apidata.residents
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: " page__main__dash__item i__big"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_UserList_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    residents: apidata.residents,
+    users: apidata.users,
+    flats: apidata.flats
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__small"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Important files"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Here will be a list of files"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardAdmin);
-{
-  /* // <form action="/resident" method="post" enctype="multipart/form-data">   {{-- Formulář pro registraci obyvatele       Zpracovává ResidentController@store --}}
-  // @csrf
-  // <label for="user_id"></label>
-  // <select name="user_id">
-  //     @foreach ($users as $user)
-  //         <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>       {{-- Výběr z uživatelů --}}
-  //     @endforeach
-  // </select><br>
-  // <label for="flat_id"></label>
-  // <select name="flat_id">
-  //     @foreach ($flats as $flat)
-  //     @if ($flat->residential == 1)
-  //     <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->number}}</option>       {{-- Výběr z bytových jednotek --}}
-  //     @endif
-  //     @endforeach
-  // </select><br>
-  // <input type="hidden" name="building_id" value="{{$building}}">
-  // <label for="begining_of_first_rent">Začátek prvního nájemního obdobý</label>
-  // <input type="date" name="begining_of_first_rent"><br>
-  // <label for="begining_of_current_rent">Začátek aktuálního nájemního obdobý</label>
-  // <input type="date" name="begining_of_current_rent"><br>
-  // <label for="contract_id">Smlouva</label>
-  // <select name="contract_id">
-  //     @foreach ($rentcontracts as $contract)
-  //         <option value="{{$contract->id}}">{{$contract->name}}</option>
-  //     @endforeach
-  // </select><br>
-  // {{-- @if ($contract == 2) --}}  {{-- If bude v reaktu --}}
-  // <label for="end_of_current_rent">Konec aktuálního nájemního obdobý</label>
-  // <input type="date" name="end_of_current_rent"><br>
-  // {{-- @endif --}}
-  
-  
-  // <label for="number_of_residents">Počet osob</label>
-  // <input type="number" name="number_of_residents"><br>
-  // <label for="rental">Nájemné (kč)</label>
-  // <input type="number" name="rental"><br>
-  // <label for="file">Nájemní smlouva</label>
-  // <input type="file" name="file"><br>
-  // <input type="submit" value="Registrovat">
-  // </form> */
-}
 
 /***/ }),
 
@@ -25197,6 +25113,231 @@ var DashboardCommonUserInfo = function DashboardCommonUserInfo(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonUserInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/UserList.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/admin/UserList.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var UserList = function UserList(_ref) {
+  var residents = _ref.residents,
+      users = _ref.users,
+      flats = _ref.flats;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Databaze obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, residents.map(function (resident) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Name: " + "".concat(users[resident.user_id - 1].first_name) + " " + "".concat(users[resident.user_id - 1].last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, flats.map(function (flat) {
+      if (flat.id == resident.flat_id) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Flat number:" + "".concat(flat.number));
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Contact: " + "".concat(users[resident.user_id - 1].email)));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserList);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/buildingInfo.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/admin/buildingInfo.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var BuildingInfo = function BuildingInfo(_ref) {
+  var data = _ref.data,
+      owners = _ref.owners,
+      users = _ref.users,
+      flats = _ref.flats,
+      residents = _ref.residents;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tato budova")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Polo\u017Eka"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Hodnota")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "M\u011Bsto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, data.city)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ulice"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, data.street)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u010C\xEDslo popisn\xE9"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, data.house_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Po\u010Det podla\u017E\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " nadzemni: " + "".concat(data.floors_above_ground) + " podzemni: " + "".concat(data.floors_bellow_ground))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Vyt\xE1p\u011Bn\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, data.heating ? "ano" : "ne")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "V\xFDtah"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, data.elevator, " (kr\xE1t)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Vlastn\xEDk"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "".concat(users[owners[0].user_id - 1].first_name) + " " + "".concat(users[owners[0].user_id - 1].last_name))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Bytov\xE9 jednotky")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, flats.map(function (flat) {
+    if (flat.residential) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Patro: ", flat.floor), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u010C\xEDslo bytu: ", flat.number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Obyvatel:", residents.map(function (resident) {
+        if (resident.flat_id == flat.id) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "".concat(users[resident.user_id - 1].first_name) + " " + "".concat(users[resident.user_id - 1].last_name));
+        }
+      }))));
+    }
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nebytov\xE9 jednotky")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, flats.map(function (flat) {
+    if (!flat.residential) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Patro: ", flat.floor), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u010C\xEDslo jednotky:", " ", flat.number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "U\u017Eivatel:", residents.map(function (resident) {
+        if (resident.flat_id == flat.id) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "".concat(users[resident.user_id - 1].first_name) + " " + "".concat(users[resident.user_id - 1].last_name));
+        }
+      }))));
+    }
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BuildingInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/buildingReg.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/admin/buildingReg.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var BuildingReg = function BuildingReg() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace budov"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "/building",
+    method: "post",
+    encType: "multipart/form-data"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "M\u011Bsto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "city"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ulice"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "street"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "\u010C\xEDslo popisn\xE9"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "house_number"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u0161tovn\xED sm\u011Brovac\xED \u010D\xEDslo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "postal"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Datum v\xFDstavby"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "construction_date"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det nadzemn\xEDch pater"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "floors_above_ground"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det nadzemn\xEDch pater"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "floors_bellow_ground"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Vyt\xE1p\u011Bn\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "heating"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Plyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "gas"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "V\xFDtah(po\u010Det)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "elevator"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Textov\xFD soubor pravidel domu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "file",
+    name: "file"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Registrovat"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BuildingReg);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/userReg.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/admin/userReg.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var UserReg = function UserReg(_ref) {
+  var apidata = _ref.apidata;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isSmlouvaNaDobuUrcitou = _useState2[0],
+      setisSmlouvaNaDobuUrcitou = _useState2[1];
+
+  var changeInput = function changeInput() {
+    setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "/resident",
+    method: "post",
+    encType: "multipart/form-data"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "user_id"
+  }, apidata.users.map(function (user) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: user.id
+    }, "".concat(user.first_name) + " " + "".concat(user.last_name));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "flat_id"
+  }, apidata.flats.map(function (flat) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: flat.id
+    }, "patro: " + "".concat(flat.floor) + " \u010D\xEDslo bytu: " + "".concat(flat.number));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "building_id",
+    value: apidata.this_building.id
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek prvn\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "begining_of_first_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "begining_of_current_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "contract_id",
+    onChange: changeInput
+  }, apidata.rentcontracts.map(function (contract) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: contract.id
+    }, "typ: " + "".concat(contract.name));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), isSmlouvaNaDobuUrcitou && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "end_of_current_rent"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det osob"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "number_of_residents"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "N\xE1jemn\xE9 (k\u010D)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "rental"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "N\xE1jemn\xED smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "file",
+    name: "file"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Registrovat"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserReg);
 
 /***/ }),
 
