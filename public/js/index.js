@@ -25101,6 +25101,14 @@ var BuildingReg = function BuildingReg() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -25119,20 +25127,28 @@ var UserReg = function UserReg(_ref) {
       isSmlouvaNaDobuUrcitou = _useState2[0],
       setisSmlouvaNaDobuUrcitou = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      submit = _useState4[0],
-      setSubmit = _useState4[1];
+  var body = {};
 
   var changeInput = function changeInput() {
     setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
   };
 
   var handleSubmit = function handleSubmit(e) {
+    var _console;
+
     e.preventDefault();
-    setSubmit(e.target.value);
-    console.log("input", e.target.value);
-    console.log("submit", submit);
+    body = e.target.value;
+    var data = new FormData(e.target);
+    console.log("data", e);
+
+    (_console = console).log.apply(_console, ["body"].concat(_toConsumableArray(data)));
+
+    var correctedData = _toConsumableArray(data);
+
+    fetch("/resident", {
+      method: "post",
+      body: correctedData
+    });
   };
 
   var metaList = document.querySelectorAll("meta");
@@ -25145,13 +25161,14 @@ var UserReg = function UserReg(_ref) {
     console.log("token", token);
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    action: "/resident",
-    method: "post",
+    // action="/resident"
+    // method="post"
     encType: "multipart/form-data",
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "hidden",
-    name: "csrf-token"
+    name: "_token",
+    value: token
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "user_id"
   }, apidata.users.map(function (user) {
