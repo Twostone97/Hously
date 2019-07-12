@@ -368,7 +368,7 @@
 
             @if ($profil == 'superuser')
             <nav class="navigace">
-            <div class="row justify-content-between">
+            <div class="col justify-content-between">
                 <a href="#users">Uživatelé</a>
                 <a href="#buildings">Budovy</a>
                 <a href="#owners">Vlastníci</a>
@@ -440,7 +440,7 @@
 
                                     <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                         </form>
-                        <form action="su/delete/user/{{$user->id}}" method="post">
+                        <form action="su/delete/user/{{$user->id}}" method="post">          {{-- tlačítko na smazání --}}
                             @csrf
                             <input type="submit" value="Smazat" class="btn btn-danger">
                         </form>
@@ -560,8 +560,9 @@
                             <div class="row justify-content-around">
 
                             <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
+                            <div class="row justify-content-right"><a href="/home/building/{{$building->id}}" class="btn btn-primary">Budova</a></div>
                         </form>
-                        <form action="su/delete/building/{{$building->id}}" method="post">
+                        <form action="su/delete/building/{{$building->id}}" method="post"> {{-- tlačítko na smazání --}}
                             @csrf
                             <input type="submit" value="Smazat" class="btn btn-danger">
                         </form>
@@ -636,7 +637,7 @@
 
                                 <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                     </form>
-                    <form action="su/delete/owner/{{$owner->id}}" method="post">
+                    <form action="su/delete/owner/{{$owner->id}}" method="post">        {{-- tlačítko na smazání --}}
                         @csrf
                         <input type="submit" value="Smazat" class="btn btn-danger">
                     </form>

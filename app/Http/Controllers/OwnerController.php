@@ -61,7 +61,7 @@ class OwnerController extends Controller
      * @param  \App\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Owner $owner, $id)
+    public function edit(Owner $owner, $id, Request $request)
     {
         DB::table('owners')
         ->where('id', $id)

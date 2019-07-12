@@ -11303,6 +11303,23 @@ footer {
   font-size: 1.5rem;
 }
 
+.navigace {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7vw;
+  height: 100vh;
+  background-color: #00000050;
+}
+
+.navigace a {
+  color: white;
+}
+
+.navigace .card {
+  margin: 20px;
+}
+
 .div_1 {
   -webkit-flex: 0 0 33%;
           flex: 0 0 33%;

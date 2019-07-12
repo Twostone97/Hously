@@ -36,11 +36,17 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $flat = new Flat;
         $flat->building_id = $request->building_id;
         $flat->floor = $request->floor;
-        $flat->number = $last;
-        $resident->save();
+        $flat->number = $request->number;
+        $flat->residential = $request->residential;
+        $flat->save();
+
+        $id = $request->building_id;
+        return redirect(action('HomeController@bedit', compact("id")));
     }
     /**
      * Display the specified resource.
@@ -59,9 +65,17 @@ class FlatController extends Controller
      * @param  \App\Flat  $flat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Flat $flat)
+    public function edit(Request $request, Flat $flat, $id)
     {
-        //
+        DB::table('flats')
+        ->where('id', $id)
+        ->update([
+            'number' => $request->number,
+            'floor' => $request->floor,
+            'residential' => $request->residential,]);
+        
+            $id = $request->building_id;
+            return redirect(action('HomeController@bedit', compact("id")));
     }
 
     /**
@@ -71,7 +85,7 @@ class FlatController extends Controller
      * @param  \App\Flat  $flat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Flat $flat)
+    public function update(Request $request, Flat $flat, $id)
     {
         //
     }
@@ -82,8 +96,13 @@ class FlatController extends Controller
      * @param  \App\Flat  $flat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Flat $flat)
+    public function destroy(Flat $flat, $id, Request $request)
     {
-        //
+        DB::table('flats')
+        ->where('id', $id)
+        ->delete();
+
+        $id = $request->building_id;
+        return redirect(action('HomeController@bedit', compact("id")));
     }
 }
