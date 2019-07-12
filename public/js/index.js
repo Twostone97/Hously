@@ -25685,8 +25685,13 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\js\index.js */"./resources/js/index.js");
 module.exports = __webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\Bootcamp\Hously\resources\js\index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> master
 
 
 /***/ })

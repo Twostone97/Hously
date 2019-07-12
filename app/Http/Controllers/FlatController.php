@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Flat;
+use DB;
 use Illuminate\Http\Request;
 
 class FlatController extends Controller
@@ -35,9 +36,12 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $flat = new Flat;
+        $flat->building_id = $request->building_id;
+        $flat->floor = $request->floor;
+        $flat->number = $last;
+        $resident->save();
     }
-
     /**
      * Display the specified resource.
      *

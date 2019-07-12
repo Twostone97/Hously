@@ -33,6 +33,7 @@ Route::get('/api', 'HomeController@api');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}', 'HomeController@index');
 Route::get('/test', 'HomeController@reacttest');
 
 Route::post('/notice', 'NoticeController@store');
@@ -41,6 +42,7 @@ Route::post('/resident', 'ResidentController@store');
 Route::post('/owner', 'OwnerController@store');
 Route::post('/admin', 'AdministratorController@store');
 Route::post('/building', 'BuildingController@store');
+Route::post('/flat', 'FlatController@store');
 Route::post('/user', 'HomeController@store');
 
 Route::post('/updatebuilding', 'BuildingController@update');

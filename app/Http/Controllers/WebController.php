@@ -29,7 +29,12 @@ class WebController extends Controller
     }
 
     public function houses() {
-        return view ('/pages/houses'); //oficiální mapa s funkčnímy odkazy a seznamem domů
+        $allbuildings   = DB::table('buildings')->get();
+        $allflats       = DB::table('flats')->get();
+        $allowners      = DB::table('owners')->get();
+        $allusers      = DB::table('users')->get();
+        $allresidents   = DB::table('residents')->get();
+        return view ('/pages/houses', compact("allbuildings", "allflats", "allowners", "allusers", "allresidents")); //oficiální mapa s funkčnímy odkazy a seznamem domů
     }
   
       
