@@ -33,7 +33,6 @@ Route::get('/api', 'HomeController@api');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/{id}', 'HomeController@index');
 Route::get('/test', 'HomeController@reacttest');
 
 Route::post('/notice', 'NoticeController@store');
