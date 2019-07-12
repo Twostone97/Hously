@@ -256,4 +256,16 @@ class HomeController extends Controller
             ->delete();
             return redirect(action('HomeController@index'));
     }
+
+    public function bedit ($id)
+    {
+            $flats          = DB::table('flats')->where('building_id', '=', $id)->get();
+            $last_flat_number = DB::table('flats')->where('building_id', '=', $id)->orderBy("number", "desc")->value('number');
+            $building  = DB::table('buildings')->where('id', '=', $id)->first();
+            $residents      = DB::table('residents')->where('building_id', '=', $id)->get();
+            $users          = DB::table('users')->get();
+            $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
+            $profil = 'superuser';
+            return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts'));
+    }
 }

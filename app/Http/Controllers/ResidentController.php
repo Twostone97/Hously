@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Resident;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -87,9 +88,14 @@ class ResidentController extends Controller
      * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resident $resident)
+    public function update(Request $request, Resident $resident, $resident_id, $user_id)
     {
-        //
+        DB::table('residents')
+        ->where('id', $resident_id)
+        ->update([
+            'user_id' => $request->user_id,
+            'building_id' => $request->building_id,]);
+        return redirect(action('WebController@'));
     }
 
     /**

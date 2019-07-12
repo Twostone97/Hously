@@ -61,7 +61,7 @@ class AdministratorController extends Controller
      * @param  \App\Administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function edit(Administrator $administrator)
+    public function edit(Administrator $administrator, Request $request)
     {
         DB::table('administrators')
         ->where('id', $id)

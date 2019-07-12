@@ -46,10 +46,10 @@
                     <a class="nav-link" href="about">About Hously <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="flats">Available Appartments</a>
+                    <a class="nav-link" href="#">Available Appartments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Involved Houses</a>
+                    <a class="nav-link" href="/houses">Involved Houses</a>
                 </li>
                 </ul>
                 <div class="navbar-text">
