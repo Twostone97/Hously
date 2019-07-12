@@ -48,7 +48,7 @@ class ResidentController extends Controller
         $resident->begining_of_first_rent = $request->begining_of_first_rent;
         $resident->begining_of_current_rent = $request->begining_of_current_rent;
         $resident->contract_id = $request->contract_id;
-        $resident->end_of_current_rent = $request->end_of_current_rent;
+        $resident->end_of_current_rent = $request->end_of_current_rent == "null" ? null : $request->end_of_current_rent;
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
         $resident->file = $request->file('file')->storeAs(

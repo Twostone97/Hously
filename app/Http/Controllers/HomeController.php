@@ -88,6 +88,7 @@ class HomeController extends Controller
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
+            $last_flat_number = DB::table('flats')->where("building_id", "=", $building)->orderBy("number", 'desc')->first();
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
