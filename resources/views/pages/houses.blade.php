@@ -11,6 +11,6 @@
         </div>
     </div>
 </section>
-</main>
 <script src="/js/mapa.js"></script> 
+</main>
 @endsection
