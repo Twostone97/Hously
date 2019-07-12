@@ -16,7 +16,13 @@ const DashboardAdmin = ({ apidata }) => {
                     <UserReg apidata={apidata} />
                 </div>
                 <div className=" page__main__dash__item i__big">
-                    <BuildingReg />
+                    <BuildingReg
+                        data={apidata.this_building}
+                        owners={apidata.owners}
+                        users={apidata.users}
+                        flats={apidata.flats}
+                        residents={apidata.residents}
+                    />
                 </div>
                 <div className=" page__main__dash__item i__big">
                     <BuildingInfo

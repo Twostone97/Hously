@@ -1,10 +1,10 @@
 import React from "react";
-const BuildingReg = () => {
+const BuildingReg = (data, owners, users, flats, residents) => {
     return (
         <>
             <div className="page__main__dash__item i__full">
                 <div className="page__main__dash__item__head">
-                    <h3>Registrace budov</h3>
+                    <h3>Uprava budov</h3>
                 </div>
                 <div className="page__main__dash__item__body">
                     <form
@@ -12,17 +12,22 @@ const BuildingReg = () => {
                         method="post"
                         encType="multipart/form-data"
                     >
-                        <label forHtml="city">
+                        <label>
                             City:
-                            <input type="text" name="city" id="name" />
+                            <input
+                                type="text"
+                                name="city"
+                                id="name"
+                                value={data.city}
+                            />
                         </label>
                         <br />
-                        <label forHtml="street">
+                        <label>
                             Street
                             <input type="text" name="street" id="street" />
                         </label>
                         <br />
-                        <label forHtml="house_number">
+                        <label>
                             House number
                             <input
                                 type="number"
@@ -31,7 +36,7 @@ const BuildingReg = () => {
                             />
                         </label>
                         <br />
-                        <label forHtml="postal">
+                        <label>
                             Post Code
                             <input type="number" name="postal" id="postal" />
                         </label>

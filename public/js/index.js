@@ -24835,7 +24835,13 @@ var DashboardAdmin = function DashboardAdmin(_ref) {
     apidata: apidata
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: " page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    data: apidata.this_building,
+    owners: apidata.owners,
+    users: apidata.users,
+    flats: apidata.flats,
+    residents: apidata.residents
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: " page__main__dash__item i__big"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingInfo_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
     data: apidata.this_building,
@@ -25055,38 +25061,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var BuildingReg = function BuildingReg() {
+var BuildingReg = function BuildingReg(data, owners, users, flats, residents) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item i__full"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Registrace budov")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Uprava budov")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "page__main__dash__item__body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     action: "/building",
     method: "post",
     encType: "multipart/form-data"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    forHtml: "city"
-  }, "City:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "City:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     name: "city",
-    id: "name"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    forHtml: "street"
-  }, "Street", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    id: "name",
+    value: data.city
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Street", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     name: "street",
     id: "street"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    forHtml: "house_number"
-  }, "House number", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "House number", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     name: "house_number",
     id: "house_number"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    forHtml: "postal"
-  }, "Post Code", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Post Code", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     name: "postal",
     id: "postal"
@@ -25132,14 +25131,6 @@ var BuildingReg = function BuildingReg() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -25153,41 +25144,143 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var UserReg = function UserReg(_ref) {
   var apidata = _ref.apidata;
 
+  // list of states*****************
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isSmlouvaNaDobuUrcitou = _useState2[0],
       setisSmlouvaNaDobuUrcitou = _useState2[1];
 
-  var body = {};
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      user_id = _useState4[0],
+      setUser_id = _useState4[1];
 
-  var changeInput = function changeInput() {
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      flat_id = _useState6[0],
+      setFlat_id = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      begining_of_first_rent = _useState8[0],
+      setBegining_of_first_rent = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(begining_of_first_rent),
+      _useState10 = _slicedToArray(_useState9, 2),
+      begining_of_current_rent = _useState10[0],
+      setBegining_of_current_rent = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(begining_of_first_rent),
+      _useState12 = _slicedToArray(_useState11, 2),
+      end_of_current_rent = _useState12[0],
+      SetEnd_of_current_rent = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState14 = _slicedToArray(_useState13, 2),
+      number_of_residents = _useState14[0],
+      SetNumber_of_residents = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState16 = _slicedToArray(_useState15, 2),
+      rental = _useState16[0],
+      setRental = _useState16[1];
+
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState18 = _slicedToArray(_useState17, 2),
+      file = _useState18[0],
+      setFile = _useState18[1];
+
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(apidata.rentcontracts[0].id),
+      _useState20 = _slicedToArray(_useState19, 2),
+      contract_id = _useState20[0],
+      setContract_id = _useState20[1]; // ******************************-
+  // nastaveni states
+
+
+  var changeInput = function changeInput(e) {
+    setContract_id(e.target.value);
     setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
   };
 
+  var handleUser_id = function handleUser_id(e) {
+    setUser_id(e.target.value);
+  };
+
+  var handleFlat_id = function handleFlat_id(e) {
+    setFlat_id(e.target.value);
+  };
+
+  var handleBegining_of_first_rent = function handleBegining_of_first_rent(e) {
+    setBegining_of_first_rent(e.target.value);
+    !begining_of_current_rent && setBegining_of_current_rent(e.target.value);
+  };
+
+  var handleBegining_of_current_rent = function handleBegining_of_current_rent(e) {
+    setBegining_of_current_rent(e.target.value);
+  };
+
+  var handleEnd_of_current_rent = function handleEnd_of_current_rent(e) {
+    SetEnd_of_current_rent(e.target.value);
+  };
+
+  var handleNumber_of_residents = function handleNumber_of_residents(e) {
+    SetNumber_of_residents(e.target.value);
+  };
+
+  var handleRental = function handleRental(e) {
+    setRental(e.target.value);
+  };
+
+  var handleFile = function handleFile(e) {
+    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
+  };
+
+  console.log("date", begining_of_first_rent); // ***********************************************
+
   var handleSubmit = function handleSubmit(e) {
-    var _console;
-
     e.preventDefault();
-    var data = new FormData(e.target);
-    console.log("data", e);
+    var data = new FormData();
+    data.append("_token", _token);
+    data.append("user_id", user_id);
+    data.append("flat_id", flat_id);
+    data.append("contract_id", contract_id);
+    data.append("building_id", apidata.this_building.id);
+    data.append("begining_of_first_rent", begining_of_first_rent);
+    data.append("begining_of_current_rent", begining_of_current_rent);
+    data.append("end_of_current_rent", end_of_current_rent);
+    data.append("number_of_residents", number_of_residents);
+    data.append("rental", rental);
+    data.append("file", file); // const data = {
+    //     _token,
+    //     user_id,
+    //     flat_id,
+    //     begining_of_first_rent,
+    //     begining_of_current_rent,
+    //     end_of_current_rent,
+    //     number_of_residents,
+    //     rental,
+    //     file
+    // };
 
-    (_console = console).log.apply(_console, ["body"].concat(_toConsumableArray(data)));
-
+    console.log("body", data.values());
     fetch("/resident", {
       method: "post",
+      // headers: {
+      //     "Content-Type": "application/json"
+      //     // 'Content-Type': 'application/x-www-form-urlencoded',
+      // },
       body: data
     });
   }; // token
 
 
   var metaList = document.querySelectorAll("meta");
-  var token = "";
+  var _token = "";
   metaList.forEach(function (meta) {
     if (meta.name == "csrf-token") {
-      token = meta.content;
+      _token = meta.content;
     }
-
-    console.log("token", token);
   }); // ***************************-
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -25195,32 +25288,32 @@ var UserReg = function UserReg(_ref) {
     // method="post"
     encType: "multipart/form-data",
     onSubmit: handleSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "_token",
-    value: token
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "user_id"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "user_id",
+    onChange: handleUser_id,
+    value: user_id
   }, apidata.users.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: user.id
     }, "".concat(user.first_name) + " " + "".concat(user.last_name));
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Flat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    name: "flat_id"
+    name: "flat_id",
+    onChange: handleFlat_id,
+    value: flat_id
   }, apidata.flats.map(function (flat) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: flat.id
     }, "patro: " + "".concat(flat.floor) + " \u010D\xEDslo bytu: " + "".concat(flat.number));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "building_id",
-    value: apidata.this_building.id
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek prvn\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek prvn\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
-    name: "begining_of_first_rent"
+    name: "begining_of_first_rent",
+    onChange: handleBegining_of_first_rent,
+    value: begining_of_first_rent
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Za\u010D\xE1tek aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
-    name: "begining_of_current_rent"
+    name: "begining_of_current_rent",
+    onChange: handleBegining_of_current_rent,
+    value: begining_of_current_rent
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "contract_id",
     onChange: changeInput
@@ -25230,16 +25323,23 @@ var UserReg = function UserReg(_ref) {
     }, "typ: " + "".concat(contract.name));
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), isSmlouvaNaDobuUrcitou && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xFD"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
-    name: "end_of_current_rent"
+    name: "end_of_current_rent",
+    onChange: handleEnd_of_current_rent,
+    value: end_of_current_rent
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det osob"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
-    name: "number_of_residents"
+    name: "number_of_residents",
+    onChange: handleNumber_of_residents,
+    value: number_of_residents
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "N\xE1jemn\xE9 (k\u010D)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
-    name: "rental"
+    name: "rental",
+    onChange: handleRental,
+    value: rental
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "N\xE1jemn\xED smlouva"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "file",
-    name: "file"
+    name: "file",
+    onChange: handleFile
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
     value: "Registrovat"
@@ -25585,8 +25685,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\index.js */"./resources/js/index.js");
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\js\index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\hously\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

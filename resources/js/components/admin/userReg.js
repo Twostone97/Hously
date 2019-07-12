@@ -1,32 +1,105 @@
 import React, { useState, useEffect } from "react";
 
 const UserReg = ({ apidata }) => {
+    // list of states*****************
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
-    let body = {};
+    const [user_id, setUser_id] = useState(null);
+    const [flat_id, setFlat_id] = useState(null);
+    const [begining_of_first_rent, setBegining_of_first_rent] = useState(null);
+    const [begining_of_current_rent, setBegining_of_current_rent] = useState(
+        begining_of_first_rent
+    );
+    const [end_of_current_rent, SetEnd_of_current_rent] = useState(
+        begining_of_first_rent
+    );
+    const [number_of_residents, SetNumber_of_residents] = useState(0);
+    const [rental, setRental] = useState(0);
+    const [file, setFile] = useState(null);
+    const [contract_id, setContract_id] = useState(apidata.rentcontracts[0].id);
 
-    const changeInput = () => {
+    // ******************************-
+    // nastaveni states
+
+    const changeInput = e => {
+        setContract_id(e.target.value);
         setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
     };
+    const handleUser_id = e => {
+        setUser_id(e.target.value);
+    };
+    const handleFlat_id = e => {
+        setFlat_id(e.target.value);
+    };
+    const handleBegining_of_first_rent = e => {
+        setBegining_of_first_rent(e.target.value);
+        !begining_of_current_rent &&
+            setBegining_of_current_rent(e.target.value);
+    };
+    const handleBegining_of_current_rent = e => {
+        setBegining_of_current_rent(e.target.value);
+    };
+    const handleEnd_of_current_rent = e => {
+        SetEnd_of_current_rent(e.target.value);
+    };
+    const handleNumber_of_residents = e => {
+        SetNumber_of_residents(e.target.value);
+    };
+    const handleRental = e => {
+        setRental(e.target.value);
+    };
+    const handleFile = e => {
+        console.log(e.target.files[0]);
+        setFile(e.target.files[0]);
+    };
+    console.log("date", begining_of_first_rent);
+    // ***********************************************
+
     const handleSubmit = e => {
         e.preventDefault();
+        let data = new FormData();
+        data.append("_token", _token);
+        data.append("user_id", user_id);
+        data.append("flat_id", flat_id);
+        data.append("contract_id", contract_id);
+        data.append("building_id", apidata.this_building.id);
+        data.append("begining_of_first_rent", begining_of_first_rent);
+        data.append("begining_of_current_rent", begining_of_current_rent);
+        data.append("end_of_current_rent", end_of_current_rent);
+        data.append("number_of_residents", number_of_residents);
+        data.append("rental", rental);
 
-        const data = new FormData(e.target);
-        console.log("data", e);
-        console.log("body", ...data);
+        data.append("file", file);
+
+        // const data = {
+        //     _token,
+        //     user_id,
+        //     flat_id,
+        //     begining_of_first_rent,
+        //     begining_of_current_rent,
+        //     end_of_current_rent,
+        //     number_of_residents,
+        //     rental,
+        //     file
+        // };
+
+        console.log("body", data.values());
 
         fetch("/resident", {
             method: "post",
+            // headers: {
+            //     "Content-Type": "application/json"
+            //     // 'Content-Type': 'application/x-www-form-urlencoded',
+            // },
             body: data
         });
     };
     // token
     const metaList = document.querySelectorAll("meta");
-    let token = "";
+    let _token = "";
     metaList.forEach(meta => {
         if (meta.name == "csrf-token") {
-            token = meta.content;
+            _token = meta.content;
         }
-        console.log("token", token);
     });
     // ***************************-
     return (
@@ -39,9 +112,14 @@ const UserReg = ({ apidata }) => {
                 encType="multipart/form-data"
                 onSubmit={handleSubmit}
             >
-                <input type="hidden" name="_token" value={token} />
+                {/* <input
+                    type="hidden"
+                    name="_token"
+                    onChange={handleToken}
+                    value={_token}
+                /> */}
                 <label>Name</label>
-                <select name="user_id">
+                <select name="user_id" onChange={handleUser_id} value={user_id}>
                     {apidata.users.map(user => {
                         return (
                             <option value={user.id}>
@@ -54,7 +132,7 @@ const UserReg = ({ apidata }) => {
                 </select>
                 <br />
                 <label>Flat</label>
-                <select name="flat_id">
+                <select name="flat_id" onChange={handleFlat_id} value={flat_id}>
                     {apidata.flats.map(flat => {
                         return (
                             <option value={flat.id}>
@@ -67,18 +145,28 @@ const UserReg = ({ apidata }) => {
                     })}
                 </select>
                 <br />
-                <input
+                {/* <input
                     type="hidden"
                     name="building_id"
                     value={apidata.this_building.id}
-                />
+                /> */}
 
                 <label>Začátek prvního nájemního období</label>
-                <input type="date" name="begining_of_first_rent" />
+                <input
+                    type="date"
+                    name="begining_of_first_rent"
+                    onChange={handleBegining_of_first_rent}
+                    value={begining_of_first_rent}
+                />
                 <br />
 
                 <label>Začátek aktuálního nájemního období</label>
-                <input type="date" name="begining_of_current_rent" />
+                <input
+                    type="date"
+                    name="begining_of_current_rent"
+                    onChange={handleBegining_of_current_rent}
+                    value={begining_of_current_rent}
+                />
                 <br />
 
                 <label>Smlouva</label>
@@ -96,20 +184,35 @@ const UserReg = ({ apidata }) => {
                 {isSmlouvaNaDobuUrcitou && (
                     <>
                         <label>Konec aktuálního nájemního obdobý</label>
-                        <input type="date" name="end_of_current_rent" />
+                        <input
+                            type="date"
+                            name="end_of_current_rent"
+                            onChange={handleEnd_of_current_rent}
+                            value={end_of_current_rent}
+                        />
                         <br />
                     </>
                 )}
 
                 <label>Počet osob</label>
-                <input type="number" name="number_of_residents" />
+                <input
+                    type="number"
+                    name="number_of_residents"
+                    onChange={handleNumber_of_residents}
+                    value={number_of_residents}
+                />
 
                 <label>Nájemné (kč)</label>
-                <input type="number" name="rental" />
+                <input
+                    type="number"
+                    name="rental"
+                    onChange={handleRental}
+                    value={rental}
+                />
                 <br />
 
                 <label>Nájemní smlouva</label>
-                <input type="file" name="file" />
+                <input type="file" name="file" onChange={handleFile} />
                 <br />
 
                 <input type="submit" value="Registrovat" />
