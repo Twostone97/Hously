@@ -129,9 +129,10 @@ class HomeController extends Controller
             $allowners      = DB::table('owners')->get();
             $alladmins      = DB::table('administrators')->get();
             $allbuildings   = DB::table('buildings')->get();
+            $allflats       = DB::table('flats')->get();
         }
         
-        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community'));
+        return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community', 'allflats'));
     }
 
     public function api()

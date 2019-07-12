@@ -24816,7 +24816,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _admin_userReg_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/userReg.js */ "./resources/js/components/admin/userReg.js");
 /* harmony import */ var _admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/buildingReg.js */ "./resources/js/components/admin/buildingReg.js");
-/* harmony import */ var _admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _admin_buildingInfo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin/buildingInfo.js */ "./resources/js/components/admin/buildingInfo.js");
 /* harmony import */ var _admin_UserList_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/UserList.js */ "./resources/js/components/admin/UserList.js");
 
@@ -24836,7 +24835,7 @@ var DashboardAdmin = function DashboardAdmin(_ref) {
     apidata: apidata
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: " page__main__dash__item i__big"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingReg_js__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: " page__main__dash__item i__big"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_buildingInfo_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
     data: apidata.this_building,
@@ -25047,10 +25046,78 @@ var BuildingInfo = function BuildingInfo(_ref) {
 /*!******************************************************!*\
   !*** ./resources/js/components/admin/buildingReg.js ***!
   \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\Bootcamp\\Hously\\resources\\js\\components\\admin\\buildingReg.js: Unexpected token (67:1)\n\n\u001b[0m \u001b[90m 65 | \u001b[39m                        \u001b[33m<\u001b[39m\u001b[33mbr\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 66 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 67 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 68 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mlabel\u001b[39m\u001b[33m>\u001b[39m\u001b[33mVytápění\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mlabel\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 69 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m\"checkbox\"\u001b[39m name\u001b[33m=\u001b[39m\u001b[32m\"heating\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 70 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mbr\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n    at Object.raise (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:6344:17)\n    at Object.unexpected (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:7659:16)\n    at Object.jsxParseIdentifier (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3377:12)\n    at Object.jsxParseNamespacedName (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3387:23)\n    at Object.jsxParseElementName (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3398:21)\n    at Object.jsxParseOpeningElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3480:22)\n    at Object.jsxParseElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3513:33)\n    at Object.jsxParseElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElementAt (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3529:32)\n    at Object.jsxParseElement (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3587:17)\n    at Object.parseExprAtom (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3594:19)\n    at Object.parseExprSubscripts (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8413:23)\n    at Object.parseMaybeUnary (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8393:21)\n    at Object.parseExprOps (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8280:23)\n    at Object.parseMaybeConditional (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8253:23)\n    at Object.parseMaybeAssign (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8200:21)\n    at Object.parseParenAndDistinguishExpression (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8963:28)\n    at Object.parseExprAtom (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8760:21)\n    at Object.parseExprAtom (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:3599:20)\n    at Object.parseExprSubscripts (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8413:23)\n    at Object.parseMaybeUnary (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8393:21)\n    at Object.parseExprOps (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8280:23)\n    at Object.parseMaybeConditional (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8253:23)\n    at Object.parseMaybeAssign (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8200:21)\n    at Object.parseExpression (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8148:23)\n    at Object.parseReturnStatement (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:10157:28)\n    at Object.parseStatementContent (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:9836:21)\n    at Object.parseStatement (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:9788:17)\n    at Object.parseBlockOrModuleBlockBody (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:10364:25)\n    at Object.parseBlockBody (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:10351:10)\n    at Object.parseBlock (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:10335:10)\n    at Object.parseFunctionBody (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:9408:24)\n    at Object.parseArrowExpression (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:9349:10)\n    at Object.parseParenAndDistinguishExpression (D:\\Bootcamp\\Hously\\node_modules\\@babel\\parser\\lib\\index.js:8986:12)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var BuildingReg = function BuildingReg() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item i__full"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Registrace budov")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "page__main__dash__item__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "/building",
+    method: "post",
+    encType: "multipart/form-data"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    forHtml: "city"
+  }, "City:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "city",
+    id: "name"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    forHtml: "street"
+  }, "Street", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "street",
+    id: "street"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    forHtml: "house_number"
+  }, "House number", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "house_number",
+    id: "house_number"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    forHtml: "postal"
+  }, "Post Code", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "postal",
+    id: "postal"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Datum v\xFDstavby"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "construction_date"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det nadzemn\xEDch pater"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "floors_above_ground"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Po\u010Det nadzemn\xEDch pater"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "floors_bellow_ground"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Vyt\xE1p\u011Bn\xED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "heating"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Plyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "gas"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "V\xFDtah(po\u010Det)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "elevator"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Textov\xFD soubor pravidel domu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "file",
+    name: "file"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Registrovat"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BuildingReg);
 
 /***/ }),
 
@@ -25101,31 +25168,17 @@ var UserReg = function UserReg(_ref) {
     var _console;
 
     e.preventDefault();
-<<<<<<< HEAD
-    body = e.target.value;
-=======
->>>>>>> d131ec367a8e230a546242dec80e6c2654227038
     var data = new FormData(e.target);
     console.log("data", e);
 
     (_console = console).log.apply(_console, ["body"].concat(_toConsumableArray(data)));
 
-<<<<<<< HEAD
-    var correctedData = _toConsumableArray(data);
-
-    fetch("/resident", {
-      method: "post",
-      body: correctedData
-    });
-  };
-=======
     fetch("/resident", {
       method: "post",
       body: data
     });
   }; // token
 
->>>>>>> d131ec367a8e230a546242dec80e6c2654227038
 
   var metaList = document.querySelectorAll("meta");
   var token = "";
@@ -25135,12 +25188,8 @@ var UserReg = function UserReg(_ref) {
     }
 
     console.log("token", token);
-<<<<<<< HEAD
-  });
-=======
   }); // ***************************-
 
->>>>>>> d131ec367a8e230a546242dec80e6c2654227038
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     // action="/resident"
     // method="post"
