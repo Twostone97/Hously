@@ -25101,12 +25101,16 @@ var UserReg = function UserReg(_ref) {
     var _console;
 
     e.preventDefault();
+<<<<<<< HEAD
     body = e.target.value;
+=======
+>>>>>>> d131ec367a8e230a546242dec80e6c2654227038
     var data = new FormData(e.target);
     console.log("data", e);
 
     (_console = console).log.apply(_console, ["body"].concat(_toConsumableArray(data)));
 
+<<<<<<< HEAD
     var correctedData = _toConsumableArray(data);
 
     fetch("/resident", {
@@ -25114,6 +25118,14 @@ var UserReg = function UserReg(_ref) {
       body: correctedData
     });
   };
+=======
+    fetch("/resident", {
+      method: "post",
+      body: data
+    });
+  }; // token
+
+>>>>>>> d131ec367a8e230a546242dec80e6c2654227038
 
   var metaList = document.querySelectorAll("meta");
   var token = "";
@@ -25123,7 +25135,12 @@ var UserReg = function UserReg(_ref) {
     }
 
     console.log("token", token);
+<<<<<<< HEAD
   });
+=======
+  }); // ***************************-
+
+>>>>>>> d131ec367a8e230a546242dec80e6c2654227038
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Registrace obyvatel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     // action="/resident"
     // method="post"
@@ -25216,6 +25233,11 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
       commun_id = _useState2[0],
       setcommun_id = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(chats),
+      _useState4 = _slicedToArray(_useState3, 2),
+      listOfChats = _useState4[0],
+      setlistOfChats = _useState4[1];
+
   var handleCommunityIDChange = function handleCommunityIDChange(e) {
     setcommun_id(Number(e.target.value));
   };
@@ -25238,7 +25260,7 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
     }, community.community_name));
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chat__container scrollable"
-  }, chats.filter(function (chat) {
+  }, listOfChats.filter(function (chat) {
     return chat.community_id === commun_id;
   }).map(function (chat, index) {
     var chatUser = users.filter(function (user) {
@@ -25247,7 +25269,41 @@ var DashboardCommonChats = function DashboardCommonChats(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: index % 2 == 0 ? "chat__bubble b__left" : "chat__bubble b__right"
     }, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
-  }))));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      e.target[0].value = "";
+      fetch("/chat", {
+        method: "post",
+        body: data
+      }).then(function () {
+        fetch("/api").then(function (resp) {
+          return resp.json();
+        }).then(function (data) {
+          return setlistOfChats(data.chats);
+        });
+      });
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "text"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "community_id",
+    value: commun_id
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "image",
+    value: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Send")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCommonChats);
@@ -25437,9 +25493,6 @@ var App = function App() {
     fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
-      console.log({
-        data: data
-      });
       setapi(data);
     })["catch"](function () {
       setErrorFetch(true);

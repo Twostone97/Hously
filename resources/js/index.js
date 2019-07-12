@@ -12,7 +12,6 @@ const App = () => {
         fetch("/api")
             .then(resp => resp.json())
             .then(data => {
-                console.log({ data });
                 setapi(data);
             })
             .catch(() => {

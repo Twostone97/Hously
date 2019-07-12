@@ -9,16 +9,17 @@ const UserReg = ({ apidata }) => {
     };
     const handleSubmit = e => {
         e.preventDefault();
-        body = e.target.value;
+
         const data = new FormData(e.target);
         console.log("data", e);
         console.log("body", ...data);
-        let correctedData = [...data];
+
         fetch("/resident", {
             method: "post",
-            body: correctedData
+            body: data
         });
     };
+    // token
     const metaList = document.querySelectorAll("meta");
     let token = "";
     metaList.forEach(meta => {
@@ -27,7 +28,7 @@ const UserReg = ({ apidata }) => {
         }
         console.log("token", token);
     });
-
+    // ***************************-
     return (
         <>
             <h4>Registrace obyvatel</h4>
