@@ -3,11 +3,22 @@ import UserReg from "./admin/userReg.js";
 import BuildingReg from "./admin/buildingReg.js";
 import BuildingInfo from "./admin/buildingInfo.js";
 import UserList from "./admin/UserList.js";
+import UserDetail from "./admin/userDetail.js";
 
 const DashboardAdmin = ({ apidata }) => {
     console.log("hello kitty");
     console.log("apidata", apidata);
-    console.log("residenlist", apidata.users);
+    console.log("users", apidata.users);
+    const [isDetail, setIsdetail] = useState(false);
+    const [detail_id, setDetail_id] = useState(null);
+
+    const handleSetDetail = input => {
+        setIsdetail(!isDetail);
+        setDetail_id(input);
+        console.log("input ve funkci", input);
+        console.log("detail_id ve funkci", detail_id);
+    };
+    console.log("detail_id", detail_id);
 
     return (
         <>
@@ -34,11 +45,23 @@ const DashboardAdmin = ({ apidata }) => {
                     />
                 </div>
                 <div className=" page__main__dash__item i__big">
-                    <UserList
-                        residents={apidata.residents}
-                        users={apidata.users}
-                        flats={apidata.flats}
-                    />
+                    {!isDetail ? (
+                        <UserList
+                            residents={apidata.residents}
+                            users={apidata.users}
+                            flats={apidata.flats}
+                            handleSetDetail={handleSetDetail}
+                        />
+                    ) : (
+                        <UserDetail
+                            handleSetDetail={handleSetDetail}
+                            user={apidata.users[detail_id - 1]}
+                            resident={apidata.residents.filter(
+                                resident => resident.user_id == detail_id
+                            )}
+                            rentcontracts={apidata.rentcontracts}
+                        />
+                    )}
                 </div>
 
                 <div className="page__main__dash__item i__small">

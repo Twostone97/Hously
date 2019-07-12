@@ -48,7 +48,6 @@ const UserReg = ({ apidata }) => {
         setRental(e.target.value);
     };
     const handleFile = e => {
-        console.log(e.target.files[0]);
         setFile(e.target.files[0]);
     };
     console.log("date", begining_of_first_rent);
@@ -81,8 +80,6 @@ const UserReg = ({ apidata }) => {
         //     rental,
         //     file
         // };
-
-        console.log("body", data.values());
 
         fetch("/resident", {
             method: "post",

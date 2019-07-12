@@ -1,5 +1,5 @@
 import React from "react";
-const UserList = ({ residents, users, flats }) => {
+const UserList = ({ residents, users, flats, handleSetDetail }) => {
     return (
         <>
             <h4>Databaze obyvatel</h4>
@@ -41,6 +41,13 @@ const UserList = ({ residents, users, flats }) => {
                                     Nájemní Smlouva
                                 </a>
                             </div>
+                            <button
+                                onClick={() => {
+                                    handleSetDetail(resident.user_id);
+                                }}
+                            >
+                                Detail
+                            </button>
                         </li>
                     );
                 })}
