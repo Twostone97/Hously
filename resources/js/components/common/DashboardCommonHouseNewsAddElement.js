@@ -36,7 +36,7 @@ const DashboardCommonHouseNewsAddElement = ({ noticeboard, add_handler }) => {
                 />
                 <label htmlFor="permanent">
                     Not removable?
-                    <input type="radio" name="permanent" label="permanent" />
+                    <input type="checkbox" name="permanent" label="permanent" />
                 </label>
                 <button>Add</button>
             </form>

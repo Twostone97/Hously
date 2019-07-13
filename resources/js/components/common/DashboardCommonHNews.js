@@ -5,6 +5,7 @@ import DashboardCommonHouseNewsAddElement from "./DashboardCommonHouseNewsAddEle
 const DashboardCommonHouseNews = ({ notices, noticeboard }) => {
     /*zdravime Inventi HOOOOOKS (už zase? :D) */
     const [listOfNotices, setlistOfNotices] = useState(notices);
+    const [showAddElement, setshowAddElement] = useState(false);
     const handleAddedOrRemovedNotice = () => {
         fetch("/api")
             .then(resp => resp.json())
@@ -22,17 +23,43 @@ const DashboardCommonHouseNews = ({ notices, noticeboard }) => {
                         <>
                             <h4> {notice.text}</h4>
                             <p>Updated: {notice.updated_at}</p>
-                            <DashboardCommonHouseNewsDeleteElement
-                                notice_id={notice.id}
-                                delete_handler={handleAddedOrRemovedNotice}
-                            />
+                            {notice.permanent == 0 && (
+                                <DashboardCommonHouseNewsDeleteElement
+                                    notice_id={notice.id}
+                                    delete_handler={handleAddedOrRemovedNotice}
+                                />
+                            )}
                         </>
                     ))}
                 </div>
-                <DashboardCommonHouseNewsAddElement
-                    noticeboard={noticeboard}
-                    add_handler={handleAddedOrRemovedNotice}
-                />
+
+                {!showAddElement && (
+                    <button
+                        onClick={() => {
+                            setshowAddElement(true);
+                        }}
+                    >
+                        Add new message
+                    </button>
+                )}
+
+                {showAddElement && (
+                    <>
+                        <DashboardCommonHouseNewsAddElement
+                            noticeboard={noticeboard}
+                            add_handler={handleAddedOrRemovedNotice}
+                        />
+                        <a
+                            href="#"
+                            onClick={() => {
+                                window.event.preventDefault();
+                                setshowAddElement(false);
+                            }}
+                        >
+                            Hide
+                        </a>
+                    </>
+                )}
             </div>
         </div>
     );
