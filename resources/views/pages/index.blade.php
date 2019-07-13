@@ -3,8 +3,16 @@
 @section ('title') Hously-Homepage 
 @endsection 
 
-@section ('styles') 
-
+@section ('nav') 
+    <li class="nav-item ml-2">
+        <a class="nav-link" href="/about">About Hously</a>
+    </li>
+    <li class="nav-item ml-2">
+        <a class="nav-link" href="#">Available Appartments</a>
+    </li>
+    <li class="nav-item ml-2">
+        <a class="nav-link" href="/houses">Involved Houses</a>
+    </li>
 @endsection
 
 @section ('content')
