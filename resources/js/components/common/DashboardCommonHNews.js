@@ -23,8 +23,9 @@ const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
                             <h4
                                 className={
                                     profile === "administrator" &&
-                                    notice.permanent == 1 &&
-                                    "item__permanent"
+                                    notice.permanent == 1
+                                        ? "item__permanent"
+                                        : ""
                                 }
                             >
                                 {" "}

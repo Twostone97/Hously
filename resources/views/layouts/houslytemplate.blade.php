@@ -17,7 +17,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,40 +35,42 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <a class="navbar-brand" href="/"><img src="../img/hously-logo.svg" alt="logo"> Hously</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="about">About Hously <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Available Appartments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/houses">Involved Houses</a>
-                </li>
-                </ul>
-                <div class="navbar-text">
-                    @guest
-                    <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
-                    <div id="register__open"><a class="nav-link" href="#">Register</a></div>
-                    @else
-                    <div>{{ Auth::user()->first_name }}
-                        <a href="{{ route('logout') }}"
-                            onclick="
-                            event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            <img src="img/logout__ico.svg" alt="logout">
-                        </a>
+        <nav>
+            <div class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="/"><img src="../img/hously-logo.svg" alt="logo"> Hously</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Hously</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Available Appartments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/houses">Involved Houses</a>
+                    </li>
+                    </ul>
+                    <div class="navbar-text">
+                        @guest
+                        <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
+                        <div id="register__open"><a class="nav-link" href="#">Register</a></div>
+                        @else
+                        <div><a href="/app/dashboard">{{ Auth::user()->first_name }}</a>
+                            <a href="{{ route('logout') }}"
+                                onclick="
+                                event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <img src="/img/logout__ico.svg" alt="logout">
+                            </a>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                        </form>                            
+                        @endguest
                     </div>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                    </form>                            
-                    @endguest
                 </div>
             </div>
         </nav>

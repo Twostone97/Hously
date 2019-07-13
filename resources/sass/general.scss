@@ -152,13 +152,23 @@ header {
     color: #fff;
 
     nav {
-        transition: height 0.5s ease-out;
-        height: 80px;
+        width: 100%;
+        min-height: 80px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: height 0.5s ease-in;
+        overflow: hidden;
+        z-index: 1000;
+
+        @media screen and (min-width: 992px) {
+            height: 80px;
+            min-height: 0px;
+        }
     }
 
     nav.hideonscroll {
-        height: 0;
-        overflow: hidden;
+        height: 0px;
         padding: 0;
     }
 

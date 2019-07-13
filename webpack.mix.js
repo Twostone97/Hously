@@ -16,8 +16,7 @@ if (!mix.inProduction()) {
     }).sourceMaps();
 }
 
-mix
-    // .js("resources/js/app.js", "public/js")
+mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .react("resources/js/index.js", "public/js/index.js")
 
