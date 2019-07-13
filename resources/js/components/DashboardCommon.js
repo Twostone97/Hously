@@ -26,6 +26,7 @@ const DashboardCommon = ({
                 <DashboardCommonHouseNews
                     notices={notices}
                     noticeboard={noticeboard}
+                    profile={profile}
                 />
                 <DashboardCommonChats
                     chats={chats}

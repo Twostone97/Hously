@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DashboardCommonHouseNewsDeleteElement from "./DashboardCommonHouseNewsDeleteElement.js";
-import DashboardCommonHouseNewsAddElement from "./DashboardCommonHouseNewsAddElement.js";
+import DashboardCommonHouseNewsAdminSection from "./DashboardCommonHouseNewsAdminSection.js";
 
-const DashboardCommonHouseNews = ({ notices, noticeboard }) => {
+const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
     /*zdravime Inventi HOOOOOKS (už zase? :D) */
     const [listOfNotices, setlistOfNotices] = useState(notices);
-    const [showAddElement, setshowAddElement] = useState(false);
     const handleAddedOrRemovedNotice = () => {
         fetch("/api")
             .then(resp => resp.json())
@@ -23,49 +22,32 @@ const DashboardCommonHouseNews = ({ notices, noticeboard }) => {
                         <div className="notices__list__item">
                             <h4
                                 className={
-                                    notice.permanent == 1 && "item__permanent"
+                                    profile === "administrator" &&
+                                    notice.permanent == 1 &&
+                                    "item__permanent"
                                 }
                             >
                                 {" "}
                                 {notice.text}
                             </h4>
-                            {notice.permanent == 0 && (
-                                <DashboardCommonHouseNewsDeleteElement
-                                    notice_id={notice.id}
-                                    delete_handler={handleAddedOrRemovedNotice}
-                                />
-                            )}
+                            {profile === "administrator" &&
+                                notice.permanent == 0 && (
+                                    <DashboardCommonHouseNewsDeleteElement
+                                        notice_id={notice.id}
+                                        delete_handler={
+                                            handleAddedOrRemovedNotice
+                                        }
+                                    />
+                                )}
                             <p>Updated: {notice.updated_at}</p>
                         </div>
                     ))}
                 </div>
-
-                {!showAddElement && (
-                    <button
-                        onClick={() => {
-                            setshowAddElement(true);
-                        }}
-                    >
-                        Add new message
-                    </button>
-                )}
-
-                {showAddElement && (
-                    <>
-                        <DashboardCommonHouseNewsAddElement
-                            noticeboard={noticeboard}
-                            add_handler={handleAddedOrRemovedNotice}
-                        />
-                        <a
-                            href="#"
-                            onClick={() => {
-                                window.event.preventDefault();
-                                setshowAddElement(false);
-                            }}
-                        >
-                            Hide
-                        </a>
-                    </>
+                {profile === "administrator" && (
+                    <DashboardCommonHouseNewsAdminSection
+                        noticeboard={noticeboard}
+                        add_handler={handleAddedOrRemovedNotice}
+                    />
                 )}
             </div>
         </div>

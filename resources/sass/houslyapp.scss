@@ -52,7 +52,7 @@
         }
 
         .notices__list {
-            .notices__list__item {
+            &__item {
                 width: 95%;
                 margin: 0 auto;
 
@@ -85,6 +85,11 @@
                             height: 0.9rem;
                         }
                     }
+                }
+            }
+            &__adminHandler {
+                a {
+                    color: $secondary-blue;
                 }
             }
         }
