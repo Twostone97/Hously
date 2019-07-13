@@ -51,6 +51,44 @@
             padding: 1rem;
         }
 
+        .notices__list {
+            .notices__list__item {
+                width: 95%;
+                margin: 0 auto;
+
+                h4 {
+                    display: inline-block;
+                }
+
+                h4.item__permanent::after {
+                    content: "Permanent";
+                    margin-left: 1rem;
+                    padding: 4px;
+                    border-radius: 5px;
+                    font-size: 10px;
+                    background-color: $secondary-blue;
+                    color: #fff;
+                    line-height: 1rem;
+                    vertical-align: top;
+                }
+                .item__nonpermanent {
+                    display: inline-block;
+                    line-height: 1.35rem;
+
+                    button {
+                        height: 1rem;
+                        background: none;
+                        border: none;
+
+                        img {
+                            vertical-align: top;
+                            height: 0.9rem;
+                        }
+                    }
+                }
+            }
+        }
+
         table {
             width: 90%;
             margin: 0 auto;

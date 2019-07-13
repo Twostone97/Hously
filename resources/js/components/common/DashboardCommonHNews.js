@@ -20,16 +20,23 @@ const DashboardCommonHouseNews = ({ notices, noticeboard }) => {
             <div className="page__main__dash__item__body">
                 <div className="notices__list scrollable">
                     {listOfNotices.map(notice => (
-                        <>
-                            <h4> {notice.text}</h4>
-                            <p>Updated: {notice.updated_at}</p>
+                        <div className="notices__list__item">
+                            <h4
+                                className={
+                                    notice.permanent == 1 && "item__permanent"
+                                }
+                            >
+                                {" "}
+                                {notice.text}
+                            </h4>
                             {notice.permanent == 0 && (
                                 <DashboardCommonHouseNewsDeleteElement
                                     notice_id={notice.id}
                                     delete_handler={handleAddedOrRemovedNotice}
                                 />
                             )}
-                        </>
+                            <p>Updated: {notice.updated_at}</p>
+                        </div>
                     ))}
                 </div>
 

@@ -18,7 +18,6 @@ const DashboardCommonHouseNewsAddElement = ({ noticeboard, add_handler }) => {
                 }}
             >
                 <label htmlFor="notice">
-                    Add message:
                     <textarea id="notice" name="notice" />
                 </label>
                 <input
@@ -34,10 +33,12 @@ const DashboardCommonHouseNewsAddElement = ({ noticeboard, add_handler }) => {
                             .content
                     }
                 />
+                <br />
                 <label htmlFor="permanent">
-                    Not removable?
+                    Permanent?
                     <input type="checkbox" name="permanent" label="permanent" />
                 </label>
+                <br />
                 <button>Add</button>
             </form>
         </div>

@@ -7,6 +7,7 @@ const DashboardCommonHouseNewsDeleteElement = ({
     return (
         <>
             <form
+                className="item__nonpermanent"
                 encType="multipart/form-data"
                 onSubmit={e => {
                     e.preventDefault();
@@ -28,7 +29,9 @@ const DashboardCommonHouseNewsDeleteElement = ({
                             .content
                     }
                 />
-                <button>Delete me</button>
+                <button>
+                    <img src="/img/trash-ico.svg" alt="" />
+                </button>
             </form>
         </>
     );

@@ -11565,6 +11565,43 @@ footer {
   padding: 1rem;
 }
 
+.page__main__dash__item .notices__list .notices__list__item {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.page__main__dash__item .notices__list .notices__list__item h4 {
+  display: inline-block;
+}
+
+.page__main__dash__item .notices__list .notices__list__item h4.item__permanent::after {
+  content: "Permanent";
+  margin-left: 1rem;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 10px;
+  background-color: #2f3259;
+  color: #fff;
+  line-height: 1rem;
+  vertical-align: top;
+}
+
+.page__main__dash__item .notices__list .notices__list__item .item__nonpermanent {
+  display: inline-block;
+  line-height: 1.35rem;
+}
+
+.page__main__dash__item .notices__list .notices__list__item .item__nonpermanent button {
+  height: 1rem;
+  background: none;
+  border: none;
+}
+
+.page__main__dash__item .notices__list .notices__list__item .item__nonpermanent button img {
+  vertical-align: top;
+  height: 0.9rem;
+}
+
 .page__main__dash__item table {
   width: 90%;
   margin: 0 auto;
