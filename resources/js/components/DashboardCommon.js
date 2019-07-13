@@ -14,6 +14,7 @@ const DashboardCommon = ({
         contract_id,
         contract_url,
         notices,
+        noticeboard,
         profile,
         rules,
         users
@@ -22,7 +23,10 @@ const DashboardCommon = ({
     return (
         <>
             <div className="page__main__dash dash__common">
-                <DashboardCommonHouseNews notices={notices} />
+                <DashboardCommonHouseNews
+                    notices={notices}
+                    noticeboard={noticeboard}
+                />
                 <DashboardCommonChats
                     chats={chats}
                     communities={communities}
