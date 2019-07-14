@@ -6,19 +6,15 @@ import UserList from "./admin/UserList.js";
 import UserDetail from "./admin/userDetail.js";
 
 const DashboardAdmin = ({ apidata }) => {
-    console.log("hello kitty");
     console.log("apidata", apidata);
-    console.log("users", apidata.users);
+
     const [isDetail, setIsdetail] = useState(false);
     const [detail_id, setDetail_id] = useState(null);
 
     const handleSetDetail = input => {
         setIsdetail(!isDetail);
         setDetail_id(input);
-        console.log("input ve funkci", input);
-        console.log("detail_id ve funkci", detail_id);
     };
-    console.log("detail_id", detail_id);
 
     return (
         <>
@@ -60,6 +56,7 @@ const DashboardAdmin = ({ apidata }) => {
                                 resident => resident.user_id == detail_id
                             )}
                             rentcontracts={apidata.rentcontracts}
+                            flats={apidata.flats}
                         />
                     )}
                 </div>

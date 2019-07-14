@@ -55,31 +55,33 @@ const UserReg = ({ apidata }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        let data = new FormData();
-        data.append("_token", _token);
-        data.append("user_id", user_id);
-        data.append("flat_id", flat_id);
-        data.append("contract_id", contract_id);
-        data.append("building_id", apidata.this_building.id);
-        data.append("begining_of_first_rent", begining_of_first_rent);
-        data.append("begining_of_current_rent", begining_of_current_rent);
-        data.append("end_of_current_rent", end_of_current_rent);
-        data.append("number_of_residents", number_of_residents);
-        data.append("rental", rental);
+        // let data = new FormData();
+        // data.append("_token", _token);
+        // data.append("user_id", user_id);
+        // data.append("flat_id", flat_id);
+        // data.append("contract_id", contract_id);
+        // data.append("building_id", apidata.this_building.id);
+        // data.append("begining_of_first_rent", begining_of_first_rent);
+        // data.append("begining_of_current_rent", begining_of_current_rent);
+        // data.append("end_of_current_rent", end_of_current_rent);
+        // data.append("number_of_residents", number_of_residents);
+        // data.append("rental", rental);
 
-        data.append("file", file);
+        // data.append("file", file);
 
-        // const data = {
-        //     _token,
-        //     user_id,
-        //     flat_id,
-        //     begining_of_first_rent,
-        //     begining_of_current_rent,
-        //     end_of_current_rent,
-        //     number_of_residents,
-        //     rental,
-        //     file
-        // };
+        const data = {
+            _token,
+            user_id,
+            flat_id,
+            contract_id,
+            building_id,
+            begining_of_first_rent,
+            begining_of_current_rent,
+            end_of_current_rent,
+            number_of_residents,
+            rental,
+            file
+        };
 
         fetch("/resident", {
             method: "post",
@@ -103,18 +105,7 @@ const UserReg = ({ apidata }) => {
         <>
             <h4>Registrace obyvatel</h4>
 
-            <form
-                // action="/resident"
-                // method="post"
-                encType="multipart/form-data"
-                onSubmit={handleSubmit}
-            >
-                {/* <input
-                    type="hidden"
-                    name="_token"
-                    onChange={handleToken}
-                    value={_token}
-                /> */}
+            <form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <label>Name</label>
                 <select name="user_id" onChange={handleUser_id} value={user_id}>
                     {apidata.users.map(user => {

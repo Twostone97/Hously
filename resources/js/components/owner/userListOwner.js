@@ -1,5 +1,5 @@
 import React from "react";
-const UserList = ({ residents, users, flats, handleSetDetail }) => {
+const UserListOwner = ({ residents, users, flats, handleSetDetail }) => {
     return (
         <>
             <h4>Databaze obyvatel</h4>
@@ -41,39 +41,6 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
                                     Nájemní Smlouva
                                 </a>
                             </div>
-                            <div>
-                                <button
-                                    onClick={() => {
-                                        handleSetDetail(resident.user_id);
-                                    }}
-                                >
-                                    Detail
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        const metaList = document.querySelectorAll(
-                                            "meta"
-                                        );
-                                        let _token = "";
-                                        metaList.forEach(meta => {
-                                            if (meta.name == "csrf-token") {
-                                                _token = meta.content;
-                                            }
-                                        });
-                                        fetch(
-                                            `/su/delete/user/${
-                                                resident.user_id
-                                            }`,
-                                            {
-                                                method: "post",
-                                                body: _token
-                                            }
-                                        );
-                                    }}
-                                >
-                                    Delete
-                                </button>
-                            </div>
                         </li>
                     );
                 })}
@@ -81,4 +48,4 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
         </>
     );
 };
-export default UserList;
+export default UserListOwner;

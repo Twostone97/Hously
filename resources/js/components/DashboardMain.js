@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardAdmin from "./DashboardAdmin.js";
 import DashboardCommon from "./DashboardCommon.js";
+import DashboardOwner from "./DasboardOwner.js";
 
 const DashboardMain = ({ apidata, isLoading }) => {
     if (isLoading) {
@@ -18,6 +19,9 @@ const DashboardMain = ({ apidata, isLoading }) => {
                 <DashboardCommon apidata={apidata} />
                 {apidata.profile === "administrator" && (
                     <DashboardAdmin apidata={apidata} />
+                )}
+                {apidata.profile === "owner" && (
+                    <DashboardOwner apidata={apidata} />
                 )}
             </>
         );
