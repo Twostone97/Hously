@@ -11,45 +11,56 @@ const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
             .then(data => setlistOfNotices(data.notices));
     };
 
+    useEffect(() => {
+        // align properly the height of text areas
+        document.querySelectorAll("textarea").forEach(txtarea => {
+            txtarea.style.height = txtarea.scrollHeight + 10 + "px";
+        });
+    });
+
     return (
         <div className="page__main__dash__item i__mid">
             <div className="page__main__dash__item__head">
                 <h3>House news</h3>
             </div>
             <div className="page__main__dash__item__body">
-                <div className="notices__list scrollable">
-                    {listOfNotices.map(notice => (
-                        <div className="notices__list__item">
-                            <h4
-                                className={
-                                    profile === "administrator" &&
-                                    notice.permanent == 1
-                                        ? "item__permanent"
-                                        : ""
-                                }
-                            >
-                                {" "}
-                                {notice.text}
-                            </h4>
-                            {profile === "administrator" &&
-                                notice.permanent == 0 && (
-                                    <DashboardCommonHouseNewsDeleteElement
-                                        notice_id={notice.id}
-                                        delete_handler={
-                                            handleAddedOrRemovedNotice
+                <div className="fixedHeight__flexContainer">
+                    <div className="notices__list scrollable">
+                        {listOfNotices.map(notice => (
+                            <div className="notices__list__item">
+                                <textarea readOnly>{notice.text}</textarea>
+                                <p>
+                                    <span
+                                        className={
+                                            profile === "administrator" &&
+                                            notice.permanent == 1
+                                                ? "item__permanent"
+                                                : ""
                                         }
-                                    />
-                                )}
-                            <p>Updated: {notice.updated_at}</p>
-                        </div>
-                    ))}
+                                        readOnly
+                                    >
+                                        Created: {notice.created_at}
+                                    </span>
+                                    {profile === "administrator" &&
+                                        notice.permanent == 0 && (
+                                            <DashboardCommonHouseNewsDeleteElement
+                                                notice_id={notice.id}
+                                                delete_handler={
+                                                    handleAddedOrRemovedNotice
+                                                }
+                                            />
+                                        )}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                    {profile === "administrator" && (
+                        <DashboardCommonHouseNewsAdminSection
+                            noticeboard={noticeboard}
+                            add_handler={handleAddedOrRemovedNotice}
+                        />
+                    )}
                 </div>
-                {profile === "administrator" && (
-                    <DashboardCommonHouseNewsAdminSection
-                        noticeboard={noticeboard}
-                        add_handler={handleAddedOrRemovedNotice}
-                    />
-                )}
             </div>
         </div>
     );

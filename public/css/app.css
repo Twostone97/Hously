@@ -11577,16 +11577,47 @@ footer {
   padding: 1rem;
 }
 
+.page__main__dash__item__body .fixedHeight__flexContainer {
+  display: -webkit-flex;
+  display: flex;
+  height: 500px;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+
+.page__main__dash__item .notices__list {
+  -webkit-flex: 1 1 90%;
+          flex: 1 1 90%;
+  margin-bottom: 2rem;
+}
+
 .page__main__dash__item .notices__list__item {
   width: 95%;
   margin: 0 auto;
 }
 
-.page__main__dash__item .notices__list__item h4 {
-  display: inline-block;
+.page__main__dash__item .notices__list__item textarea {
+  width: 95%;
+  background: rgba(255, 255, 255, 0.3);
+  height: auto;
+  border: 0.5px solid #2f3259;
+  padding: 1rem;
 }
 
-.page__main__dash__item .notices__list__item h4.item__permanent::after {
+.page__main__dash__item .notices__list__item p {
+  text-align: left;
+}
+
+.page__main__dash__item .notices__list__item span {
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  vertical-align: top;
+}
+
+.page__main__dash__item .notices__list__item span.item__permanent::after {
   content: "Permanent";
   margin-left: 1rem;
   padding: 4px;
@@ -11614,8 +11645,27 @@ footer {
   height: 0.9rem;
 }
 
+.page__main__dash__item .notices__list__adminHandler {
+  -webkit-flex: 1 1 10%;
+          flex: 1 1 10%;
+}
+
+.page__main__dash__item .notices__list__adminHandler button {
+  border: none;
+  background: none;
+}
+
+.page__main__dash__item .notices__list__adminHandler button img {
+  height: 40px;
+}
+
 .page__main__dash__item .notices__list__adminHandler a {
   color: #2f3259;
+}
+
+.page__main__dash__item .notices__list__adminHandler form > button {
+  background-color: #f25007;
+  color: white;
 }
 
 .page__main__dash__item table {
@@ -11642,7 +11692,8 @@ footer {
 }
 
 .page__main__dash .chat__container {
-  height: 25vh;
+  max-height: 350px;
+  overflow: auto;
 }
 
 .page__main__dash .chat__bubble {

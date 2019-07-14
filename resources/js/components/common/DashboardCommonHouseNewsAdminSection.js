@@ -13,7 +13,7 @@ const DashboardCommonHouseNewsAdminSection = ({ noticeboard, add_handler }) => {
                             setshowAddElement(true);
                         }}
                     >
-                        Add new message
+                        <img src="/img/write-ico.svg" alt="" />
                     </button>
                 )}
 

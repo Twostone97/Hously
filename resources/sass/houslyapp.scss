@@ -49,18 +49,43 @@
             align-items: center;
             text-align: center;
             padding: 1rem;
+
+            .fixedHeight__flexContainer {
+                display: flex;
+                height: 500px;
+                flex-direction: column;
+                justify-content: space-between;
+            }
         }
 
         .notices__list {
+            flex: 1 1 90%;
+            margin-bottom: 2rem;
+
             &__item {
                 width: 95%;
                 margin: 0 auto;
 
-                h4 {
-                    display: inline-block;
+                textarea {
+                    width: 95%;
+                    background: rgba(#fff, 0.3);
+                    height: auto;
+                    border: 0.5px solid $secondary-blue;
+                    padding: 1rem;
                 }
 
-                h4.item__permanent::after {
+                p {
+                    text-align: left;
+                }
+
+                span {
+                    text-align: left;
+                    font-size: 0.8rem;
+                    line-height: 1rem;
+                    vertical-align: top;
+                }
+
+                span.item__permanent::after {
                     content: "Permanent";
                     margin-left: 1rem;
                     padding: 4px;
@@ -88,8 +113,23 @@
                 }
             }
             &__adminHandler {
+                flex: 1 1 10%;
+
+                button {
+                    border: none;
+                    background: none;
+                    img {
+                        height: 40px;
+                    }
+                }
+
                 a {
                     color: $secondary-blue;
+                }
+
+                form > button {
+                    background-color: $orange;
+                    color: white;
                 }
             }
         }
@@ -117,7 +157,8 @@
     }
 
     .chat__container {
-        height: 25vh;
+        max-height: 350px;
+        overflow: auto;
     }
 
     .chat__bubble {
