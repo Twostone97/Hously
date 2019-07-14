@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 // endpoint /update_(resident_id)_(user_id)
-const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
+const UserDetail = ({
+    handleSetDetail,
+    user,
+    resident,
+    rentcontracts,
+    flats
+}) => {
     // list of states****************
+
     resident = resident[0];
-    console.log("resident", resident);
+
     console.log("user", user);
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
-    const [user_id, setUser_id] = useState(user.id);
+
     const [flat_id, setFlat_id] = useState(resident.flat_id);
     const [begining_of_first_rent, setBegining_of_first_rent] = useState(
         resident.begining_of_first_rent
@@ -21,6 +28,8 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
     const [rental, setRental] = useState(resident.rental);
     const [file, setFile] = useState(resident.file);
     const [contract_id, setContract_id] = useState(resident.contract_id);
+    const [email, setEmail] = useState(user.email);
+    const [phone_number, setPhone_number] = useState(user.phone_number);
 
     // ******************************-
     // nastaveni states
@@ -29,9 +38,7 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
         setContract_id(e.target.value);
         setisSmlouvaNaDobuUrcitou(!isSmlouvaNaDobuUrcitou);
     };
-    const handleUser_id = e => {
-        setUser_id(e.target.value);
-    };
+
     const handleFlat_id = e => {
         setFlat_id(e.target.value);
     };
@@ -46,12 +53,17 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
     const handleEnd_of_current_rent = e => {
         SetEnd_of_current_rent(e.target.value);
     };
-    const handleNumber_of_residents = e => {
-        SetNumber_of_residents(e.target.value);
-    };
+
     const handleRental = e => {
         setRental(e.target.value);
     };
+    const handleEmail = e => {
+        setEmail(e.target.value);
+    };
+    const handlePhone_number = e => {
+        setPhone_number(e.target.value);
+    };
+
     const handleFile = e => {
         setFile(e.target.files[0]);
     };
@@ -59,27 +71,25 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
     // ***********************************************
 
     const handleSubmit = e => {
+        SetDetail(null);
+        console.log("submit probehne");
         e.preventDefault();
-        let data = new FormData();
-        data.append("_token", _token);
-        data.append("user_id", user_id);
-        data.append("flat_id", flat_id);
-        data.append("contract_id", contract_id);
-        data.append("building_id", apidata.this_building.id);
-        data.append("begining_of_first_rent", begining_of_first_rent);
-        data.append("begining_of_current_rent", begining_of_current_rent);
-        data.append("end_of_current_rent", end_of_current_rent);
-        data.append("number_of_residents", number_of_residents);
-        data.append("rental", rental);
+        const data = {
+            _token,
+            flat_id,
+            begining_of_first_rent,
+            begining_of_current_rent,
+            end_of_current_rent,
+            contract_id,
+            rental,
+            email,
+            phone_number,
+            file
+        };
 
-        data.append("file", file);
-
-        fetch("/resident", {
+        fetch(`/update_${resident.id}_${user.id}`, {
             method: "post",
-            // headers: {
-            //     "Content-Type": "application/json"
-            //     // 'Content-Type': 'application/x-www-form-urlencoded',
-            // },
+
             body: data
         });
     };
@@ -102,8 +112,19 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
                         name="flat_id"
                         onChange={handleFlat_id}
                         value={flat_id}
-                    />
-                    {/* rozpracovat flat_id /dotáhnout z building info */}
+                    >
+                        {flats.map(flat => {
+                            return (
+                                <option value={flat.id}>
+                                    {`patro: ` +
+                                        `${flat.floor}` +
+                                        ` číslo bytu: ` +
+                                        `${flat.number}`}
+                                </option>
+                            );
+                        })}
+                    </select>
+
                     <br />
 
                     <label>Začátek prvního nájemního období</label>
@@ -149,14 +170,6 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
                         </>
                     )}
 
-                    {/* <label>Počet osob</label>
-                <input
-                    type="number"
-                    name="number_of_residents"
-                    onChange={handleNumber_of_residents}
-                    value={number_of_residents}
-                /> */}
-
                     <label>Nájemné (kč)</label>
                     <input
                         type="number"
@@ -170,14 +183,26 @@ const UserDetail = ({ handleSetDetail, user, resident, rentcontracts }) => {
                     <input type="file" name="file" onChange={handleFile} />
                     <div>New file automatically rewrite the old one.</div>
                     <br />
-
+                    <label>Email</label>
                     <input
-                        type="submit"
-                        value="submit"
-                        onClick={() => {
-                            handleSetDetail(null);
-                        }}
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={handleEmail}
                     />
+
+                    <br />
+                    <label>Phone</label>
+                    <input
+                        type="tel"
+                        name="phone"
+                        value={phone_number}
+                        onChange={handlePhone_number}
+                    />
+
+                    <br />
+
+                    <input type="submit" value="submit" />
                 </form>
             </div>
         </>

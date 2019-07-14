@@ -5,7 +5,7 @@ import BuildingInfo from "./admin/buildingInfo.js";
 import UserList from "./admin/UserList.js";
 import UserDetail from "./admin/userDetail.js";
 
-const DashboardAdmin = ({ apidata }) => {
+const DashboardOwner = ({ apidata }) => {
     console.log("apidata", apidata);
 
     const [isDetail, setIsdetail] = useState(false);
@@ -70,4 +70,4 @@ const DashboardAdmin = ({ apidata }) => {
     );
 };
 
-export default DashboardAdmin;
+export default DashboardOwner ;
