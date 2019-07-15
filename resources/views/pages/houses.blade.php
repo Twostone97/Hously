@@ -9,7 +9,7 @@ Our Houses
 <main class="bg__wall">
 <section class="page__main bg__gradient-light">
     <div class="page__main__dash">
-        <div id = "map" class="page__main__dash__item">
+        <div id = "map" class="page__main__dash__item" style="margin-top: 20vh; min-width:100%">
            
         </div>
     </div>
@@ -51,6 +51,7 @@ Our Houses
                     
                 </tbody>
             </table>
+            <img src="https://www.google.com/search?biw=1920&bih=969&tbm=isch&sa=1&ei=AGYsXb3oGdH5sAf15YqYBQ&q=praha+centrum&oq=praha+centrum&gs_l=img.3..0l2j0i8i30l8.27082.32125..32387...4.0..0.68.1019.17......0....1..gws-wiz-img.......35i39j0i67j0i30j0i5i30j0i24j0i10i24.Bz6WRYdDNbM#imgrc=sxbnX1nQLcQhXM:" alt="" srcset="">
         </div>
     </div>
     @endforeach

@@ -110,14 +110,25 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident, $resident_id, $user_id)
     {
-        // DB::table('residents')
-        // ->where('id', $resident_id)
-        // ->update([
-        //     'flat_id' => $request->flat_id,
-        //     'begining_of' => $request->flat_id,
-        //     ]);
+        DB::table('residents')
+        ->where('id', $resident_id)
+        ->update([
+            'flat_id' => $request->flat_id,
+            'begining_of_first_rent' => $request->begining_of_first_rent,
+            'begining_of_current_rent' => $request->begining_of_current_rent,
+            'contract_id' => $request->contract_id,
+            'rental' => $request->rental,
+            ]);
+            if ($request->hasFile('file')) {
+                $file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
+            }
 
-            dd($request);
+        DB::table('users')
+        ->where('id', $user_id)
+        ->update([
+            'email' => $request->email,
+            'phone_number' => $request->phone,
+            ]);
             
         return redirect(action('WebController@dashboard'));
     }
