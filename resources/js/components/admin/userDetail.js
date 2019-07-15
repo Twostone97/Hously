@@ -88,7 +88,7 @@ const UserDetail = ({
         };
 
         fetch(`/update_${resident.id}_${user.id}`, {
-            method: "post",
+            method: "POST",
 
             body: data
         });

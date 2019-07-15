@@ -188,7 +188,7 @@
                             @foreach ($users as $user)
                                 @if ($resident->user_id === $user->id)
                             <div class="card">
-                                    <form action="/su/edit/resident/{{$resident->id}}" method="post">
+                                    <form action="/su/edit/resident/{{$resident->id}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                     <div class="card-header"><p>{{$user->first_name}} {{$user->last_name}}</p><p>ID: {{$resident->id}}</p></div>
                                     <div class="card-body">

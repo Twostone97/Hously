@@ -93,7 +93,9 @@ class ResidentController extends Controller
             'number_of_residents' => $request->number_of_residents,
             'rental' => $request->rental,
             ]);
-            $file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+            if ($request->hasFile('file')) {
+                $file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
+            }
 
             $id = $request->building_id;
         return redirect(action('HomeController@bedit', compact('id')));
@@ -108,11 +110,15 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident, $resident_id, $user_id)
     {
-        DB::table('residents')
-        ->where('id', $resident_id)
-        ->update([
-            'user_id' => $request->user_id,
-            'building_id' => $request->building_id,]);
+        // DB::table('residents')
+        // ->where('id', $resident_id)
+        // ->update([
+        //     'flat_id' => $request->flat_id,
+        //     'begining_of' => $request->flat_id,
+        //     ]);
+
+            dd($request);
+            
         return redirect(action('WebController@dashboard'));
     }
 

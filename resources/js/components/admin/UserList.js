@@ -61,7 +61,7 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
                                             }
                                         });
                                         fetch(
-                                            `/su/delete/user/${
+                                            `/su/delete/resident/${
                                                 resident.user_id
                                             }`,
                                             {
