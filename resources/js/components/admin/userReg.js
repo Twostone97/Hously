@@ -14,8 +14,9 @@ const UserReg = ({ apidata }) => {
     );
     const [number_of_residents, SetNumber_of_residents] = useState(0);
     const [rental, setRental] = useState(0);
-    const [file, setFile] = useState(null);
+
     const [contract_id, setContract_id] = useState(apidata.rentcontracts[0].id);
+    const building_id = apidata.this_building.id;
 
     // ******************************-
     // nastaveni states
@@ -47,42 +48,26 @@ const UserReg = ({ apidata }) => {
     const handleRental = e => {
         setRental(e.target.value);
     };
-    const handleFile = e => {
-        setFile(e.target.files[0]);
-    };
-    console.log("date", begining_of_first_rent);
-    // ***********************************************
 
+    // ***********************************************
+    let _token = document.querySelector('meta[name="csrf-token"]').content;
     const handleSubmit = e => {
         e.preventDefault();
-        // let data = new FormData();
-        // data.append("_token", _token);
-        // data.append("user_id", user_id);
-        // data.append("flat_id", flat_id);
-        // data.append("contract_id", contract_id);
-        // data.append("building_id", apidata.this_building.id);
-        // data.append("begining_of_first_rent", begining_of_first_rent);
-        // data.append("begining_of_current_rent", begining_of_current_rent);
-        // data.append("end_of_current_rent", end_of_current_rent);
-        // data.append("number_of_residents", number_of_residents);
-        // data.append("rental", rental);
+        let data = new FormData();
+        data.append("_token", _token);
+        data.append("user_id", user_id);
+        data.append("flat_id", flat_id);
+        data.append("contract_id", contract_id);
+        data.append("building_id", building_id);
+        data.append("begining_of_first_rent", begining_of_first_rent);
+        data.append("begining_of_current_rent", begining_of_current_rent);
+        data.append("end_of_current_rent", end_of_current_rent);
+        data.append("number_of_residents", number_of_residents);
+        data.append("rental", rental);
 
-        // data.append("file", file);
-
-        const data = {
-            _token,
-            user_id,
-            flat_id,
-            contract_id,
-            building_id,
-            begining_of_first_rent,
-            begining_of_current_rent,
-            end_of_current_rent,
-            number_of_residents,
-            rental,
-            file
-        };
-
+        let imagedata = document.querySelector('input[type="file"]').files[0];
+        data.append("file", imagedata);
+        console.log("data", data);
         fetch("/resident", {
             method: "post",
             // headers: {
@@ -92,15 +77,7 @@ const UserReg = ({ apidata }) => {
             body: data
         });
     };
-    // token
-    const metaList = document.querySelectorAll("meta");
-    let _token = "";
-    metaList.forEach(meta => {
-        if (meta.name == "csrf-token") {
-            _token = meta.content;
-        }
-    });
-    // ***************************-
+
     return (
         <>
             <h4>Registrace obyvatel</h4>
@@ -200,7 +177,7 @@ const UserReg = ({ apidata }) => {
                 <br />
 
                 <label>Nájemní smlouva</label>
-                <input type="file" name="file" onChange={handleFile} />
+                <input type="file" name="file" />
                 <br />
 
                 <input type="submit" value="Registrovat" />
