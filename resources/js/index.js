@@ -7,6 +7,7 @@ const App = () => {
     const [api, setapi] = useState({});
     const [loading, setloading] = useState(true);
     const [errorFetch, setErrorFetch] = useState(false);
+    const [refetchApp, setrefetchApp] = useState(0); //Michale - tohle je handler pro refetchovani cele stranky z children elementu
 
     useEffect(() => {
         fetch("/api")
@@ -20,7 +21,7 @@ const App = () => {
             .finally(() => {
                 setloading(false);
             });
-    }, []);
+    }, [refetchApp]);
 
     return errorFetch ? (
         <section className="page__main bg__gradient-light">
@@ -34,7 +35,14 @@ const App = () => {
                 <h1>Hously Dashboard</h1>
                 <h5>Dear User, welcome to your kingdom</h5>
             </div>
-            <DashboardMain apidata={api} isLoading={loading} />
+            <DashboardMain
+                apidata={api}
+                isLoading={loading}
+                refetchApp={() => {
+                    console.log("refetching");
+                    setrefetchApp(refetchApp + 1);
+                }}
+            />
         </section>
     );
 };

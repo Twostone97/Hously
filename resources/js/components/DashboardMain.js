@@ -3,7 +3,7 @@ import DashboardAdmin from "./DashboardAdmin.js";
 import DashboardCommon from "./DashboardCommon.js";
 import DashboardOwner from "./DasboardOwner.js";
 
-const DashboardMain = ({ apidata, isLoading }) => {
+const DashboardMain = ({ apidata, isLoading, refetchApp }) => {
     if (isLoading) {
         return (
             <div>
@@ -18,7 +18,7 @@ const DashboardMain = ({ apidata, isLoading }) => {
             <>
                 <DashboardCommon apidata={apidata} />
                 {apidata.profile === "administrator" && (
-                    <DashboardAdmin apidata={apidata} />
+                    <DashboardAdmin apidata={apidata} refetchApp={refetchApp} />
                 )}
                 {apidata.profile === "owner" && (
                     <DashboardOwner apidata={apidata} />
