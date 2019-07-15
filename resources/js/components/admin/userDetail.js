@@ -70,7 +70,7 @@ const UserDetail = ({
     };
 
     // ***********************************************
-
+    let _token = document.querySelector('meta[name="csrf-token"]').content;
     const handleSubmit = e => {
         handleSetDetail(null);
         console.log("file", file);
@@ -99,13 +99,6 @@ const UserDetail = ({
         });
     };
     // token
-    const metaList = document.querySelectorAll("meta");
-    let _token = "";
-    metaList.forEach(meta => {
-        if (meta.name == "csrf-token") {
-            _token = meta.content;
-        }
-    });
 
     return (
         <>
