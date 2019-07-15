@@ -17,10 +17,10 @@ Our Houses
     @foreach ($allbuildings as $building)
     
     <div class="page__main__dash__item">
-            <div className="page__main__dash__item__head">
+            <div class="page__main__dash__item__head">
                 <h3>{{$building->city}} {{$building->street}} {{$building->house_number}}</h3>
             </div>
-        <div className="page__main__dash__item__body" id="{{$building->id}}">
+        <div class="page__main__dash__item__body" id="{{$building->id}}">
             <table>
                 
                 <thead></thead>

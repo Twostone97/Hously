@@ -72,9 +72,9 @@
                                                 {{ session('status') }}
                                             </div>
                                         @endif
-                                        <label>Patro: <input type="number" name="floor" value="{{$flat->floor}}"  max="{{$building->floors_above_ground}}" min="{{0 - $building->floors_bellow_ground}}"></label><br>
+                                        <div class="row justify-content-around"><label>Patro: <input type="number" name="floor" value="{{$flat->floor}}"  max="{{$building->floors_above_ground}}" min="{{0 - $building->floors_bellow_ground}}"></label></div>
                                         <input type="hidden" name="building_id" value="{{$building->id}}"><br>
-                                        <label>Bytová jednotka: 
+                                        <div class="row justify-content-around"><label>Bytová jednotka: 
                                             <select name="residential" value="{{$flat->residential}}">
                                                     @if ($flat->residential === 1)
                                                         <option value="1" selected>Ano</option>
@@ -88,7 +88,7 @@
                                                         <option value="0">Ne</option>
                                                     @endif
                                                 </select><br>
-                                            </label>
+                                            </label></div>
                                         <div class="row justify-content-around">
                                                 <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
                                             </form>  
@@ -177,7 +177,78 @@
                                     <input type="submit" value="Registrovat" class="btn btn-primary">
                                     </form>
                                 </div>
-                            </div>                        
+                            </div>     
+                            
+                            
+
+                            @if (is_null($residents))
+                            <h3>Žádné byty.</h3><br> 
+                        @else
+                            @foreach ($residents as $resident)
+                            @foreach ($users as $user)
+                                @if ($resident->user_id === $user->id)
+                            <div class="card">
+                                    <form action="/su/edit/resident/{{$resident->id}}" method="post">
+                                        @csrf
+                                    <div class="card-header"><p>{{$user->first_name}} {{$user->last_name}}</p><p>ID: {{$resident->id}}</p></div>
+                                    <div class="card-body">
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+                                        <div class="row justify-content-around"><label>Byt:
+                                                <select name="flat_id">
+                                                        @foreach ($flats as $flat)
+                                                        @if ($resident->flat_id === $flat->id)
+                                                        <option value="{{$flat->id}}" selected>patro: {{$flat->floor}} byt: {{$flat->number}}</option>       {{-- Výběr z bytových jednotek --}}
+                                                        @else
+                                                        <option value="{{$flat->id}}">patro: {{$flat->floor}} byt: {{$flat->number}}</option> 
+                                                        @endif
+                                                        @endforeach
+                                                    </select><br>    
+                                        </label></div>
+                                    <div class="row justify-content-around"><label for="begining_of_first_rent">Začátek prvního nájemního obdobý: <input type="date" name="begining_of_first_rent" value="{{$resident->begining_of_first_rent}}"><br></label></div>
+                                    <div class="row justify-content-around"><label for="begining_of_current_rent">Začátek aktuálního nájemního obdobý: <input type="date" name="begining_of_current_rent" value="{{$resident->begining_of_current_rent}}"><br></label></div>
+                                    <div class="row justify-content-around"><label for="contract_id">Smlouva: 
+                                        <select name="contract_id">
+                                            @foreach ($rentcontracts as $contract)
+                                            @if ($resident->contract_id === $contract->id)
+                                            <option value="{{$contract->id}}" selected>{{$contract->name}}</option>
+                                            @else
+                                            <option value="{{$contract->id}}">{{$contract->name}}</option>
+                                            @endif
+                                                
+                                            @endforeach
+                                        </select></label></div>
+                                        @if ($resident->contract_id == 2)
+                                        <div class="row justify-content-around"><label for="end_of_current_rent">Konec aktuálního nájemního obdobý: <input type="date" name="end_of_current_rent" value="{{$resident->end_of_current_rent}}"></label></div>    
+                                        @endif
+
+                                        <div class="row justify-content-around"><label for="number_of_residents">Počet obyvatel: <input type="number" name="number_of_residents" value="{{$resident->number_of_residents}}"></label></div>
+                                        <div class="row justify-content-around"><label for="rental">Nájemné: <input type="number" name="rental" value="{{$resident->rental}}"> kč</label></div>
+                                        <div class="row justify-content-around"><label for="file">Nájemní smlouva: <input type="file" name="file"></label></div>
+                                    
+                                        
+                                        <input type="hidden" name="building_id" value="{{$building->id}}"><br>
+                                        <div class="row justify-content-around">
+                                                <div class="row justify-content-left"><input type="submit" value="Uložit změny" class="btn btn-primary"></div>
+                                            </form>  
+                                                <form action="/su/delete/resident/{{$resident->id}}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="building_id" value="{{$building->id}}"><br>
+                                                    <input type="submit" value="Smazat" class="btn btn-danger">
+                                                </form>    
+                                                </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @endforeach                        
+                           @endforeach
+                        @endif
+
+
+                    
             @endif
         </div>
     </div>

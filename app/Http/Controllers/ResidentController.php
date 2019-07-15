@@ -57,7 +57,9 @@ class ResidentController extends Controller
         );
         $resident->save();
 
-        return redirect(action('HomeController@index'));
+        $id = $request->building_id;
+
+        return redirect(action('HomeController@bedit', compact('id')));
     }
 
     /**
@@ -77,8 +79,24 @@ class ResidentController extends Controller
      * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function edit(Resident $resident)
+    public function edit(Request $request, Resident $resident, $id)
     {
+        DB::table('residents')
+        ->where('id', $id)
+        ->update([
+            'flat_id' => $request->flat_id,
+            'building_id' => $request->building_id,
+            'begining_of_first_rent' => $request->begining_of_first_rent,
+            'begining_of_current_rent' => $request->begining_of_current_rent,
+            'contract_id' => $request->contract_id,
+            'end_of_current_rent' => $request->end_of_current_rent == "null" ? null : $request->end_of_current_rent,
+            'number_of_residents' => $request->number_of_residents,
+            'rental' => $request->rental,
+            ]);
+            $file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+
+            $id = $request->building_id;
+        return redirect(action('HomeController@bedit', compact('id')));
     }
 
     /**
@@ -95,7 +113,7 @@ class ResidentController extends Controller
         ->update([
             'user_id' => $request->user_id,
             'building_id' => $request->building_id,]);
-        return redirect(action('WebController@'));
+        return redirect(action('WebController@dashboard'));
     }
 
     /**
@@ -104,11 +122,14 @@ class ResidentController extends Controller
      * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resident $resident, $id)
+    public function destroy(Resident $resident, $id, Request $request)
     {
         DB::table('residents')
         ->where('id', $id)
         ->delete();
-        return redirect(action('HomeController@index'));
+        Storage::delete("contract/{$request->flat_id}.pdf");
+
+        $id = $request->building_id;
+        return redirect(action('HomeController@bedit', compact('id')));
     }
 }

@@ -56,6 +56,7 @@ Route::post('/su/edit/building/{id}', 'BuildingController@edit');
 Route::post('/su/edit/owner/{id}', 'OwnerController@edit');
 Route::post('/su/edit/admin/{id}', 'AdministratorController@edit');
 Route::post('/su/edit/flat/{id}', 'FlatController@edit');
+Route::post('/su/edit/resident/{id}', 'ResidentController@edit');
 
 Route::post('/su/delete/user/{id}', 'HomeController@destroy');
 Route::post('/su/delete/building/{id}', 'BuildingController@destroy');
@@ -64,3 +65,4 @@ Route::post('/su/delete/admin/{id}', 'AdministratorController@destroy');
 Route::post('/su/delete/notice/{id}', 'NoticeController@destroy');
 Route::post('/su/delete/chat/{id}', 'ChatController@destroy');
 Route::post('/su/delete/flat/{id}', 'FlatController@destroy');
+Route::post('/su/delete/resident/{id}', 'ResidentController@destroy');
