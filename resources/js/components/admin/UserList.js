@@ -54,19 +54,22 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
                                         const metaList = document.querySelectorAll(
                                             "meta"
                                         );
-                                        let _token = "";
-                                        metaList.forEach(meta => {
-                                            if (meta.name == "csrf-token") {
-                                                _token = meta.content;
-                                            }
-                                        });
+                                        let _token = document.querySelector(
+                                            'meta[name="csrf-token"]'
+                                        ).content;
+                                        let flat_id = resident.flat_id;
+                                        let data = {
+                                            _token,
+                                            flat_id
+                                        };
                                         fetch(
                                             `/su/delete/resident/${
-                                                resident.user_id
+                                                resident.id
                                             }`,
                                             {
                                                 method: "post",
-                                                body: _token
+
+                                                body: JSON.stringify(data)
                                             }
                                         );
                                     }}
