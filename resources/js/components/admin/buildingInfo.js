@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import BuildingInfoDetails from "./buildingInfoDetails.js";
+
 const BuildingInfo = ({ data, owners, users, flats, residents }) => {
+    const [houseDetails, sethouseDetails] = useState(false);
+
     return (
         <>
             <div className="page__main__dash__item i__full">
                 <div className="page__main__dash__item__head">
-                    <h3>Tato budova</h3>
+                    <h3>This building</h3>
                 </div>
                 <div className="page__main__dash__item__body">
                     <table>
@@ -59,108 +63,25 @@ const BuildingInfo = ({ data, owners, users, flats, residents }) => {
                             </tr>
                         </tbody>
                     </table>
-                    <table>
-                        <thead>
-                            <th colSpan="3">Flats</th>
-                        </thead>
-
-                        <tbody>
-                            {flats.map(flat => {
-                                if (flat.residential) {
-                                    return (
-                                        <>
-                                            <tr>
-                                                <td>Floor: {flat.floor}</td>
-                                                <td>
-                                                    Flat number: {flat.number}
-                                                </td>
-                                                <td>
-                                                    Flat user:
-                                                    {residents.map(resident => {
-                                                        if (
-                                                            resident.flat_id ==
-                                                            flat.id
-                                                        ) {
-                                                            return (
-                                                                <>
-                                                                    {`${
-                                                                        users[
-                                                                            resident.user_id -
-                                                                                1
-                                                                        ]
-                                                                            .first_name
-                                                                    }` +
-                                                                        ` ` +
-                                                                        `${
-                                                                            users[
-                                                                                resident.user_id -
-                                                                                    1
-                                                                            ]
-                                                                                .last_name
-                                                                        }`}
-                                                                </>
-                                                            );
-                                                        }
-                                                    })}
-                                                </td>
-                                            </tr>
-                                        </>
-                                    );
-                                }
-                            })}
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <th colSpan="3">non-residential units</th>
-                        </thead>
-
-                        <tbody>
-                            {flats.map(flat => {
-                                if (!flat.residential) {
-                                    return (
-                                        <>
-                                            <tr>
-                                                <td>Floor: {flat.floor}</td>
-                                                <td>
-                                                    Unit number: {flat.number}
-                                                </td>
-                                                <td>
-                                                    User:
-                                                    {residents.map(resident => {
-                                                        if (
-                                                            resident.flat_id ==
-                                                            flat.id
-                                                        ) {
-                                                            return (
-                                                                <>
-                                                                    {`${
-                                                                        users[
-                                                                            resident.user_id -
-                                                                                1
-                                                                        ]
-                                                                            .first_name
-                                                                    }` +
-                                                                        ` ` +
-                                                                        `${
-                                                                            users[
-                                                                                resident.user_id -
-                                                                                    1
-                                                                            ]
-                                                                                .last_name
-                                                                        }`}
-                                                                </>
-                                                            );
-                                                        }
-                                                    })}
-                                                </td>
-                                            </tr>
-                                        </>
-                                    );
-                                }
-                            })}
-                        </tbody>
-                    </table>
+                    <button
+                        id="showHouseDetails"
+                        onClick={() => {
+                            if (houseDetails) {
+                                sethouseDetails(false);
+                            } else {
+                                sethouseDetails(true);
+                            }
+                        }}
+                    >
+                        {houseDetails ? "Hide details" : "Show Details"}
+                    </button>
+                    {houseDetails && (
+                        <BuildingInfoDetails
+                            flats={flats}
+                            residents={residents}
+                            users={users}
+                        />
+                    )}
                 </div>
             </div>
         </>

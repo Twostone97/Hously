@@ -1,8 +1,17 @@
 {
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js?id=afddf08c2611fbb83577",
     "/css/app.css": "/css/app.css?id=232ef0c6568fc221530e",
     "/js/app.js.map": "/js/app.js.map?id=abd506eb35feb760e98f",
     "/css/app.css.map": "/css/app.css.map?id=caaeca931c91ee0a3d35",
     "/js/index.js": "/js/index.js?id=80e71f77220eb50afc3a",
     "/js/index.js.map": "/js/index.js.map?id=c3c6e6038e2a328d8d3c"
+=======
+    "/js/app.js": "/js/app.js?id=87aaf85b5162f65717a8",
+    "/css/app.css": "/css/app.css?id=ef684904758d55fd9cda",
+    "/js/app.js.map": "/js/app.js.map?id=abd506eb35feb760e98f",
+    "/css/app.css.map": "/css/app.css.map?id=043d89f299a603774873",
+    "/js/index.js": "/js/index.js?id=10204c5d1fce64d07415",
+    "/js/index.js.map": "/js/index.js.map?id=295aa97b9db1b75bf029"
+>>>>>>> feat/jakub
 }
