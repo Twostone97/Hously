@@ -29,12 +29,23 @@ class WebController extends Controller
     }
 
     public function houses() {
+        $taken_flats = [];
         $allbuildings   = DB::table('buildings')->get();
         $allflats       = DB::table('flats')->get();
         $allowners      = DB::table('owners')->get();
         $allusers      = DB::table('users')->get();
         $allresidents   = DB::table('residents')->get();
-        return view ('/pages/houses', compact("allbuildings", "allflats", "allowners", "allusers", "allresidents")); //oficiální mapa s funkčnímy odkazy a seznamem domů
+
+
+        foreach ($allflats as $flat) {
+            foreach ($allresidents as $resident) {
+                if ($flat->id === $resident->flat_id) {
+                    $taken_flats[] = $flat->id;
+                }
+            }
+        }
+
+        return view ('/pages/houses', compact("allbuildings", "allflats", "allowners", "allusers", "allresidents", "taken_flats")); //oficiální mapa s funkčnímy odkazy a seznamem domů
     }
   
       

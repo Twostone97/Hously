@@ -144,7 +144,7 @@ class ResidentController extends Controller
         DB::table('residents')
         ->where('id', $id)
         ->delete();
-        Storage::delete("contract/{$request->flat_id}.pdf");
+        // Storage::delete("contract/{$request->flat_id}.pdf");
 
         $id = $request->building_id;
         return redirect(action('HomeController@bedit', compact('id')));
