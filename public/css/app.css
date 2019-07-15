@@ -11682,13 +11682,22 @@ footer {
   min-width: 25%;
 }
 
-.page__main__dash__item .form__registerbuilding {
+.page__main__dash__item .form__container .form__item {
   display: -webkit-flex;
   display: flex;
-  width: 70%;
-  margin: 0 auto;
-  -webkit-justify-content: space-around;
-          justify-content: space-around;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.page__main__dash__item .form__container .form__submit {
+  background-color: #f25007;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
 }
 
 .page__main__dash .chat__container {

@@ -80,108 +80,132 @@ const UserReg = ({ apidata }) => {
 
     return (
         <>
-            <h4>Registrace obyvatel</h4>
+            <div className="page__main__dash__item i__mid">
+                <div className="page__main__dash__item__head">
+                    <h3>Assign a Resident</h3>
+                </div>
+                <div className="page__main__dash__item__body">
+                    <form
+                        className="form__container"
+                        encType="multipart/form-data"
+                        onSubmit={handleSubmit}
+                    >
+                        <div className="form__item">
+                            <label>Select user:</label>
+                            <select
+                                name="user_id"
+                                onChange={handleUser_id}
+                                value={user_id}
+                            >
+                                {apidata.users.map(user => {
+                                    return (
+                                        <option value={user.id}>
+                                            {`${user.first_name}` +
+                                                " " +
+                                                `${user.last_name}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                        <div className="form__item">
+                            <label>Assign to flat:</label>
+                            <select
+                                name="flat_id"
+                                onChange={handleFlat_id}
+                                value={flat_id}
+                            >
+                                {apidata.flats.map(flat => {
+                                    return (
+                                        <option value={flat.id}>
+                                            {`patro: ` +
+                                                `${flat.floor}` +
+                                                ` číslo bytu: ` +
+                                                `${flat.number}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                        {/* <input
+                        type="hidden"
+                        name="building_id"
+                        value={apidata.this_building.id}
+                    /> */}
+                        <div className="form__item">
+                            <label>First rental period started on:</label>
+                            <input
+                                type="date"
+                                name="begining_of_first_rent"
+                                onChange={handleBegining_of_first_rent}
+                                value={begining_of_first_rent}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Current rental period started on:</label>
+                            <input
+                                type="date"
+                                name="begining_of_current_rent"
+                                onChange={handleBegining_of_current_rent}
+                                value={begining_of_current_rent}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Contract Type: </label>
+                            <select name="contract_id" onChange={changeInput}>
+                                {apidata.rentcontracts.map(contract => {
+                                    return (
+                                        <option value={contract.id}>
+                                            {`typ: ` + `${contract.name}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
-            <form encType="multipart/form-data" onSubmit={handleSubmit}>
-                <label>Name</label>
-                <select name="user_id" onChange={handleUser_id} value={user_id}>
-                    {apidata.users.map(user => {
-                        return (
-                            <option value={user.id}>
-                                {`${user.first_name}` +
-                                    " " +
-                                    `${user.last_name}`}
-                            </option>
-                        );
-                    })}
-                </select>
-                <br />
-                <label>Flat</label>
-                <select name="flat_id" onChange={handleFlat_id} value={flat_id}>
-                    {apidata.flats.map(flat => {
-                        return (
-                            <option value={flat.id}>
-                                {`patro: ` +
-                                    `${flat.floor}` +
-                                    ` číslo bytu: ` +
-                                    `${flat.number}`}
-                            </option>
-                        );
-                    })}
-                </select>
-                <br />
-                {/* <input
-                    type="hidden"
-                    name="building_id"
-                    value={apidata.this_building.id}
-                /> */}
-
-                <label>Začátek prvního nájemního období</label>
-                <input
-                    type="date"
-                    name="begining_of_first_rent"
-                    onChange={handleBegining_of_first_rent}
-                    value={begining_of_first_rent}
-                />
-                <br />
-
-                <label>Začátek aktuálního nájemního období</label>
-                <input
-                    type="date"
-                    name="begining_of_current_rent"
-                    onChange={handleBegining_of_current_rent}
-                    value={begining_of_current_rent}
-                />
-                <br />
-
-                <label>Smlouva</label>
-                <select name="contract_id" onChange={changeInput}>
-                    {apidata.rentcontracts.map(contract => {
-                        return (
-                            <option value={contract.id}>
-                                {`typ: ` + `${contract.name}`}
-                            </option>
-                        );
-                    })}
-                </select>
-                <br />
-
-                {isSmlouvaNaDobuUrcitou && (
-                    <>
-                        <label>Konec aktuálního nájemního obdobý</label>
-                        <input
-                            type="date"
-                            name="end_of_current_rent"
-                            onChange={handleEnd_of_current_rent}
-                            value={end_of_current_rent}
-                        />
-                        <br />
-                    </>
-                )}
-
-                <label>Počet osob</label>
-                <input
-                    type="number"
-                    name="number_of_residents"
-                    onChange={handleNumber_of_residents}
-                    value={number_of_residents}
-                />
-
-                <label>Nájemné (kč)</label>
-                <input
-                    type="number"
-                    name="rental"
-                    onChange={handleRental}
-                    value={rental}
-                />
-                <br />
-
-                <label>Nájemní smlouva</label>
-                <input type="file" name="file" />
-                <br />
-
-                <input type="submit" value="Registrovat" />
-            </form>
+                        {isSmlouvaNaDobuUrcitou && (
+                            <>
+                                <div className="form__item">
+                                    <label>Contract End Date:</label>
+                                    <input
+                                        type="date"
+                                        name="end_of_current_rent"
+                                        onChange={handleEnd_of_current_rent}
+                                        value={end_of_current_rent}
+                                    />
+                                </div>
+                            </>
+                        )}
+                        <div className="form__item">
+                            <label>People living in flat:</label>
+                            <input
+                                type="number"
+                                name="number_of_residents"
+                                onChange={handleNumber_of_residents}
+                                value={number_of_residents}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Rent (CZK)</label>
+                            <input
+                                type="number"
+                                name="rental"
+                                onChange={handleRental}
+                                value={rental}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Rental Agreement </label>
+                            <input type="file" name="file" />
+                        </div>
+                        <div className="form__item">
+                            <button className="form__submit" type="submit">
+                                Assign
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </>
     );
 };
