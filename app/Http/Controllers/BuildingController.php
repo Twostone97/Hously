@@ -58,6 +58,7 @@ class BuildingController extends Controller
         $noticeboard->save();
 
         $community = new Community;
+        $community->community_name = "Obecná komunita";
         $community->building_id = $thisbuilding->id;
         $community->save();
 
@@ -126,6 +127,6 @@ class BuildingController extends Controller
         DB::table('buildings')
         ->where('id', $id)
         ->delete();
-        return redirect(action('HomeController@index'));
+        return redirect(action('WebController@index'));
     }
 }

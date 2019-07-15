@@ -52,9 +52,9 @@ class ResidentController extends Controller
         $resident->end_of_current_rent = $request->end_of_current_rent == "null" ? null : $request->end_of_current_rent;
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
-        $resident->file = $request->file('file')->storeAs(
-            'contract', "{$request->flat_id}.pdf"
-        );
+        if ($request->hasFile("file")) {
+        $resident->file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+        }   
         $resident->save();
 
         $id = $request->building_id;
@@ -147,6 +147,6 @@ class ResidentController extends Controller
         // Storage::delete("contract/{$request->flat_id}.pdf");
 
         $id = $request->building_id;
-        return redirect(action('HomeController@bedit', compact('id')));
+        return redirect(action('WebController@dashboard', compact('id')));
     }
 }
