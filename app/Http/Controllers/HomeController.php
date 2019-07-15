@@ -266,6 +266,6 @@ class HomeController extends Controller
             $users          = DB::table('users')->get();
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $profil = 'superuser';
-            return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts'));
+            return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts', 'residents'));
     }
 }
