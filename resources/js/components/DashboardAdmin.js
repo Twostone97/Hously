@@ -19,10 +19,8 @@ const DashboardAdmin = ({ apidata }) => {
     return (
         <>
             <div>
-                <div className=" page__main__dash__item i__big">
+                <div className="page__main__dash dash__admin">
                     <UserReg apidata={apidata} />
-                </div>
-                <div className=" page__main__dash__item i__big">
                     <BuildingReg
                         data={apidata.this_building}
                         owners={apidata.owners}
