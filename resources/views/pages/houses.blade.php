@@ -85,15 +85,20 @@ Our Houses
                                 @if($building->owner_id === $owner->id)
                                 @foreach ($allusers as $user)
                                 @if ($owner->user_id === $user->id)
-                                    <tr><td>Owner:</td><td>{{$user->first_name}} {{$user->last_name}}</td></tr>             
+                                    <tr><td>Owner:</td><td>{{$user->first_name}} {{$user->last_name}}</td></tr>
                                 @endif
                                 @endforeach
                                 @endif
                                 @endforeach
                                 @endif
+                                <?php
+                                $date = explode('-' ,$building->construction_date);
+                                $date           = "{$date[2]}. {$date[1]}. {$date[0]}";
+                                ?>
+                                <tr><td>Construction date:</td><td>{{$date}}</tr>
                             </tbody>
                         </table>
-      
+
             </div>            
         </div>
     </div>

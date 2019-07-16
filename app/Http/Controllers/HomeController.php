@@ -151,6 +151,7 @@ class HomeController extends Controller
         $flats = null;
         $residents_in_flats = [];
         $rentcontracts = null;
+        $daterent = null;
 
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
@@ -161,6 +162,9 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+            $current_user->birth_date = $date;
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
@@ -171,6 +175,9 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+            $current_user->birth_date = $date;
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
@@ -183,7 +190,12 @@ class HomeController extends Controller
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+            $current_user->birth_date = $date;
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
+            $daterent           = explode('-' ,$resident->begining_of_current_rent);
+            $daterent           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
         }
                         
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
@@ -210,7 +222,6 @@ class HomeController extends Controller
             "rentcontracts" => $rentcontracts,
             "flats" => $flats,
             "contract" => $contract,
-            "date" => $date,
             "contract_id" => $file_id,
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
@@ -233,7 +244,10 @@ class HomeController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect(action('HomeController@index'));
+        
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
     }
 
     public function edit (Request $request ,$id)
@@ -247,7 +261,9 @@ class HomeController extends Controller
                 'phone_number' => $request->phone_number, 
                 'email' => $request->email, 
                 'email' => $request->email]);
-            return redirect(action('HomeController@index'));
+                if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                    return redirect(action('HomeController@index'));
+                }
     }
 
     public function destroy ($id)
@@ -255,7 +271,9 @@ class HomeController extends Controller
         DB::table('users')
             ->where('id', $id)
             ->delete();
-            return redirect(action('HomeController@index'));
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                return redirect(action('HomeController@index'));
+            }
     }
 
     public function bedit ($id)
@@ -268,5 +286,20 @@ class HomeController extends Controller
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $profil = 'superuser';
             return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts', 'residents'));
+    }
+
+    public function chat_api ()
+    {
+        $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
+        $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+        $users          = DB::table('users')->get();
+
+        $data = (object) [
+            "communities" => $communities,
+            "chats" => $chats,
+            "users"=>$users,
+        ];
+
+        return response()->json($data, 200);
     }
 }

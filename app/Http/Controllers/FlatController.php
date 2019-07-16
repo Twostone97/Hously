@@ -46,7 +46,9 @@ class FlatController extends Controller
         $flat->save();
 
         $id = $request->building_id;
-        return redirect(action('HomeController@bedit', compact("id")));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@bedit', compact("id")));    
+        }
     }
     /**
      * Display the specified resource.
@@ -75,7 +77,9 @@ class FlatController extends Controller
             'residential' => $request->residential,]);
         
             $id = $request->building_id;
-            return redirect(action('HomeController@bedit', compact("id")));
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                return redirect(action('HomeController@bedit', compact("id")));    
+            }
     }
 
     /**
@@ -103,6 +107,8 @@ class FlatController extends Controller
         ->delete();
 
         $id = $request->building_id;
-        return redirect(action('HomeController@bedit', compact("id")));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@bedit', compact("id")));    
+        }
     }
 }

@@ -46,8 +46,8 @@ class BuildingController extends Controller
         $building->construction_date = $request->construction_date;
         $building->floors_above_ground = $request->floors_above_ground;
         $building->floors_bellow_ground = $request->floors_bellow_ground;
-        $building->gas = $request->gas == "on" ? 1 : 0 ;
-        $building->heating = $request->heating == "on" ? 1 : 0 ;
+        $building->gas = $request->gas;
+        $building->heating = $request->heating;
         $building->elevator = $request->elevator;
         $building->save();
 
@@ -62,7 +62,9 @@ class BuildingController extends Controller
         $community->building_id = $thisbuilding->id;
         $community->save();
 
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
     }
 
     /**
@@ -97,7 +99,12 @@ class BuildingController extends Controller
             'heating' => $request->heating, 
             'gas' => $request->gas, 
             'elevator' => $request->elevator]);
-        return redirect(action('HomeController@index'));
+        
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null){
+                return redirect(action('HomeController@index'));
+            }
+            
+        
     }
 
     /**
@@ -112,7 +119,9 @@ class BuildingController extends Controller
         $request->file('file')->storeAs(
             'house_rules', "{$request->id}.txt"
         );
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
         
     }
 
@@ -127,6 +136,8 @@ class BuildingController extends Controller
         DB::table('buildings')
         ->where('id', $id)
         ->delete();
-        return redirect(action('WebController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
     }
 }
