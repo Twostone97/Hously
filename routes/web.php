@@ -28,7 +28,7 @@ Auth::routes();
 
 Route::get('/map/api','WebController@mapApi');
 Route::get('/api', 'HomeController@api');
-Route::get('/chatapi', 'HomeController@chat_api');
+Route::get('/chatapi', 'HomeController@chat_api');  
 
 // *************************************
 

@@ -88,8 +88,8 @@ const UserDetail = ({
         data.append("rental", rental);
         data.append("email", email);
         data.append("phone_number", phone_number);
-        data.append("file", file);
         let file = document.querySelector('input[type="file"]').files[0];
+        data.append("file", file);
 
         console.log("data", data);
 
