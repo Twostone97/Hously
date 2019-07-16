@@ -1,5 +1,5 @@
 import React from "react";
-const UserList = ({ residents, users, flats, handleSetDetail }) => {
+const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
     return (
         <>
             <h4>Databaze obyvatel</h4>
@@ -61,7 +61,7 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
                                             ).content,
                                             flat_id: resident.flat_id
                                         };
-                                        console.log(data);
+                                        // console.log(data);
                                         fetch(
                                             `/su/delete/resident/${
                                                 resident.id
@@ -76,7 +76,16 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
 
                                                 body: JSON.stringify(data)
                                             }
-                                        );
+                                        )
+                                            .then(() => {
+                                                refetchApp();
+                                                alert("resident deleted");
+                                            })
+                                            .catch(() => {
+                                                alert(
+                                                    "error occured! try later"
+                                                );
+                                            });
                                     }}
                                 >
                                     Delete

@@ -20,7 +20,7 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
         <>
             <div>
                 <div className="page__main__dash dash__admin">
-                    <UserReg apidata={apidata} />
+                    <UserReg apidata={apidata} refetchApp={refetchApp} />
                     <BuildingReg
                         data={apidata.this_building}
                         owners={apidata.owners}
@@ -46,6 +46,7 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
                             users={apidata.users}
                             flats={apidata.flats}
                             handleSetDetail={handleSetDetail}
+                            refetchApp={refetchApp}
                         />
                     ) : (
                         <UserDetail
@@ -56,6 +57,7 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
                             )}
                             rentcontracts={apidata.rentcontracts}
                             flats={apidata.flats}
+                            refetchApp={refetchApp}
                         />
                     )}
                 </div>

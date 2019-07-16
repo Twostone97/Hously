@@ -6,7 +6,8 @@ const UserDetail = ({
     user,
     resident,
     rentcontracts,
-    flats
+    flats,
+    refetchApp
 }) => {
     // list of states****************
 
@@ -98,6 +99,7 @@ const UserDetail = ({
             body: data
         }).then(() => {
             handleSetDetail(null);
+            refetchApp();
         });
     };
     // token
