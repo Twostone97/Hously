@@ -129,8 +129,6 @@ class ResidentController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone,
             ]);
-            
-        return redirect(action('WebController@dashboard'));
     }
 
     /**
@@ -144,9 +142,9 @@ class ResidentController extends Controller
         DB::table('residents')
         ->where('id', $id)
         ->delete();
-        // Storage::delete("contract/{$request->flat_id}.pdf");
+        Storage::delete("contract/{$request->flat_id}.pdf");
 
         $id = $request->building_id;
-        return redirect(action('WebController@dashboard', compact('id')));
+       // return redirect(action('WebController@dashboard', compact('id')));
     }
 }

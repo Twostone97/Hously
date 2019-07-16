@@ -54,20 +54,25 @@ const UserList = ({ residents, users, flats, handleSetDetail }) => {
                                         const metaList = document.querySelectorAll(
                                             "meta"
                                         );
-                                        let _token = document.querySelector(
-                                            'meta[name="csrf-token"]'
-                                        ).content;
-                                        let flat_id = resident.flat_id;
+
                                         let data = {
-                                            _token,
-                                            flat_id
+                                            _token: document.querySelector(
+                                                'meta[name="csrf-token"]'
+                                            ).content,
+                                            flat_id: resident.flat_id
                                         };
+                                        console.log(data);
                                         fetch(
                                             `/su/delete/resident/${
                                                 resident.id
                                             }`,
                                             {
                                                 method: "post",
+                                                headers: {
+                                                    Accept: "application/json",
+                                                    "Content-Type":
+                                                        "application/json"
+                                                },
 
                                                 body: JSON.stringify(data)
                                             }
