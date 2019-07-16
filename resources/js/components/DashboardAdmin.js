@@ -18,51 +18,57 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
 
     return (
         <>
-            <div>
-                <div className="page__main__dash dash__admin">
-                    <UserReg apidata={apidata} />
-                    <BuildingReg
-                        data={apidata.this_building}
-                        owners={apidata.owners}
+            <div className="page__main__dash dash__admin">
+                <UserReg apidata={apidata} refetchApp={refetchApp} />
+                <BuildingReg
+                    data={apidata.this_building}
+                    owners={apidata.owners}
+                    users={apidata.users}
+                    flats={apidata.flats}
+                    residents={apidata.residents}
+                    refetchApp={refetchApp}
+                />
+            </div>
+            <div className="page__main__dash dash__admin">
+                <BuildingInfo
+                    data={apidata.this_building}
+                    owners={apidata.owners}
+                    users={apidata.users}
+                    flats={apidata.flats}
+                    residents={apidata.residents}
+                />
+            </div>
+            <div className=" page__main__dash dash__admin">
+                {!isDetail ? (
+                    <UserList
+                        residents={apidata.residents}
                         users={apidata.users}
                         flats={apidata.flats}
-                        residents={apidata.residents}
+                        handleSetDetail={handleSetDetail}
                         refetchApp={refetchApp}
                     />
-                </div>
-                <div className=" page__main__dash__item i__big">
-                    <BuildingInfo
-                        data={apidata.this_building}
-                        owners={apidata.owners}
-                        users={apidata.users}
+                ) : (
+                    <UserDetail
+                        handleSetDetail={handleSetDetail}
+                        user={apidata.users[detail_id - 1]}
+                        resident={apidata.residents.filter(
+                            resident => resident.user_id == detail_id
+                        )}
+                        rentcontracts={apidata.rentcontracts}
                         flats={apidata.flats}
-                        residents={apidata.residents}
+                        refetchApp={refetchApp}
                     />
-                </div>
-                <div className=" page__main__dash__item i__big">
-                    {!isDetail ? (
-                        <UserList
-                            residents={apidata.residents}
-                            users={apidata.users}
-                            flats={apidata.flats}
-                            handleSetDetail={handleSetDetail}
-                        />
-                    ) : (
-                        <UserDetail
-                            handleSetDetail={handleSetDetail}
-                            user={apidata.users[detail_id - 1]}
-                            resident={apidata.residents.filter(
-                                resident => resident.user_id == detail_id
-                            )}
-                            rentcontracts={apidata.rentcontracts}
-                            flats={apidata.flats}
-                        />
-                    )}
-                </div>
+                )}
+            </div>
 
-                <div className="page__main__dash__item i__small">
-                    <h4>Important files</h4>
-                    <p>Here will be a list of files</p>
+            <div className=" page__main__dash dash__admin">
+                <div className="page__main__dash__item i__full">
+                    <div className="page__main__dash__item__head">
+                        <h4>Important files</h4>
+                    </div>
+                    <div className="page__main__dash__item__body">
+                        <p>Here will be a list of files</p>
+                    </div>
                 </div>
             </div>
         </>

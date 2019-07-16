@@ -47,7 +47,7 @@ const DashboardCommon = ({
                     />
                 )}
             </div>
-            <div>
+            <div className="page__main__dash dash__common">
                 <DashboardCommonHouseRules rules={rules} />
             </div>
         </>

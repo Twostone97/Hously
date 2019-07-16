@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const UserReg = ({ apidata }) => {
+const UserReg = ({ apidata, refetchApp }) => {
     // list of states*****************
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
     const [user_id, setUser_id] = useState(null);
@@ -12,8 +12,8 @@ const UserReg = ({ apidata }) => {
     const [end_of_current_rent, SetEnd_of_current_rent] = useState(
         begining_of_first_rent
     );
-    const [number_of_residents, SetNumber_of_residents] = useState(0);
-    const [rental, setRental] = useState(0);
+    const [number_of_residents, SetNumber_of_residents] = useState(null);
+    const [rental, setRental] = useState(null);
 
     const [contract_id, setContract_id] = useState(apidata.rentcontracts[0].id);
     const building_id = apidata.this_building.id;
@@ -49,8 +49,21 @@ const UserReg = ({ apidata }) => {
         setRental(e.target.value);
     };
 
+    //****************RESET FORM FIELDS (at first render + on form submit) *********/
+    const resetFormFields = () => {
+        document
+            .querySelectorAll(".resetable input, .resetable select")
+            .forEach(input => {
+                input.value = null;
+            });
+    };
+    // useEffect(() => {
+    //     resetFormFields();
+    // }, []);
+
     // ***********************************************
     let _token = document.querySelector('meta[name="csrf-token"]').content;
+
     const handleSubmit = e => {
         e.preventDefault();
         let data = new FormData();
@@ -67,7 +80,7 @@ const UserReg = ({ apidata }) => {
 
         let imagedata = document.querySelector('input[type="file"]').files[0];
         data.append("file", imagedata);
-        console.log("data", data);
+
         fetch("/resident", {
             method: "post",
             // headers: {
@@ -75,7 +88,15 @@ const UserReg = ({ apidata }) => {
             //     // 'Content-Type': 'application/x-www-form-urlencoded',
             // },
             body: data
-        });
+        })
+            .then(() => {
+                alert("user succesfully registered");
+            })
+            .catch(() => alert("error occured, try later"))
+            .finally(() => {
+                refetchApp();
+                resetFormFields();
+            });
     };
 
     return (
@@ -83,10 +104,11 @@ const UserReg = ({ apidata }) => {
             <div className="page__main__dash__item i__mid">
                 <div className="page__main__dash__item__head">
                     <h3>Assign a Resident</h3>
+                    <a>Show more</a>
                 </div>
                 <div className="page__main__dash__item__body">
                     <form
-                        className="form__container"
+                        className="form__container resetable"
                         encType="multipart/form-data"
                         onSubmit={handleSubmit}
                     >
