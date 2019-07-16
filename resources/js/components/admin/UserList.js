@@ -60,7 +60,7 @@ const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
                                                 );
                                             }}
                                         >
-                                            Detail
+                                            Update
                                         </button>
                                         <button
                                             onClick={() => {

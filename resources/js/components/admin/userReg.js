@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const UserReg = ({ apidata, refetchApp }) => {
+    const [showContent, setshowContent] = useState(false);
+
     // list of states*****************
     const [isSmlouvaNaDobuUrcitou, setisSmlouvaNaDobuUrcitou] = useState(false);
     const [user_id, setUser_id] = useState(null);
@@ -101,132 +103,166 @@ const UserReg = ({ apidata, refetchApp }) => {
 
     return (
         <>
-            <div className="page__main__dash__item i__mid">
-                <div className="page__main__dash__item__head">
-                    <h3>Assign a Resident</h3>
-                    <a>Show more</a>
+            <div
+                className="page__main__dash__item i__mid no-horiz-strech"
+                style={
+                    !showContent
+                        ? {
+                              background: "none"
+                          }
+                        : {}
+                }
+            >
+                <div
+                    className="page__main__dash__item__head"
+                    style={
+                        !showContent
+                            ? {
+                                  background: "none"
+                              }
+                            : {}
+                    }
+                >
+                    {!showContent ? (
+                        <button
+                            className="action-btn"
+                            onClick={() => {
+                                setshowContent(true);
+                            }}
+                        >
+                            Assign Resident
+                        </button>
+                    ) : (
+                        <h3>Assign Resident</h3>
+                    )}
                 </div>
-                <div className="page__main__dash__item__body">
-                    <form
-                        className="form__container resetable"
-                        encType="multipart/form-data"
-                        onSubmit={handleSubmit}
-                    >
-                        <div className="form__item">
-                            <label>Select user:</label>
-                            <select
-                                name="user_id"
-                                onChange={handleUser_id}
-                                value={user_id}
-                            >
-                                {apidata.users.map(user => {
-                                    return (
-                                        <option value={user.id}>
-                                            {`${user.first_name}` +
-                                                " " +
-                                                `${user.last_name}`}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                        </div>
-                        <div className="form__item">
-                            <label>Assign to flat:</label>
-                            <select
-                                name="flat_id"
-                                onChange={handleFlat_id}
-                                value={flat_id}
-                            >
-                                {apidata.flats.map(flat => {
-                                    return (
-                                        <option value={flat.id}>
-                                            {`patro: ` +
-                                                `${flat.floor}` +
-                                                ` číslo bytu: ` +
-                                                `${flat.number}`}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                        </div>
-                        {/* <input
-                        type="hidden"
-                        name="building_id"
-                        value={apidata.this_building.id}
-                    /> */}
-                        <div className="form__item">
-                            <label>First rental period started on:</label>
-                            <input
-                                type="date"
-                                name="begining_of_first_rent"
-                                onChange={handleBegining_of_first_rent}
-                                value={begining_of_first_rent}
-                            />
-                        </div>
-                        <div className="form__item">
-                            <label>Current rental period started on:</label>
-                            <input
-                                type="date"
-                                name="begining_of_current_rent"
-                                onChange={handleBegining_of_current_rent}
-                                value={begining_of_current_rent}
-                            />
-                        </div>
-                        <div className="form__item">
-                            <label>Contract Type: </label>
-                            <select name="contract_id" onChange={changeInput}>
-                                {apidata.rentcontracts.map(contract => {
-                                    return (
-                                        <option value={contract.id}>
-                                            {`typ: ` + `${contract.name}`}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                        </div>
 
-                        {isSmlouvaNaDobuUrcitou && (
-                            <>
-                                <div className="form__item">
-                                    <label>Contract End Date:</label>
-                                    <input
-                                        type="date"
-                                        name="end_of_current_rent"
-                                        onChange={handleEnd_of_current_rent}
-                                        value={end_of_current_rent}
-                                    />
-                                </div>
-                            </>
-                        )}
-                        <div className="form__item">
-                            <label>People living in flat:</label>
-                            <input
-                                type="number"
-                                name="number_of_residents"
-                                onChange={handleNumber_of_residents}
-                                value={number_of_residents}
-                            />
-                        </div>
-                        <div className="form__item">
-                            <label>Rent (CZK)</label>
-                            <input
-                                type="number"
-                                name="rental"
-                                onChange={handleRental}
-                                value={rental}
-                            />
-                        </div>
-                        <div className="form__item">
-                            <label>Rental Agreement </label>
-                            <input type="file" name="file" />
-                        </div>
-                        <div className="form__item">
-                            <button className="form__submit" type="submit">
-                                Assign
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                {showContent && (
+                    <div className="page__main__dash__item__body">
+                        <form
+                            className="form__container resetable"
+                            encType="multipart/form-data"
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="form__item">
+                                <label>Select user:</label>
+                                <select
+                                    name="user_id"
+                                    onChange={handleUser_id}
+                                    value={user_id}
+                                >
+                                    {apidata.users.map(user => {
+                                        return (
+                                            <option value={user.id}>
+                                                {`${user.first_name}` +
+                                                    " " +
+                                                    `${user.last_name}`}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+                            <div className="form__item">
+                                <label>Assign to flat:</label>
+                                <select
+                                    name="flat_id"
+                                    onChange={handleFlat_id}
+                                    value={flat_id}
+                                >
+                                    {apidata.flats.map(flat => {
+                                        return (
+                                            <option value={flat.id}>
+                                                {`patro: ` +
+                                                    `${flat.floor}` +
+                                                    ` číslo bytu: ` +
+                                                    `${flat.number}`}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+                            {/* <input
+                    type="hidden"
+                    name="building_id"
+                    value={apidata.this_building.id}
+                /> */}
+                            <div className="form__item">
+                                <label>First rental period started on:</label>
+                                <input
+                                    type="date"
+                                    name="begining_of_first_rent"
+                                    onChange={handleBegining_of_first_rent}
+                                    value={begining_of_first_rent}
+                                />
+                            </div>
+                            <div className="form__item">
+                                <label>Current rental period started on:</label>
+                                <input
+                                    type="date"
+                                    name="begining_of_current_rent"
+                                    onChange={handleBegining_of_current_rent}
+                                    value={begining_of_current_rent}
+                                />
+                            </div>
+                            <div className="form__item">
+                                <label>Contract Type: </label>
+                                <select
+                                    name="contract_id"
+                                    onChange={changeInput}
+                                >
+                                    {apidata.rentcontracts.map(contract => {
+                                        return (
+                                            <option value={contract.id}>
+                                                {`typ: ` + `${contract.name}`}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            </div>
+
+                            {isSmlouvaNaDobuUrcitou && (
+                                <>
+                                    <div className="form__item">
+                                        <label>Contract End Date:</label>
+                                        <input
+                                            type="date"
+                                            name="end_of_current_rent"
+                                            onChange={handleEnd_of_current_rent}
+                                            value={end_of_current_rent}
+                                        />
+                                    </div>
+                                </>
+                            )}
+                            <div className="form__item">
+                                <label>People living in flat:</label>
+                                <input
+                                    type="number"
+                                    name="number_of_residents"
+                                    onChange={handleNumber_of_residents}
+                                    value={number_of_residents}
+                                />
+                            </div>
+                            <div className="form__item">
+                                <label>Rent (CZK)</label>
+                                <input
+                                    type="number"
+                                    name="rental"
+                                    onChange={handleRental}
+                                    value={rental}
+                                />
+                            </div>
+                            <div className="form__item">
+                                <label>Rental Agreement </label>
+                                <input type="file" name="file" />
+                            </div>
+                            <div className="form__item">
+                                <button className="form__submit" type="submit">
+                                    Assign
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                )}
             </div>
         </>
     );

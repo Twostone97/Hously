@@ -35,7 +35,7 @@ const DashboardCommonHouseNewsAddElement = ({ noticeboard, add_handler }) => {
                 />
                 <br />
                 <label htmlFor="permanent">
-                    Permanent?
+                    Featured?
                     <input type="checkbox" name="permanent" label="permanent" />
                 </label>
                 <br />

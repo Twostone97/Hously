@@ -11,7 +11,7 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
     return (
         <div className="page__main__dash__item i__mid">
             <div className="page__main__dash__item__head">
-                <h4>Chat section</h4>
+                <h3>Chat section</h3>
             </div>
 
             <div className="page__main__dash__item__body">

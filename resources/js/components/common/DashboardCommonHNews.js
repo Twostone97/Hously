@@ -30,11 +30,15 @@ const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
                             <div className="notices__list__item">
                                 {notice.permanent == 1 && (
                                     <>
-                                        <div className="notice_permanent">
-                                            <textarea>{notice.text}</textarea>
-                                        </div>
+                                        <textarea
+                                            className="item__featured"
+                                            readOnly
+                                        >
+                                            {notice.text}
+                                        </textarea>
+
                                         <p>
-                                            <span readOnly>
+                                            <span className="item__featured__tag">
                                                 Created: {notice.created_at}
                                             </span>
 
@@ -55,10 +59,15 @@ const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
                             <div className="notices__list__item">
                                 {notice.permanent == 0 && (
                                     <>
-                                        <textarea>{notice.text}</textarea>
+                                        <textarea
+                                            readOnly
+                                            className="item__normal"
+                                        >
+                                            {notice.text}
+                                        </textarea>
 
                                         <p>
-                                            <span readOnly>
+                                            <span>
                                                 Created: {notice.created_at}
                                             </span>
 

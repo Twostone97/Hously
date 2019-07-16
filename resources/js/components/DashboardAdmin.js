@@ -19,6 +19,15 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
     return (
         <>
             <div className="page__main__dash dash__admin">
+                <BuildingInfo
+                    data={apidata.this_building}
+                    owners={apidata.owners}
+                    users={apidata.users}
+                    flats={apidata.flats}
+                    residents={apidata.residents}
+                />
+            </div>
+            <div className="page__main__dash dash__admin">
                 <UserReg apidata={apidata} refetchApp={refetchApp} />
                 <BuildingReg
                     data={apidata.this_building}
@@ -27,15 +36,6 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
                     flats={apidata.flats}
                     residents={apidata.residents}
                     refetchApp={refetchApp}
-                />
-            </div>
-            <div className="page__main__dash dash__admin">
-                <BuildingInfo
-                    data={apidata.this_building}
-                    owners={apidata.owners}
-                    users={apidata.users}
-                    flats={apidata.flats}
-                    residents={apidata.residents}
                 />
             </div>
             <div className=" page__main__dash dash__admin">

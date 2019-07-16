@@ -7,7 +7,7 @@ const DashboardCommonHouseNewsDeleteElement = ({
     return (
         <>
             <form
-                className="item__nonpermanent"
+                className="item__deleteTag"
                 encType="multipart/form-data"
                 onSubmit={e => {
                     e.preventDefault();

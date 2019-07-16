@@ -11,6 +11,12 @@
     display: flex;
     justify-content: space-between;
 
+    @media screen and (max-width: 991px) {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+
     //general styles for dashboard
     a {
         color: $secondary-blue;
@@ -21,8 +27,22 @@
         overflow: auto;
     }
 
+    .action-btn {
+        width: 200px;
+        background-color: $orange;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        display: block;
+        padding: 0.5rem 1rem;
+        margin: 1rem auto;
+    }
+
+    .no-horiz-strech {
+        align-self: flex-start;
+    }
+
     &__item {
-        min-height: 25vh;
         background-color: rgba($base-blue, 0.5);
         color: black;
         margin: 2rem 0;
@@ -48,6 +68,10 @@
             background-color: $base-blue;
             color: white;
             text-align: center;
+
+            h3 {
+                margin: 0;
+            }
         }
 
         &__body {
@@ -78,6 +102,10 @@
                     height: max-content;
                     border: 0.5px solid $secondary-blue;
                     padding: 0.2rem 1rem;
+
+                    &.item__featured {
+                        background: rgba($orange, 0.6);
+                    }
                 }
 
                 p {
@@ -91,18 +119,18 @@
                     vertical-align: top;
                 }
 
-                span.item__permanent::after {
-                    content: "Permanent";
+                span.item__featured__tag::after {
+                    content: "featured";
                     margin-left: 1rem;
                     padding: 4px;
                     border-radius: 5px;
                     font-size: 10px;
-                    background-color: $secondary-blue;
+                    background-color: $orange;
                     color: #fff;
                     line-height: 1rem;
                     vertical-align: top;
                 }
-                .item__nonpermanent {
+                .item__deleteTag {
                     display: inline-block;
                     line-height: 1.35rem;
 
@@ -166,6 +194,11 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 0.5rem;
+
+                input,
+                select {
+                    width: 40%;
+                }
             }
 
             .form__submit {
