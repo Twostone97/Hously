@@ -150,6 +150,7 @@ class HomeController extends Controller
         $this_building = null;
         $flats = null;
         $residents_in_flats = [];
+        $rentcontracts = null;
 
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {

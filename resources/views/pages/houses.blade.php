@@ -1,5 +1,19 @@
 @extends ('layouts/houslytemplate')
 
+@section ('nav') 
+    <li class="nav-item ml-2">
+        <a class="nav-link " href="/about">About Hously</a>
+    </li>
+    <li class="nav-item ml-2">
+        <a class="nav-link" href="#">Available Appartments</a>
+    </li>
+    <li class="nav-item ml-2">
+        <a class="nav-link active" href="/houses">Involved Houses</a>
+    </li>
+@endsection
+
+
+
 @section('title')
 Our Houses    
 @endsection
@@ -42,38 +56,41 @@ Our Houses
                                         @endforeach
                                             {{$i}}</td></tr>
                                  
-                                <tr><td>Avaible flats:</td>
-                                    <?php $arflats = 0; $acflats = 0;?>
-                                    @foreach ($allflats as $flat)
-                                    @foreach ($allresidents as $resident)
-                                        @if ($flat->building_id === $building->id && $resident->building_id === $building->id)
-                                            @if ($resident->flat_id === $flat->number)
-                                                
-                                            @else
+                                            <?php $arflats = 0; $acflats = 0 ?>
+                                            @foreach ($allflats as $flat)
+                                                @if ($flat->building_id === $building->id)
                                                 @if ($flat->residential == 1)
                                                 <?php $arflats++ ?>
-                                                @else
-                                                <?php $acflats++ ?>    
-                                                @endif
-                                            
+                                            @elseif ($flat->residential == 0)
+                                                <?php $acflats++ ?>
                                             @endif
-                                        @endif
-                                    @endforeach    
-                                    @endforeach   
-                                    <td>Residential: {{$arflats}}</td></tr>
-                                <tr><td></td><td>Commercial: {{$acflats}}</td></tr>
-                                @foreach ($allowners as $owner)
+                                                    @foreach ($taken_flats as $taken)
+                                                        @if ($flat->id === $taken)
+                                                            @if ($flat->residential == 1)
+                                                                <?php $arflats-- ?>
+                                                            @elseif ($flat->residential == 0)
+                                                                <?php $acflats-- ?>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                <tr><td>Avaible flats:</td>
+                                <td>Residential:{{$arflats}}</td></tr>
+                                <tr><td></td><td>Commercial:{{$acflats}}</td></tr>
                                 @if ($building->owner_id === null)
-                                <tr><td>Vlastník:</td><td>Žádný Vlastník</td></tr>        
-                                @elseif($building->owner_id === $owner->id)
+                                    <tr><td>Owner:</td><td>no owner</td></tr>             
+                                @else
+                                @foreach ($allowners as $owner)
+                                @if($building->owner_id === $owner->id)
                                 @foreach ($allusers as $user)
                                 @if ($owner->user_id === $user->id)
-                                    <tr><td>Vlastník:</td><td>{{$user->first_name}} {{$user->last_name}}</td></tr>             
+                                    <tr><td>Owner:</td><td>{{$user->first_name}} {{$user->last_name}}</td></tr>             
                                 @endif
                                 @endforeach
                                 @endif
                                 @endforeach
-
+                                @endif
                             </tbody>
                         </table>
       
