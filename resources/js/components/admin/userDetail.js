@@ -201,6 +201,7 @@ const UserDetail = ({
                     <br />
 
                     <input type="submit" value="submit" />
+                    <button onClick={() => handleSetDetail(null)}>BACK</button>
                 </form>
             </div>
         </>

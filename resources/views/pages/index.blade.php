@@ -8,7 +8,7 @@
         <a class="nav-link" href="/about">About Hously</a>
     </li>
     <li class="nav-item ml-2">
-        <a class="nav-link" href="#">Available Appartments</a>
+        <a class="nav-link" href="/flats">Available Appartments</a>
     </li>
     <li class="nav-item ml-2">
         <a class="nav-link" href="/houses">Involved Houses</a>

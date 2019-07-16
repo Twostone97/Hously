@@ -54,5 +54,30 @@ class WebController extends Controller
         return $building->toJson();
 
     }
+    public function flats(){
+        $list_of_flats=[];
+        $list_of_resident=[];
+        $allflats        = DB:: table('flats')-> get();
+        $allbuildings    = DB:: table('buildings')->get();
+        $allresidents_Id = DB:: table('residents')->select('flat_id')->get()->toArray();
+
+        foreach ($allresidents_Id as $resident) {
+            $list_of_resident[]=$resident->flat_id;
+        }
+      
+       
+        foreach ($allflats as $flat) {
+           
+     
+            if(!array_search($flat->id,$list_of_resident)){
+               
+                $list_of_flats[]=$flat;
+                }
+        }
+      
+
+
+        return view ('/pages/flats', compact("list_of_flats","allbuildings","allflats"));
+    }
 }
 
