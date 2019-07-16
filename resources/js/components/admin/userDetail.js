@@ -96,6 +96,8 @@ const UserDetail = ({
             method: "POST",
 
             body: data
+        }).then(() => {
+            handleSetDetail(null);
         });
     };
     // token
@@ -203,6 +205,7 @@ const UserDetail = ({
                     <input type="submit" value="submit" />
                 </form>
             </div>
+            <button onClick={() => handleSetDetail(null)}>Hide</button>
         </>
     );
 };
