@@ -59,7 +59,9 @@ class ResidentController extends Controller
 
         $id = $request->building_id;
 
-        return redirect(action('HomeController@bedit', compact('id')));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@bedit', compact('id')));        
+        }
     }
 
     /**
@@ -98,7 +100,11 @@ class ResidentController extends Controller
             }
 
             $id = $request->building_id;
-        return redirect(action('HomeController@bedit', compact('id')));
+
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                return redirect(action('HomeController@bedit', compact('id')));        
+            }
+        
     }
 
     /**
@@ -145,6 +151,8 @@ class ResidentController extends Controller
         Storage::delete("contract/{$request->flat_id}.pdf");
 
         $id = $request->building_id;
-       // return redirect(action('WebController@dashboard', compact('id')));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@bedit', compact('id')));        
+        }
     }
 }

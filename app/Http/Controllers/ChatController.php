@@ -93,6 +93,8 @@ class ChatController extends Controller
         DB::table('chats')
         ->where('user_id', $id)
         ->delete();
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));        
+        }
     }
 }

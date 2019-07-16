@@ -244,7 +244,10 @@ class HomeController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect(action('HomeController@index'));
+        
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
     }
 
     public function edit (Request $request ,$id)
@@ -258,7 +261,9 @@ class HomeController extends Controller
                 'phone_number' => $request->phone_number, 
                 'email' => $request->email, 
                 'email' => $request->email]);
-            return redirect(action('HomeController@index'));
+                if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                    return redirect(action('HomeController@index'));
+                }
     }
 
     public function destroy ($id)
@@ -266,7 +271,9 @@ class HomeController extends Controller
         DB::table('users')
             ->where('id', $id)
             ->delete();
-            return redirect(action('HomeController@index'));
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+                return redirect(action('HomeController@index'));
+            }
     }
 
     public function bedit ($id)
@@ -279,5 +286,20 @@ class HomeController extends Controller
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $profil = 'superuser';
             return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts', 'residents'));
+    }
+
+    public function chat_api ()
+    {
+        $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
+        $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
+        $users          = DB::table('users')->get();
+
+        $data = (object) [
+            "communities" => $communities,
+            "chats" => $chats,
+            "users"=>$users,
+        ];
+
+        return response()->json($data, 200);
     }
 }

@@ -46,7 +46,9 @@ class NoticeController extends Controller
         $notice->text = $request->notice;
         $notice->save();
 
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));    
+        }
     }
 
     /**
@@ -94,6 +96,9 @@ class NoticeController extends Controller
         DB::table('notices')
         ->where('id', $id)
         ->delete();
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
+        
     }
 }

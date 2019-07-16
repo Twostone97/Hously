@@ -62,10 +62,8 @@ class BuildingController extends Controller
         $community->building_id = $thisbuilding->id;
         $community->save();
 
-        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null)
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
             return redirect(action('HomeController@index'));
-        else {
-            return redirect(action('WebController@dashboard'));
         }
     }
 
@@ -101,7 +99,12 @@ class BuildingController extends Controller
             'heating' => $request->heating, 
             'gas' => $request->gas, 
             'elevator' => $request->elevator]);
-        // return redirect(action('HomeController@index'));
+        
+            if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null){
+                return redirect(action('HomeController@index'));
+            }
+            
+        
     }
 
     /**
@@ -116,7 +119,9 @@ class BuildingController extends Controller
         $request->file('file')->storeAs(
             'house_rules', "{$request->id}.txt"
         );
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
         
     }
 
@@ -131,6 +136,8 @@ class BuildingController extends Controller
         DB::table('buildings')
         ->where('id', $id)
         ->delete();
-        return redirect(action('WebController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            return redirect(action('HomeController@index'));
+        }
     }
 }
