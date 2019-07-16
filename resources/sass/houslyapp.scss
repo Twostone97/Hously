@@ -11,6 +11,12 @@
     display: flex;
     justify-content: space-between;
 
+    //general styles for dashboard
+    a {
+        color: $secondary-blue;
+        font-weight: bold;
+        text-decoration: underline;
+    }
     .scrollable {
         overflow: auto;
     }
@@ -69,9 +75,9 @@
                 textarea {
                     width: 95%;
                     background: rgba(#fff, 0.3);
-                    height: auto;
+                    height: max-content;
                     border: 0.5px solid $secondary-blue;
-                    padding: 1rem;
+                    padding: 0.2rem 1rem;
                 }
 
                 p {
@@ -216,6 +222,17 @@
                 border-right: 0;
                 margin-right: -21px;
             }
+        }
+    }
+
+    ol.resident__list__container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        list-style-position: inside;
+
+        li {
+            flex: 1 1 30%;
         }
     }
 }

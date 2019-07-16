@@ -11530,6 +11530,12 @@ footer {
           justify-content: space-between;
 }
 
+.page__main__dash a {
+  color: #2f3259;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .page__main__dash .scrollable {
   overflow: auto;
 }
@@ -11601,9 +11607,11 @@ footer {
 .page__main__dash__item .notices__list__item textarea {
   width: 95%;
   background: rgba(255, 255, 255, 0.3);
-  height: auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   border: 0.5px solid #2f3259;
-  padding: 1rem;
+  padding: 0.2rem 1rem;
 }
 
 .page__main__dash__item .notices__list__item p {
@@ -11745,6 +11753,21 @@ footer {
   border-left-color: #2f3259;
   border-right: 0;
   margin-right: -21px;
+}
+
+.page__main__dash ol.resident__list__container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  list-style-position: inside;
+}
+
+.page__main__dash ol.resident__list__container li {
+  -webkit-flex: 1 1 30%;
+          flex: 1 1 30%;
 }
 
 #map {

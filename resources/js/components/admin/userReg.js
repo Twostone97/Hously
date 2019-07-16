@@ -12,8 +12,8 @@ const UserReg = ({ apidata, refetchApp }) => {
     const [end_of_current_rent, SetEnd_of_current_rent] = useState(
         begining_of_first_rent
     );
-    const [number_of_residents, SetNumber_of_residents] = useState(0);
-    const [rental, setRental] = useState(0);
+    const [number_of_residents, SetNumber_of_residents] = useState(null);
+    const [rental, setRental] = useState(null);
 
     const [contract_id, setContract_id] = useState(apidata.rentcontracts[0].id);
     const building_id = apidata.this_building.id;
@@ -57,9 +57,9 @@ const UserReg = ({ apidata, refetchApp }) => {
                 input.value = null;
             });
     };
-    useEffect(() => {
-        resetFormFields();
-    }, []);
+    // useEffect(() => {
+    //     resetFormFields();
+    // }, []);
 
     // ***********************************************
     let _token = document.querySelector('meta[name="csrf-token"]').content;
@@ -104,6 +104,7 @@ const UserReg = ({ apidata, refetchApp }) => {
             <div className="page__main__dash__item i__mid">
                 <div className="page__main__dash__item__head">
                     <h3>Assign a Resident</h3>
+                    <a>Show more</a>
                 </div>
                 <div className="page__main__dash__item__body">
                     <form

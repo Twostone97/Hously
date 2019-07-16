@@ -106,108 +106,132 @@ const UserDetail = ({
 
     return (
         <>
-            <div className="kontrolni div pro userdetail">
-                <div>{`${user.first_name}` + " " + `${user.last_name}`}</div>
-                <form encType="multipart/form-data" onSubmit={handleSubmit}>
-                    <label>Flat</label>
-                    <select
-                        name="flat_id"
-                        onChange={handleFlat_id}
-                        value={flat_id}
+            <div className="page__main__dash__item i__full">
+                <div className="page__main__dash__item__head">
+                    <h3>{`${user.first_name}` + " " + `${user.last_name}`}</h3>
+                </div>
+                <div className="page__main__dash__item__body">
+                    <form
+                        className="form__container"
+                        encType="multipart/form-data"
+                        onSubmit={handleSubmit}
+                        style={{ width: "65%", margin: "0 auto" }}
                     >
-                        {flats.map(flat => {
-                            return (
-                                <option value={flat.id}>
-                                    {`patro: ` +
-                                        `${flat.floor}` +
-                                        ` číslo bytu: ` +
-                                        `${flat.number}`}
-                                </option>
-                            );
-                        })}
-                    </select>
+                        <div className="form__item">
+                            <label>Flat</label>
+                            <select
+                                name="flat_id"
+                                onChange={handleFlat_id}
+                                value={flat_id}
+                            >
+                                {flats.map(flat => {
+                                    return (
+                                        <option value={flat.id}>
+                                            {`patro: ` +
+                                                `${flat.floor}` +
+                                                ` číslo bytu: ` +
+                                                `${flat.number}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
-                    <br />
-
-                    <label>Začátek prvního nájemního období</label>
-                    <input
-                        type="date"
-                        name="begining_of_first_rent"
-                        onChange={handleBegining_of_first_rent}
-                        value={begining_of_first_rent}
-                    />
-                    <br />
-
-                    <label>Začátek aktuálního nájemního období</label>
-                    <input
-                        type="date"
-                        name="begining_of_current_rent"
-                        onChange={handleBegining_of_current_rent}
-                        value={begining_of_current_rent}
-                    />
-                    <br />
-
-                    <label>Smlouva</label>
-                    <select name="contract_id" onChange={changeInput}>
-                        {rentcontracts.map(contract => {
-                            return (
-                                <option value={contract.id}>
-                                    {`typ: ` + `${contract.name}`}
-                                </option>
-                            );
-                        })}
-                    </select>
-                    <br />
-
-                    {isSmlouvaNaDobuUrcitou && (
-                        <>
-                            <label>Konec aktuálního nájemního obdobý</label>
+                        <div className="form__item">
+                            <label>Rental starts on:</label>
                             <input
                                 type="date"
-                                name="end_of_current_rent"
-                                onChange={handleEnd_of_current_rent}
-                                value={end_of_current_rent}
+                                name="begining_of_first_rent"
+                                onChange={handleBegining_of_first_rent}
+                                value={begining_of_first_rent}
                             />
-                            <br />
-                        </>
-                    )}
+                        </div>
+                        <div className="form__item">
+                            <label>Rental ends on:</label>
+                            <input
+                                type="date"
+                                name="begining_of_current_rent"
+                                onChange={handleBegining_of_current_rent}
+                                value={begining_of_current_rent}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Contract</label>
+                            <select name="contract_id" onChange={changeInput}>
+                                {rentcontracts.map(contract => {
+                                    return (
+                                        <option value={contract.id}>
+                                            {`typ: ` + `${contract.name}`}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
-                    <label>Nájemné (kč)</label>
-                    <input
-                        type="number"
-                        name="rental"
-                        onChange={handleRental}
-                        value={rental}
-                    />
-                    <br />
-
-                    <label>Nájemní smlouva</label>
-                    <input type="file" name="file" onChange={handleFile} />
-                    <div>New file automatically rewrite the old one.</div>
-                    <br />
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleEmail}
-                    />
-
-                    <br />
-                    <label>Phone</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={phone_number}
-                        onChange={handlePhone_number}
-                    />
-
-                    <br />
-
-                    <input type="submit" value="submit" />
-                </form>
+                        {isSmlouvaNaDobuUrcitou && (
+                            <>
+                                <div className="form__item">
+                                    <label>End of current rental period:</label>
+                                    <input
+                                        type="date"
+                                        name="end_of_current_rent"
+                                        onChange={handleEnd_of_current_rent}
+                                        value={end_of_current_rent}
+                                    />
+                                    <br />
+                                </div>
+                            </>
+                        )}
+                        <div className="form__item">
+                            <label>Rent (CZK)</label>
+                            <input
+                                type="number"
+                                name="rental"
+                                onChange={handleRental}
+                                value={rental}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Rental agrement</label>
+                            <input
+                                type="file"
+                                name="file"
+                                onChange={handleFile}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleEmail}
+                            />
+                        </div>
+                        <div className="form__item">
+                            <label>Phone</label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                value={phone_number}
+                                onChange={handlePhone_number}
+                            />
+                        </div>
+                        <button type="submit" className="form__submit">
+                            Submit
+                        </button>
+                    </form>
+                    <a
+                        href="#"
+                        onClick={() => {
+                            window.event.preventDefault();
+                            handleSetDetail(null);
+                        }}
+                    >
+                        Hide
+                    </a>
+                </div>
             </div>
-            <button onClick={() => handleSetDetail(null)}>Hide</button>
         </>
     );
 };
