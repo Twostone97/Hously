@@ -145,47 +145,6 @@ const UserDetail = ({
                                 onChange={handleBegining_of_first_rent}
                                 value={begining_of_first_rent}
                             />
-<<<<<<< HEAD
-                            <br />
-                        </>
-                    )}
-
-                    <label>Nájemné (kč)</label>
-                    <input
-                        type="number"
-                        name="rental"
-                        onChange={handleRental}
-                        value={rental}
-                    />
-                    <br />
-
-                    <label>Nájemní smlouva</label>
-                    <input type="file" name="file" onChange={handleFile} />
-                    <div>New file automatically rewrite the old one.</div>
-                    <br />
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleEmail}
-                    />
-
-                    <br />
-                    <label>Phone</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={phone_number}
-                        onChange={handlePhone_number}
-                    />
-
-                    <br />
-
-                    <input type="submit" value="submit" />
-                    <button onClick={() => handleSetDetail(null)}>BACK</button>
-                </form>
-=======
                         </div>
                         <div className="form__item">
                             <label>Rental ends on:</label>
@@ -272,7 +231,6 @@ const UserDetail = ({
                         Hide
                     </a>
                 </div>
->>>>>>> feat/jakub
             </div>
         </>
     );
