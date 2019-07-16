@@ -93,7 +93,7 @@ Our Houses
                                 @endif
                                 <?php
                                 $date = explode('-' ,$building->construction_date);
-                                $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+                                $date           = "{$date[2]}. {$date[1]}. {$date[0]}";
                                 ?>
                                 <tr><td>Construction date:</td><td>{{$date}}</tr>
                             </tbody>

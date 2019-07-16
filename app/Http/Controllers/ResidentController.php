@@ -127,7 +127,7 @@ class ResidentController extends Controller
         ->where('id', $user_id)
         ->update([
             'email' => $request->email,
-            'phone_number' => $request->phone,
+            'phone_number' => $request->phone_number,
             ]);
     }
 

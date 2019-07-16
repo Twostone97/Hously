@@ -62,7 +62,11 @@ class BuildingController extends Controller
         $community->building_id = $thisbuilding->id;
         $community->save();
 
-        return redirect(action('HomeController@index'));
+        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null)
+            return redirect(action('HomeController@index'));
+        else {
+            return redirect(action('WebController@dashboard'));
+        }
     }
 
     /**
