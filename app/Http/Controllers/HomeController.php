@@ -11,6 +11,7 @@ use App\Notice;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -154,10 +155,11 @@ class HomeController extends Controller
         $daterent = null;
 
         //Speciální data dostupná pouze danému profilu
-        if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {    
             $owner         = DB::table('owners')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'owner';
             $building = $owner->building_id;
+            session(['building' => $building]);
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
@@ -170,6 +172,7 @@ class HomeController extends Controller
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
             $building = $administrator->building_id;
+            session(['building' => $building]);
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
@@ -183,6 +186,7 @@ class HomeController extends Controller
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
             $building = $resident->building_id;
+            session(['building' => $building]);
             $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
             $date           = explode('-' ,$resident->begining_of_current_rent);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
@@ -201,7 +205,7 @@ class HomeController extends Controller
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
-        $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
+        $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->orderBy('created_at', 'desc')->get();
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->get();
 
@@ -288,8 +292,10 @@ class HomeController extends Controller
             return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts', 'residents'));
     }
 
-    public function chat_api ()
+    public function chat_api (Request $request)
     {
+
+        $building       = $request->session()->get('building');
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->get();
@@ -300,6 +306,7 @@ class HomeController extends Controller
             "users"=>$users,
         ];
 
+        dd($data);
         return response()->json($data, 200);
     }
 }
