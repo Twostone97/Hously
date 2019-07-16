@@ -5,7 +5,7 @@ import BuildingInfo from "./admin/buildingInfo.js";
 import UserList from "./admin/UserList.js";
 import UserDetail from "./admin/userDetail.js";
 
-const DashboardAdmin = ({ apidata }) => {
+const DashboardAdmin = ({ apidata, refetchApp }) => {
     console.log("apidata", apidata);
 
     const [isDetail, setIsdetail] = useState(false);
@@ -19,16 +19,15 @@ const DashboardAdmin = ({ apidata }) => {
     return (
         <>
             <div>
-                <div className=" page__main__dash__item i__big">
+                <div className="page__main__dash dash__admin">
                     <UserReg apidata={apidata} />
-                </div>
-                <div className=" page__main__dash__item i__big">
                     <BuildingReg
                         data={apidata.this_building}
                         owners={apidata.owners}
                         users={apidata.users}
                         flats={apidata.flats}
                         residents={apidata.residents}
+                        refetchApp={refetchApp}
                     />
                 </div>
                 <div className=" page__main__dash__item i__big">
