@@ -497,10 +497,10 @@
                                 <input type="number" name="floors_bellow_ground"><br>
         
                                 <label for="heating">Vytápění</label>
-                                <input type="checkbox" name="heating"><br>
+                                <input type="checkbox" name="heating" value="1"><br>
         
                                 <label for="gas">Plyn</label>
-                                <input type="checkbox" name="gas"><br>
+                                <input type="checkbox" name="gas" value="1"><br>
         
                                 <label for="elevator">Výtah(počet)</label>
                                 <input type="number" name="elevator"><br>

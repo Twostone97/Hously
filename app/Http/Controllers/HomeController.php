@@ -151,6 +151,7 @@ class HomeController extends Controller
         $flats = null;
         $residents_in_flats = [];
         $rentcontracts = null;
+        $daterent = null;
 
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {
@@ -161,6 +162,8 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
@@ -171,6 +174,10 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+            $daterent           = explode('-' ,$resident->begining_of_current_rent);
+            $daterent           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
@@ -183,6 +190,8 @@ class HomeController extends Controller
             $file           = Storage::url("contract/{$file_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+            $date           = explode('-' ,$current_user->birth_date);
+            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
         }
                         
@@ -204,13 +213,13 @@ class HomeController extends Controller
             "communities" => $communities,
             "chats" => $chats,
             "current_user" => $current_user,
+            "current_user_birth_date" => $date,
             "this_building" => $this_building,
             "noticeboard" => $noticeboard,
             "notices" => $notices,  
             "rentcontracts" => $rentcontracts,
             "flats" => $flats,
             "contract" => $contract,
-            "date" => $date,
             "contract_id" => $file_id,
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,

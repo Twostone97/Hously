@@ -46,8 +46,8 @@ class BuildingController extends Controller
         $building->construction_date = $request->construction_date;
         $building->floors_above_ground = $request->floors_above_ground;
         $building->floors_bellow_ground = $request->floors_bellow_ground;
-        $building->gas = $request->gas == "on" ? 1 : 0 ;
-        $building->heating = $request->heating == "on" ? 1 : 0 ;
+        $building->gas = $request->gas;
+        $building->heating = $request->heating;
         $building->elevator = $request->elevator;
         $building->save();
 
