@@ -37,6 +37,8 @@ Available flats
                     @foreach ($allbuildings as $building)
                     @if ($building->id === $one_flat->building_id)
                            
+
+                    <img src="http://www.ziprealty.cz/uploads/2016/08/01-villa-apus-byty-krakovska-developerske-projekty-nove-mesto-praha-1-1470737183.jpg" alt="" srcset="" style="max-width: 45%; max-height: 45%; align-self: left">
                     <table>
                             
                             <tr><td>Adress</td><td>{{$building->city}}</td><td> {{$building->street}} {{$building->house_number}}</td></tr>
