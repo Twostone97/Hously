@@ -28,38 +28,61 @@ const DashboardCommonHouseNews = ({ notices, noticeboard, profile }) => {
                     <div className="notices__list scrollable">
                         {listOfNotices.map(notice => (
                             <div className="notices__list__item">
-                                <textarea readOnly>{notice.text}</textarea>
-                                <p>
-                                    <span
-                                        className={
-                                            profile === "administrator" &&
-                                            notice.permanent == 1
-                                                ? "item__permanent"
-                                                : ""
-                                        }
-                                        readOnly
-                                    >
-                                        Created: {notice.created_at}
-                                    </span>
-                                    {profile === "administrator" &&
-                                        notice.permanent == 0 && (
-                                            <DashboardCommonHouseNewsDeleteElement
-                                                notice_id={notice.id}
-                                                delete_handler={
-                                                    handleAddedOrRemovedNotice
-                                                }
-                                            />
-                                        )}
-                                </p>
+                                {notice.permanent == 1 && (
+                                    <>
+                                        <div className="notice_permanent">
+                                            <textarea>{notice.text}</textarea>
+                                        </div>
+                                        <p>
+                                            <span readOnly>
+                                                Created: {notice.created_at}
+                                            </span>
+
+                                            {profile === "administrator" && (
+                                                <DashboardCommonHouseNewsDeleteElement
+                                                    notice_id={notice.id}
+                                                    delete_handler={
+                                                        handleAddedOrRemovedNotice
+                                                    }
+                                                />
+                                            )}
+                                        </p>
+                                    </>
+                                )}
                             </div>
                         ))}
+                        {listOfNotices.map(notice => (
+                            <div className="notices__list__item">
+                                {notice.permanent == 0 && (
+                                    <>
+                                        <textarea>{notice.text}</textarea>
+
+                                        <p>
+                                            <span readOnly>
+                                                Created: {notice.created_at}
+                                            </span>
+
+                                            {profile === "administrator" && (
+                                                <DashboardCommonHouseNewsDeleteElement
+                                                    notice_id={notice.id}
+                                                    delete_handler={
+                                                        handleAddedOrRemovedNotice
+                                                    }
+                                                />
+                                            )}
+                                        </p>
+                                    </>
+                                )}
+                            </div>
+                        ))}
+
+                        {profile === "administrator" && (
+                            <DashboardCommonHouseNewsAdminSection
+                                noticeboard={noticeboard}
+                                add_handler={handleAddedOrRemovedNotice}
+                            />
+                        )}
                     </div>
-                    {profile === "administrator" && (
-                        <DashboardCommonHouseNewsAdminSection
-                            noticeboard={noticeboard}
-                            add_handler={handleAddedOrRemovedNotice}
-                        />
-                    )}
                 </div>
             </div>
         </div>
