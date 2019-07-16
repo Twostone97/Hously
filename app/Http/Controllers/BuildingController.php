@@ -97,7 +97,7 @@ class BuildingController extends Controller
             'heating' => $request->heating, 
             'gas' => $request->gas, 
             'elevator' => $request->elevator]);
-        return redirect(action('HomeController@index'));
+        // return redirect(action('HomeController@index'));
     }
 
     /**
