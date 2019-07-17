@@ -221,6 +221,7 @@ header {
 
         &.modal__register {
             overflow: scroll;
+            z-index: 2000;
             @media screen and (min-width: 576px) {
                 overflow: hidden;
             }
