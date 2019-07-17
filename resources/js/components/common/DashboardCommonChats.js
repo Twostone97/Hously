@@ -9,7 +9,9 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
     };
 
     setInterval(() => {
-        fetch("/chatapi").then(response => console.log(response));
+        fetch("/chatapi")
+            .then(resp => resp.json())
+            .then(data => setlistOfChats(data.chats));
     }, 3000);
 
     return (
