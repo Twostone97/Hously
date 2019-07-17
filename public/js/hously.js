@@ -26,17 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //register modal open
     if (document.querySelector("#register__open")) {
+        const openRegister = () => {
+            document.querySelector("body").classList.add("modal__open");
+            document
+                .querySelector(".auth__overlay")
+                .classList.add("modal__open");
+            document
+                .querySelector(".modal__register")
+                .classList.add("modal__open");
+        };
         document
             .querySelector("#register__open")
-            .addEventListener("click", () => {
-                document.querySelector("body").classList.add("modal__open");
-                document
-                    .querySelector(".auth__overlay")
-                    .classList.add("modal__open");
-                document
-                    .querySelector(".modal__register")
-                    .classList.add("modal__open");
-            });
+            .addEventListener("click", openRegister);
+        document
+            .querySelector("#register__open__onPage")
+            .addEventListener("click", openRegister);
 
         //register modal open
         document

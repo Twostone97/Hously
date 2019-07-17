@@ -26,25 +26,29 @@
         <div class="page__main__features">
             <div class="page__main__features__item">
                 <div>
-                    <div>
-                        <i class="fas fa-info-circle"></i>
-                        <h6>Learn more</h6>
-                    </div>
+                    <a href="/about">
+                        <div>
+                            <i class="fas fa-info-circle"></i>
+                            <h6>Learn more</h6>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="page__main__features__item">
                 <div>
-                    <div>
-                        <i class="fas fa-home"></i>
-                        <h6>Available flats</h6>
-                    </div>
-                </div>
+                    <a href="/flats">
+                        <div id="register__open__onPage">
+                            <i class="fas fa-home"></i>
+                            <h6>Available flats</h6>
+                        </div>
+                        </a>
+                    </div>  
             </div>
             <div class="page__main__features__item">
                 <div>
                     <div>
                         <i class="fas fa-user"></i>
-                        <h6>Log in</h6>
+                        <h6>Create account</h6>
                     </div>
                 </div>
             </div>
