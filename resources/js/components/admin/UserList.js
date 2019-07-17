@@ -45,7 +45,7 @@ const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
                                     <div>
                                         <a
                                             href={`/storage/contract/${
-                                                resident.user_id
+                                                resident.flat_id
                                             }.pdf`}
                                             target="_blank"
                                         >
@@ -64,9 +64,7 @@ const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
                                         </button>
                                         <button
                                             onClick={() => {
-                                                const metaList = document.querySelectorAll(
-                                                    "meta"
-                                                );
+                                                s;
 
                                                 let data = {
                                                     _token: document.querySelector(
