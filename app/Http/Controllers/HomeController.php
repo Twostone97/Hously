@@ -137,7 +137,7 @@ class HomeController extends Controller
         return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community', 'allflats'));
     }
 
-    public function api()
+    public function api(Request $request)
     {
         $contract = null;
         $date = null;
@@ -306,7 +306,6 @@ class HomeController extends Controller
             "users"=>$users,
         ];
 
-        dd($data);
         return response()->json($data, 200);
     }
 }
