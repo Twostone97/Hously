@@ -77,12 +77,27 @@
         max-width: 70vmax;
         min-height: 30vh;
         margin: 0 auto;
+
+        @media screen and (max-width: 991px) {
+            display: block;
+            min-height: 80px;
+            width: 80%;
+            margin: 0 auto 1rem auto;
+        }
         &__item {
             flex: 0 1 14vmax;
             min-height: 7vmax;
+            width: initial;
+            margin: initial;
             background-color: rgba($secondary-blue, 1);
             color: #fff;
             border: 0.5px solid rgb(139, 139, 139);
+
+            @media screen and (max-width: 991px) {
+                min-height: 80px;
+                width: 80%;
+                margin: 0 auto 1rem auto;
+            }
 
             &:hover {
                 background-color: $orange;
@@ -93,10 +108,14 @@
             }
             > a > div {
                 display: flex;
-                height: 7vmax;
+                min-height: 7vmax;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
+
+                @media screen and (max-width: 991px) {
+                    min-height: 80px;
+                }
 
                 img {
                     width: 1.5rem;
@@ -117,6 +136,10 @@
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
+
+            @media screen and (max-width: 991px) {
+                display: block;
+            }
 
             &__item {
                 flex: 0 1 30%;
@@ -160,6 +183,7 @@
         align-items: center;
         width: 100%;
         margin: 0 auto;
+        padding: 1rem;
         color: #fff;
 
         &__bubble {
@@ -201,5 +225,40 @@
             border: 21px solid transparent;
             margin-top: -21px;
         }
+    }
+    .custom__table {
+        width: initial;
+    }
+
+    &.housesList {
+        @media screen and (max-width: 991px) {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+    .item__housesList {
+        display: flex;
+        justify-content: space-around;
+
+        @media screen and (max-width: 991px) {
+            display: block;
+        }
+
+        img {
+            max-width: 45%;
+            max-height: 45%;
+            align-self: left;
+        }
+    }
+}
+
+#map {
+    margin-top: 80px;
+    width: 98vw;
+    height: 70vh;
+
+    @media screen and (max-width: 991px) {
+        height: 40vh;
     }
 }

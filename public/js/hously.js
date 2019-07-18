@@ -90,6 +90,8 @@ $(".bg__vegas").vegas({
         { src: "../img/slide5.jpg" }
     ],
     overlay: "/vendor/vegas/overlays/01.png",
-    transition: "zoomOut",
-    transitionDuration: 3000
+    transition: "blur",
+    transitionDuration: 1500,
+    delay: 5500,
+    timer: false
 });
