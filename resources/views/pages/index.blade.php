@@ -25,29 +25,48 @@
         </div>
         <div class="page__main__features">
             <div class="page__main__features__item">
+            <a href="/about">
                 <div>
                     <div>
-                        <i class="fas fa-info-circle"></i>
-                        <h6>Learn more</h6>
+                    <img src="/img/hp-info-ico.svg" alt="Learn more">
+                            <h6>Learn more</h6>
                     </div>
                 </div>
+            </a>
             </div>
             <div class="page__main__features__item">
-                <div>
+                <a href="/flats">
                     <div>
-                        <i class="fas fa-home"></i>
-                        <h6>Available flats</h6>
-                    </div>
-                </div>
+                        <div>
+                        <img src="/img/hp-flats-ico.svg" alt=" Available flats">
+                                <h6>Available flats</h6>
+                        </div>            
+                    </div>  
+                </a>
             </div>
+            @guest
             <div class="page__main__features__item">
-                <div>
+                <a href="#">
                     <div>
-                        <i class="fas fa-user"></i>
-                        <h6>Log in</h6>
+                        <div id="register__open__onPage">
+                        <img src="/img/hp-register-ico.svg" alt=" Register">
+                            <h6>Create account</h6>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
+            @else
+            <div class="page__main__features__item">
+                <a href="/app/dashboard">
+                    <div>
+                        <div>
+                            <img src="/img/hp-dashboard-ico.svg" alt=" Dashboard">
+                            <h6>Hously dashboard</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endguest
                        
         </div>
     </section>
