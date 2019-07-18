@@ -16,7 +16,7 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                 .then(resp => resp.json())
                 .then(data => setlistOfChats(data.chats));
             console.log("chatapi");
-        }, 3000);
+        }, 5000);
     }
 
     useEffect(() => {

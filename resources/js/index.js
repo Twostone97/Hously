@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import DashboardMain from "./components/DashboardMain";
-import "register_sw.js";
+import "./register_sw.js";
+import "./sw.js";
 
 const App = () => {
     //ahoj do Inventi: HOOOOOOOOOOOOOOKS
@@ -23,13 +24,6 @@ const App = () => {
                 setloading(false);
             });
     }, [refetchApp]);
-
-    () => {
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.unregister();
-            window.location.reload();
-        });
-    };
 
     return errorFetch ? (
         <section className="page__main bg__gradient-light">
