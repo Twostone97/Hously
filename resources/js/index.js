@@ -23,6 +23,13 @@ const App = () => {
             });
     }, [refetchApp]);
 
+    () => {
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.unregister();
+            window.location.reload();
+        });
+    };
+
     return errorFetch ? (
         <section className="page__main bg__gradient-light">
             <div className="page__main__promo">

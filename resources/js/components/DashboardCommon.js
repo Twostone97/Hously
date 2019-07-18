@@ -5,7 +5,6 @@ import DashboardCommonUserInfo from "./common/DashboardCommonUserInfo.js";
 import DashboardCommonUserDocuments from "./common/DashboardCommonUserDocuments.js";
 import DashboardCommonHouseRules from "./common/DashboardCommonHouseRules.js";
 const DashboardCommon = ({
-    apidata,
     apidata: {
         chats,
         current_user,

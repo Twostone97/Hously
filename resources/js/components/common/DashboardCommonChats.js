@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { isNull } from "util";
 
 const DashboardCommonChats = ({ communities, chats, users }) => {
     /*zdravime Inventi HOOOOOKS */
@@ -7,12 +8,22 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
     const handleCommunityIDChange = e => {
         setcommun_id(Number(e.target.value));
     };
+    let interval = null;
 
-    setInterval(() => {
-        fetch("/chatapi")
-            .then(resp => resp.json())
-            .then(data => setlistOfChats(data.chats));
-    }, 3000);
+    if (isNull(interval)) {
+        interval = setInterval(() => {
+            fetch("/chatapi")
+                .then(resp => resp.json())
+                .then(data => setlistOfChats(data.chats));
+            console.log("chatapi");
+        }, 3000);
+    }
+
+    useEffect(() => {
+        return () => {
+            clearInterval(interval);
+        };
+    });
 
     return (
         <div className="page__main__dash__item i__mid">
