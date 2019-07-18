@@ -1,64 +1,79 @@
 @extends ('layouts/houslytemplate')
 
-@section ('nav') 
-    <li class="nav-item ml-2">
-        <a class="nav-link " href="/about">About Hously</a>
-    </li>
-    <li class="nav-item ml-2">
-        <a class="nav-link" href="/flats">Available Appartments</a>
-    </li>
-    <li class="nav-item ml-2">
-        <a class="nav-link active" href="/houses">Involved Houses</a>
-    </li>
+@section ('nav')
+<li class="nav-item ml-2">
+    <a class="nav-link " href="/about">About Hously</a>
+</li>
+<li class="nav-item ml-2">
+    <a class="nav-link active" href="/flats">Available Appartments</a>
+</li>
+<li class="nav-item ml-2">
+    <a class="nav-link" href="/houses">Involved Houses</a>
+</li>
 @endsection
 
 
 
 @section('title')
-Available flats   
+Available flats
 @endsection
 
 @section ('content')
 
 <main class="bg__wall">
-<section class="page__main bg__gradient-light">
-    
-    @foreach ($list_of_flats as $one_flat)
-    
-    <div class="page__main__dash__item" id="{{$one_flat->id}}">
-            <div class="page__main__dash__item__head">
-              
-            </div>
-        <div class="page__main__dash__item__body">
-            <div style="display: flex; justify-content: space-around;">
-                   
+    <section class="page__main bg__gradient-light">
+        <div class="page__main__promo">
+            <h1>Available flats</h1>
+            <h5>Currently you can choose from following flats that are managed via Hously...</h5>
+        </div>
+        <div class="page__main__flat__container">
+            @foreach ($list_of_flats as $one_flat)
 
+            <div class="page__main__flat__container__item" id="{{$one_flat->id}}">
 
-                    @foreach ($allbuildings as $building)
-                    @if ($building->id === $one_flat->building_id)
-                           
+                @foreach ($allbuildings as $building)
+                @if ($building->id === $one_flat->building_id)
 
-                    <img src="http://www.ziprealty.cz/uploads/2016/08/01-villa-apus-byty-krakovska-developerske-projekty-nove-mesto-praha-1-1470737183.jpg" alt="" srcset="" style="max-width: 45%; max-height: 45%; align-self: left">
+                <div class="page__main__flat__container__head">
+                    {{$building->street}} {{$building->house_number}}
+                </div>
+
+                <div class="page__main__flat__container__body">
+
+                    <img src="http://www.ziprealty.cz/uploads/2016/08/01-villa-apus-byty-krakovska-developerske-projekty-nove-mesto-praha-1-1470737183.jpg"
+                        alt="" srcset="" style="max-width: 45%; max-height: 45%; align-self: left">
                     <table>
-                            
-                            <tr><td>Adress</td><td>{{$building->city}}</td><td> {{$building->street}} {{$building->house_number}}</td></tr>
-                            <tr><td>floor:</td> <td>{{$one_flat->floor}}</td>
-                            <tr><td>type:</td><td>{{$one_flat->residential?"Residential":"Commercial"}}
-                            </tr>
 
-                            <tbody>
-                            </tbody>
+                        <tr>
+                            <td>Adress</td>
+                            <td>{{$building->city}}</td>
+                            <td> {{$building->street}} {{$building->house_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>floor:</td>
+                            <td>{{$one_flat->floor}}</td>
+                        <tr>
+                            <td>type:</td>
+                            <td>{{$one_flat->residential?"Residential":"Commercial"}}
+                        </tr>
+
+                        <tbody>
+                        </tbody>
 
                     </table>
-                    @endif
-                    @endforeach
 
+                </div>
+                @endif
+                @endforeach
 
-      
-            </div>            
+            </div>
+            @endforeach
+
         </div>
-    </div>
-    @endforeach
-</section>
+
+
+
+
+    </section>
 </main>
 @endsection

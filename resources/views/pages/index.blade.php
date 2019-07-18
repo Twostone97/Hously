@@ -1,18 +1,18 @@
 @extends ('layouts/houslytemplate')
 
-@section ('title') Hously-Homepage 
-@endsection 
+@section ('title') Hously-Homepage
+@endsection
 
-@section ('nav') 
-    <li class="nav-item ml-2">
-        <a class="nav-link" href="/about">About Hously</a>
-    </li>
-    <li class="nav-item ml-2">
-        <a class="nav-link" href="/flats">Available Appartments</a>
-    </li>
-    <li class="nav-item ml-2">
-        <a class="nav-link" href="/houses">Involved Houses</a>
-    </li>
+@section ('nav')
+<li class="nav-item ml-2">
+    <a class="nav-link" href="/about">About Hously</a>
+</li>
+<li class="nav-item ml-2">
+    <a class="nav-link" href="/flats">Available Appartments</a>
+</li>
+<li class="nav-item ml-2">
+    <a class="nav-link" href="/houses">Involved Houses</a>
+</li>
 @endsection
 
 @section ('content')
@@ -25,23 +25,23 @@
         </div>
         <div class="page__main__features">
             <div class="page__main__features__item">
-            <a href="/about">
-                <div>
+                <a href="/about">
                     <div>
-                    <img src="/img/hp-info-ico.svg" alt="Learn more">
+                        <div>
+                            <img src="/img/hp-info-ico.svg" alt="Learn more">
                             <h6>Learn more</h6>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             </div>
             <div class="page__main__features__item">
                 <a href="/flats">
                     <div>
                         <div>
-                        <img src="/img/hp-flats-ico.svg" alt=" Available flats">
-                                <h6>Available flats</h6>
-                        </div>            
-                    </div>  
+                            <img src="/img/hp-flats-ico.svg" alt=" Available flats">
+                            <h6>Available flats</h6>
+                        </div>
+                    </div>
                 </a>
             </div>
             @guest
@@ -49,7 +49,7 @@
                 <a href="#">
                     <div>
                         <div id="register__open__onPage">
-                        <img src="/img/hp-register-ico.svg" alt=" Register">
+                            <img src="/img/hp-register-ico.svg" alt=" Register">
                             <h6>Create account</h6>
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                 </a>
             </div>
             @endguest
-                       
+
         </div>
     </section>
-</main>   
+</main>
 @endsection
