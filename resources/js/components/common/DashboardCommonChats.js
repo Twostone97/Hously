@@ -7,6 +7,7 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
     const [listOfChats, setlistOfChats] = useState(chats);
     const handleCommunityIDChange = e => {
         setcommun_id(Number(e.target.value));
+        scrollToBottom(".chat__container");
     };
     let interval = null;
 
@@ -16,8 +17,14 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                 .then(resp => resp.json())
                 .then(data => setlistOfChats(data.chats));
             console.log("chatapi");
-        }, 5000);
+            scrollToBottom(".chat__container");
+        }, 2000);
     }
+
+    const scrollToBottom = element => {
+        const el = document.querySelector(element);
+        el.scrollTop = el.scrollHeight;
+    };
 
     useEffect(() => {
         return () => {
@@ -109,7 +116,14 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
                                     ).content
                                 }
                             />
-                            <button type="submit">Send</button>
+                            <button
+                                type="submit"
+                                onClick={() =>
+                                    scrollToBottom(".chat__container")
+                                }
+                            >
+                                Send
+                            </button>
                         </form>
                     </div>
                 </div>

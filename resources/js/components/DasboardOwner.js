@@ -35,8 +35,14 @@ const DashboardOwner = ({ apidata }) => {
                 </div>
 
                 <div className="page__main__dash dash__owner">
-                    <h4>Important files</h4>
-                    <p>Here will be a list of files</p>
+                    <div className="page__main__dash__item i__full">
+                        <div className="page__main__dash__item__head">
+                            <h4>Important files</h4>
+                        </div>
+                        <div className="page__main__dash__item__body">
+                            <p>Here will be a list of files</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

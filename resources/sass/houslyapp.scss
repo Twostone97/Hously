@@ -25,6 +25,7 @@
     }
     .scrollable {
         overflow: auto;
+        scroll-behavior: smooth;
     }
 
     .action-btn {
