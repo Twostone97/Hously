@@ -8,6 +8,12 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
         setcommun_id(Number(e.target.value));
     };
 
+    setInterval(() => {
+        fetch("/chatapi")
+            .then(resp => resp.json())
+            .then(data => setlistOfChats(data.chats));
+    }, 3000);
+
     return (
         <div className="page__main__dash__item i__mid">
             <div className="page__main__dash__item__head">

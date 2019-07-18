@@ -16,7 +16,7 @@
                     @endif
 
                     @if (is_null($notices))
-                        <h3>There is nothing here</h3><br> 
+                        <h3>There is nothing here</h3><br>    
                     @else
                         @foreach ($notices as $notice)              {{-- Permanentní upozornění --}}
                         @if ($notice->permanent == 1)
