@@ -27,21 +27,23 @@ Available flats
             <h5>Currently you can choose from following flats that are managed via Hously...</h5>
         </div>
         <div class="page__main__flat__container">
-            @foreach ($list_of_flats as $one_flat)
 
-            <div class="page__main__flat__container__item" id="{{$one_flat->id}}">
+            @foreach ($allbuildings as $building)
 
-                @foreach ($allbuildings as $building)
+
+            <div class="page__main__flat__container__item">
+
+                @foreach ($list_of_flats as $one_flat)
                 @if ($building->id === $one_flat->building_id)
 
-                <div class="page__main__flat__container__head">
+                <div class="page__main__flat__container__item__head">
                     {{$building->street}} {{$building->house_number}}
+                    {{$one_flat->number}}
                 </div>
 
-                <div class="page__main__flat__container__body">
+                <div class="page__main__flat__container__item__body">
 
-                    <img src="http://www.ziprealty.cz/uploads/2016/08/01-villa-apus-byty-krakovska-developerske-projekty-nove-mesto-praha-1-1470737183.jpg"
-                        alt="" srcset="" style="max-width: 45%; max-height: 45%; align-self: left">
+                    <img src="/img/flats/flat0{{rand(1,4)}}.jpeg" alt="" srcset="">
                     <table>
 
                         <tr>
