@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import DashboardMain from "./components/DashboardMain";
+import "register_sw.js";
 
 const App = () => {
     //ahoj do Inventi: HOOOOOOOOOOOOOOKS
