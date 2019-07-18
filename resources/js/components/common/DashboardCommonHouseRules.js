@@ -49,12 +49,14 @@ const DashboardCommonHouseRules = ({
                         style={{ width: "65%", margin: "0 auto" }}
                     >
                         <div className="form__item">
-                            <label>New rules</label>
-                            <input
-                                type="file"
-                                name="file"
-                                onChange={handleFile}
-                            />
+                            <label className="action-btn">
+                                New rules:
+                                <input
+                                    type="file"
+                                    name="file"
+                                    onChange={handleFile}
+                                />
+                            </label>
                             <input type="hidden" name="id" />
                         </div>
                         <button type="submit" className="form__submit">
