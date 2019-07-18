@@ -17,7 +17,7 @@ const DashboardOwner = ({ apidata }) => {
     return (
         <>
             <div>
-                <div className=" page__main__dash__item i__big">
+                <div className="page__main__dash dash__owner">
                     <BuildingInfo
                         data={apidata.this_building}
                         owners={apidata.owners}
@@ -26,16 +26,15 @@ const DashboardOwner = ({ apidata }) => {
                         residents={apidata.residents}
                     />
                 </div>
-                <div className=" page__main__dash__item i__big">
+                <div className="page__main__dash dash__owner">
                     <UserListOwner
                         residents={apidata.residents}
                         users={apidata.users}
                         flats={apidata.flats}
-                        handleSetDetail={handleSetDetail}
                     />
                 </div>
 
-                <div className="page__main__dash__item i__small">
+                <div className="page__main__dash dash__owner">
                     <h4>Important files</h4>
                     <p>Here will be a list of files</p>
                 </div>

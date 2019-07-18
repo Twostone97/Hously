@@ -191,7 +191,7 @@ class HomeController extends Controller
             $date           = explode('-' ,$resident->begining_of_current_rent);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $file_id        = $resident->id;
-            $file           = Storage::url("contract/{$file_id}.pdf");
+            $file           = Storage::url("contract/{$resident->flat_id}.pdf");
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
             $date           = explode('-' ,$current_user->birth_date);

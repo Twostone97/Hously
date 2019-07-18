@@ -1,8 +1,12 @@
 import React from "react";
-const UserListOwner = ({ residents, users, flats, handleSetDetail }) => {
+const UserListOwner = ({ residents, users, flats }) => {
     return (
         <>
-            <h4>Databaze obyvatel</h4>
+            <div className="page__main__dash__item i__full">
+                <div className="page__main__dash__item__head" />
+                <h3>Databaze obyvatel</h3>
+            </div>
+            <div className="page__main__dash__item__body" />
             <ol>
                 {residents.map(resident => {
                     return (

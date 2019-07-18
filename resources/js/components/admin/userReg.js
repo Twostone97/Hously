@@ -85,10 +85,9 @@ const UserReg = ({ apidata, refetchApp }) => {
 
         fetch("/resident", {
             method: "post",
-            // headers: {
-            //     "Content-Type": "application/json"
-            //     // 'Content-Type': 'application/x-www-form-urlencoded',
-            // },
+            headers: {
+                "Content-Type": "application/pdf"
+            },
             body: data
         })
             .then(() => {
