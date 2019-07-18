@@ -16,6 +16,7 @@ const DashboardCommonUserInfo = ({ user, profile }) => {
                         ? "page__main__dash__item i__full"
                         : "page__main__dash__item i__big"
                 }
+                id={"my-info"}
             >
                 <div className="page__main__dash__item__head">
                     <h3>My info</h3>

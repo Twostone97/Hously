@@ -35,7 +35,17 @@ const BuildingReg = ({ data, refetchApp }) => {
                             Update building info
                         </button>
                     ) : (
-                        <h3>Update building info</h3>
+                        <>
+                            <h3>Update building info</h3>
+                            <button
+                                className="action-btn-close"
+                                onClick={() => {
+                                    setshowContent(false);
+                                }}
+                            >
+                                x
+                            </button>
+                        </>
                     )}
                 </div>
                 {showContent && (

@@ -18,7 +18,7 @@ const DashboardAdmin = ({ apidata, refetchApp }) => {
 
     return (
         <>
-            <div className="page__main__dash dash__admin">
+            <div className="page__main__dash dash__admin" id="admin">
                 <BuildingInfo
                     data={apidata.this_building}
                     owners={apidata.owners}

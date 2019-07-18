@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardCommonHouseRules = ({ rules }) => {
     return (
-        <div className="page__main__dash__item i__full">
+        <div className="page__main__dash__item i__full" id="house-rules">
             <div className="page__main__dash__item__head">
                 <h3>House Rules</h3>
             </div>
