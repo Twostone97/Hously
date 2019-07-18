@@ -16,7 +16,7 @@ const DashboardMain = ({ apidata, isLoading, refetchApp }) => {
         );
         return (
             <>
-                <DashboardCommon apidata={apidata} />
+                <DashboardCommon apidata={apidata} refetchApp={refetchApp} />
                 {apidata.profile === "administrator" && (
                     <DashboardAdmin apidata={apidata} refetchApp={refetchApp} />
                 )}
