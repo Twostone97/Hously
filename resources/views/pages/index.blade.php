@@ -28,7 +28,7 @@
             <a href="/about">
                 <div>
                     <div>
-                            <i class="fas fa-info-circle"></i>
+                    <img src="/img/hp-info-ico.svg" alt="Learn more">
                             <h6>Learn more</h6>
                     </div>
                 </div>
@@ -38,22 +38,35 @@
                 <a href="/flats">
                     <div>
                         <div>
-                                <i class="fas fa-home"></i>
+                        <img src="/img/hp-flats-ico.svg" alt=" Available flats">
                                 <h6>Available flats</h6>
                         </div>            
                     </div>  
                 </a>
             </div>
+            @guest
             <div class="page__main__features__item">
                 <a href="#">
                     <div>
                         <div id="register__open__onPage">
-                            <i class="fas fa-user"></i>
+                        <img src="/img/hp-register-ico.svg" alt=" Register">
                             <h6>Create account</h6>
                         </div>
                     </div>
                 </a>
             </div>
+            @else
+            <div class="page__main__features__item">
+                <a href="/app/dashboard">
+                    <div>
+                        <div>
+                            <img src="/img/hp-dashboard-ico.svg" alt=" Dashboard">
+                            <h6>Hously dashboard</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endguest
                        
         </div>
     </section>
