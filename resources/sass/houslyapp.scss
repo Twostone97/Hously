@@ -36,6 +36,18 @@
         display: block;
         padding: 0.5rem 1rem;
         margin: 1rem auto;
+
+        &-close {
+            position: absolute;
+            padding: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            line-height: 1.35rem;
+            top: 0%;
+            right: 10px;
+        }
     }
 
     .no-horiz-strech {
@@ -64,6 +76,7 @@
         }
 
         &__head {
+            position: relative;
             width: 100%;
             background-color: $base-blue;
             color: white;

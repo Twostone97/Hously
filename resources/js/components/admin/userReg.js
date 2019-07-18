@@ -133,7 +133,17 @@ const UserReg = ({ apidata, refetchApp }) => {
                             Assign Resident
                         </button>
                     ) : (
-                        <h3>Assign Resident</h3>
+                        <>
+                            <h3>Assign Resident</h3>
+                            <button
+                                className="action-btn-close"
+                                onClick={() => {
+                                    setshowContent(false);
+                                }}
+                            >
+                                x
+                            </button>
+                        </>
                     )}
                 </div>
 
