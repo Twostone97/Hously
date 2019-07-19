@@ -49,7 +49,7 @@ const DashboardCommonHouseRules = ({
                         style={{ width: "65%", margin: "0 auto" }}
                     >
                         <div className="form__item">
-                            <label className="action-btn">
+                            <label className="file-btn">
                                 New rules:
                                 <input
                                     type="file"
