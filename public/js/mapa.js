@@ -63,18 +63,45 @@ fetch("./map/api")
             );
             znacka.appendChild(obrazek);
             const card = new SMap.Card();
-            console.log("geocoder", geocoder._options.card_id);
 
-            card.getHeader().innerHTML = `<div class=visit_card>
-                                        <img src="../img/hously-logo-small.png">
-                                        <div class=card_title> Hously s.r.o</div>
-                                        </div>`;
+            //rozparsování adresy z geocoderu
+            let streetPattern = /[^,]+/gim;
+            let postalPattern = /\d{5}/gim;
+            let cityPattern = /\w+$/gim;
+            let street = streetPattern.exec(geocoder._query);
+            let postal = postalPattern.exec(geocoder._query);
+            let city = cityPattern.exec(geocoder._query);
+            //********************************* */
+            
+            card.getHeader().innerHTML = `
+            <div style="display: flex;justify-content:center">
+            <img src="../img/hously-logo-small.png" >
+            </div>`;
 
-            card.getBody().innerHTML = geocoder._query;
+            card.getBody().innerHTML =
+                `
+                <div>` +
+                `${street}` +
+                `</div>
+                <div>` +
+                `${city}` +
+                `</div>
+                <div>` +
+                `${postal}` +
+                `</div>
+                       `;
+
             card.getFooter().innerHTML = `<a href="/houses#${
                 geocoder._options.card_id
-            }" src="/building_id${geocoder._options.card_id}">home</a>`;
-            const marker = new SMap.Marker(pozice, null, { url: znacka });
+            }" src="/building_id${
+                geocoder._options.card_id
+            }">List of involved houses</a>`;
+
+            let nadpis = `${street}` + `\n` + `${city}` + `\n` + `${postal}`;
+            const marker = new SMap.Marker(pozice, null, {
+                url: znacka,
+                title: nadpis
+            });
             marker.decorate(SMap.Marker.Feature.Card, card);
 
             layer.addMarker(marker);
