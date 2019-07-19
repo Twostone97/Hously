@@ -64,8 +64,6 @@ const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
                                         </button>
                                         <button
                                             onClick={() => {
-                                                s;
-
                                                 let data = {
                                                     _token: document.querySelector(
                                                         'meta[name="csrf-token"]'
@@ -91,16 +89,21 @@ const UserList = ({ residents, users, flats, handleSetDetail, refetchApp }) => {
                                                         )
                                                     }
                                                 )
-                                                    .then(() => {
-                                                        refetchApp();
-                                                        alert(
-                                                            "resident deleted"
-                                                        );
+                                                    .then(response => {
+                                                        if (response.ok) {
+                                                            toastr["warning"](
+                                                                "User deleted!",
+                                                                "Success"
+                                                            );
+                                                        } else {
+                                                            toastr["error"](
+                                                                "Something went wrong, try again please",
+                                                                "Error"
+                                                            );
+                                                        }
                                                     })
-                                                    .catch(() => {
-                                                        alert(
-                                                            "error occured! try later"
-                                                        );
+                                                    .finally(() => {
+                                                        refetchApp();
                                                     });
                                             }}
                                         >

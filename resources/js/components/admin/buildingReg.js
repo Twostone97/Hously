@@ -61,10 +61,24 @@ const BuildingReg = ({ data, refetchApp }) => {
                                 fetch(fetchURL, {
                                     method: "post",
                                     body: data
-                                }).then(() => {
-                                    refetchApp();
-                                    alert("Updated");
-                                });
+                                })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            toastr["success"](
+                                                "User info updated!",
+                                                "Success"
+                                            );
+                                        } else {
+                                            toastr["error"](
+                                                "Something went wrong, try again please",
+                                                "Error"
+                                            );
+                                        }
+                                    })
+
+                                    .finally(() => {
+                                        refetchApp();
+                                    });
                             }}
                         >
                             <div className="form__item">
