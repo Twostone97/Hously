@@ -53,7 +53,7 @@ class ResidentController extends Controller
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
         if ($request->hasFile("file")) {
-        $resident->$file_id = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+        $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
         }   
         $resident->save();
 

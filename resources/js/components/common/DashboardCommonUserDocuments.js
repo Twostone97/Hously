@@ -7,8 +7,11 @@ const DashboardCommonUserDocuments = ({
     residents
 }) => {
     let contract_url = null;
-    let resident = residents.filter(resident => {
-        return resident.user_id == current_user.id;
+    let resident = null;
+    residents.forEach(e => {
+        if (e.user_id == current_user.id) {
+            resident = e;
+        }
     });
 
     if (resident) {
