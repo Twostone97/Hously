@@ -17,8 +17,11 @@ const DashboardCommon = ({
         rules,
         users,
         residents,
-        flats
-    }
+        flats,
+
+        this_building
+    },
+    refetchApp
 }) => {
     return (
         <>
@@ -53,7 +56,12 @@ const DashboardCommon = ({
                 )}
             </div>
             <div className="page__main__dash dash__common">
-                <DashboardCommonHouseRules rules={rules} />
+                <DashboardCommonHouseRules
+                    rules={rules}
+                    profile={profile}
+                    building={this_building}
+                    refetchApp={refetchApp}
+                />
             </div>
         </>
     );

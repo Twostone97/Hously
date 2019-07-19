@@ -258,6 +258,13 @@ main {
         background-size: cover;
     }
 
+    &.bg__tertiary {
+        background-image: url("/img/darkbg.jpg");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
     &.bg__wall {
         background-image: url("/img/wallbackground.jpg");
         background-position: center;

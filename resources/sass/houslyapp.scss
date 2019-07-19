@@ -25,6 +25,7 @@
     }
     .scrollable {
         overflow: auto;
+        scroll-behavior: smooth;
     }
 
     .action-btn {
@@ -281,9 +282,4 @@
             flex: 1 1 30%;
         }
     }
-}
-
-#map {
-    min-width: 60vw;
-    min-height: 25vw;
 }
