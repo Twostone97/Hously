@@ -80,23 +80,29 @@ const UserReg = ({ apidata, refetchApp }) => {
         data.append("number_of_residents", number_of_residents);
         data.append("rental", rental);
 
-        let imagedata = document.querySelector('input[type="file"]').files[0];
+        let imagedata = document.querySelector("#user-reg-file").files[0];
         data.append("file", imagedata);
 
         fetch("/resident", {
             method: "post",
-            headers: {
-                "Content-Type": "application/pdf"
-            },
+            // headers: {
+            //     "Content-Type": "application/pdf"
+            // },
             body: data
         })
-            .then(() => {
-                alert("user succesfully registered");
+            .then(response => {
+                if (response.ok) {
+                    toastr["success"]("User info updated!", "Success");
+                } else {
+                    toastr["error"](
+                        "Something went wrong, try again please",
+                        "Error"
+                    );
+                }
             })
-            .catch(() => alert("error occured, try later"))
+
             .finally(() => {
                 refetchApp();
-                resetFormFields();
             });
     };
 
@@ -262,7 +268,11 @@ const UserReg = ({ apidata, refetchApp }) => {
                             </div>
                             <div className="form__item">
                                 <label>Rental Agreement </label>
-                                <input type="file" name="file" />
+                                <input
+                                    type="file"
+                                    name="file"
+                                    id="user-reg-file"
+                                />
                             </div>
                             <div className="form__item">
                                 <button className="form__submit" type="submit">
