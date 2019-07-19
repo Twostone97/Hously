@@ -7,21 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title','Welcome to Hously')</title>
     <script src="https://api.mapy.cz/loader.js"></script>
-<<<<<<< HEAD
-	<script>Loader.load()</script>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-=======
     <script>
     Loader.load()
     </script>
-    <link rel="stylesheet" href="css/app.css">
->>>>>>> feat/jakub
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @yield('styles','')
 
     <!-- Laravel AUTH STYLES and SCRIPTS: -->
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
