@@ -53,7 +53,7 @@ class ResidentController extends Controller
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
         if ($request->hasFile("file")) {
-        $resident->file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+        $resident->$file_id = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
         }   
         $resident->save();
 
@@ -96,11 +96,8 @@ class ResidentController extends Controller
             'rental' => $request->rental,
             ]);
             if ($request->hasFile('file')) {
-                $resident->file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
-            }
-            // if ($request->hasFile("file")) {
-            //     $resident->file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
-            //     }   
+                $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
+            } 
             $id = $request->building_id;
 
             if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
@@ -128,7 +125,7 @@ class ResidentController extends Controller
             'rental' => $request->rental,
             ]);
             if ($request->hasFile('file')) {
-                $file = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
+                $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");    
             }
 
         DB::table('users')
