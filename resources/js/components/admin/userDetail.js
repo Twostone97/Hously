@@ -88,7 +88,7 @@ const UserDetail = ({
         data.append("rental", rental);
         data.append("email", email);
         data.append("phone_number", phone_number);
-        let file = document.querySelector('input[type="file"]').files[0];
+        let file = document.querySelector("#user-detail-file").files[0];
         data.append("file", file);
 
         console.log("data", data);
@@ -196,6 +196,7 @@ const UserDetail = ({
                             <input
                                 type="file"
                                 name="file"
+                                id="user-detail-file"
                                 onChange={handleFile}
                             />
                         </div>
