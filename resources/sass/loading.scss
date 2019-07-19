@@ -1,6 +1,27 @@
 .loading {
+    position: absolute;
+    top: 30vh;
+    left: 25vw;
     display: flex;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    width: 50vw;
+    height: 50vh;
+    align-content: center;
+    align-items: center;
+    color: white;
+}
+
+#loading {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
