@@ -53,15 +53,15 @@ class ResidentController extends Controller
         $resident->number_of_residents = $request->number_of_residents;
         $resident->rental = $request->rental;
         if ($request->hasFile("file")) {
-        $resident->$file_id = $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
-        }   
+        $request->file('file')->storeAs('contract', "{$request->flat_id}.pdf");
+        }
         $resident->save();
 
         $id = $request->building_id;
 
-        if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
-            return redirect(action('HomeController@bedit', compact('id')));        
-        }
+        // if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
+        //     return redirect(action('HomeController@bedit', compact('id')));        
+        // }
     }
 
     /**
