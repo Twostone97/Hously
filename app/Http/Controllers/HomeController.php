@@ -232,6 +232,7 @@ class HomeController extends Controller
             "users"=>$users,
             "rules"=>$rules
         ];
+        
         return response()->json($data, 200);
     }
 

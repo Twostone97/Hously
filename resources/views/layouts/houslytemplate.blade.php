@@ -7,7 +7,7 @@
     <title>@yield('title','Welcome to Hously')</title>
     <script src="https://api.mapy.cz/loader.js"></script>
 	<script>Loader.load()</script>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @yield('styles','')
     
     <!-- Laravel AUTH STYLES and SCRIPTS: -->

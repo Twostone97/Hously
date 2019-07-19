@@ -2,9 +2,19 @@ import React from "react";
 
 const DashboardCommonUserDocuments = ({
     contract_id,
-    contract_url,
-    contract
+    contract,
+    current_user,
+    residents
 }) => {
+    let contract_url = null;
+    let resident = residents.filter(resident => {
+        return resident.user_id == current_user.id;
+    });
+
+    if (resident) {
+        contract_url = `/storage/contract/${resident[0].flat_id}.pdf`;
+    }
+
     if (!contract_id || !contract_url) {
         return (
             <div className="page__main__dash__item i__small">

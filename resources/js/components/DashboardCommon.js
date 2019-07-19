@@ -11,16 +11,21 @@ const DashboardCommon = ({
         communities,
         contract,
         contract_id,
-        contract_url,
         notices,
         noticeboard,
         profile,
         rules,
-        users
+        users,
+        residents,
+        flats
     }
 }) => {
     return (
         <>
+            {console.log("cresident", residents)}
+            {console.log("flats", flats)}
+            {console.log("user", current_user)}
+
             <div className="page__main__dash dash__common">
                 <DashboardCommonHouseNews
                     notices={notices}
@@ -42,7 +47,8 @@ const DashboardCommon = ({
                     <DashboardCommonUserDocuments
                         contract={contract}
                         contract_id={contract_id}
-                        contract_url={contract_url}
+                        residents={residents}
+                        current_user={current_user}
                     />
                 )}
             </div>
