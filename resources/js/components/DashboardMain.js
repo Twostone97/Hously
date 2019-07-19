@@ -51,7 +51,7 @@ const DashboardMain = ({ apidata, isLoading, refetchApp }) => {
         };
     });
 
-    if (true) {
+    if (isLoading) {
         return (
             <div className="loading">
                 <canvas id="loading" width="400" height="400" />
