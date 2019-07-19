@@ -12,7 +12,7 @@ const DashboardCommonUserDocuments = ({
     });
 
     if (resident) {
-        contract_url = `/storage/contract/${resident[0].flat_id}.pdf`;
+        contract_url = `/storage/contract/${resident.flat_id}.pdf`;
     }
 
     if (!contract_id || !contract_url) {

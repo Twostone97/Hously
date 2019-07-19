@@ -153,6 +153,7 @@ class HomeController extends Controller
         $residents_in_flats = [];
         $rentcontracts = null;
         $daterent = null;
+        $profile =  null;
 
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {    
@@ -200,6 +201,8 @@ class HomeController extends Controller
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
             $daterent           = explode('-' ,$resident->begining_of_current_rent);
             $daterent           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
+        } else {
+            $profil = null;
         }
                         
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
