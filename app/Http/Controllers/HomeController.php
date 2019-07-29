@@ -133,7 +133,6 @@ class HomeController extends Controller
             $allbuildings   = DB::table('buildings')->get();
             $allflats       = DB::table('flats')->get();
         }
-        
         return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community', 'allflats'));
     }
 
@@ -267,7 +266,6 @@ class HomeController extends Controller
                 'last_name' => $request->last_name,
                 'birth_date' => $request->birth_date, 
                 'phone_number' => $request->phone_number, 
-                'email' => $request->email, 
                 'email' => $request->email]);
                 if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
                     return redirect(action('HomeController@index'));
@@ -282,6 +280,20 @@ class HomeController extends Controller
             if (DB::table('superusers')->where('user_id', '=', Auth::user()->id)->first() != null) {
                 return redirect(action('HomeController@index'));
             }
+    }
+
+    public function profileImage (Request $request)
+    {
+        DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update([
+            'profile_image' => $request->profile_image
+        ]);
+        $path = $request->file('file')->storeAs(
+            'public', "{$request->id}.png"
+        );
+
+        return redirect(action('HomeController@index'));
     }
 
     public function bedit ($id)

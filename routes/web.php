@@ -47,6 +47,7 @@ Route::post('/flat', 'FlatController@store');
 Route::post('/user', 'HomeController@store');
 
 Route::post('/updatebuilding', 'BuildingController@update');
+Route::post('/uploadProfileImage', 'HomeController@profileImage');
 
 Route::post('/update_{resident_id}_{user_id}', 'ResidentController@update');
 

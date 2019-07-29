@@ -57,7 +57,22 @@
                         <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
                         <div id="register__open"><a class="nav-link" href="#">Register</a></div>
                         @else
-                        <div><a href="/app/dashboard">{{ Auth::user()->first_name }}</a>
+                        <div>
+                                @if (Auth::user()->profile_image)
+                                <?php
+                                    $id = Auth::user()->id;
+                                ?>
+                                <img src={{Storage::url("{$id}.png")}} alt="profile_image" style="width: 50px; height 50px;">
+                            @else
+                                <form action="/uploadProfileImage" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="profile_image" value="1">
+                                <input type="hidden" name="id" value={{Auth::user()->id}}>
+                                <input type="file" name="file">
+                                <input type="submit" value="Upload">
+                                </form>
+                            @endif
+                            <a href="/app/dashboard">{{ Auth::user()->first_name }}</a> 
                             <a href="{{ route('logout') }}" onclick="
                                 event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -72,6 +87,7 @@
                 </div>
             </div>
         </nav>
+
 
     </header>
     <div class="auth__overlay">
@@ -153,7 +169,6 @@
                         @enderror
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Birth Date') }}</label>
 
