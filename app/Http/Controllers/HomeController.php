@@ -289,9 +289,12 @@ class HomeController extends Controller
         ->update([
             'profile_image' => $request->profile_image
         ]);
-        $path = $request->file('file')->storeAs(
-            'public', "{$request->id}.png"
-        );
+        
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->storeAs(
+                'public', "{$request->id}.png"
+            );
+        }
 
         return redirect(action('HomeController@index'));
     }
