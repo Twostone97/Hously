@@ -367,4 +367,30 @@ class HomeController extends Controller
         ];
         return response()->json($data, 200);
     }
+
+    public function selectProfile($building)
+    {
+        $profil = "";
+        $all = [
+            "administrator_all" => DB::table('administrators')->where([['user_id', '=', Auth::user()->id],['building_id', '=', $building]])->get(),
+            "owner_all" => DB::table('owners')->where([['user_id', '=', Auth::user()->id],['building_id', '=', $building]])->get(),
+            "resident_all" => DB::table('residents')->where([['user_id', '=', Auth::user()->id],['building_id', '=', $building]])->get(),
+        ];
+        if (count($all["administrator_all"]) > 0) {
+            $profil = $profil."administrator;";
+        }
+        if (count($all["owner_all"]) > 0) {
+            $profil = $profil."owner;";
+        }
+        if (count($all["resident_all"]) > 0) {
+            $profil = $profil."resident;";
+        }
+
+        $data = (object) [
+            "profile" => $profil,
+        ];
+
+        return response()->json($data, 200);
+    }
+
 }

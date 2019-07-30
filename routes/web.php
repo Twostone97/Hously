@@ -32,6 +32,7 @@ Route::get('/api', 'HomeController@api'); //Pouze pro supersprávce
 //Nové api pro nový dashboard
 
 Route::get('/selectbuildingapi', 'HomeController@selectBuildingApi');
+Route::get('/selectprofile{building}', 'HomeController@selectProfile');
 Route::get('/chatapi', 'HomeController@chat_api');  
 
 // *************************************
