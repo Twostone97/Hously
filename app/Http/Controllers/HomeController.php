@@ -327,4 +327,44 @@ class HomeController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function selectBuildingApi()
+    {
+        $buildings = [];
+        $all = [
+            "administrator_all" => DB::table('administrators')->where('user_id', '=', Auth::user()->id)->get(),
+            "owner_all" => DB::table('owners')->where('user_id', '=', Auth::user()->id)->get(),
+            "resident_all" => DB::table('residents')->where('user_id', '=', Auth::user()->id)->get(),
+        ];
+        if (count($all["administrator_all"]) > 0) {
+            foreach ($all["administrator_all"] as $admin) {
+                $building = DB::table("buildings")->select('id', 'city', 'street', 'house_number')->where('id', '=',  $admin->building_id)->first();
+                if (!in_array($building, $buildings)) {
+                    $buildings[] = $building;
+                }
+            }
+        }
+        if (count($all["owner_all"]) > 0) {
+            foreach ($all["owner_all"] as $owner) {
+                $building = DB::table("buildings")->select('id', 'city', 'street', 'house_number')->where('id', '=',  $owner->building_id)->first();
+                if (!in_array($building, $buildings)) {
+                    $buildings[] = $building;
+                }
+            }
+        }
+
+        if (count($all["resident_all"]) > 0) {
+            foreach ($all["resident_all"] as $resident) {
+                $building = DB::table("buildings")->select('id', 'city', 'street', 'house_number')->where('id', '=',  $resident->building_id)->first();
+                if (!in_array($building, $buildings)) {
+                    $buildings[] = $building;
+                }
+            }
+        }
+
+        $data = (object) [
+            "buildings" => $buildings,
+        ];
+        return response()->json($data, 200);
+    }
 }

@@ -27,7 +27,11 @@ Auth::routes();
 // api
 
 Route::get('/map/api','WebController@mapApi');
-Route::get('/api', 'HomeController@api');
+Route::get('/api', 'HomeController@api'); //Pouze pro supersprávce
+
+//Nové api pro nový dashboard
+
+Route::get('/selectbuildingapi', 'HomeController@selectBuildingApi');
 Route::get('/chatapi', 'HomeController@chat_api');  
 
 // *************************************
@@ -48,6 +52,8 @@ Route::post('/user', 'HomeController@store');
 
 Route::post('/updatebuilding', 'BuildingController@update');
 Route::post('/uploadProfileImage', 'HomeController@profileImage');
+
+
 
 Route::post('/update_{resident_id}_{user_id}', 'ResidentController@update');
 
