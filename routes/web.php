@@ -19,6 +19,7 @@ Route::get('/','WebController@index');
 Route::get('/flats','WebController@flats');
 Route::get('/about','WebController@about');
 Route::get('/app/dashboard','WebController@dashboard');
+Route::get('/react-houses','WebController@reacthouses');
 Route::get('/test/map','WebController@map');
 Route::get('/houses', 'WebController@houses');
 
@@ -28,6 +29,7 @@ Auth::routes();
 
 Route::get('/map/api','WebController@mapApi');
 Route::get('/api', 'HomeController@api'); //Pouze pro supersprávce
+Route::get('/react-houses-api','HomeController@reacthouses');
 
 //Nové api pro nový dashboard
 

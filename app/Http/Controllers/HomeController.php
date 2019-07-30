@@ -367,4 +367,34 @@ class HomeController extends Controller
         ];
         return response()->json($data, 200);
     }
+
+    public function reacthouses() {
+        $taken_flats = [];
+        // $allbuildings   = DB::table('buildings')->get();
+        $allflats       = DB::table('flats')->get();
+        // $allowners      = DB::table('owners')->get();
+        // $allusers      = DB::table('users')->get();
+        $allresidents   = DB::table('residents')->get();
+
+
+        foreach ($allflats as $flat) {
+            foreach ($allresidents as $resident) {
+                if ($flat->id === $resident->flat_id) {
+                    $taken_flats[] = $flat->id;
+                }
+            }
+        }
+
+        $data = [
+            "takenFlats" => $taken_flats,
+            "allBuildings"=> DB::table('buildings')->get(),
+            "allOwners " => DB::table('owners')->get(),
+            "allUsers"=> DB::table('users')->get(),
+            "takenFlats" => $taken_flats,
+            "allFlats" => $allflats,
+            "allResidents" => $allresidents       
+        ];
+
+        return response()->json($data, 200);
+    }
 }

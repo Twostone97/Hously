@@ -28,6 +28,10 @@ class WebController extends Controller
         return view ('/test/map'); //pro Michala na testovani mapy
     }
 
+    public function reacthouses() {
+        return view ('/pages/react-houses');
+    }
+
     public function houses() {
         $taken_flats = [];
         $allbuildings   = DB::table('buildings')->get();
@@ -47,7 +51,8 @@ class WebController extends Controller
 
         return view ('/pages/houses', compact("allbuildings", "allflats", "allowners", "allusers", "allresidents", "taken_flats")); //oficiální mapa s funkčnímy odkazy a seznamem domů
     }
-  
+    
+    
       
     public function mapApi(){
     $building = DB::table('buildings')->select('city','street','house_number','postal','id')->get();    
@@ -80,4 +85,3 @@ class WebController extends Controller
         return view ('/pages/flats', compact("list_of_flats","allbuildings","allflats"));
     }
 }
-
