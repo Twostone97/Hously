@@ -34,6 +34,7 @@ Route::get('/react-houses-api','HomeController@reacthouses');
 //Nové api pro nový dashboard
 
 Route::get('/selectbuildingapi', 'HomeController@selectBuildingApi');
+Route::get('/selectprofile{building}', 'HomeController@selectProfile');
 Route::get('/chatapi', 'HomeController@chat_api');  
 
 // *************************************
