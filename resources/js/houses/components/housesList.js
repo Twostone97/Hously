@@ -88,10 +88,13 @@ const HousesList = ({ houses, match }) => {
 };
 
 const Test = props => {
+    const { handle } = props.match.params;
+    const { house } = props.location.state;
     return (
         <>
-            <h1>This building id is {props.match.params.handle}</h1>
-            <Link to={`/react-houses`}>Close this</Link>
+            <h1>This building id is {handle}</h1>
+            <p>And the address is {house.street}</p>
+            <Link to="/react-houses">Close me</Link>
         </>
     );
 };

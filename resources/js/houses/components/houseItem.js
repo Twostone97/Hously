@@ -9,14 +9,19 @@ const HouseItem = ({ house, match }) => {
             <td>{house.house_number}</td>
             <td>{house.created_at}</td>
             <td>
-                <Link to={`${match.url}/${house.id}`}>Více info</Link>
+                <Link
+                    to={{
+                        pathname: `${match.url}/${house.id}`,
+                        state: {
+                            house: house
+                        }
+                    }}
+                >
+                    Více info
+                </Link>
             </td>
         </tr>
     );
-};
-
-const Test = props => {
-    return <h1>This building id is {props.match.params.handle}</h1>;
 };
 
 export default HouseItem;

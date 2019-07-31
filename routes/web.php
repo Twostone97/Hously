@@ -20,6 +20,7 @@ Route::get('/flats','WebController@flats');
 Route::get('/about','WebController@about');
 Route::get('/app/dashboard','WebController@dashboard');
 Route::get('/react-houses','WebController@reacthouses');
+Route::get('/react-houses/{id}','WebController@reacthouses');
 Route::get('/test/map','WebController@map');
 Route::get('/houses', 'WebController@houses');
 
