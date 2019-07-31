@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HousesList from "./components/housesList.js";
-import HouseDetail from "./components/houseDetail.js";
 
-export default function housesMain() {
+export default function housesMain({ match }) {
     const [houseData, sethouseData] = useState(null);
 
     useEffect(() => {
@@ -23,7 +22,7 @@ export default function housesMain() {
                 <h1>This is list of involved houses</h1>
             </div>
             <div className="page__main__dash dash__houses">
-                <HousesList houses={houseData.allBuildings} />
+                <HousesList houses={houseData.allBuildings} match={match} />
             </div>
         </section>
     );

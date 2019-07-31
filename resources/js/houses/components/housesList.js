@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import HouseDetail from "./houseDetail";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import HouseItem from "./houseItem.js";
 
-const HousesList = ({ houses }) => {
+const HousesList = ({ houses, match }) => {
     const [filteredCity, setfilteredCity] = useState("");
     let listOfCities = [];
     let uniqueCitiesSelects = [];
@@ -51,24 +52,47 @@ const HousesList = ({ houses }) => {
                 >
                     X
                 </button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Město</th>
-                            <th>Ulice</th>
-                            <th>Číslo popisné / orientační</th>
-                            <th>Přidáno do Hously</th>
-                            <th />
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {housesToRender.map(house => {
-                            return <HouseDetail house={house} />;
-                        })}
-                    </tbody>
-                </table>
+                <Router>
+                    <Route path={`${match.path}/:handle`} component={Test} />
+                    <Route
+                        exact
+                        path={match.path}
+                        render={() => (
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Město</th>
+                                        <th>Ulice</th>
+                                        <th>Číslo popisné / orientační</th>
+                                        <th>Přidáno do Hously</th>
+                                        <th />
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {housesToRender.map(house => {
+                                        return (
+                                            <HouseItem
+                                                house={house}
+                                                match={match}
+                                            />
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        )}
+                    />
+                </Router>
             </div>
         </div>
+    );
+};
+
+const Test = props => {
+    return (
+        <>
+            <h1>This building id is {props.match.params.handle}</h1>
+            <Link to={`/react-houses`}>Close this</Link>
+        </>
     );
 };
 
