@@ -9,7 +9,7 @@ function Hously() {
         <Router>
             <>
                 <Route exact path="/app/dashboard" component={Dashboard} />
-                <Route exact path="/react-houses" component={HousesMain} />
+                <Route path="/react-houses" component={HousesMain} />
             </>
         </Router>
     );
