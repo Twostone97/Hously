@@ -110,11 +110,11 @@
     <section class="content2boxes imgLeft">
         <div class="flexContainer box">
             <div class="content2boxes__box__txt">
-                <div class="content2boxes__box__txt__head">
+                <div class="content2boxes__box__txt__head textRight">
                     <h3>Chytrá a bezpečná platforma pro vlastníky nemovitostí</h3>
                 </div>
                 <div class="flexContainer">
-                    <div class="content2boxes__box__txt__body textRight">
+                    <div class="content2boxes__box__txt__body textRight boxesReversed">
                         <div class="content2boxes__box__txt__body__txt">
                             <p>jednotlivci/ společenství a družstva</p>
                             <p>agenda společenství a družstev</p>
@@ -163,11 +163,11 @@
     <section class="content2boxes imgLeft">
         <div class="flexContainer box">
             <div class="content2boxes__box__txt">
-                <div class="content2boxes__box__txt__head">
+                <div class="content2boxes__box__txt__head textRight">
                     <h3>Příležitost najít zákazníky pro dodavatele</h3>
                 </div>
                 <div class="flexContainer">
-                    <div class="content2boxes__box__txt__body textRight">
+                    <div class="content2boxes__box__txt__body textRight boxesReversed">
                         <div class="content2boxes__box__txt__body__txt">
                             <p>Lorem ipsum nejaký text</p>
                             <p>Lorem ipsum nejaký text</p>
