@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    /**** LOGIN AND REGISTER MODALS *****/
+
     if (document.querySelector("#login__open")) {
         //login modal open
         document.querySelector("#login__open").addEventListener("click", () => {
@@ -38,9 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document
             .querySelector("#register__open")
             .addEventListener("click", openRegister);
-        document
-            .querySelector("#register__open__onPage")
-            .addEventListener("click", openRegister);
+        if (document.querySelector("#register__open__onPage")) {
+            document
+                .querySelector("#register__open__onPage")
+                .addEventListener("click", openRegister);
+        }
 
         //register modal open
         document
@@ -77,9 +81,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         previousOffset = window.pageYOffset;
     });
+
+    /***********  RANDOM QUOTES INIT  ********************/
+
+    randomHouslyQuotes(quotesPool);
 });
 
-//VEGAS library (jQuery)
+/***********  RANDOM QUOTES ON ABOUT PAGE    ********************/
+
+const randomHouslyQuotes = quoteSrc => {
+    let quotesDiv = document.createElement("div");
+    quotesDiv.classList.add("hously-qoute");
+    quotesDiv.innerHTML = `<h4>${quoteSrc[0]}</h4>`;
+    document.querySelector(".quotes").appendChild(quotesDiv);
+    let quoteIndex = 1;
+    setInterval(() => {
+        quotesDiv.innerHTML = `<h4>${quoteSrc[quoteIndex]}</h4>`;
+        quoteIndex < 3 ? quoteIndex++ : (quoteIndex = 0);
+    }, 4000);
+};
+
+/***********  RANDOM QUOTES ON ABOUT PAGE - QOUTES POOL   ********************/
+
+quotesPool = [
+    "Zveme všechny na nedělní brunch. Začínáme v 10:00 na zahradě.Tomáš a Marie",
+    "Ahoj právě jsem se přistěhoval,rád bych poznal své sousedy",
+    "Zatraceně, přestala téct voda. Jak to teď to mám řešit?",
+    "Zdravím, mám byt k pronájmu. Potřebuji nájemníka od 1. září."
+];
+
+/********VEGAS library (jQuery) CONFIG*********/
 
 $(".bg__vegas").vegas({
     slides: [
@@ -96,7 +127,7 @@ $(".bg__vegas").vegas({
     timer: false
 });
 
-//TOASTR LIBRARY (jQuery)
+/*********TOASTR LIBRARY (jQuery) CONFIG*******/
 
 toastr.options = {
     closeButton: true,

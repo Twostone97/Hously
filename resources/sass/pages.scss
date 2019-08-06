@@ -249,6 +249,19 @@ $content2boxesHeight: 80vh;
         &:hover {
             transform: scale(1.02);
         }
+
+        &.quotes {
+            position: relative;
+        }
+
+        .hously-qoute {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: rgba($color: #fff, $alpha: 0.7);
+            padding: 1rem;
+            font-style: italic;
+        }
     }
 }
 

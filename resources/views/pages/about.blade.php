@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="content2boxes__box__img box" id="ilustr-dimenze-1">
+        <div class="content2boxes__box__img box quotes" id="ilustr-dimenze-1">
         </div>
     </section>
     <section class="content2boxes imgLeft">
