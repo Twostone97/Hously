@@ -424,4 +424,5 @@ class HomeController extends Controller
         return response()->json($data, 200);
     }
 
+
 }
