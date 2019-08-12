@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Session;
+use Doctrine\DBAL\Driver\PDOConnection;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('reacthouses');
     }
 
     /**
@@ -371,26 +372,18 @@ class HomeController extends Controller
 
     public function reacthouses() {
         $taken_flats = [];
-        // $allbuildings   = DB::table('buildings')->get();
+        $allbuildings   = DB::table('buildings')->get();
         $allflats       = DB::table('flats')->get();
-        // $allowners      = DB::table('owners')->get();
-        // $allusers      = DB::table('users')->get();
-        $allresidents   = DB::table('residents')->get();
-
-
-        foreach ($allflats as $flat) {
-            foreach ($allresidents as $resident) {
-                if ($flat->id === $resident->flat_id) {
-                    $taken_flats[] = $flat->id;
-                }
-            }
-        }
-
+        $allowners      = DB::table('owners')->get();
+        $allusers      = DB::table('users')->get();
+        $allresidents   = DB::select('call obyvatelé');
+        $taken_flats    = DB::select('call obsazené_byty');
+        
         $data = [
             "takenFlats" => $taken_flats,
-            "allBuildings"=> DB::table('buildings')->get(),
-            "allOwners " => DB::table('owners')->get(),
-            "allUsers"=> DB::table('users')->get(),
+            "allBuildings"=> $allbuildings,
+            "allOwners " => $allowners,
+            "allUsers"=> $allusers,
             "takenFlats" => $taken_flats,
             "allFlats" => $allflats,
             "allResidents" => $allresidents

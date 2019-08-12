@@ -1,3 +1,5 @@
+$content2boxesHeight: 80vh;
+
 .div_1 {
     flex: 0 0 33%;
 }
@@ -12,6 +14,255 @@
 
 .div_4 {
     flex: 0 0 100%;
+}
+
+.heroBanner {
+    height: 90vh;
+    width: 100vw;
+
+    &.hero__about {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        background-image: url("/img/about/hero-about.jpg");
+        background-size: cover;
+
+        h1,
+        h3 {
+            text-shadow: 2px 7px 8px rgba(0, 0, 0, 0.62);
+        }
+    }
+
+    > .vegas-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+    }
+
+    &__features {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-width: 50vmax;
+        max-width: 70vmax;
+        min-height: 30vh;
+        margin: 0 auto;
+
+        @media screen and (max-width: 991px) {
+            display: block;
+            min-height: 80px;
+            width: 80%;
+            margin: 0 auto 1rem auto;
+        }
+        &__item {
+            flex: 0 1 14vmax;
+            min-height: 7vmax;
+            width: initial;
+            margin: initial;
+            background-color: rgba($secondary-blue, 1);
+            color: #fff;
+            border: 0.5px solid rgb(139, 139, 139);
+
+            @media screen and (max-width: 991px) {
+                min-height: 80px;
+                width: 80%;
+                margin: 0 auto 1rem auto;
+            }
+
+            &:hover {
+                background-color: $orange;
+            }
+            > a {
+                color: white;
+                text-decoration: none;
+            }
+            > a > div {
+                display: flex;
+                min-height: 7vmax;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                @media screen and (max-width: 991px) {
+                    min-height: 80px;
+                }
+
+                img {
+                    width: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.fullwClaim {
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    text-align: center;
+
+    &__slogan {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-style: italic;
+        color: $gray;
+    }
+}
+
+.content2boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &.imgLeft {
+        flex-direction: row-reverse;
+    }
+
+    .box {
+        flex: 0 0 50%;
+        height: $content2boxesHeight;
+        padding: 0.2% 2%;
+    }
+
+    .flexContainer {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    &__box__txt {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .textRight {
+            text-align: right;
+        }
+
+        &__head {
+            text-align: left;
+            padding: 2%;
+        }
+        &__body {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            &.boxesReversed {
+                flex-direction: row-reverse;
+            }
+
+            &__txt.fullWidth {
+                flex: 0 1 100%;
+            }
+
+            &__txt {
+                flex: 0 1 65%;
+            }
+            &__link {
+                flex: 1 1 35%;
+                align-self: flex-end;
+                line-height: 50px;
+                position: relative;
+
+                &.arrowRight::after {
+                    content: url("/img/icons/homepage/arrow-right.svg");
+                    height: 50px;
+                    display: flex;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    align-items: center;
+                    transition: all 0.5s ease-in;
+                }
+
+                &.arrowRight:hover:after {
+                    transform: scale(1.2);
+                }
+
+                &.arrowLeft {
+                    text-align: left;
+                    margin-left: 2rem;
+                }
+                &.arrowLeft::before {
+                    content: url("/img/icons/homepage/arrow-left.svg");
+                    height: 50px;
+                    display: flex;
+                    position: absolute;
+                    top: 0;
+                    left: -35px;
+                    align-items: center;
+                    transition: all 0.5s ease-in;
+                }
+
+                &.arrowLeft:hover:before {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+    &__box__img {
+        overflow: hidden;
+        height: $content2boxesHeight;
+        background-size: cover;
+        transition: all 1s ease-in-out;
+
+        &#ilustr-obyvatele {
+            background-image: url("/img/homepage/ilustr-obyvatele.jpg");
+        }
+        &#ilustr-vlastnici {
+            background-image: url("/img/homepage/ilustr-vlastnici.jpg");
+        }
+
+        &#ilustr-spravci {
+            background-image: url("/img/homepage/ilustr-spravci.jpg");
+        }
+        &#ilustr-dodavatele {
+            background-image: url("/img/homepage/ilustr-dodavatele.jpg");
+        }
+
+        &#ilustr-dimenze-1 {
+            background-image: url("/img/about/ilustr-dimenze-1.jpg");
+        }
+
+        &#ilustr-dimenze-2 {
+            background-image: url("/img/about/ilustr-dimenze-2.jpg");
+        }
+
+        &#ilustr-dimenze-3 {
+            background-image: url("/img/about/ilustr-dimenze-3.jpg");
+        }
+
+        &#ilustr-dimenze-4 {
+            background-image: url("/img/about/ilustr-dimenze-4.jpg");
+        }
+
+        &:hover {
+            transform: scale(1.02);
+        }
+
+        &.quotes {
+            position: relative;
+        }
+
+        .hously-qoute {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: rgba($color: #fff, $alpha: 0.7);
+            padding: 1rem;
+            font-style: italic;
+        }
+    }
 }
 
 .page__main {
@@ -70,60 +321,6 @@
         }
     }
 
-    &__features {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        max-width: 70vmax;
-        min-height: 30vh;
-        margin: 0 auto;
-
-        @media screen and (max-width: 991px) {
-            display: block;
-            min-height: 80px;
-            width: 80%;
-            margin: 0 auto 1rem auto;
-        }
-        &__item {
-            flex: 0 1 14vmax;
-            min-height: 7vmax;
-            width: initial;
-            margin: initial;
-            background-color: rgba($secondary-blue, 1);
-            color: #fff;
-            border: 0.5px solid rgb(139, 139, 139);
-
-            @media screen and (max-width: 991px) {
-                min-height: 80px;
-                width: 80%;
-                margin: 0 auto 1rem auto;
-            }
-
-            &:hover {
-                background-color: $orange;
-            }
-            > a {
-                color: white;
-                text-decoration: none;
-            }
-            > a > div {
-                display: flex;
-                min-height: 7vmax;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-
-                @media screen and (max-width: 991px) {
-                    min-height: 80px;
-                }
-
-                img {
-                    width: 1.5rem;
-                    margin-bottom: 1rem;
-                }
-            }
-        }
-    }
     &__flat {
         h3 {
             color: #fff;
