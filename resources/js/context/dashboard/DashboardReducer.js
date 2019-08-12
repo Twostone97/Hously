@@ -1,4 +1,4 @@
-import { FETCH_DATA, SET_LOADING } from "../types";
+import { FETCH_DATA, SET_LOADING, ERROR_FETCH } from "../types";
 
 export default (state, action) => {
     switch (action.type) {
@@ -13,6 +13,11 @@ export default (state, action) => {
             return {
                 ...state,
                 loading: true
+            };
+        case ERROR_FETCH:
+            return {
+                ...state,
+                errorFetch: true
             };
 
         default:

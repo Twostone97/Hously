@@ -26697,6 +26697,11 @@ function _defineProperty(obj, key, value) {
         loading: true
       });
 
+    case _types__WEBPACK_IMPORTED_MODULE_0__["ERROR_FETCH"]:
+      return _objectSpread({}, state, {
+        errorFetch: true
+      });
+
     default:
       return state;
   }
@@ -26767,8 +26772,8 @@ function _arrayWithHoles(arr) {
 var DashboardState = function DashboardState(props) {
   var initialState = {
     data: [],
-    loading: false,
-    test: "test"
+    loading: true,
+    errorFetch: false
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_DashboardReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
@@ -26776,11 +26781,29 @@ var DashboardState = function DashboardState(props) {
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
+  var fetchData = function fetchData() {
+    fetch("/api").then(function (resp) {
+      return resp.json();
+    }).then(function (data) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_4__["FETCH_DATA"],
+        payload: data
+      });
+    })["catch"](function () {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_4__["ERROR_FETCH"]
+      });
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchData();
+  }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       data: state.data,
       loading: state.loading,
-      test: state.test
+      errorFetch: state.errorFetch
     }
   }, props.children);
 };
@@ -26793,15 +26816,17 @@ var DashboardState = function DashboardState(props) {
 /*!***************************************!*\
   !*** ./resources/js/context/types.js ***!
   \***************************************/
-/*! exports provided: FETCH_DATA, SET_LOADING */
+/*! exports provided: FETCH_DATA, SET_LOADING, ERROR_FETCH */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_DATA", function() { return FETCH_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ERROR_FETCH", function() { return ERROR_FETCH; });
 var FETCH_DATA = "FETCH_DATA";
 var SET_LOADING = "SET_LOADING";
+var ERROR_FETCH = "ERROR_FETCH";
 
 /***/ }),
 
@@ -26941,6 +26966,8 @@ var Noticeboard = function Noticeboard() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+
 
 
 var DashboardBox = function DashboardBox(_ref) {
@@ -26948,14 +26975,25 @@ var DashboardBox = function DashboardBox(_ref) {
       headline = _ref.headline,
       content = _ref.content,
       linkTo = _ref.linkTo;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box",
-    style: style
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: linkTo
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, headline)), content));
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+  if (dashboardContext.loading || dashboardContext.errorFetch) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box",
+      style: style
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box__head"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, dashboardContext.errorFetch ? "Fetch failed..." : "Loading...")));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box",
+      style: style
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: linkTo
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box__head"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, headline)), content));
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardBox);
