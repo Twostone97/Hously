@@ -12,7 +12,7 @@ const Dashboard = () => {
             <Intro />
             <section className="dashboard__sections">
                 <DashboardBox
-                    style={{ flexBasis: "49%" }}
+                    style={{ flexBasis: "49%", height: "60vh" }}
                     headline="Nástěnka"
                     content={<Noticeboard />}
                     linkTo="./noticeboard"

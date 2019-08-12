@@ -26886,7 +26886,8 @@ var Dashboard = function Dashboard() {
     className: "dashboard__sections"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "49%"
+      flexBasis: "49%",
+      height: "60vh"
     },
     headline: "N\xE1st\u011Bnka",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
@@ -27004,11 +27005,12 @@ var Noticeboard = function Noticeboard() {
       notices = _dashboardContext$dat.notices,
       profile = _dashboardContext$dat.profile;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body"
+    className: "dashboard__sections__box__body scrollable",
+    style: {
+      height: "40vh"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "fixedHeight__flexContainer"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "notices__list scrollable"
+    className: "notices__list"
   }, notices.map(function (notice) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "notices__list__item"
@@ -27029,7 +27031,7 @@ var Noticeboard = function Noticeboard() {
     }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Created: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
       notice_id: notice.id
     }))));
-  }), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+  }), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Noticeboard);
