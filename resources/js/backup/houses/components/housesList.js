@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import HouseItem from "./houseItem.js";
+import HouseItem from "./houseItem.js.js";
 
 const HousesList = ({ houses, match }) => {
     const [filteredCity, setfilteredCity] = useState("");

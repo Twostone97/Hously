@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BuildingInfoDetails from "./buildingInfoDetails.js";
+import BuildingInfoDetails from "./buildingInfoDetails.js.js";
 
 const BuildingInfo = ({ data, owners, users, flats, residents }) => {
     const [houseDetails, sethouseDetails] = useState(false);

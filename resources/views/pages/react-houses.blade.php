@@ -27,5 +27,5 @@ Our Houses
 
 
 </main>
-<script src="/js/index.js"></script>
+<script src="/js/houses.js"></script>
 @endsection
