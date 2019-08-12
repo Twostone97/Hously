@@ -26782,6 +26782,7 @@ var DashboardState = function DashboardState(props) {
       dispatch = _useReducer2[1];
 
   var fetchData = function fetchData() {
+    //fetches all Hously Data
     fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
@@ -26796,6 +26797,27 @@ var DashboardState = function DashboardState(props) {
     });
   };
 
+  var deleteNotice = function deleteNotice(notice_id, data) {
+    //deletes a notice on a noticeboard
+    var fetchURL = "/su/delete/notice/" + notice_id;
+    fetch(fetchURL, {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
+  var addNotice = function addNotice(data) {
+    //adds new notice to the noticeboard
+    fetch("/notice", {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchData();
   }, []);
@@ -26803,7 +26825,10 @@ var DashboardState = function DashboardState(props) {
     value: {
       data: state.data,
       loading: state.loading,
-      errorFetch: state.errorFetch
+      errorFetch: state.errorFetch,
+      fetchData: fetchData,
+      deleteNotice: deleteNotice,
+      addNotice: addNotice
     }
   }, props.children);
 };
@@ -26847,6 +26872,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboardComponents_Intro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboardComponents/Intro */ "./resources/js/dashboardComponents/Intro.js");
 /* harmony import */ var _dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboardComponents/layout/DashboardBox */ "./resources/js/dashboardComponents/layout/DashboardBox.js");
 /* harmony import */ var _dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dashboardComponents/Noticeboard */ "./resources/js/dashboardComponents/Noticeboard.js");
+/* harmony import */ var _dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dashboardComponents/Foo */ "./resources/js/dashboardComponents/Foo.js");
+
 
 
 
@@ -26861,7 +26888,7 @@ var Dashboard = function Dashboard() {
     style: {
       flexBasis: "49%"
     },
-    headline: "React made headline",
+    headline: "N\xE1st\u011Bnka",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     linkTo: "./noticeboard"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -26869,40 +26896,63 @@ var Dashboard = function Dashboard() {
       flexBasis: "49%"
     },
     headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       flexBasis: "100%"
     },
     headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       flexBasis: "30%"
     },
     headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       flexBasis: "30%"
     },
     headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       flexBasis: "30%"
     },
     headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
   })));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dashboard, null), document.querySelector("#reactApp"));
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/Foo.js":
+/*!*************************************************!*\
+  !*** ./resources/js/dashboardComponents/Foo.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Foo = function Foo() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Feed me with some content via props..."));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Foo);
 
 /***/ }),
 
@@ -26917,15 +26967,12 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-
 
 
 var Intro = function Intro() {
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "dashboard__intro bg__gradient-light"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "this is context test: ", dashboardContext.test));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Intro);
@@ -26943,12 +26990,46 @@ var Intro = function Intro() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+/* harmony import */ var _noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noticeboard_components/NoticeboardDeleteElement */ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardDeleteElement.js");
+/* harmony import */ var _noticeboard_components_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./noticeboard_components/NoticeboardAdminSection */ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardAdminSection.js");
+
+
+
 
 
 var Noticeboard = function Noticeboard() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var _dashboardContext$dat = dashboardContext.data,
+      notices = _dashboardContext$dat.notices,
+      profile = _dashboardContext$dat.profile;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard__sections__box__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab necessitatibus impedit veniam iste aliquam suscipit dolores perferendis numquam, possimus voluptates."));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "fixedHeight__flexContainer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notices__list scrollable"
+  }, notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list__item"
+    }, notice.permanent == 1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      className: "item__featured",
+      readOnly: true
+    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "item__featured__tag"
+    }, "Created: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      notice_id: notice.id
+    }))));
+  }), notices.map(function (notice) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list__item"
+    }, notice.permanent == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      readOnly: true,
+      className: "item__normal"
+    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Created: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      notice_id: notice.id
+    }))));
+  }), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Noticeboard);
@@ -26992,11 +27073,186 @@ var DashboardBox = function DashboardBox(_ref) {
       href: linkTo
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dashboard__sections__box__head"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, headline)), content));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, headline))), content);
   }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardBox);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardAddElement.js":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/dashboardComponents/noticeboard_components/NoticeboardAddElement.js ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+
+
+
+var NoticeboardAddElement = function NoticeboardAddElement() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var noticeboard = dashboardContext.data.noticeboard;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notices__add"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      e.target[0].value = "";
+      dashboardContext.addNotice(data);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "notice"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    id: "notice",
+    name: "notice"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "noticeboard",
+    value: noticeboard.id
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "permanent"
+  }, "Featured?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "permanent",
+    label: "permanent"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardAddElement);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardAdminSection.js":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/dashboardComponents/noticeboard_components/NoticeboardAdminSection.js ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _NoticeboardAddElement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NoticeboardAddElement */ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardAddElement.js");
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+
+
+
+var NoticeboardAdminSection = function NoticeboardAdminSection() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showAddElement = _useState2[0],
+      setshowAddElement = _useState2[1];
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notices__list__adminHandler"
+  }, !showAddElement && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      setshowAddElement(true);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/write-ico.svg",
+    alt: ""
+  })), showAddElement && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoticeboardAddElement__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    onClick: function onClick() {
+      window.event.preventDefault();
+      setshowAddElement(false);
+    }
+  }, "Hide"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardAdminSection);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/noticeboard_components/NoticeboardDeleteElement.js":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/dashboardComponents/noticeboard_components/NoticeboardDeleteElement.js ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+
+
+
+var NoticeboardDeleteElement = function NoticeboardDeleteElement(_ref) {
+  var notice_id = _ref.notice_id;
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "item__deleteTag",
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      dashboardContext.deleteNotice(notice_id, data);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/trash-ico.svg",
+    alt: ""
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardDeleteElement);
 
 /***/ }),
 

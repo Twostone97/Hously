@@ -23,8 +23,8 @@ const DashboardBox = ({ style, headline, content, linkTo }) => {
                     <div className="dashboard__sections__box__head">
                         <h1>{headline}</h1>
                     </div>
-                    {content}
                 </a>
+                {content}
             </div>
         );
     }

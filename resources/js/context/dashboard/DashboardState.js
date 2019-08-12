@@ -15,6 +15,7 @@ const DashboardState = props => {
     const [state, dispatch] = useReducer(DashboardReducer, initialState);
 
     const fetchData = () => {
+        //fetches all Hously Data
         fetch("/api")
             .then(resp => resp.json())
             .then(data => {
@@ -23,6 +24,27 @@ const DashboardState = props => {
             .catch(() => {
                 dispatch({ type: ERROR_FETCH });
             });
+    };
+
+    const deleteNotice = (notice_id, data) => {
+        //deletes a notice on a noticeboard
+        const fetchURL = "/su/delete/notice/" + notice_id;
+        fetch(fetchURL, {
+            method: "post",
+            body: data
+        }).then(() => {
+            fetchData();
+        });
+    };
+
+    const addNotice = data => {
+        //adds new notice to the noticeboard
+        fetch("/notice", {
+            method: "post",
+            body: data
+        }).then(() => {
+            fetchData();
+        });
     };
 
     useEffect(() => {
@@ -34,7 +56,10 @@ const DashboardState = props => {
             value={{
                 data: state.data,
                 loading: state.loading,
-                errorFetch: state.errorFetch
+                errorFetch: state.errorFetch,
+                fetchData,
+                deleteNotice,
+                addNotice
             }}
         >
             {props.children}

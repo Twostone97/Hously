@@ -26782,6 +26782,7 @@ var DashboardState = function DashboardState(props) {
       dispatch = _useReducer2[1];
 
   var fetchData = function fetchData() {
+    //fetches all Hously Data
     fetch("/api").then(function (resp) {
       return resp.json();
     }).then(function (data) {
@@ -26796,6 +26797,27 @@ var DashboardState = function DashboardState(props) {
     });
   };
 
+  var deleteNotice = function deleteNotice(notice_id, data) {
+    //deletes a notice on a noticeboard
+    var fetchURL = "/su/delete/notice/" + notice_id;
+    fetch(fetchURL, {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
+  var addNotice = function addNotice(data) {
+    //adds new notice to the noticeboard
+    fetch("/notice", {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchData();
   }, []);
@@ -26803,7 +26825,10 @@ var DashboardState = function DashboardState(props) {
     value: {
       data: state.data,
       loading: state.loading,
-      errorFetch: state.errorFetch
+      errorFetch: state.errorFetch,
+      fetchData: fetchData,
+      deleteNotice: deleteNotice,
+      addNotice: addNotice
     }
   }, props.children);
 };
