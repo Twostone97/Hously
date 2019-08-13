@@ -5,6 +5,7 @@ import Intro from "./dashboardComponents/Intro";
 import DashboardBox from "./dashboardComponents/layout/DashboardBox";
 import Noticeboard from "./dashboardComponents/Noticeboard";
 import Foo from "./dashboardComponents/Foo";
+import Chats from "./dashboardComponents/Chats";
 
 const Dashboard = () => {
     return (
@@ -19,9 +20,9 @@ const Dashboard = () => {
                 />
                 <DashboardBox
                     style={{ flexBasis: "49%" }}
-                    headline="React made headline"
-                    content={<Foo />}
-                    linkTo="./foo"
+                    headline="Chat"
+                    content={<Chats />}
+                    linkTo="./chats"
                 />
                 <DashboardBox
                     style={{ flexBasis: "100%" }}

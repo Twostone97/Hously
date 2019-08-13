@@ -8,6 +8,7 @@ import { FETCH_DATA, SET_LOADING, ERROR_FETCH } from "../types";
 const DashboardState = props => {
     const initialState = {
         data: [],
+        chats: [],
         loading: true,
         errorFetch: false
     };
@@ -24,6 +25,13 @@ const DashboardState = props => {
             .catch(() => {
                 dispatch({ type: ERROR_FETCH });
             });
+    };
+
+    const fetchChats = () => {
+        //fetches chats only
+        fetch("/chatapi")
+            .then(resp => resp.json())
+            .then(data => dispatch({ type: FETCH_CHATS, payload: data.chats }));
     };
 
     const deleteNotice = (notice_id, data) => {
@@ -55,9 +63,11 @@ const DashboardState = props => {
         <DashboardContext.Provider
             value={{
                 data: state.data,
+                chats: state.chats,
                 loading: state.loading,
                 errorFetch: state.errorFetch,
                 fetchData,
+                fetchChats,
                 deleteNotice,
                 addNotice
             }}

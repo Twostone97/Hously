@@ -1,4 +1,4 @@
-import { FETCH_DATA, SET_LOADING, ERROR_FETCH } from "../types";
+import { FETCH_DATA, SET_LOADING, ERROR_FETCH, FETCH_CHATS } from "../types";
 
 export default (state, action) => {
     switch (action.type) {
@@ -6,6 +6,12 @@ export default (state, action) => {
             return {
                 ...state,
                 data: action.payload,
+                loading: false
+            };
+        case FETCH_CHATS:
+            return {
+                ...state,
+                chats: action.payload,
                 loading: false
             };
 

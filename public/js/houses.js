@@ -26692,6 +26692,12 @@ function _defineProperty(obj, key, value) {
         loading: false
       });
 
+    case _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CHATS"]:
+      return _objectSpread({}, state, {
+        chats: action.payload,
+        loading: false
+      });
+
     case _types__WEBPACK_IMPORTED_MODULE_0__["SET_LOADING"]:
       return _objectSpread({}, state, {
         loading: true
@@ -26772,6 +26778,7 @@ function _arrayWithHoles(arr) {
 var DashboardState = function DashboardState(props) {
   var initialState = {
     data: [],
+    chats: [],
     loading: true,
     errorFetch: false
   };
@@ -26793,6 +26800,18 @@ var DashboardState = function DashboardState(props) {
     })["catch"](function () {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_4__["ERROR_FETCH"]
+      });
+    });
+  };
+
+  var fetchChats = function fetchChats() {
+    //fetches chats only
+    fetch("/chatapi").then(function (resp) {
+      return resp.json();
+    }).then(function (data) {
+      return dispatch({
+        type: FETCH_CHATS,
+        payload: data.chats
       });
     });
   };
@@ -26824,9 +26843,11 @@ var DashboardState = function DashboardState(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       data: state.data,
+      chats: state.chats,
       loading: state.loading,
       errorFetch: state.errorFetch,
       fetchData: fetchData,
+      fetchChats: fetchChats,
       deleteNotice: deleteNotice,
       addNotice: addNotice
     }
@@ -26841,15 +26862,17 @@ var DashboardState = function DashboardState(props) {
 /*!***************************************!*\
   !*** ./resources/js/context/types.js ***!
   \***************************************/
-/*! exports provided: FETCH_DATA, SET_LOADING, ERROR_FETCH */
+/*! exports provided: FETCH_DATA, FETCH_CHATS, SET_LOADING, ERROR_FETCH */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_DATA", function() { return FETCH_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CHATS", function() { return FETCH_CHATS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ERROR_FETCH", function() { return ERROR_FETCH; });
 var FETCH_DATA = "FETCH_DATA";
+var FETCH_CHATS = "FETCH_CHATS";
 var SET_LOADING = "SET_LOADING";
 var ERROR_FETCH = "ERROR_FETCH";
 

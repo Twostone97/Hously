@@ -7,12 +7,12 @@ const DashboardBox = ({ style, headline, content, linkTo }) => {
     if (dashboardContext.loading || dashboardContext.errorFetch) {
         return (
             <div className="dashboard__sections__box" style={style}>
-                <div className="dashboard__sections__box__head">
-                    <h3>
-                        {dashboardContext.errorFetch
-                            ? "Fetch failed..."
-                            : "Loading..."}
-                    </h3>
+                <div className="dashboard__sections__box__body">
+                    {dashboardContext.errorFetch ? (
+                        <h4>"Fetch failed..."</h4>
+                    ) : (
+                        <img src="/img/layout/spinner.gif" />
+                    )}
                 </div>
             </div>
         );
