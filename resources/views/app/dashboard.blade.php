@@ -19,7 +19,7 @@
 @endsection
 
 @section ('content')
-<div class="dashboard__container bg__wall" id="reactApp">
+<div class="dashboard__container bg__dash" id="reactApp">
 
 
 </div>

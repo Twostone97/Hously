@@ -27676,8 +27676,7 @@ var Dashboard = function Dashboard() {
     className: "dashboard__sections"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "49%",
-      height: "60vh"
+      flexBasis: "49%"
     },
     headline: "N\xE1st\u011Bnka",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
@@ -27965,31 +27964,38 @@ var Noticeboard = function Noticeboard() {
   var _dashboardContext$dat = dashboardContext.data,
       notices = _dashboardContext$dat.notices,
       profile = _dashboardContext$dat.profile;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // align properly the height of text areas
+    document.querySelectorAll(".notices__list__item__txt").forEach(function (txtarea) {
+      txtarea.style.height = txtarea.scrollHeight + 10 + "px";
+    });
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable",
-    style: {
-      height: "40vh"
-    }
+    className: "dashboard__sections__box__body scrollable"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "notices__list"
   }, notices.map(function (notice) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "notices__list__item"
-    }, notice.permanent == 1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-      className: "item__featured",
+    return notice.permanent == 1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list__item item__featured"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      className: "notices__list__item__txt",
       readOnly: true
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list__item__footer"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "item__featured__tag"
-    }, "Created: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, "Vytvo\u0159eno: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
       notice_id: notice.id
     }))));
   }), notices.map(function (notice) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    return notice.permanent == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "notices__list__item"
-    }, notice.permanent == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-      readOnly: true,
-      className: "item__normal"
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Created: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      className: "notices__list__item__txt",
+      readOnly: true
+    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list__item__footer"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Vytvo\u0159eno: ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
       notice_id: notice.id
     }))));
   }), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboard_components_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
@@ -28023,7 +28029,7 @@ var DashboardBox = function DashboardBox(_ref) {
 
   if (dashboardContext.loading || dashboardContext.errorFetch) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box",
+      className: "dashboard__sections__box scrollable",
       style: style
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dashboard__sections__box__body"
@@ -28038,7 +28044,12 @@ var DashboardBox = function DashboardBox(_ref) {
       href: linkTo
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dashboard__sections__box__head"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, headline))), content);
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "maximize__icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "/img/icons/dashboard/boxes/maximize.svg",
+      alt: ""
+    })))), content);
   }
 };
 
@@ -28089,11 +28100,11 @@ var NoticeboardAddElement = function NoticeboardAddElement() {
     value: document.querySelector('meta[name="csrf-token"]').content
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "permanent"
-  }, "Featured?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, "Dr\u017Eet naho\u0159e?", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox",
     name: "permanent",
     label: "permanent"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add")));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "P\u0159idat na n\xE1st\u011Bnku")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NoticeboardAddElement);
@@ -28174,7 +28185,7 @@ var NoticeboardAdminSection = function NoticeboardAdminSection() {
       window.event.preventDefault();
       setshowAddElement(false);
     }
-  }, "Hide"))));
+  }, "X"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NoticeboardAdminSection);

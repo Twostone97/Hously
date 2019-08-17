@@ -9,6 +9,9 @@ $tertiary-blue: #0715f2;
 $sand-brown: #c7844c;
 $orange: #f25007;
 $gray: #343a40;
+$dash-1: #ffe2d8;
+$dash-2: #d6d6d6;
+$dash-3: #dfedd6;
 
 //backgrounds
 .bg__gray {
@@ -300,11 +303,15 @@ main {
     }
 }
 
-.bg__wall {
-    background-image: url("/img/wallbackground.jpg");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+// .bg__wall {
+//     background-image: url("/img/wallbackground.jpg");
+//     background-position: center;
+//     background-attachment: fixed;
+//     background-size: cover;
+// }
+
+.bg__dash {
+    background-color: $dash-1;
 }
 
 footer {

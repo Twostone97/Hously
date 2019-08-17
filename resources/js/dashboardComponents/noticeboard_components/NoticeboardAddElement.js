@@ -34,11 +34,11 @@ const NoticeboardAddElement = () => {
                 />
                 <br />
                 <label htmlFor="permanent">
-                    Featured?
+                    Držet nahoře?{" "}
                     <input type="checkbox" name="permanent" label="permanent" />
                 </label>
                 <br />
-                <button>Add</button>
+                <button>Přidat na nástěnku</button>
             </form>
         </div>
     );

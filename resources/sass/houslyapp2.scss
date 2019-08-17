@@ -1,33 +1,13 @@
 .dashboard__container {
-    .dashboard__intro {
-        display: flex;
-        height: 50vh;
-        width: 100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        text-align: center;
-
-        h1,
-        h5 {
-            text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.96);
-        }
-
-        h1 {
-            font-size: 3rem;
-        }
-        h5 {
-            font-size: 1.5rem;
-            font-style: italic;
-        }
-    }
+    margin-top: 80px;
 
     .dashboard__sections {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: stretch;
+        max-width: initial;
+        margin: 0 1rem;
 
         a {
             color: black;
@@ -37,79 +17,117 @@
         &__box {
             flex-grow: 0;
             flex-shrink: 1;
-            min-height: 200px;
             background-color: white;
-            padding: 2rem;
             margin: 2rem 0;
+
+            &__head {
+                background-color: $dash-2;
+                border: 1px solid black;
+                height: 2rem;
+                position: relative;
+
+                .maximize__icon {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    height: 2rem;
+                    padding: 0.1rem;
+                    line-height: 2rem;
+
+                    img {
+                        display: inline-block;
+                        height: 1.5rem;
+                        vertical-align: sub;
+                    }
+                }
+
+                h2 {
+                    font-size: 1.2rem;
+                    text-align: center;
+                    font-weight: bold;
+                    line-height: 2rem;
+                    vertical-align: center;
+                }
+            }
 
             &__body {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+                height: 20rem;
+                background-color: $dash-3;
+                border-width: 0px 1px 1px 1px;
+                border-color: black;
+                border-style: solid;
 
                 //noticeboard styles
                 .notices__list {
-                    flex: 1 1 90%;
+                    width: 100%;
                     margin-bottom: 2rem;
+                    padding: 1rem;
                     text-align: center;
 
                     &__item {
-                        width: 95%;
-                        margin: 0 auto;
+                        // width: 95%;
+                        margin: 0.5rem auto;
+                        border: 0.5px solid $secondary-blue;
+                        padding: 0.2rem;
+                        background-color: #fff;
+
+                        &.item__featured {
+                            background-color: rgba($orange, 0.3);
+                        }
 
                         textarea {
-                            width: 95%;
-                            background: rgba(#fff, 0.3);
-                            height: max-content;
-                            border: 0.5px solid $secondary-blue;
-                            padding: 0.2rem 1rem;
+                            width: 100%;
+                            height: 30px;
+                            border: none;
+                            background-color: initial;
+                        }
+                        &__footer {
+                            display: flex;
+                            justify-content: space-between;
 
-                            &.item__featured {
-                                background: rgba($orange, 0.6);
+                            p {
+                                text-align: left;
                             }
-                        }
 
-                        p {
-                            text-align: left;
-                        }
+                            span {
+                                text-align: left;
+                                font-size: 0.8rem;
+                                line-height: 1rem;
+                                vertical-align: top;
+                            }
 
-                        span {
-                            text-align: left;
-                            font-size: 0.8rem;
-                            line-height: 1rem;
-                            vertical-align: top;
-                        }
+                            span.item__featured__tag::after {
+                                content: "TOP";
+                                margin-left: 1rem;
+                                padding: 4px;
+                                border-radius: 5px;
+                                font-size: 10px;
+                                background-color: $orange;
+                                color: #fff;
+                                line-height: 1rem;
+                                vertical-align: top;
+                            }
+                            .item__deleteTag {
+                                display: inline-block;
+                                line-height: 1.35rem;
 
-                        span.item__featured__tag::after {
-                            content: "featured";
-                            margin-left: 1rem;
-                            padding: 4px;
-                            border-radius: 5px;
-                            font-size: 10px;
-                            background-color: $orange;
-                            color: #fff;
-                            line-height: 1rem;
-                            vertical-align: top;
-                        }
-                        .item__deleteTag {
-                            display: inline-block;
-                            line-height: 1.35rem;
+                                button {
+                                    height: 1rem;
+                                    background: none;
+                                    border: none;
 
-                            button {
-                                height: 1rem;
-                                background: none;
-                                border: none;
-
-                                img {
-                                    vertical-align: top;
-                                    height: 0.9rem;
+                                    img {
+                                        vertical-align: top;
+                                        height: 0.9rem;
+                                    }
                                 }
                             }
                         }
                     }
                     &__adminHandler {
-                        flex: 1 1 10%;
-
                         button {
                             border: none;
                             background: none;
@@ -125,6 +143,16 @@
                         form > button {
                             background-color: $orange;
                             color: white;
+                        }
+
+                        label {
+                            width: 100%;
+                        }
+
+                        #notice {
+                            width: 95%;
+                            margin: 0 auto;
+                            border-color: $gray;
                         }
                     }
                 }

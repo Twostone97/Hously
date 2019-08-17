@@ -27,7 +27,7 @@ const NoticeboardAdminSection = () => {
                                 setshowAddElement(false);
                             }}
                         >
-                            Hide
+                            X
                         </a>
                     </>
                 )}
