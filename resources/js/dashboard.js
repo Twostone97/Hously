@@ -10,7 +10,7 @@ import Chats from "./dashboardComponents/Chats";
 const Dashboard = () => {
     return (
         <DashboardState>
-            <Intro />
+            
             <section className="dashboard__sections">
                 <DashboardBox
                     style={{ flexBasis: "49%", height: "60vh" }}
