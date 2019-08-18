@@ -60,27 +60,28 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    //navigation hiding on scroll
-    let previousOffset = 0;
-    let screenWidth =
-        document.documentElement.clientWidth ||
-        document.body.clientWidth ||
-        window.innerWidth;
+    //navigation hiding on scroll - FUNCTIONALITY DISABLED
 
-    window.addEventListener("scroll", () => {
-        screenWidth =
-            document.documentElement.clientWidth ||
-            document.body.clientWidth ||
-            window.innerWidth;
-        if (window.pageYOffset > 200 && screenWidth >= 992) {
-            if (window.pageYOffset > previousOffset) {
-                document.querySelector("nav").classList.add("hideonscroll");
-            } else {
-                document.querySelector("nav").classList.remove("hideonscroll");
-            }
-        }
-        previousOffset = window.pageYOffset;
-    });
+    // let previousOffset = 0;
+    // let screenWidth =
+    //     document.documentElement.clientWidth ||
+    //     document.body.clientWidth ||
+    //     window.innerWidth;
+
+    // window.addEventListener("scroll", () => {
+    //     screenWidth =
+    //         document.documentElement.clientWidth ||
+    //         document.body.clientWidth ||
+    //         window.innerWidth;
+    //     if (window.pageYOffset > 200 && screenWidth >= 992) {
+    //         if (window.pageYOffset > previousOffset) {
+    //             document.querySelector("nav").classList.add("hideonscroll");
+    //         } else {
+    //             document.querySelector("nav").classList.remove("hideonscroll");
+    //         }
+    //     }
+    //     previousOffset = window.pageYOffset;
+    // });
 
     /***********  RANDOM QUOTES INIT  ********************/
 

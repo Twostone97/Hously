@@ -170,10 +170,10 @@ header {
         }
     }
 
-    nav.hideonscroll {
-        height: 0px;
-        padding: 0;
-    }
+    // nav.hideonscroll {
+    //     height: 0px;
+    //     padding: 0;
+    // } - FUNCTIONALITY DISABLED (see hously.js)
 
     .navbar {
         background-color: $gray;
@@ -181,6 +181,14 @@ header {
         .navbar-brand img {
             width: 50px;
         }
+        .navbar-text {
+            img {
+                height: 25px;
+                margin: 0 0.5rem;
+                cursor: pointer;
+            }
+        }
+
         .navbar-text #login__open,
         .navbar-text #register__open {
             display: inline-block;
@@ -255,31 +263,63 @@ main {
     min-height: 100vh;
 
     &.dashboard {
-        display: flex;
-
         .sideNav {
-            flex: 0 0 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5%;
+            height: 100vh;
+            z-index: 100;
             background-color: $secondary-blue;
             color: white;
+
             &__container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
-                height: 90vh;
-                margin-top: 150px;
+                height: 80vh;
+                margin-top: 100px;
                 > div {
                     flex: 1;
                     text-align: center;
                     img {
-                        width: 35px;
+                        width: 25px;
+                        cursor: pointer;
+                    }
+
+                    img:hover {
+                        animation: pulse 0.75s infinite;
+                    }
+
+                    @keyframes pulse {
+                        from {
+                            transform: scale(1);
+                        }
+
+                        25% {
+                            transform: scale(0.85);
+                        }
+
+                        50% {
+                            transform: scale(1.05);
+                        }
+
+                        75% {
+                            transform: scale(0.85);
+                        }
+
+                        to {
+                            transform: scale(1);
+                        }
                     }
                 }
             }
         }
 
         .dashboard__container {
-            flex: 0 1 95%;
+            width: 95%;
+            margin-left: 5vw;
         }
     }
 
