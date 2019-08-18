@@ -1,11 +1,11 @@
 import React from "react";
 
-const Foo = () => {
+const Calendar = () => {
     return (
         <div className="dashboard__sections__box__body bg-placeholder">
-            <img className="placeholder" src="/img/dashboard/placeholder.png" />
+            <img className="placeholder" src="/img/dashboard/calendar.png" />
         </div>
     );
 };
 
-export default Foo;
+export default Calendar;

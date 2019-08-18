@@ -27575,7 +27575,7 @@ var DashboardState = function DashboardState(props) {
       return resp.json();
     }).then(function (data) {
       return dispatch({
-        type: FETCH_CHATS,
+        type: _types__WEBPACK_IMPORTED_MODULE_4__["FETCH_CHATS"],
         payload: data.chats
       });
     });
@@ -27662,6 +27662,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dashboardComponents/Noticeboard */ "./resources/js/dashboardComponents/Noticeboard.js");
 /* harmony import */ var _dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dashboardComponents/Foo */ "./resources/js/dashboardComponents/Foo.js");
 /* harmony import */ var _dashboardComponents_Chats__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dashboardComponents/Chats */ "./resources/js/dashboardComponents/Chats.js");
+/* harmony import */ var _dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboardComponents/Messenger */ "./resources/js/dashboardComponents/Messenger.js");
+/* harmony import */ var _dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboardComponents/Calendar */ "./resources/js/dashboardComponents/Calendar.js");
+/* harmony import */ var _dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboardComponents/SurroundingMap */ "./resources/js/dashboardComponents/SurroundingMap.js");
+/* harmony import */ var _dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dashboardComponents/OurHouse */ "./resources/js/dashboardComponents/OurHouse.js");
+/* harmony import */ var _dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboardComponents/MyRent */ "./resources/js/dashboardComponents/MyRent.js");
+
+
+
+
+
 
 
 
@@ -27685,41 +27695,81 @@ var Dashboard = function Dashboard() {
     style: {
       flexBasis: "49%"
     },
-    headline: "Chat",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Chats__WEBPACK_IMPORTED_MODULE_7__["default"], null),
-    linkTo: "./chats"
+    headline: "Messenger",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__["default"], null),
+    linkTo: "./messenger"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "100%"
+      flexBasis: "31%"
     },
-    headline: "React made headline",
+    headline: "Kalend\xE1\u0159",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "31%"
+    },
+    headline: "Na\u0161e komunita",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "30%"
+      flexBasis: "31%"
     },
-    headline: "React made headline",
+    headline: "Service Manager",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "30%"
+      flexBasis: "31%"
     },
-    headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    headline: "M\u016Fj akut\xE1ln\xED pron\xE1jem",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "30%"
+      flexBasis: "31%"
     },
-    headline: "React made headline",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    headline: "N\xE1\u0161 d\u016Fm",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "31%"
+    },
+    headline: "Na\u0161e okol\xED",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__["default"], null),
     linkTo: "./foo"
   })));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dashboard, null), document.querySelector("#reactApp"));
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/Calendar.js":
+/*!******************************************************!*\
+  !*** ./resources/js/dashboardComponents/Calendar.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Calendar = function Calendar() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body bg-placeholder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "placeholder",
+    src: "/img/dashboard/calendar.png"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Calendar);
 
 /***/ }),
 
@@ -27909,8 +27959,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var Foo = function Foo() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Feed me with some content via props..."));
+    className: "dashboard__sections__box__body bg-placeholder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "placeholder",
+    src: "/img/dashboard/placeholder.png"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Foo);
@@ -27937,6 +27990,88 @@ var Intro = function Intro() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Intro);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/Messenger.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/dashboardComponents/Messenger.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+/* harmony import */ var _messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messenger__components/MessengerItem */ "./resources/js/dashboardComponents/messenger__components/MessengerItem.js");
+
+
+
+
+var Messenger = function Messenger() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var _dashboardContext$dat = dashboardContext.data,
+      communities = _dashboardContext$dat.communities,
+      chats = _dashboardContext$dat.chats,
+      users = _dashboardContext$dat.users;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body scrollable"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "messenger__container"
+  }, communities.map(function (community) {
+    var communityMessages = chats.filter(function (chat) {
+      return chat.community_id == community.id;
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      headline: community.community_name,
+      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
+      lastmsgtime: communityMessages[communityMessages.length - 1].created_at
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      headline: community.community_name,
+      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
+      lastmsgtime: communityMessages[communityMessages.length - 1].created_at
+    }));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Messenger);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/MyRent.js":
+/*!****************************************************!*\
+  !*** ./resources/js/dashboardComponents/MyRent.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+
+
+
+var MyRent = function MyRent() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var _dashboardContext$dat = dashboardContext.data,
+      residents = _dashboardContext$dat.residents,
+      current_user = _dashboardContext$dat.current_user;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body scrollable"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "myrent__container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "myrent__container__section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " ss")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lh\u016Fta pro \u017E\xE1dost o prodlou\u017Een\xED n\xE1jmu:", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Po\u010Det hl\xE1\u0161en\xFDch osob:: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "myrent__container__section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "P\u0159edpis n\xE1jmu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Datum p\u0159\xEDst\xED splatnosti n\xE1jmu: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Datum posledn\xED p\u0159ijat\xE9 platby: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2018")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Aktu\xE1ln\xED p\u0159eplatek/nedoplatek: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 0,00 K\u010D")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Zaplatit"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MyRent);
 
 /***/ }),
 
@@ -27969,7 +28104,7 @@ var Noticeboard = function Noticeboard() {
     document.querySelectorAll(".notices__list__item__txt").forEach(function (txtarea) {
       txtarea.style.height = txtarea.scrollHeight + 10 + "px";
     });
-  });
+  }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard__sections__box__body scrollable"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -28002,6 +28137,55 @@ var Noticeboard = function Noticeboard() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Noticeboard);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/OurHouse.js":
+/*!******************************************************!*\
+  !*** ./resources/js/dashboardComponents/OurHouse.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var OurHouse = function OurHouse() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Domovn\xED \u0159\xE1d"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "D\u016Fle\u017Eit\xE9 kontakty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Z\xE1kladn\xED technick\xE9 \xFAdaje o budov\u011B")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (OurHouse);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/SurroundingMap.js":
+/*!************************************************************!*\
+  !*** ./resources/js/dashboardComponents/SurroundingMap.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var SurroundingMap = function SurroundingMap() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body bg-placeholder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "placeholder",
+    src: "/img/dashboard/map-placeholder.png"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SurroundingMap);
 
 /***/ }),
 
@@ -28054,6 +28238,45 @@ var DashboardBox = function DashboardBox(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardBox);
+
+/***/ }),
+
+/***/ "./resources/js/dashboardComponents/messenger__components/MessengerItem.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/dashboardComponents/messenger__components/MessengerItem.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MessengerItem = function MessengerItem(_ref) {
+  var headline = _ref.headline,
+      lastmsgtxt = _ref.lastmsgtxt,
+      lastmsgtime = _ref.lastmsgtime;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "messenger__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "messenger__item__img"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/icons/dashboard/avatars/avatar01.jpg ",
+    alt: ""
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "messenger__item__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "messenger__item__body__lastmsg"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lastmsg__txt"
+  }, lastmsgtxt), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lastmsg__time"
+  }, lastmsgtime)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MessengerItem);
 
 /***/ }),
 

@@ -26810,7 +26810,7 @@ var DashboardState = function DashboardState(props) {
       return resp.json();
     }).then(function (data) {
       return dispatch({
-        type: FETCH_CHATS,
+        type: _types__WEBPACK_IMPORTED_MODULE_4__["FETCH_CHATS"],
         payload: data.chats
       });
     });

@@ -15,7 +15,7 @@ const Noticeboard = () => {
             .forEach(txtarea => {
                 txtarea.style.height = txtarea.scrollHeight + 10 + "px";
             });
-    });
+    }, []);
 
     return (
         <div className="dashboard__sections__box__body scrollable">

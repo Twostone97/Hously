@@ -6,6 +6,11 @@ import DashboardBox from "./dashboardComponents/layout/DashboardBox";
 import Noticeboard from "./dashboardComponents/Noticeboard";
 import Foo from "./dashboardComponents/Foo";
 import Chats from "./dashboardComponents/Chats";
+import Messenger from "./dashboardComponents/Messenger";
+import Calendar from "./dashboardComponents/Calendar";
+import SurroundingMap from "./dashboardComponents/SurroundingMap";
+import OurHouse from "./dashboardComponents/OurHouse";
+import MyRent from "./dashboardComponents/MyRent";
 
 const Dashboard = () => {
     return (
@@ -19,32 +24,44 @@ const Dashboard = () => {
                 />
                 <DashboardBox
                     style={{ flexBasis: "49%" }}
-                    headline="Chat"
-                    content={<Chats />}
-                    linkTo="./chats"
+                    headline="Messenger"
+                    content={<Messenger />}
+                    linkTo="./messenger"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "100%" }}
-                    headline="React made headline"
+                    style={{ flexBasis: "31%" }}
+                    headline="Kalendář"
+                    content={<Calendar />}
+                    linkTo="./foo"
+                />
+                <DashboardBox
+                    style={{ flexBasis: "31%" }}
+                    headline="Naše komunita"
                     content={<Foo />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "30%" }}
-                    headline="React made headline"
+                    style={{ flexBasis: "31%" }}
+                    headline="Service Manager"
                     content={<Foo />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "30%" }}
-                    headline="React made headline"
-                    content={<Foo />}
+                    style={{ flexBasis: "31%" }}
+                    headline="Můj akutální pronájem"
+                    content={<MyRent />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "30%" }}
-                    headline="React made headline"
-                    content={<Foo />}
+                    style={{ flexBasis: "31%" }}
+                    headline="Náš dům"
+                    content={<OurHouse />}
+                    linkTo="./foo"
+                />
+                <DashboardBox
+                    style={{ flexBasis: "31%" }}
+                    headline="Naše okolí"
+                    content={<SurroundingMap />}
                     linkTo="./foo"
                 />
             </section>

@@ -158,6 +158,46 @@
                 }
 
                 //noticeboard styles END
+                /*****************************************/
+                //messenger styles START
+                .messenger__container {
+                    width: 100%;
+                    padding: 0.5rem;
+
+                    .messenger__item {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 0.5rem 0;
+                        &__img {
+                            flex: 0 1 15%;
+                            background-color: #fff;
+                        }
+
+                        &__body {
+                            flex: 0 1 80%;
+                            padding: 0.5rem;
+                            background-color: #fff;
+
+                            &__lastmsg {
+                                display: flex;
+                                justify-content: space-between;
+
+                                .lastmsg__txt {
+                                    flex: 0 1 85%;
+                                }
+
+                                .lastmsg__time {
+                                    flex: 0 1 15%;
+                                    font-size: 0.7rem;
+                                    padding: 0.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                ////messenger styles END
+                /*****************************************/
                 // chat styles START
                 .chat__container {
                     min-width: 75%;
@@ -206,6 +246,34 @@
                     }
                 }
                 //chats styles END
+                /*****************************************/
+                // FOO (placeholder) styles START
+                &.bg-placeholder {
+                    background-color: #fff;
+                }
+                .placeholder {
+                    width: 100%;
+                    overflow: hidden;
+                }
+                // FOO (placeholder) styles END
+                /*****************************************/
+                // MYRENT styles START
+                .myrent__container {
+                    display: flex;
+                    height: 20rem;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    line-height: 1rem;
+                    padding: 0.5rem;
+
+                    button {
+                        background-color: $orange;
+                        color: white;
+                        line-height: 1.5rem;
+                    }
+                }
+                // MYRENT styles END
+                /*****************************************/
             }
         }
     }

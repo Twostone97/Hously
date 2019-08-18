@@ -3,7 +3,7 @@ import axios from "axios";
 import DashboardContext from "./DashboardContext";
 import DashboardReducer from "./DashboardReducer";
 
-import { FETCH_DATA, SET_LOADING, ERROR_FETCH } from "../types";
+import { FETCH_DATA, SET_LOADING, ERROR_FETCH, FETCH_CHATS } from "../types";
 
 const DashboardState = props => {
     const initialState = {
