@@ -18,7 +18,8 @@ if (!mix.inProduction()) {
 
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
-    .react("resources/js/index.js", "public/js/index.js")
+    .react("resources/js/dashboard.js", "public/js/dashboard.js")
+    .react("resources/js/houses.js", "public/js/houses.js")
 
     .browserSync({
         host: "www.hously.test",

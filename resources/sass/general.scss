@@ -9,6 +9,9 @@ $tertiary-blue: #0715f2;
 $sand-brown: #c7844c;
 $orange: #f25007;
 $gray: #343a40;
+$dash-1: #ffe2d8;
+$dash-2: #d6d6d6;
+$dash-3: #dfedd6;
 
 //backgrounds
 .bg__gray {
@@ -251,6 +254,35 @@ main {
     margin: 0;
     min-height: 100vh;
 
+    &.dashboard {
+        display: flex;
+
+        .sideNav {
+            flex: 0 0 5%;
+            background-color: $secondary-blue;
+            color: white;
+            &__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 90vh;
+                margin-top: 150px;
+                > div {
+                    flex: 1;
+                    text-align: center;
+                    img {
+                        width: 35px;
+                    }
+                }
+            }
+        }
+
+        .dashboard__container {
+            flex: 0 1 95%;
+        }
+    }
+
     &.bg__secondary {
         background-image: url("/img/slide4.jpg");
         background-position: center;
@@ -265,17 +297,21 @@ main {
         background-size: cover;
     }
 
-    &.bg__wall {
-        background-image: url("/img/wallbackground.jpg");
-        background-position: center;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-
     section {
         max-width: 80vw;
         margin: 2rem auto 1rem;
     }
+}
+
+// .bg__wall {
+//     background-image: url("/img/wallbackground.jpg");
+//     background-position: center;
+//     background-attachment: fixed;
+//     background-size: cover;
+// }
+
+.bg__dash {
+    background-color: $dash-1;
 }
 
 footer {

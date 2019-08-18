@@ -1,4 +1,4 @@
-@extends ('layouts/houslytemplate')
+@extends ('layouts/dashboardtemplate')
 
 @section ('title') Hously main dashboard
 @endsection
@@ -19,16 +19,11 @@
 @endsection
 
 @section ('content')
-
-<main class="bg__wall" id="reactApp">
-
+<div class="dashboard__container bg__dash" id="reactApp">
 
 
-
-
-
-</main>
-<script src="/js/index.js"></script>
+</div>
+<script src="/js/dashboard.js"></script>
 
 
 @endsection
