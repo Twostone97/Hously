@@ -10,9 +10,18 @@ const Messenger = () => {
         <div className="dashboard__sections__box__body scrollable">
             <div className="messenger__container">
                 {communities.map(community => {
+                    //selecting messages in the commmunity
                     const communityMessages = chats.filter(
                         chat => chat.community_id == community.id
                     );
+
+                    //selecting user of the last message in the community
+                    const lastMsgUserId =
+                        communityMessages[communityMessages.length - 1].user_id;
+                    const lastMsgUser = users.filter(
+                        user => user.id == lastMsgUserId
+                    );
+
                     return (
                         <>
                             <MessengerItem
@@ -27,6 +36,11 @@ const Messenger = () => {
                                         communityMessages.length - 1
                                     ].created_at
                                 }
+                                avatar={
+                                    lastMsgUser[0].profile_image == 1
+                                        ? require(`../../../storage/app/public/${lastMsgUserId}.png`)
+                                        : require(`../../../storage/app/public/unknown.png`)
+                                }
                             />
                             <MessengerItem
                                 headline={community.community_name}
@@ -39,6 +53,11 @@ const Messenger = () => {
                                     communityMessages[
                                         communityMessages.length - 1
                                     ].created_at
+                                }
+                                avatar={
+                                    lastMsgUser[0].profile_image == 1
+                                        ? require(`../../../storage/app/public/${lastMsgUserId}.png`)
+                                        : require(`../../../storage/app/public/unknown.png`)
                                 }
                             />
                         </>

@@ -27667,6 +27667,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboardComponents/SurroundingMap */ "./resources/js/dashboardComponents/SurroundingMap.js");
 /* harmony import */ var _dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dashboardComponents/OurHouse */ "./resources/js/dashboardComponents/OurHouse.js");
 /* harmony import */ var _dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboardComponents/MyRent */ "./resources/js/dashboardComponents/MyRent.js");
+/* harmony import */ var _dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboardComponents/Community */ "./resources/js/dashboardComponents/Community.js");
+
 
 
 
@@ -27700,42 +27702,42 @@ var Dashboard = function Dashboard() {
     linkTo: "./messenger"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "Kalend\xE1\u0159",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "Na\u0161e komunita",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "Service Manager",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "M\u016Fj akut\xE1ln\xED pron\xE1jem",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "N\xE1\u0161 d\u016Fm",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
-      flexBasis: "31%"
+      flexBasis: "32%"
     },
     headline: "Na\u0161e okol\xED",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__["default"], null),
@@ -27944,6 +27946,80 @@ var Chats = function Chats() {
 
 /***/ }),
 
+/***/ "./resources/js/dashboardComponents/Community.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/dashboardComponents/Community.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./community_components/CommunityItem */ "./resources/js/dashboardComponents/community_components/CommunityItem.js");
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+
+
+
+
+var Community = function Community() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var users = dashboardContext.data.users; //sort users descending (http://www.mattmorgante.com/technology/javascript-sort-compare)
+
+  var usersSortDesc = _toConsumableArray(users); //using spread to prevent sorting in the context provider
+
+
+  usersSortDesc.sort(function (a, b) {
+    if (a.created_at > b.created_at) {
+      return -1;
+    } else if (a.created_at == b.created_at) {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body scrollable"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "community__container"
+  }, usersSortDesc.map(function (user) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      name: user.first_name,
+      surname: user.last_name,
+      email: user.email,
+      created: user.created_at,
+      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+    });
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Community);
+
+/***/ }),
+
 /***/ "./resources/js/dashboardComponents/Foo.js":
 /*!*************************************************!*\
   !*** ./resources/js/dashboardComponents/Foo.js ***!
@@ -28021,17 +28097,25 @@ var Messenger = function Messenger() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "messenger__container"
   }, communities.map(function (community) {
+    //selecting messages in the commmunity
     var communityMessages = chats.filter(function (chat) {
       return chat.community_id == community.id;
+    }); //selecting user of the last message in the community
+
+    var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
+    var lastMsgUser = users.filter(function (user) {
+      return user.id == lastMsgUserId;
     });
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at
+      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at
+      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }));
   })));
 };
@@ -28189,6 +28273,44 @@ var SurroundingMap = function SurroundingMap() {
 
 /***/ }),
 
+/***/ "./resources/js/dashboardComponents/community_components/CommunityItem.js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/dashboardComponents/community_components/CommunityItem.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var CommunityItem = function CommunityItem(_ref) {
+  var avatar = _ref.avatar,
+      name = _ref.name,
+      surname = _ref.surname,
+      email = _ref.email,
+      created = _ref.created;
+  var date = new Date(created);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "community__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "community__item__img"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: avatar,
+    alt: ""
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "community__item__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, name, " ", surname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "txt-small"
+  }, "aktivn\xED od: ", date.getDate(), ".", date.getMonth(), ".", date.getFullYear())));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CommunityItem);
+
+/***/ }),
+
 /***/ "./resources/js/dashboardComponents/layout/DashboardBox.js":
 /*!*****************************************************************!*\
   !*** ./resources/js/dashboardComponents/layout/DashboardBox.js ***!
@@ -28216,7 +28338,7 @@ var DashboardBox = function DashboardBox(_ref) {
       className: "dashboard__sections__box scrollable",
       style: style
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box__body"
+      className: "dashboard__sections__box__body content-loading"
     }, dashboardContext.errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Fetch failed...\"") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "/img/layout/spinner.gif"
     })));
@@ -28257,15 +28379,16 @@ __webpack_require__.r(__webpack_exports__);
 var MessengerItem = function MessengerItem(_ref) {
   var headline = _ref.headline,
       lastmsgtxt = _ref.lastmsgtxt,
-      lastmsgtime = _ref.lastmsgtime;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      lastmsgtime = _ref.lastmsgtime,
+      avatar = _ref.avatar;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "messenger__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "messenger__item__img"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "/img/icons/dashboard/avatars/avatar01.jpg ",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: avatar,
     alt: ""
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "messenger__item__body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "messenger__item__body__lastmsg"
@@ -28273,7 +28396,7 @@ var MessengerItem = function MessengerItem(_ref) {
     className: "lastmsg__txt"
   }, lastmsgtxt), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lastmsg__time"
-  }, lastmsgtime)))));
+  }, lastmsgtime))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MessengerItem);
@@ -28452,6 +28575,110 @@ var NoticeboardDeleteElement = function NoticeboardDeleteElement(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NoticeboardDeleteElement);
+
+/***/ }),
+
+/***/ "./storage/app/public sync recursive ^\\.\\/.*\\.png$":
+/*!***********************************************!*\
+  !*** ./storage/app/public sync ^\.\/.*\.png$ ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./1.png": "./storage/app/public/1.png",
+	"./2.png": "./storage/app/public/2.png",
+	"./3.png": "./storage/app/public/3.png",
+	"./4.png": "./storage/app/public/4.png",
+	"./5.png": "./storage/app/public/5.png",
+	"./unknown.png": "./storage/app/public/unknown.png"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
+
+/***/ }),
+
+/***/ "./storage/app/public/1.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
+
+/***/ }),
+
+/***/ "./storage/app/public/2.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/2.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
+
+/***/ }),
+
+/***/ "./storage/app/public/3.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/3.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
+
+/***/ }),
+
+/***/ "./storage/app/public/4.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/4.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
+
+/***/ }),
+
+/***/ "./storage/app/public/5.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/5.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
+
+/***/ }),
+
+/***/ "./storage/app/public/unknown.png":
+/*!****************************************!*\
+  !*** ./storage/app/public/unknown.png ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
 
 /***/ }),
 

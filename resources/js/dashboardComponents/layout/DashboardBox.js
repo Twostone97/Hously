@@ -7,7 +7,7 @@ const DashboardBox = ({ style, headline, content, linkTo }) => {
     if (dashboardContext.loading || dashboardContext.errorFetch) {
         return (
             <div className="dashboard__sections__box scrollable" style={style}>
-                <div className="dashboard__sections__box__body">
+                <div className="dashboard__sections__box__body content-loading">
                     {dashboardContext.errorFetch ? (
                         <h4>"Fetch failed..."</h4>
                     ) : (
