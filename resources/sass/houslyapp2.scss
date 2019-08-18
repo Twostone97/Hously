@@ -60,6 +60,11 @@
                 border-color: black;
                 border-style: solid;
 
+                &.content-loading {
+                    background-color: #fff;
+                    border: none;
+                }
+
                 //noticeboard styles
                 .notices__list {
                     width: 100%;
@@ -159,7 +164,7 @@
 
                 //noticeboard styles END
                 /*****************************************/
-                //messenger styles START
+                //MESSENGER styles START
                 .messenger__container {
                     width: 100%;
                     padding: 0.5rem;
@@ -171,10 +176,20 @@
                         &__img {
                             flex: 0 1 15%;
                             background-color: #fff;
+
+                            > div {
+                                display: flex;
+                                align-items: center;
+                                height: 100%;
+                            }
+
+                            img {
+                                width: 100%;
+                            }
                         }
 
                         &__body {
-                            flex: 0 1 80%;
+                            flex: 0 1 83%;
                             padding: 0.5rem;
                             background-color: #fff;
 
@@ -196,9 +211,9 @@
                     }
                 }
 
-                ////messenger styles END
+                ////MESSENGER styles END
                 /*****************************************/
-                // chat styles START
+                // CHATS styles START
                 .chat__container {
                     min-width: 75%;
                     max-height: 350px;
@@ -245,7 +260,7 @@
                         }
                     }
                 }
-                //chats styles END
+                //CHATS styles END
                 /*****************************************/
                 // FOO (placeholder) styles START
                 &.bg-placeholder {
@@ -257,7 +272,7 @@
                 }
                 // FOO (placeholder) styles END
                 /*****************************************/
-                // MYRENT styles START
+                // MY-RENT styles START
                 .myrent__container {
                     display: flex;
                     height: 20rem;
@@ -272,7 +287,44 @@
                         line-height: 1.5rem;
                     }
                 }
-                // MYRENT styles END
+                // MY-RENT styles END
+                /*****************************************/
+                //COMMUNITY styles START
+                .community__container {
+                    width: 100%;
+                    padding: 0.5rem;
+
+                    .community__item {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 0.3rem 0;
+                        &__img {
+                            flex: 0 1 15%;
+                            background-color: #fff;
+                            > div {
+                                display: flex;
+                                align-items: center;
+                                height: 100%;
+                            }
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        &__body {
+                            flex: 0 1 83%;
+                            padding: 0.5rem;
+                            background-color: #fff;
+                            line-height: 1rem;
+
+                            .txt-small {
+                                font-size: 0.7rem;
+                            }
+                        }
+                    }
+                }
+                //COMMUNITY styles END
                 /*****************************************/
             }
         }

@@ -11,6 +11,7 @@ import Calendar from "./dashboardComponents/Calendar";
 import SurroundingMap from "./dashboardComponents/SurroundingMap";
 import OurHouse from "./dashboardComponents/OurHouse";
 import MyRent from "./dashboardComponents/MyRent";
+import Community from "./dashboardComponents/Community";
 
 const Dashboard = () => {
     return (
@@ -29,37 +30,37 @@ const Dashboard = () => {
                     linkTo="./messenger"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Kalendář"
                     content={<Calendar />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Naše komunita"
-                    content={<Foo />}
+                    content={<Community />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Service Manager"
                     content={<Foo />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Můj akutální pronájem"
                     content={<MyRent />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Náš dům"
                     content={<OurHouse />}
                     linkTo="./foo"
                 />
                 <DashboardBox
-                    style={{ flexBasis: "31%" }}
+                    style={{ flexBasis: "32%" }}
                     headline="Naše okolí"
                     content={<SurroundingMap />}
                     linkTo="./foo"
