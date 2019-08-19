@@ -36,7 +36,10 @@ Route::get('/react-houses-api','HomeController@reacthouses');
 
 Route::get('/selectbuildingapi', 'HomeController@selectBuildingApi');
 Route::get('/selectprofile{building}', 'HomeController@selectProfile');
-Route::get('/chatapi', 'HomeController@chat_api');  
+Route::get('/chatapi', 'HomeController@chat_api'); 
+Route::get('/noticeapi', 'HomeController@notice_api');
+Route::get('/communityapi', 'HomeController@community_api');
+Route::get('/meapi', 'HomeController@me_api');
 
 // *************************************
 

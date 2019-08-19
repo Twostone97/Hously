@@ -16,6 +16,7 @@ class NoticeSeeder extends Seeder
             'noticeboard_id'    => 1,
             'permanent'         => 1,
             'text'              => 'Kontrola plynu',
+            'when'              => '2019-09-12 11:32:17'
         ]);
 
         Notice::create([

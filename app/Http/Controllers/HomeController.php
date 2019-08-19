@@ -210,7 +210,7 @@ class HomeController extends Controller
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->orderBy('created_at', 'desc')->get();
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
-        $users          = DB::table('users')->get();
+        $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
 
         foreach ($residents as $resid) {
             $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
@@ -297,7 +297,7 @@ class HomeController extends Controller
             );
         }
 
-        return redirect(action('HomeController@index'));
+        // return redirect(action('HomeController@index'));
     }
 
     public function bedit ($id)
@@ -306,11 +306,37 @@ class HomeController extends Controller
             $last_flat_number = DB::table('flats')->where('building_id', '=', $id)->orderBy("number", "desc")->value('number');
             $building  = DB::table('buildings')->where('id', '=', $id)->first();
             $residents      = DB::table('residents')->where('building_id', '=', $id)->get();
-            $users          = DB::table('users')->get();
+            $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $profil = 'superuser';
             return view("auth/building", compact('flats', 'building', 'profil', 'last_flat_number', 'users', 'rentcontracts', 'residents'));
     }
+
+    public function reacthouses() {
+        $taken_flats = [];
+        $allbuildings   = DB::table('buildings')->get();
+        $allflats       = DB::table('flats')->get();
+        $allowners      = DB::table('owners')->get();
+        $allusers      = DB::table('users')->get();
+        $allresidents   = DB::select('call obyvatelé');
+        $taken_flats    = DB::select('call obsazené_byty');
+        
+        $data = [
+            "takenFlats" => $taken_flats,
+            "allBuildings"=> $allbuildings,
+            "allOwners " => $allowners,
+            "allUsers"=> $allusers,
+            "takenFlats" => $taken_flats,
+            "allFlats" => $allflats,
+            "allResidents" => $allresidents
+          ];
+      
+        return response()->json($data, 200);
+    }
+
+    /************************
+    Api pro nový dashboard
+    ************************/
 
     public function chat_api (Request $request)
     {
@@ -318,7 +344,7 @@ class HomeController extends Controller
         $building       = $request->session()->get('building');
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
-        $users          = DB::table('users')->get();
+        $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
 
         $data = (object) [
             "communities" => $communities,
@@ -328,6 +354,66 @@ class HomeController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function notice_api (Request $request)
+    {
+
+        $building         = $request->session()->get('building');
+        $noticeboard      = DB::table('noticeboards')->where('building_id', '=', $building)->first();
+        $notices          = DB::table('notices')->where("noticeboard_id", "=", $noticeboard->id)->orderBy('created_at', 'desc')->get();
+
+        $data = (object) [
+            "noticeboard" => $noticeboard,
+            "notices" => $notices,
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function community_api (Request $request)
+    {
+
+        $building       = $request->session()->get('building');
+        $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
+        $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
+        
+
+        $data = (object) [
+            "residents" => $residents,
+            "users" => $users,
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function me_api (Request $request)
+    {
+
+        $building           = $request->session()->get('building');
+        $current_user       = Auth::user();
+        $resident_profile   = DB::table('residents')->where([['building_id', '=', $building], ["user_id", "=", $current_user->id]])->first();
+        
+
+        $data = (object) [
+            "current_user" => $current_user,
+            "resident_profile" => $resident_profile,
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function ourhouse_api (Request $request)
+    {
+
+        $building       = $request->session()->get('building');
+
+        $data = (object) [
+            "building" => $building,
+        ];
+
+        return response()->json($data, 200);
+    }
+
 
     public function selectBuildingApi()
     {
@@ -368,29 +454,6 @@ class HomeController extends Controller
         ];
         return response()->json($data, 200);
     }
-
-
-    public function reacthouses() {
-        $taken_flats = [];
-        $allbuildings   = DB::table('buildings')->get();
-        $allflats       = DB::table('flats')->get();
-        $allowners      = DB::table('owners')->get();
-        $allusers      = DB::table('users')->get();
-        $allresidents   = DB::select('call obyvatelé');
-        $taken_flats    = DB::select('call obsazené_byty');
-        
-        $data = [
-            "takenFlats" => $taken_flats,
-            "allBuildings"=> $allbuildings,
-            "allOwners " => $allowners,
-            "allUsers"=> $allusers,
-            "takenFlats" => $taken_flats,
-            "allFlats" => $allflats,
-            "allResidents" => $allresidents
-          ];
-      
-        return response()->json($data, 200);
-    }
           
     public function selectProfile($building)
     {
@@ -416,5 +479,6 @@ class HomeController extends Controller
 
         return response()->json($data, 200);
     }
+
 
 }

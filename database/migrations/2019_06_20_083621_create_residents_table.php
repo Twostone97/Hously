@@ -24,7 +24,8 @@ class CreateResidentsTable extends Migration
             $table->date('end_of_current_rent')->nullable();
             $table->integer('number_of_residents');
             $table->integer('rental');
-            $table->string('file')->nullable();
+            $table->integer('pets_allowed');
+            $table->integer('advance_payment');
             $table->timestamps();
         });
     }
