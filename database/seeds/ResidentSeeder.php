@@ -22,6 +22,8 @@ class ResidentSeeder extends Seeder
             'end_of_current_rent' => null,
             'number_of_residents'    => 1,
             'rental'    => 12000,
+            'pets_allowed' => 0,
+            'advance_payment' => 3000,
         ]);
     }
 }

@@ -15,6 +15,7 @@ class OwnerSeeder extends Seeder
         Owner::create([
             'user_id'     => 3,
             'building_id'    => 1,
+            'share' => 100,
         ]);
     }
 }
