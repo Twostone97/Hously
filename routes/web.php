@@ -41,6 +41,11 @@ Route::get('/noticeapi', 'HomeController@notice_api');
 Route::get('/communityapi', 'HomeController@community_api');
 Route::get('/meapi', 'HomeController@me_api');
 
+//Api pro messanger
+Route::post('/messageroom', 'MessageRoomController@store');
+Route::post('/message', 'MessageRoomController@store');
+
+
 // *************************************
 
 
