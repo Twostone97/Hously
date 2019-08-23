@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import DashboardContext from "../../context/dashboard/DashboardContext";
+import DashboardContext from "../context/dashboard/DashboardContext";
 
 const NoticeboardDeleteElement = ({ notice_id }) => {
     const dashboardContext = useContext(DashboardContext);

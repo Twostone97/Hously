@@ -19,6 +19,7 @@ if (!mix.inProduction()) {
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .react("resources/js/dashboard.js", "public/js/dashboard.js")
+    .react("resources/js/noticeboard.js", "public/js/noticeboard.js")
     .react("resources/js/houses.js", "public/js/houses.js")
 
     .browserSync({

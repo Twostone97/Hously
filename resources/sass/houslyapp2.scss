@@ -20,13 +20,20 @@
             background-color: white;
             margin: 2rem 0;
 
+            &.subpage {
+                flex-basis: 98%;
+                min-height: 80vh;
+                margin: 0 auto;
+            }
+
             &__head {
                 background-color: $dash-2;
                 border: 1px solid black;
                 height: 2rem;
                 position: relative;
 
-                .maximize__icon {
+                .maximize__icon,
+                .close__icon {
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -65,7 +72,11 @@
                     border: none;
                 }
 
-                //noticeboard styles
+                &.subpage {
+                    height: 77vh;
+                }
+
+                //NOTICEBOARD BOX STYLES
                 .notices__list {
                     width: 100%;
                     margin-bottom: 2rem;
@@ -162,9 +173,9 @@
                     }
                 }
 
-                //noticeboard styles END
+                //NOTICEBOARD BOX STYLES
                 /*****************************************/
-                //MESSENGER styles START
+                //MESSENGER BOX styles START
                 .messenger__container {
                     width: 100%;
                     padding: 0.5rem;
@@ -211,9 +222,9 @@
                     }
                 }
 
-                ////MESSENGER styles END
+                ////MESSENGER BOX styles END
                 /*****************************************/
-                // CHATS styles START
+                // CHATS BOX styles START
                 .chat__container {
                     min-width: 75%;
                     max-height: 350px;
@@ -260,9 +271,9 @@
                         }
                     }
                 }
-                //CHATS styles END
+                //CHATS BOX styles END
                 /*****************************************/
-                // FOO (placeholder) styles START
+                // FOO BOX (placeholder) styles START
                 &.bg-placeholder {
                     background-color: #fff;
                 }
@@ -270,9 +281,9 @@
                     width: 100%;
                     overflow: hidden;
                 }
-                // FOO (placeholder) styles END
+                // FOO BOX (placeholder) styles END
                 /*****************************************/
-                // MY-RENT styles START
+                // MY-RENT BOX styles START
                 .myrent__container {
                     display: flex;
                     height: 20rem;
@@ -287,9 +298,9 @@
                         line-height: 1.5rem;
                     }
                 }
-                // MY-RENT styles END
+                // MY-RENT BOX styles END
                 /*****************************************/
-                //COMMUNITY styles START
+                //COMMUNITY BOX styles START
                 .community__container {
                     width: 100%;
                     padding: 0.5rem;
@@ -324,7 +335,7 @@
                         }
                     }
                 }
-                //COMMUNITY styles END
+                //COMMUNITY BOX styles END
                 /*****************************************/
             }
         }
