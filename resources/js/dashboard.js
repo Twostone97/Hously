@@ -39,7 +39,7 @@ const Dashboard = () => {
                     style={{ flexBasis: "32%" }}
                     headline="Naše komunita"
                     content={<Community />}
-                    linkTo="./foo"
+                    linkTo="./community"
                 />
                 <DashboardBox
                     style={{ flexBasis: "32%" }}

@@ -18,8 +18,11 @@
 Route::get('/','WebController@index');
 Route::get('/flats','WebController@flats');
 Route::get('/about','WebController@about');
+//DASHBOARD
 Route::get('/app/dashboard','WebController@dashboard');
 Route::get('/app/noticeboard','WebController@noticeboard');
+Route::get('/app/community','WebController@community');
+//
 Route::get('/react-houses','WebController@reacthouses');
 Route::get('/react-houses/{id}','WebController@reacthouses');
 Route::get('/test/map','WebController@map');

@@ -73,6 +73,7 @@
                 }
 
                 &.subpage {
+                    display: block;
                     height: 77vh;
                 }
 
@@ -336,6 +337,75 @@
                     }
                 }
                 //COMMUNITY BOX styles END
+                /*****************************************/
+                //COMMUNITY SUBPAGE styles START
+                .community__subpage {
+                    display: flex;
+                    justify-content: space-between;
+                    height: 100%;
+                    padding: 0.5rem;
+
+                    &__list {
+                        flex: 0 0 28%;
+                        overflow: auto;
+
+                        .list__item {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                            cursor: pointer;
+
+                            &__img {
+                                flex: 0 1 25%;
+                                background-color: #fff;
+                                img {
+                                    display: block;
+                                    max-width: 100%;
+                                    height: 50px;
+                                    margin: 0 auto;
+                                }
+                            }
+
+                            &__txt {
+                                flex: 0 1 65%;
+                                background-color: #fff;
+                                padding: 0.5rem;
+                                text-align: center;
+                            }
+                        }
+                    }
+
+                    &__detail {
+                        flex: 0 0 70%;
+                        height: 100%;
+                        background-color: #fff;
+                        border: 1px solid black;
+
+                        .detail__item {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 1.5rem 0;
+
+                            &__img {
+                                flex: 0 1 30%;
+
+                                img {
+                                    display: block;
+                                    max-width: 100%;
+                                    min-height: 100px;
+                                    margin: 0 auto;
+                                }
+                            }
+
+                            &__txt {
+                                flex: 0 1 65%;
+                                padding: 0.5rem;
+                            }
+                        }
+                    }
+                }
+                //COMMUNITY SUBPAGE styles END
                 /*****************************************/
             }
         }
