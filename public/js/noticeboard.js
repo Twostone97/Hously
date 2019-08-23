@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1684,40 +1684,6 @@ module.exports = {
   extend: extend,
   trim: trim
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/inherits/inherits_browser.js":
-/*!***************************************************!*\
-  !*** ./node_modules/inherits/inherits_browser.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
-}
 
 
 /***/ }),
@@ -26625,737 +26591,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/util/support/isBufferBrowser.js":
-/*!******************************************************!*\
-  !*** ./node_modules/util/support/isBufferBrowser.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function isBuffer(arg) {
-  return arg && typeof arg === 'object'
-    && typeof arg.copy === 'function'
-    && typeof arg.fill === 'function'
-    && typeof arg.readUInt8 === 'function';
-}
-
-/***/ }),
-
-/***/ "./node_modules/util/util.js":
-/*!***********************************!*\
-  !*** ./node_modules/util/util.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors ||
-  function getOwnPropertyDescriptors(obj) {
-    var keys = Object.keys(obj);
-    var descriptors = {};
-    for (var i = 0; i < keys.length; i++) {
-      descriptors[keys[i]] = Object.getOwnPropertyDescriptor(obj, keys[i]);
-    }
-    return descriptors;
-  };
-
-var formatRegExp = /%[sdj%]/g;
-exports.format = function(f) {
-  if (!isString(f)) {
-    var objects = [];
-    for (var i = 0; i < arguments.length; i++) {
-      objects.push(inspect(arguments[i]));
-    }
-    return objects.join(' ');
-  }
-
-  var i = 1;
-  var args = arguments;
-  var len = args.length;
-  var str = String(f).replace(formatRegExp, function(x) {
-    if (x === '%%') return '%';
-    if (i >= len) return x;
-    switch (x) {
-      case '%s': return String(args[i++]);
-      case '%d': return Number(args[i++]);
-      case '%j':
-        try {
-          return JSON.stringify(args[i++]);
-        } catch (_) {
-          return '[Circular]';
-        }
-      default:
-        return x;
-    }
-  });
-  for (var x = args[i]; i < len; x = args[++i]) {
-    if (isNull(x) || !isObject(x)) {
-      str += ' ' + x;
-    } else {
-      str += ' ' + inspect(x);
-    }
-  }
-  return str;
-};
-
-
-// Mark that a method should not be used.
-// Returns a modified function which warns once by default.
-// If --no-deprecation is set, then it is a no-op.
-exports.deprecate = function(fn, msg) {
-  if (typeof process !== 'undefined' && process.noDeprecation === true) {
-    return fn;
-  }
-
-  // Allow for deprecating things in the process of starting up.
-  if (typeof process === 'undefined') {
-    return function() {
-      return exports.deprecate(fn, msg).apply(this, arguments);
-    };
-  }
-
-  var warned = false;
-  function deprecated() {
-    if (!warned) {
-      if (process.throwDeprecation) {
-        throw new Error(msg);
-      } else if (process.traceDeprecation) {
-        console.trace(msg);
-      } else {
-        console.error(msg);
-      }
-      warned = true;
-    }
-    return fn.apply(this, arguments);
-  }
-
-  return deprecated;
-};
-
-
-var debugs = {};
-var debugEnviron;
-exports.debuglog = function(set) {
-  if (isUndefined(debugEnviron))
-    debugEnviron = process.env.NODE_DEBUG || '';
-  set = set.toUpperCase();
-  if (!debugs[set]) {
-    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
-      var pid = process.pid;
-      debugs[set] = function() {
-        var msg = exports.format.apply(exports, arguments);
-        console.error('%s %d: %s', set, pid, msg);
-      };
-    } else {
-      debugs[set] = function() {};
-    }
-  }
-  return debugs[set];
-};
-
-
-/**
- * Echos the value of a value. Trys to print the value out
- * in the best way possible given the different types.
- *
- * @param {Object} obj The object to print out.
- * @param {Object} opts Optional options object that alters the output.
- */
-/* legacy: obj, showHidden, depth, colors*/
-function inspect(obj, opts) {
-  // default options
-  var ctx = {
-    seen: [],
-    stylize: stylizeNoColor
-  };
-  // legacy...
-  if (arguments.length >= 3) ctx.depth = arguments[2];
-  if (arguments.length >= 4) ctx.colors = arguments[3];
-  if (isBoolean(opts)) {
-    // legacy...
-    ctx.showHidden = opts;
-  } else if (opts) {
-    // got an "options" object
-    exports._extend(ctx, opts);
-  }
-  // set default options
-  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
-  if (isUndefined(ctx.depth)) ctx.depth = 2;
-  if (isUndefined(ctx.colors)) ctx.colors = false;
-  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
-  if (ctx.colors) ctx.stylize = stylizeWithColor;
-  return formatValue(ctx, obj, ctx.depth);
-}
-exports.inspect = inspect;
-
-
-// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
-inspect.colors = {
-  'bold' : [1, 22],
-  'italic' : [3, 23],
-  'underline' : [4, 24],
-  'inverse' : [7, 27],
-  'white' : [37, 39],
-  'grey' : [90, 39],
-  'black' : [30, 39],
-  'blue' : [34, 39],
-  'cyan' : [36, 39],
-  'green' : [32, 39],
-  'magenta' : [35, 39],
-  'red' : [31, 39],
-  'yellow' : [33, 39]
-};
-
-// Don't use 'blue' not visible on cmd.exe
-inspect.styles = {
-  'special': 'cyan',
-  'number': 'yellow',
-  'boolean': 'yellow',
-  'undefined': 'grey',
-  'null': 'bold',
-  'string': 'green',
-  'date': 'magenta',
-  // "name": intentionally not styling
-  'regexp': 'red'
-};
-
-
-function stylizeWithColor(str, styleType) {
-  var style = inspect.styles[styleType];
-
-  if (style) {
-    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
-           '\u001b[' + inspect.colors[style][1] + 'm';
-  } else {
-    return str;
-  }
-}
-
-
-function stylizeNoColor(str, styleType) {
-  return str;
-}
-
-
-function arrayToHash(array) {
-  var hash = {};
-
-  array.forEach(function(val, idx) {
-    hash[val] = true;
-  });
-
-  return hash;
-}
-
-
-function formatValue(ctx, value, recurseTimes) {
-  // Provide a hook for user-specified inspect functions.
-  // Check that value is an object with an inspect function on it
-  if (ctx.customInspect &&
-      value &&
-      isFunction(value.inspect) &&
-      // Filter out the util module, it's inspect function is special
-      value.inspect !== exports.inspect &&
-      // Also filter out any prototype objects using the circular check.
-      !(value.constructor && value.constructor.prototype === value)) {
-    var ret = value.inspect(recurseTimes, ctx);
-    if (!isString(ret)) {
-      ret = formatValue(ctx, ret, recurseTimes);
-    }
-    return ret;
-  }
-
-  // Primitive types cannot have properties
-  var primitive = formatPrimitive(ctx, value);
-  if (primitive) {
-    return primitive;
-  }
-
-  // Look up the keys of the object.
-  var keys = Object.keys(value);
-  var visibleKeys = arrayToHash(keys);
-
-  if (ctx.showHidden) {
-    keys = Object.getOwnPropertyNames(value);
-  }
-
-  // IE doesn't make error fields non-enumerable
-  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-  if (isError(value)
-      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
-    return formatError(value);
-  }
-
-  // Some type of object without properties can be shortcutted.
-  if (keys.length === 0) {
-    if (isFunction(value)) {
-      var name = value.name ? ': ' + value.name : '';
-      return ctx.stylize('[Function' + name + ']', 'special');
-    }
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    }
-    if (isDate(value)) {
-      return ctx.stylize(Date.prototype.toString.call(value), 'date');
-    }
-    if (isError(value)) {
-      return formatError(value);
-    }
-  }
-
-  var base = '', array = false, braces = ['{', '}'];
-
-  // Make Array say that they are Array
-  if (isArray(value)) {
-    array = true;
-    braces = ['[', ']'];
-  }
-
-  // Make functions say that they are functions
-  if (isFunction(value)) {
-    var n = value.name ? ': ' + value.name : '';
-    base = ' [Function' + n + ']';
-  }
-
-  // Make RegExps say that they are RegExps
-  if (isRegExp(value)) {
-    base = ' ' + RegExp.prototype.toString.call(value);
-  }
-
-  // Make dates with properties first say the date
-  if (isDate(value)) {
-    base = ' ' + Date.prototype.toUTCString.call(value);
-  }
-
-  // Make error with message first say the error
-  if (isError(value)) {
-    base = ' ' + formatError(value);
-  }
-
-  if (keys.length === 0 && (!array || value.length == 0)) {
-    return braces[0] + base + braces[1];
-  }
-
-  if (recurseTimes < 0) {
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    } else {
-      return ctx.stylize('[Object]', 'special');
-    }
-  }
-
-  ctx.seen.push(value);
-
-  var output;
-  if (array) {
-    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
-  } else {
-    output = keys.map(function(key) {
-      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
-    });
-  }
-
-  ctx.seen.pop();
-
-  return reduceToSingleString(output, base, braces);
-}
-
-
-function formatPrimitive(ctx, value) {
-  if (isUndefined(value))
-    return ctx.stylize('undefined', 'undefined');
-  if (isString(value)) {
-    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
-                                             .replace(/'/g, "\\'")
-                                             .replace(/\\"/g, '"') + '\'';
-    return ctx.stylize(simple, 'string');
-  }
-  if (isNumber(value))
-    return ctx.stylize('' + value, 'number');
-  if (isBoolean(value))
-    return ctx.stylize('' + value, 'boolean');
-  // For some reason typeof null is "object", so special case here.
-  if (isNull(value))
-    return ctx.stylize('null', 'null');
-}
-
-
-function formatError(value) {
-  return '[' + Error.prototype.toString.call(value) + ']';
-}
-
-
-function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-  var output = [];
-  for (var i = 0, l = value.length; i < l; ++i) {
-    if (hasOwnProperty(value, String(i))) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          String(i), true));
-    } else {
-      output.push('');
-    }
-  }
-  keys.forEach(function(key) {
-    if (!key.match(/^\d+$/)) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          key, true));
-    }
-  });
-  return output;
-}
-
-
-function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-  var name, str, desc;
-  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
-  if (desc.get) {
-    if (desc.set) {
-      str = ctx.stylize('[Getter/Setter]', 'special');
-    } else {
-      str = ctx.stylize('[Getter]', 'special');
-    }
-  } else {
-    if (desc.set) {
-      str = ctx.stylize('[Setter]', 'special');
-    }
-  }
-  if (!hasOwnProperty(visibleKeys, key)) {
-    name = '[' + key + ']';
-  }
-  if (!str) {
-    if (ctx.seen.indexOf(desc.value) < 0) {
-      if (isNull(recurseTimes)) {
-        str = formatValue(ctx, desc.value, null);
-      } else {
-        str = formatValue(ctx, desc.value, recurseTimes - 1);
-      }
-      if (str.indexOf('\n') > -1) {
-        if (array) {
-          str = str.split('\n').map(function(line) {
-            return '  ' + line;
-          }).join('\n').substr(2);
-        } else {
-          str = '\n' + str.split('\n').map(function(line) {
-            return '   ' + line;
-          }).join('\n');
-        }
-      }
-    } else {
-      str = ctx.stylize('[Circular]', 'special');
-    }
-  }
-  if (isUndefined(name)) {
-    if (array && key.match(/^\d+$/)) {
-      return str;
-    }
-    name = JSON.stringify('' + key);
-    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
-      name = ctx.stylize(name, 'name');
-    } else {
-      name = name.replace(/'/g, "\\'")
-                 .replace(/\\"/g, '"')
-                 .replace(/(^"|"$)/g, "'");
-      name = ctx.stylize(name, 'string');
-    }
-  }
-
-  return name + ': ' + str;
-}
-
-
-function reduceToSingleString(output, base, braces) {
-  var numLinesEst = 0;
-  var length = output.reduce(function(prev, cur) {
-    numLinesEst++;
-    if (cur.indexOf('\n') >= 0) numLinesEst++;
-    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
-  }, 0);
-
-  if (length > 60) {
-    return braces[0] +
-           (base === '' ? '' : base + '\n ') +
-           ' ' +
-           output.join(',\n  ') +
-           ' ' +
-           braces[1];
-  }
-
-  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
-}
-
-
-// NOTE: These type checking functions intentionally don't use `instanceof`
-// because it is fragile and can be easily faked with `Object.create()`.
-function isArray(ar) {
-  return Array.isArray(ar);
-}
-exports.isArray = isArray;
-
-function isBoolean(arg) {
-  return typeof arg === 'boolean';
-}
-exports.isBoolean = isBoolean;
-
-function isNull(arg) {
-  return arg === null;
-}
-exports.isNull = isNull;
-
-function isNullOrUndefined(arg) {
-  return arg == null;
-}
-exports.isNullOrUndefined = isNullOrUndefined;
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-exports.isNumber = isNumber;
-
-function isString(arg) {
-  return typeof arg === 'string';
-}
-exports.isString = isString;
-
-function isSymbol(arg) {
-  return typeof arg === 'symbol';
-}
-exports.isSymbol = isSymbol;
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-exports.isUndefined = isUndefined;
-
-function isRegExp(re) {
-  return isObject(re) && objectToString(re) === '[object RegExp]';
-}
-exports.isRegExp = isRegExp;
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-exports.isObject = isObject;
-
-function isDate(d) {
-  return isObject(d) && objectToString(d) === '[object Date]';
-}
-exports.isDate = isDate;
-
-function isError(e) {
-  return isObject(e) &&
-      (objectToString(e) === '[object Error]' || e instanceof Error);
-}
-exports.isError = isError;
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-exports.isFunction = isFunction;
-
-function isPrimitive(arg) {
-  return arg === null ||
-         typeof arg === 'boolean' ||
-         typeof arg === 'number' ||
-         typeof arg === 'string' ||
-         typeof arg === 'symbol' ||  // ES6 symbol
-         typeof arg === 'undefined';
-}
-exports.isPrimitive = isPrimitive;
-
-exports.isBuffer = __webpack_require__(/*! ./support/isBuffer */ "./node_modules/util/support/isBufferBrowser.js");
-
-function objectToString(o) {
-  return Object.prototype.toString.call(o);
-}
-
-
-function pad(n) {
-  return n < 10 ? '0' + n.toString(10) : n.toString(10);
-}
-
-
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-              'Oct', 'Nov', 'Dec'];
-
-// 26 Feb 16:19:34
-function timestamp() {
-  var d = new Date();
-  var time = [pad(d.getHours()),
-              pad(d.getMinutes()),
-              pad(d.getSeconds())].join(':');
-  return [d.getDate(), months[d.getMonth()], time].join(' ');
-}
-
-
-// log is just a thin wrapper to console.log that prepends a timestamp
-exports.log = function() {
-  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-};
-
-
-/**
- * Inherit the prototype methods from one constructor into another.
- *
- * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
- * during bootstrapping this function needs to be rewritten using some native
- * functions as prototype setup using normal JavaScript does not work as
- * expected during bootstrapping (see mirror.js in r114903).
- *
- * @param {function} ctor Constructor function which needs to inherit the
- *     prototype.
- * @param {function} superCtor Constructor function to inherit prototype from.
- */
-exports.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-
-exports._extend = function(origin, add) {
-  // Don't do anything if add isn't an object
-  if (!add || !isObject(add)) return origin;
-
-  var keys = Object.keys(add);
-  var i = keys.length;
-  while (i--) {
-    origin[keys[i]] = add[keys[i]];
-  }
-  return origin;
-};
-
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-var kCustomPromisifiedSymbol = typeof Symbol !== 'undefined' ? Symbol('util.promisify.custom') : undefined;
-
-exports.promisify = function promisify(original) {
-  if (typeof original !== 'function')
-    throw new TypeError('The "original" argument must be of type Function');
-
-  if (kCustomPromisifiedSymbol && original[kCustomPromisifiedSymbol]) {
-    var fn = original[kCustomPromisifiedSymbol];
-    if (typeof fn !== 'function') {
-      throw new TypeError('The "util.promisify.custom" argument must be of type Function');
-    }
-    Object.defineProperty(fn, kCustomPromisifiedSymbol, {
-      value: fn, enumerable: false, writable: false, configurable: true
-    });
-    return fn;
-  }
-
-  function fn() {
-    var promiseResolve, promiseReject;
-    var promise = new Promise(function (resolve, reject) {
-      promiseResolve = resolve;
-      promiseReject = reject;
-    });
-
-    var args = [];
-    for (var i = 0; i < arguments.length; i++) {
-      args.push(arguments[i]);
-    }
-    args.push(function (err, value) {
-      if (err) {
-        promiseReject(err);
-      } else {
-        promiseResolve(value);
-      }
-    });
-
-    try {
-      original.apply(this, args);
-    } catch (err) {
-      promiseReject(err);
-    }
-
-    return promise;
-  }
-
-  Object.setPrototypeOf(fn, Object.getPrototypeOf(original));
-
-  if (kCustomPromisifiedSymbol) Object.defineProperty(fn, kCustomPromisifiedSymbol, {
-    value: fn, enumerable: false, writable: false, configurable: true
-  });
-  return Object.defineProperties(
-    fn,
-    getOwnPropertyDescriptors(original)
-  );
-}
-
-exports.promisify.custom = kCustomPromisifiedSymbol
-
-function callbackifyOnRejected(reason, cb) {
-  // `!reason` guard inspired by bluebird (Ref: https://goo.gl/t5IS6M).
-  // Because `null` is a special error value in callbacks which means "no error
-  // occurred", we error-wrap so the callback consumer can distinguish between
-  // "the promise rejected with null" or "the promise fulfilled with undefined".
-  if (!reason) {
-    var newReason = new Error('Promise was rejected with a falsy value');
-    newReason.reason = reason;
-    reason = newReason;
-  }
-  return cb(reason);
-}
-
-function callbackify(original) {
-  if (typeof original !== 'function') {
-    throw new TypeError('The "original" argument must be of type Function');
-  }
-
-  // We DO NOT return the promise as it gives the user a false sense that
-  // the promise is actually somehow related to the callback's execution
-  // and that the callback throwing will reject the promise.
-  function callbackified() {
-    var args = [];
-    for (var i = 0; i < arguments.length; i++) {
-      args.push(arguments[i]);
-    }
-
-    var maybeCb = args.pop();
-    if (typeof maybeCb !== 'function') {
-      throw new TypeError('The last argument must be of type Function');
-    }
-    var self = this;
-    var cb = function() {
-      return maybeCb.apply(self, arguments);
-    };
-    // In true node style we process the callback on `nextTick` with all the
-    // implications (stack, `uncaughtException`, `async_hooks`)
-    original.apply(this, args)
-      .then(function(ret) { process.nextTick(cb, null, ret) },
-            function(rej) { process.nextTick(callbackifyOnRejected, rej, cb) });
-  }
-
-  Object.setPrototypeOf(callbackified, Object.getPrototypeOf(original));
-  Object.defineProperties(callbackified,
-                          getOwnPropertyDescriptors(original));
-  return callbackified;
-}
-exports.callbackify = callbackify;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -27643,10 +26878,10 @@ var ERROR_FETCH = "ERROR_FETCH";
 
 /***/ }),
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
+/***/ "./resources/js/noticeboard.js":
+/*!*************************************!*\
+  !*** ./resources/js/noticeboard.js ***!
+  \*************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27656,103 +26891,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context/dashboard/DashboardState */ "./resources/js/context/dashboard/DashboardState.js");
-/* harmony import */ var _dashboardComponents_Intro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboardComponents/Intro */ "./resources/js/dashboardComponents/Intro.js");
-/* harmony import */ var _dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboardComponents/layout/DashboardBox */ "./resources/js/dashboardComponents/layout/DashboardBox.js");
-/* harmony import */ var _dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dashboardComponents/Noticeboard */ "./resources/js/dashboardComponents/Noticeboard.js");
-/* harmony import */ var _dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dashboardComponents/Foo */ "./resources/js/dashboardComponents/Foo.js");
-/* harmony import */ var _dashboardComponents_Chats__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dashboardComponents/Chats */ "./resources/js/dashboardComponents/Chats.js");
-/* harmony import */ var _dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboardComponents/Messenger */ "./resources/js/dashboardComponents/Messenger.js");
-/* harmony import */ var _dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboardComponents/Calendar */ "./resources/js/dashboardComponents/Calendar.js");
-/* harmony import */ var _dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboardComponents/SurroundingMap */ "./resources/js/dashboardComponents/SurroundingMap.js");
-/* harmony import */ var _dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dashboardComponents/OurHouse */ "./resources/js/dashboardComponents/OurHouse.js");
-/* harmony import */ var _dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboardComponents/MyRent */ "./resources/js/dashboardComponents/MyRent.js");
-/* harmony import */ var _dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboardComponents/Community */ "./resources/js/dashboardComponents/Community.js");
+/* harmony import */ var _noticeboardComponents_NoticeboardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./noticeboardComponents/NoticeboardContainer */ "./resources/js/noticeboardComponents/NoticeboardContainer.js");
+/* harmony import */ var _context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context/dashboard/DashboardState */ "./resources/js/context/dashboard/DashboardState.js");
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-var Dashboard = function Dashboard() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+var Noticeboard = function Noticeboard() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "dashboard__sections"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "49%"
-    },
-    headline: "N\xE1st\u011Bnka",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "49%"
-    },
-    headline: "Messenger",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__["default"], null),
-    linkTo: "./messenger"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Kalend\xE1\u0159",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Na\u0161e komunita",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__["default"], null),
-    linkTo: "./community"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Service Manager",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "M\u016Fj akut\xE1ln\xED pron\xE1jem",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "N\xE1\u0161 d\u016Fm",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Na\u0161e okol\xED",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__["default"], null),
-    linkTo: "./foo"
-  })));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_noticeboardComponents_NoticeboardContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dashboard, null), document.querySelector("#reactApp"));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Noticeboard, null), document.querySelector("#reactApp"));
 
 /***/ }),
 
-/***/ "./resources/js/dashboardComponents/Calendar.js":
-/*!******************************************************!*\
-  !*** ./resources/js/dashboardComponents/Calendar.js ***!
-  \******************************************************/
+/***/ "./resources/js/noticeboardComponents/NoticeboardAddElement.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/noticeboardComponents/NoticeboardAddElement.js ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27760,196 +26919,53 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
 
 
-var Calendar = function Calendar() {
+
+var NoticeboardAddElement = function NoticeboardAddElement() {
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var noticeboard = dashboardContext.data.noticeboard;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body bg-placeholder"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "placeholder",
-    src: "/img/dashboard/calendar.png"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Calendar);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/Chats.js":
-/*!***************************************************!*\
-  !*** ./resources/js/dashboardComponents/Chats.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-
-
-
-
-var Chats = function Chats() {
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  var _dashboardContext$dat = dashboardContext.data,
-      communities = _dashboardContext$dat.communities,
-      chats = _dashboardContext$dat.chats,
-      users = _dashboardContext$dat.users;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
-      _useState2 = _slicedToArray(_useState, 2),
-      commun_id = _useState2[0],
-      setcommun_id = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(chats),
-      _useState4 = _slicedToArray(_useState3, 2),
-      listOfChats = _useState4[0],
-      setlistOfChats = _useState4[1];
-
-  var handleCommunityIDChange = function handleCommunityIDChange(e) {
-    setcommun_id(Number(e.target.value));
-    scrollToBottom(".chat__container");
-  };
-
-  var interval = null;
-
-  if (Object(util__WEBPACK_IMPORTED_MODULE_1__["isNull"])(interval)) {
-    interval = setInterval(function () {
-      dashboardContext.fetchChats();
-    }, 2000);
-  }
-
-  var scrollToBottom = function scrollToBottom(element) {
-    var el = document.querySelector(element);
-    el.scrollTop = el.scrollHeight;
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    return function () {
-      clearInterval(interval);
-    };
-  });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "chat__selector"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "chats"
-  }, "Select your chat", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    onChange: handleCommunityIDChange,
-    name: "chats",
-    id: "chats"
-  }, communities.map(function (community) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: community.id
-    }, community.community_name));
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "chat__container scrollable"
-  }, listOfChats.filter(function (chat) {
-    return chat.community_id === commun_id;
-  }).map(function (chat, index) {
-    var chatUser = users.filter(function (user) {
-      return user.id === chat.user_id;
-    });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: index % 2 == 0 ? "chat__bubble b__left" : "chat__bubble b__right"
-    }, chatUser[0].first_name, " ", chatUser[0].last_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, chat.text));
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "chat__input"
+    className: "notices__add"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     encType: "multipart/form-data",
     onSubmit: function onSubmit(e) {
       e.preventDefault();
       var data = new FormData(e.target);
       e.target[0].value = "";
-      fetch("/chat", {
-        method: "post",
-        body: data
-      }).then(function () {
-        fetch("/api").then(function (resp) {
-          return resp.json();
-        }).then(function (data) {
-          return setlistOfChats(data.chats);
-        }).then(function () {
-          setTimeout(function () {
-            return scrollToBottom(".chat__container");
-          }, 3000);
-        });
-      });
+      dashboardContext.addNotice(data);
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    name: "text"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "notice"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    id: "notice",
+    name: "notice"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "hidden",
-    name: "community_id",
-    value: commun_id
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "image",
-    value: ""
+    name: "noticeboard",
+    value: noticeboard.id
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "hidden",
     name: "_token",
     value: document.querySelector('meta[name="csrf-token"]').content
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
-    onClick: function onClick() {
-      return scrollToBottom(".chat__container");
-    }
-  }, "Send"))));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "permanent"
+  }, "Dr\u017Eet naho\u0159e?", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "permanent",
+    label: "permanent"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "P\u0159idat na n\xE1st\u011Bnku")));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Chats);
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardAddElement);
 
 /***/ }),
 
-/***/ "./resources/js/dashboardComponents/Community.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/dashboardComponents/Community.js ***!
-  \*******************************************************/
+/***/ "./resources/js/noticeboardComponents/NoticeboardAdminSection.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/noticeboardComponents/NoticeboardAdminSection.js ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27957,122 +26973,24 @@ var Chats = function Chats() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./community_components/CommunityItem */ "./resources/js/dashboardComponents/community_components/CommunityItem.js");
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
-  }
-}
+/* harmony import */ var _NoticeboardAddElement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NoticeboardAddElement */ "./resources/js/noticeboardComponents/NoticeboardAddElement.js");
 
 
 
-
-
-var Community = function Community() {
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  var users = dashboardContext.data.users; //sort users descending (http://www.mattmorgante.com/technology/javascript-sort-compare)
-
-  var usersSortDesc = _toConsumableArray(users); //using spread to prevent sorting in the context provider
-
-
-  usersSortDesc.sort(function (a, b) {
-    if (a.created_at > b.created_at) {
-      return -1;
-    } else if (a.created_at == b.created_at) {
-      return 0;
-    } else {
-      return 1;
-    }
-  });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "community__container"
-  }, usersSortDesc.map(function (user) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      name: user.first_name,
-      surname: user.last_name,
-      email: user.email,
-      created: user.created_at,
-      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    });
-  })));
+var NoticeboardAdminSection = function NoticeboardAdminSection() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notices__list__adminHandler"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoticeboardAddElement__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Community);
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardAdminSection);
 
 /***/ }),
 
-/***/ "./resources/js/dashboardComponents/Foo.js":
-/*!*************************************************!*\
-  !*** ./resources/js/dashboardComponents/Foo.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var Foo = function Foo() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body bg-placeholder"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "placeholder",
-    src: "/img/dashboard/placeholder.png"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Foo);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/Intro.js":
-/*!***************************************************!*\
-  !*** ./resources/js/dashboardComponents/Intro.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var Intro = function Intro() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "dashboard__intro bg__gradient-light"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hously Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Dear User, welcome to your kingdom"));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Intro);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/Messenger.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/dashboardComponents/Messenger.js ***!
-  \*******************************************************/
+/***/ "./resources/js/noticeboardComponents/NoticeboardContainer.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/noticeboardComponents/NoticeboardContainer.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28081,254 +26999,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-/* harmony import */ var _messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messenger__components/MessengerItem */ "./resources/js/dashboardComponents/messenger__components/MessengerItem.js");
+/* harmony import */ var _NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NoticeboardDeleteElement */ "./resources/js/noticeboardComponents/NoticeboardDeleteElement.js");
+/* harmony import */ var _NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NoticeboardAdminSection */ "./resources/js/noticeboardComponents/NoticeboardAdminSection.js");
 
 
 
 
-var Messenger = function Messenger() {
+
+var NoticeboardContainer = function NoticeboardContainer() {
   var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  var _dashboardContext$dat = dashboardContext.data,
-      communities = _dashboardContext$dat.communities,
-      chats = _dashboardContext$dat.chats,
-      users = _dashboardContext$dat.users;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "messenger__container"
-  }, communities.map(function (community) {
-    //selecting messages in the commmunity
-    var communityMessages = chats.filter(function (chat) {
-      return chat.community_id == community.id;
-    }); //selecting user of the last message in the community
-
-    var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
-    var lastMsgUser = users.filter(function (user) {
-      return user.id == lastMsgUserId;
-    });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      headline: community.community_name,
-      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      headline: community.community_name,
-      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    }));
-  })));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Messenger);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/MyRent.js":
-/*!****************************************************!*\
-  !*** ./resources/js/dashboardComponents/MyRent.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-
-
-
-var MyRent = function MyRent() {
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  var _dashboardContext$dat = dashboardContext.data,
-      residents = _dashboardContext$dat.residents,
-      current_user = _dashboardContext$dat.current_user;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "myrent__container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "myrent__container__section"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Konec aktu\xE1ln\xEDho n\xE1jemn\xEDho obdob\xED: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " ss")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lh\u016Fta pro \u017E\xE1dost o prodlou\u017Een\xED n\xE1jmu:", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Po\u010Det hl\xE1\u0161en\xFDch osob:: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "myrent__container__section"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "P\u0159edpis n\xE1jmu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Datum p\u0159\xEDst\xED splatnosti n\xE1jmu: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Datum posledn\xED p\u0159ijat\xE9 platby: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 12/2018")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Aktu\xE1ln\xED p\u0159eplatek/nedoplatek: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " 0,00 K\u010D")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Zaplatit"))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (MyRent);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/Noticeboard.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/dashboardComponents/Noticeboard.js ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-
-
-
-var Noticeboard = function Noticeboard() {
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  var _dashboardContext$dat = dashboardContext.data,
-      notices = _dashboardContext$dat.notices,
-      profile = _dashboardContext$dat.profile;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // align properly the height of text areas
     document.querySelectorAll(".notices__list__item__txt").forEach(function (txtarea) {
       txtarea.style.height = txtarea.scrollHeight + 10 + "px";
     });
-  }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "notices__list"
-  }, notices.map(function (notice) {
-    return notice.permanent == 1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "notices__list__item item__featured"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-      className: "notices__list__item__txt",
-      readOnly: true
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "notices__list__item__footer"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "item__featured__tag"
-    }, "Vytvo\u0159eno: ", notice.created_at))));
-  }), notices.map(function (notice) {
-    return notice.permanent == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "notices__list__item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-      className: "notices__list__item__txt",
-      readOnly: true
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "notices__list__item__footer"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Vytvo\u0159eno: ", notice.created_at))));
-  })));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Noticeboard);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/OurHouse.js":
-/*!******************************************************!*\
-  !*** ./resources/js/dashboardComponents/OurHouse.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var OurHouse = function OurHouse() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Domovn\xED \u0159\xE1d"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "D\u016Fle\u017Eit\xE9 kontakty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Z\xE1kladn\xED technick\xE9 \xFAdaje o budov\u011B")));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (OurHouse);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/SurroundingMap.js":
-/*!************************************************************!*\
-  !*** ./resources/js/dashboardComponents/SurroundingMap.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var SurroundingMap = function SurroundingMap() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body bg-placeholder"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "placeholder",
-    src: "/img/dashboard/map-placeholder.png"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (SurroundingMap);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/community_components/CommunityItem.js":
-/*!********************************************************************************!*\
-  !*** ./resources/js/dashboardComponents/community_components/CommunityItem.js ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var CommunityItem = function CommunityItem(_ref) {
-  var avatar = _ref.avatar,
-      name = _ref.name,
-      surname = _ref.surname,
-      email = _ref.email,
-      created = _ref.created;
-  var date = new Date(created);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "community__item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "community__item__img"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: avatar,
-    alt: ""
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "community__item__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, name, " ", surname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "txt-small"
-  }, "aktivn\xED od: ", date.getDate(), ".", date.getMonth(), ".", date.getFullYear())));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (CommunityItem);
-
-/***/ }),
-
-/***/ "./resources/js/dashboardComponents/layout/DashboardBox.js":
-/*!*****************************************************************!*\
-  !*** ./resources/js/dashboardComponents/layout/DashboardBox.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
-
-
-
-var DashboardBox = function DashboardBox(_ref) {
-  var style = _ref.style,
-      headline = _ref.headline,
-      content = _ref.content,
-      linkTo = _ref.linkTo;
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  }, [dashboardContext.loading]);
+  var _dashboardContext$dat = dashboardContext.data,
+      notices = _dashboardContext$dat.notices,
+      profile = _dashboardContext$dat.profile;
 
   if (dashboardContext.loading || dashboardContext.errorFetch) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box scrollable",
-      style: style
+      className: "dashboard__sections__box subpage"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dashboard__sections__box__body content-loading"
     }, dashboardContext.errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Fetch failed...\"") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -28336,29 +27028,56 @@ var DashboardBox = function DashboardBox(_ref) {
     })));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box",
-      style: style
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: linkTo
+      className: "dashboard__sections__box subpage"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "dashboard__sections__box__head"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "maximize__icon"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "N\xE1st\u011Bnka"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "/app/dashboard"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "close__icon"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/img/icons/dashboard/boxes/maximize.svg",
+      src: "/img/icons/dashboard/boxes/close.svg",
       alt: ""
-    })))), content);
+    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box__body subpage scrollable"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__list"
+    }, notices.map(function (notice) {
+      return notice.permanent == 1 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notices__list__item item__featured"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "notices__list__item__txt",
+        readOnly: true
+      }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notices__list__item__footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "item__featured__tag"
+      }, "Vytvo\u0159eno:", " ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        notice_id: notice.id
+      }))));
+    }), notices.map(function (notice) {
+      return notice.permanent == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notices__list__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "notices__list__item__txt",
+        readOnly: true
+      }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notices__list__item__footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Vytvo\u0159eno:", " ", notice.created_at), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoticeboardDeleteElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        notice_id: notice.id
+      }))));
+    }), profile === "administrator" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NoticeboardAdminSection__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (DashboardBox);
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardContainer);
 
 /***/ }),
 
-/***/ "./resources/js/dashboardComponents/messenger__components/MessengerItem.js":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/dashboardComponents/messenger__components/MessengerItem.js ***!
-  \*********************************************************************************/
+/***/ "./resources/js/noticeboardComponents/NoticeboardDeleteElement.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/noticeboardComponents/NoticeboardDeleteElement.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28366,150 +27085,46 @@ var DashboardBox = function DashboardBox(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
 
 
-var MessengerItem = function MessengerItem(_ref) {
-  var headline = _ref.headline,
-      lastmsgtxt = _ref.lastmsgtxt,
-      lastmsgtime = _ref.lastmsgtime,
-      avatar = _ref.avatar;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "messenger__item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "messenger__item__img"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: avatar,
+
+var NoticeboardDeleteElement = function NoticeboardDeleteElement(_ref) {
+  var notice_id = _ref.notice_id;
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "item__deleteTag",
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      dashboardContext.deleteNotice(notice_id, data);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/trash-ico.svg",
     alt: ""
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "messenger__item__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "messenger__item__body__lastmsg"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "lastmsg__txt"
-  }, lastmsgtxt), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "lastmsg__time"
-  }, lastmsgtime))));
+  }))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (MessengerItem);
+/* harmony default export */ __webpack_exports__["default"] = (NoticeboardDeleteElement);
 
 /***/ }),
 
-/***/ "./storage/app/public sync recursive ^\\.\\/.*\\.png$":
-/*!***********************************************!*\
-  !*** ./storage/app/public sync ^\.\/.*\.png$ ***!
-  \***********************************************/
+/***/ 2:
+/*!*******************************************!*\
+  !*** multi ./resources/js/noticeboard.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var map = {
-	"./1.png": "./storage/app/public/1.png",
-	"./2.png": "./storage/app/public/2.png",
-	"./3.png": "./storage/app/public/3.png",
-	"./4.png": "./storage/app/public/4.png",
-	"./5.png": "./storage/app/public/5.png",
-	"./unknown.png": "./storage/app/public/unknown.png"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
-
-/***/ }),
-
-/***/ "./storage/app/public/1.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/1.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
-
-/***/ }),
-
-/***/ "./storage/app/public/2.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/2.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
-
-/***/ }),
-
-/***/ "./storage/app/public/3.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/3.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
-
-/***/ }),
-
-/***/ "./storage/app/public/4.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/4.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
-
-/***/ }),
-
-/***/ "./storage/app/public/5.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/5.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
-
-/***/ }),
-
-/***/ "./storage/app/public/unknown.png":
-/*!****************************************!*\
-  !*** ./storage/app/public/unknown.png ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
-
-/***/ }),
-
-/***/ 1:
-/*!*****************************************!*\
-  !*** multi ./resources/js/dashboard.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\noticeboard.js */"./resources/js/noticeboard.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=dashboard.js.map
+//# sourceMappingURL=noticeboard.js.map

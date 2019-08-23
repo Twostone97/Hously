@@ -263,6 +263,8 @@ main {
     min-height: 100vh;
 
     &.dashboard {
+        min-height: initial;
+
         .sideNav {
             position: fixed;
             top: 0;

@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import DashboardContext from "../context/dashboard/DashboardContext";
-import NoticeboardDeleteElement from "./noticeboard_components/NoticeboardDeleteElement";
-import NoticeboardAdminSection from "./noticeboard_components/NoticeboardAdminSection";
 
 const Noticeboard = () => {
     const dashboardContext = useContext(DashboardContext);
@@ -39,12 +37,6 @@ const Noticeboard = () => {
                                         <span className="item__featured__tag">
                                             Vytvořeno: {notice.created_at}
                                         </span>
-
-                                        {profile === "administrator" && (
-                                            <NoticeboardDeleteElement
-                                                notice_id={notice.id}
-                                            />
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -69,19 +61,11 @@ const Noticeboard = () => {
                                         <span>
                                             Vytvořeno: {notice.created_at}
                                         </span>
-
-                                        {profile === "administrator" && (
-                                            <NoticeboardDeleteElement
-                                                notice_id={notice.id}
-                                            />
-                                        )}
                                     </div>
                                 </div>
                             </div>
                         )
                 )}
-
-                {profile === "administrator" && <NoticeboardAdminSection />}
             </div>
         </div>
     );
