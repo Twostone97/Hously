@@ -9,8 +9,6 @@ const CommunityDetailItem = ({ user_id }) => {
         return usr.id == user_id;
     });
 
-    console.log(currentUser);
-
     return (
         <div className="community__subpage__detail">
             <div className="detail__item">
