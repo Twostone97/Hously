@@ -27989,7 +27989,7 @@ var Community = function Community() {
   var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
   var users = dashboardContext.data.users; //sort users descending (http://www.mattmorgante.com/technology/javascript-sort-compare)
 
-  var usersSortDesc = _toConsumableArray(users); //using spread to prevent sorting in the context provider
+  var usersSortDesc = _toConsumableArray(users); //using spread to prevent sorting in the Dashboard context provider
 
 
   usersSortDesc.sort(function (a, b) {
@@ -28006,13 +28006,15 @@ var Community = function Community() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "community__container"
   }, usersSortDesc.map(function (user) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "/app/community/".concat(user.id)
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_community_components_CommunityItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       name: user.first_name,
       surname: user.last_name,
       email: user.email,
       created: user.created_at,
       avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    });
+    }));
   })));
 };
 
@@ -28408,6 +28410,11 @@ var map = {
 	"./3.png": "./storage/app/public/3.png",
 	"./4.png": "./storage/app/public/4.png",
 	"./5.png": "./storage/app/public/5.png",
+	"./backupavatars/1.png": "./storage/app/public/backupavatars/1.png",
+	"./backupavatars/2.png": "./storage/app/public/backupavatars/2.png",
+	"./backupavatars/3.png": "./storage/app/public/backupavatars/3.png",
+	"./backupavatars/4.png": "./storage/app/public/backupavatars/4.png",
+	"./backupavatars/5.png": "./storage/app/public/backupavatars/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
 };
 
@@ -28440,7 +28447,7 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
+module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
 
 /***/ }),
 
@@ -28451,7 +28458,7 @@ module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
+module.exports = "/images/2.png?3458a238a9cc90ae69fd7f8a83ed5f67";
 
 /***/ }),
 
@@ -28462,7 +28469,7 @@ module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
+module.exports = "/images/3.png?ea8c5d00b2f0b976e9f21bbc7ade30c1";
 
 /***/ }),
 
@@ -28473,7 +28480,7 @@ module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
+module.exports = "/images/4.png?5c005616b91d2df7c1a4d687012f8956";
 
 /***/ }),
 
@@ -28481,6 +28488,61 @@ module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
 /*!**********************************!*\
   !*** ./storage/app/public/5.png ***!
   \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5.png?d955930b88b1bdf6e08e77871b87782a";
+
+/***/ }),
+
+/***/ "./storage/app/public/backupavatars/1.png":
+/*!************************************************!*\
+  !*** ./storage/app/public/backupavatars/1.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
+
+/***/ }),
+
+/***/ "./storage/app/public/backupavatars/2.png":
+/*!************************************************!*\
+  !*** ./storage/app/public/backupavatars/2.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
+
+/***/ }),
+
+/***/ "./storage/app/public/backupavatars/3.png":
+/*!************************************************!*\
+  !*** ./storage/app/public/backupavatars/3.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
+
+/***/ }),
+
+/***/ "./storage/app/public/backupavatars/4.png":
+/*!************************************************!*\
+  !*** ./storage/app/public/backupavatars/4.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
+
+/***/ }),
+
+/***/ "./storage/app/public/backupavatars/5.png":
+/*!************************************************!*\
+  !*** ./storage/app/public/backupavatars/5.png ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

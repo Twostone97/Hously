@@ -9,7 +9,7 @@ const Community = () => {
 
     //sort users descending (http://www.mattmorgante.com/technology/javascript-sort-compare)
 
-    const usersSortDesc = [...users]; //using spread to prevent sorting in the context provider
+    const usersSortDesc = [...users]; //using spread to prevent sorting in the Dashboard context provider
     usersSortDesc.sort((a, b) => {
         if (a.created_at > b.created_at) {
             return -1;
@@ -25,19 +25,21 @@ const Community = () => {
             <div className="community__container">
                 {usersSortDesc.map(user => {
                     return (
-                        <CommunityItem
-                            name={user.first_name}
-                            surname={user.last_name}
-                            email={user.email}
-                            created={user.created_at}
-                            avatar={
-                                user.profile_image == 1
-                                    ? require(`../../../storage/app/public/${
-                                          user.id
-                                      }.png`)
-                                    : require(`../../../storage/app/public/unknown.png`)
-                            }
-                        />
+                        <a href={`/app/community/${user.id}`}>
+                            <CommunityItem
+                                name={user.first_name}
+                                surname={user.last_name}
+                                email={user.email}
+                                created={user.created_at}
+                                avatar={
+                                    user.profile_image == 1
+                                        ? require(`../../../storage/app/public/${
+                                              user.id
+                                          }.png`)
+                                        : require(`../../../storage/app/public/unknown.png`)
+                                }
+                            />
+                        </a>
                     );
                 })}
             </div>

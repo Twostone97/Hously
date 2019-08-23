@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
-const CommunityDetailItem = ({ user_id }) => {
+const CommunityDetailItem = ({ match }) => {
     const dashboardContext = useContext(DashboardContext);
     const { users } = dashboardContext.data;
+    const { userid } = match.params;
 
     const currentUser = users.filter(usr => {
-        return usr.id == user_id;
+        return usr.id == userid;
     });
 
     return (
@@ -16,7 +17,7 @@ const CommunityDetailItem = ({ user_id }) => {
                     <img
                         src={
                             currentUser[0].profile_image
-                                ? require(`../../../storage/app/public/${user_id}.png`)
+                                ? require(`../../../storage/app/public/${userid}.png`)
                                 : require(`../../../storage/app/public/unknown.png`)
                         }
                         alt=""
