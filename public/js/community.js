@@ -26802,6 +26802,10 @@ var CommunityDetailItem = function CommunityDetailItem(_ref) {
   var user_id = _ref.user_id;
   var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var users = dashboardContext.data.users;
+  var currentUser = users.filter(function (usr) {
+    return usr.id == user_id;
+  });
+  console.log(currentUser);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "community__subpage__detail"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -26809,11 +26813,11 @@ var CommunityDetailItem = function CommunityDetailItem(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail__item__img"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: users[user_id - 1].profile_image ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user_id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png"),
+    src: currentUser[0].profile_image ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user_id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png"),
     alt: ""
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail__item__txt"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[user_id - 1].first_name, " ", users[user_id - 1].last_name))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, currentUser[0].first_name, " ", currentUser[0].last_name))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CommunityDetailItem);

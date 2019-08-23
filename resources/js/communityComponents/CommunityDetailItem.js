@@ -5,13 +5,19 @@ const CommunityDetailItem = ({ user_id }) => {
     const dashboardContext = useContext(DashboardContext);
     const { users } = dashboardContext.data;
 
+    const currentUser = users.filter(usr => {
+        return usr.id == user_id;
+    });
+
+    console.log(currentUser);
+
     return (
         <div className="community__subpage__detail">
             <div className="detail__item">
                 <div className="detail__item__img">
                     <img
                         src={
-                            users[user_id - 1].profile_image
+                            currentUser[0].profile_image
                                 ? require(`../../../storage/app/public/${user_id}.png`)
                                 : require(`../../../storage/app/public/unknown.png`)
                         }
@@ -20,8 +26,7 @@ const CommunityDetailItem = ({ user_id }) => {
                 </div>
                 <div className="detail__item__txt">
                     <h3>
-                        {users[user_id - 1].first_name}{" "}
-                        {users[user_id - 1].last_name}
+                        {currentUser[0].first_name} {currentUser[0].last_name}
                     </h3>
                 </div>
             </div>
