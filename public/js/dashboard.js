@@ -28013,8 +28013,13 @@ var Community = function Community() {
       surname: user.last_name,
       email: user.email,
       created: user.created_at,
+<<<<<<< HEAD
       avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }));
+=======
+      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+    });
+>>>>>>> feat/david
   })));
 };
 
@@ -28112,12 +28117,12 @@ var Messenger = function Messenger() {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
     }));
   })));
 };
@@ -28405,6 +28410,7 @@ var MessengerItem = function MessengerItem(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+<<<<<<< HEAD
 	"./1.png": "./storage/app/public/1.png",
 	"./2.png": "./storage/app/public/2.png",
 	"./3.png": "./storage/app/public/3.png",
@@ -28416,6 +28422,9 @@ var map = {
 	"./backupavatars/4.png": "./storage/app/public/backupavatars/4.png",
 	"./backupavatars/5.png": "./storage/app/public/backupavatars/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
+=======
+	"./2.png": "./storage/app/public/2.png"
+>>>>>>> feat/david
 };
 
 
@@ -28440,6 +28449,7 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./storage/app/public/1.png":
 /*!**********************************!*\
   !*** ./storage/app/public/1.png ***!
@@ -28451,6 +28461,8 @@ module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
 
 /***/ }),
 
+=======
+>>>>>>> feat/david
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -28458,6 +28470,7 @@ module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "/images/2.png?3458a238a9cc90ae69fd7f8a83ed5f67";
 
 /***/ }),
@@ -28558,6 +28571,9 @@ module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
 /***/ (function(module, exports) {
 
 module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
+=======
+module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
+>>>>>>> feat/david
 
 /***/ }),
 
@@ -28568,7 +28584,7 @@ module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\js\dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })

@@ -375,7 +375,7 @@ class HomeController extends Controller
 
         $building       = $request->session()->get('building');
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
-        $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
+        $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image', 'email')->get();
         
 
         $data = (object) [
