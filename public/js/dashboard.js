@@ -28011,7 +28011,7 @@ var Community = function Community() {
       surname: user.last_name,
       email: user.email,
       created: user.created_at,
-      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
     });
   })));
 };
@@ -28110,12 +28110,12 @@ var Messenger = function Messenger() {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
     }));
   })));
 };
@@ -28586,12 +28586,7 @@ var NoticeboardDeleteElement = function NoticeboardDeleteElement(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./1.png": "./storage/app/public/1.png",
-	"./2.png": "./storage/app/public/2.png",
-	"./3.png": "./storage/app/public/3.png",
-	"./4.png": "./storage/app/public/4.png",
-	"./5.png": "./storage/app/public/5.png",
-	"./unknown.png": "./storage/app/public/unknown.png"
+	"./2.png": "./storage/app/public/2.png"
 };
 
 
@@ -28616,17 +28611,6 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
-/***/ "./storage/app/public/1.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/1.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
-
-/***/ }),
-
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -28634,51 +28618,7 @@ module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
-
-/***/ }),
-
-/***/ "./storage/app/public/3.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/3.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
-
-/***/ }),
-
-/***/ "./storage/app/public/4.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/4.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
-
-/***/ }),
-
-/***/ "./storage/app/public/5.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/5.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
-
-/***/ }),
-
-/***/ "./storage/app/public/unknown.png":
-/*!****************************************!*\
-  !*** ./storage/app/public/unknown.png ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
+module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
 
 /***/ }),
 
@@ -28689,7 +28629,7 @@ module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\js\dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })
