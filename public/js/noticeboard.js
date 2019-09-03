@@ -27121,7 +27121,7 @@ var NoticeboardDeleteElement = function NoticeboardDeleteElement(_ref) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\noticeboard.js */"./resources/js/noticeboard.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\js\noticeboard.js */"./resources/js/noticeboard.js");
 
 
 /***/ })

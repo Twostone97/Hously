@@ -31,6 +31,10 @@ class WebController extends Controller
         return view ('/app/community');
     }
 
+    public function foo() {
+        return view ('/app/foo');
+    }
+
     public function map() {
         return view ('/test/map'); //pro Michala na testovani mapy
     }

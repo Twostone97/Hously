@@ -48,8 +48,8 @@
                     </ul>
                     <div class="navbar-text">
                         @guest
-                        <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
-                        <div id="register__open"><a class="nav-link" href="#">Register</a></div>
+                        <div id="login__open"> <a class="nav-link" href="#">Přihlášení</a></div>
+                        <div id="register__open"><a class="nav-link" href="#">Registrace</a></div>
                         @else
                         <div>
                             <img src="{{ asset('img/icons/nav/messenger.png') }}" alt="">
@@ -239,17 +239,19 @@
     <main class="dashboard">
         <div class="sideNav">
             <div class="sideNav__container">
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/home.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico01.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico02.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico03.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico04.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico05.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico06.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico07.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico08.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico09.png') }}" alt=""></div>
-                <div><img src="{{ asset('img/icons/dashboard/sidenav/ico10.png') }}" alt=""></div>
+                <div><a href="/app/dashboard"><img src="{{ asset('img/icons/dashboard/sidenav/home.png') }}" alt=""></a></div>
+                <div><a href="/app/noticeboard"><img src="{{ asset('img/icons/dashboard/sidenav/ico09.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico02.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico03.png') }}" alt=""></a></div>
+                <div><a href="/app/community"><img src="{{ asset('img/icons/dashboard/sidenav/ico10.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico01.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico04.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico06.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico07.png') }}" alt=""></a></div>
+                
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico05.png') }}" alt=""></a></div>
+                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico08.png') }}" alt=""></a></div>
+                
 
             </div>
         </div>

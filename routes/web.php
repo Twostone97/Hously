@@ -23,6 +23,7 @@ Route::get('/app/dashboard','WebController@dashboard');
 Route::get('/app/noticeboard','WebController@noticeboard');
 Route::get('/app/community','WebController@community');
 Route::get('/app/community/{id}','WebController@community');
+Route::get('/app/foo','WebController@foo');
 //
 Route::get('/react-houses','WebController@reacthouses');
 Route::get('/react-houses/{id}','WebController@reacthouses');

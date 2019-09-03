@@ -26,7 +26,7 @@ fetch("./map/api")
         const center = SMap.Coords.fromWGS84(14.4304, 50.07975);
         const map = new SMap(JAK.gel("map"), center, 11, {
             height: "50vh",
-            width: "100vw"
+            width: "75vw"
         });
 
         map.addDefaultLayer(SMap.DEF_BASE).enable();
@@ -72,7 +72,7 @@ fetch("./map/api")
             let postal = postalPattern.exec(geocoder._query);
             let city = cityPattern.exec(geocoder._query);
             //********************************* */
-            
+
             card.getHeader().innerHTML = `
             <div style="display: flex;justify-content:center">
             <img src="../img/hously-logo-small.png" >
@@ -91,11 +91,7 @@ fetch("./map/api")
                 `</div>
                        `;
 
-            card.getFooter().innerHTML = `<a href="/houses#${
-                geocoder._options.card_id
-            }" src="/building_id${
-                geocoder._options.card_id
-            }">List of involved houses</a>`;
+            card.getFooter().innerHTML = `<a href="/houses#${geocoder._options.card_id}" src="/building_id${geocoder._options.card_id}">Přejít na dům</a>`;
 
             let nadpis = `${street}` + `\n` + `${city}` + `\n` + `${postal}`;
             const marker = new SMap.Marker(pozice, null, {

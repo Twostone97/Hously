@@ -1,17 +1,17 @@
 @extends ('layouts/houslytemplate')
 
-@section ('title') Hously-Homepage
+@section ('title') Hously-Úvodní stránka
 @endsection
 
 @section ('nav')
 <li class="nav-item ml-2">
-    <a class="nav-link" href="/about">About Hously</a>
+    <a class="nav-link" href="/about">O Hously</a>
 </li>
 <li class="nav-item ml-2">
-    <a class="nav-link" href="/flats">Available Appartments</a>
+    <a class="nav-link" href="/flats">Dostupné byty</a>
 </li>
 <li class="nav-item ml-2">
-    <a class="nav-link" href="/houses">Involved Houses</a>
+    <a class="nav-link" href="/houses">Zapojené domy</a>
 </li>
 @endsection
 

@@ -25723,7 +25723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31082,16 +31082,7 @@ var ERROR_FETCH = "ERROR_FETCH";
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./1.png": "./storage/app/public/1.png",
 	"./2.png": "./storage/app/public/2.png",
-	"./3.png": "./storage/app/public/3.png",
-	"./4.png": "./storage/app/public/4.png",
-	"./5.png": "./storage/app/public/5.png",
-	"./backupavatars/1.png": "./storage/app/public/backupavatars/1.png",
-	"./backupavatars/2.png": "./storage/app/public/backupavatars/2.png",
-	"./backupavatars/3.png": "./storage/app/public/backupavatars/3.png",
-	"./backupavatars/4.png": "./storage/app/public/backupavatars/4.png",
-	"./backupavatars/5.png": "./storage/app/public/backupavatars/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
 };
 
@@ -31117,17 +31108,6 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
-/***/ "./storage/app/public/1.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/1.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
-
-/***/ }),
-
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -31135,95 +31115,7 @@ module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/2.png?3458a238a9cc90ae69fd7f8a83ed5f67";
-
-/***/ }),
-
-/***/ "./storage/app/public/3.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/3.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ea8c5d00b2f0b976e9f21bbc7ade30c1";
-
-/***/ }),
-
-/***/ "./storage/app/public/4.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/4.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?5c005616b91d2df7c1a4d687012f8956";
-
-/***/ }),
-
-/***/ "./storage/app/public/5.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/5.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?d955930b88b1bdf6e08e77871b87782a";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/1.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/1.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/2.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/2.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/3.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/3.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/4.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/4.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/5.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/5.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
+module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
 
 /***/ }),
 
@@ -31234,7 +31126,7 @@ module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
+module.exports = "/images/unknown.png?9af0ef1a3c52f2ce0f122ebbc18a4e7b";
 
 /***/ }),
 
@@ -31245,7 +31137,7 @@ module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Dokumenty\Bootcamp 2019\FINAL PROJECT\Hously Git Rep\resources\js\community.js */"./resources/js/community.js");
+module.exports = __webpack_require__(/*! D:\Bootcamp\Hously\resources\js\community.js */"./resources/js/community.js");
 
 
 /***/ })

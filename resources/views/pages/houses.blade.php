@@ -2,13 +2,13 @@
 
 @section ('nav')
 <li class="nav-item ml-2">
-    <a class="nav-link " href="/about">About Hously</a>
+    <a class="nav-link " href="/about">O Hously</a>
 </li>
 <li class="nav-item ml-2">
-    <a class="nav-link" href="/flats">Available Appartments</a>
+    <a class="nav-link" href="/flats">Dostupné byty</a>
 </li>
 <li class="nav-item ml-2">
-    <a class="nav-link active" href="/houses">Involved Houses</a>
+    <a class="nav-link active" href="/houses">Zapojené domy</a>
 </li>
 @endsection
 
@@ -19,15 +19,18 @@ Our Houses
 @endsection
 
 @section ('content')
+<section class="page__main bg__gradient-light">
 <script src="https://api.mapy.cz/loader.js"></script>
 <div id="map"></div>
 <main class="bg__wall">
+    
     <section class="page__main housesList" style="padding-top:2rem;">
 
 
         @foreach ($allbuildings as $index => $building)
 
-        <div class="page__main__dash__item" id="{{$building->id}}">
+        <div style="padding-top: 5vh;" id="{{$building->id}}"></div>
+        <div class="page__main__dash__item"  >
             <div class="page__main__dash__item__head">
                 <h3>{{$building->city}} {{$building->street}} {{$building->house_number}}</h3>
             </div>
@@ -42,19 +45,19 @@ Our Houses
 
                     <tbody>
                         <tr>
-                            <td><strong>Floors:</strong></td>
-                            <td>Above ground: {{$building->floors_above_ground}}</td>
+                            <td><strong>Pater:</strong></td>
+                            <td>Nad zemí: {{$building->floors_above_ground}}</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>below ground:{{$building->floors_bellow_ground}}</td>
+                            <td>pod zemí:{{$building->floors_bellow_ground}}</td>
                         </tr>
                         <tr>
-                            <td><strong>Elevators:</strong></td>
+                            <td><strong>Výtahů:</strong></td>
                             <td>{{$building->elevator}}</td>
                         </tr>
                         <tr>
-                            <td><strong>Flats:</strong></td>
+                            <td><strong>bytů:</strong></td>
                             <td>
                                 <?php $i = 0; ?>
                                 @foreach ($allflats as $flat)
@@ -85,17 +88,17 @@ Our Houses
                         @endif
                         @endforeach
                         <tr>
-                            <td><strong>Avaible flats:</strong></td>
-                            <td>Residential:{{$arflats}}</td>
+                            <td><strong>Dostupné byty:</strong></td>
+                            <td>Bytové:{{$arflats}}</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Commercial:{{$acflats}}</td>
+                            <td>Komerční:{{$acflats}}</td>
                         </tr>
                         @if ($building->owner_id === null)
                         <tr>
-                            <td><span>Owner:</span></td>
-                            <td>no owner</td>
+                            <td><span>Vlastník:</span></td>
+                            <td>žádný vlastník</td>
                         </tr>
                         @else
                         @foreach ($allowners as $owner)
@@ -103,7 +106,7 @@ Our Houses
                         @foreach ($allusers as $user)
                         @if ($owner->user_id === $user->id)
                         <tr>
-                            <td><strong>Owner:</strong></td>
+                            <td><strong>Vlastník:</strong></td>
                             <td>{{$user->first_name}} {{$user->last_name}}</td>
                         </tr>
                         @endif
@@ -116,7 +119,7 @@ Our Houses
                                 $date           = "{$date[2]}. {$date[1]}. {$date[0]}";
                                 ?>
                         <tr>
-                            <td><strong>Construction date:</strong></td>
+                            <td><strong>Datum výstavby:</strong></td>
                             <td>{{$date}}
                         </tr>
                     </tbody>
@@ -127,6 +130,7 @@ Our Houses
         </div>
         @endforeach
     </section>
+</section>
     <script src="/js/mapa.js"></script>
 </main>
 @endsection

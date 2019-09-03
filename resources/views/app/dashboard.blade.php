@@ -1,6 +1,6 @@
 @extends ('layouts/dashboardtemplate')
 
-@section ('title') Hously main dashboard
+@section ('title') Hously dashboard
 @endsection
 
 @section ('nav')

@@ -27668,6 +27668,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dashboardComponents/OurHouse */ "./resources/js/dashboardComponents/OurHouse.js");
 /* harmony import */ var _dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboardComponents/MyRent */ "./resources/js/dashboardComponents/MyRent.js");
 /* harmony import */ var _dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboardComponents/Community */ "./resources/js/dashboardComponents/Community.js");
+/* harmony import */ var _dashboardComponents_MainEconDisplay__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboardComponents/MainEconDisplay */ "./resources/js/dashboardComponents/MainEconDisplay.js");
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+
 
 
 
@@ -27684,6 +27724,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Dashboard = function Dashboard() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      api = _useState2[0],
+      setapi = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loaded = _useState4[0],
+      setloaded = _useState4[1];
+
+  if (!loaded) {
+    fetch("/selectprofile1").then(function (resp) {
+      return resp.json();
+    }).then(function (data) {
+      setapi(data);
+    })["finally"](function () {
+      setloaded(true);
+    });
+    console.log(api);
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "dashboard__sections"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -27699,7 +27760,7 @@ var Dashboard = function Dashboard() {
     },
     headline: "Messenger",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__["default"], null),
-    linkTo: "./messenger"
+    linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       flexBasis: "32%"
@@ -27719,6 +27780,62 @@ var Dashboard = function Dashboard() {
       flexBasis: "32%"
     },
     headline: "Service Manager",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Hlavn\xED ekonomick\xE9 ukazatele",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MainEconDisplay__WEBPACK_IMPORTED_MODULE_14__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Obsazenost jednotek",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Revize",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "J\xE1 spr\xE1vce",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "V\xFDkaz pr\xE1ce",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Opravy a investice",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Vlastn\xEDk - Struktura",
+    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    linkTo: "./foo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      flexBasis: "32%"
+    },
+    headline: "Ukolovn\xEDk - \"Kategorie aktu\xE1ln\xED\" ",
     content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     linkTo: "./foo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -28013,13 +28130,8 @@ var Community = function Community() {
       surname: user.last_name,
       email: user.email,
       created: user.created_at,
-<<<<<<< HEAD
       avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }));
-=======
-      avatar: user.profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(user.id, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
-    });
->>>>>>> feat/david
   })));
 };
 
@@ -28076,6 +28188,32 @@ var Intro = function Intro() {
 
 /***/ }),
 
+/***/ "./resources/js/dashboardComponents/MainEconDisplay.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/dashboardComponents/MainEconDisplay.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MainEcoDis = function MainEcoDis() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body bg-placeholder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "placeholder",
+    src: "/img/dashboard/heu.png"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MainEcoDis);
+
+/***/ }),
+
 /***/ "./resources/js/dashboardComponents/Messenger.js":
 /*!*******************************************************!*\
   !*** ./resources/js/dashboardComponents/Messenger.js ***!
@@ -28117,12 +28255,12 @@ var Messenger = function Messenger() {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       headline: community.community_name,
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../storage/app/public/unknown.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }));
   })));
 };
@@ -28410,21 +28548,8 @@ var MessengerItem = function MessengerItem(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-<<<<<<< HEAD
-	"./1.png": "./storage/app/public/1.png",
 	"./2.png": "./storage/app/public/2.png",
-	"./3.png": "./storage/app/public/3.png",
-	"./4.png": "./storage/app/public/4.png",
-	"./5.png": "./storage/app/public/5.png",
-	"./backupavatars/1.png": "./storage/app/public/backupavatars/1.png",
-	"./backupavatars/2.png": "./storage/app/public/backupavatars/2.png",
-	"./backupavatars/3.png": "./storage/app/public/backupavatars/3.png",
-	"./backupavatars/4.png": "./storage/app/public/backupavatars/4.png",
-	"./backupavatars/5.png": "./storage/app/public/backupavatars/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
-=======
-	"./2.png": "./storage/app/public/2.png"
->>>>>>> feat/david
 };
 
 
@@ -28449,20 +28574,6 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./storage/app/public/1.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/1.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
-
-/***/ }),
-
-=======
->>>>>>> feat/david
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -28470,96 +28581,7 @@ module.exports = "/images/1.png?54b301e719227b48beec578fb287b9fc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "/images/2.png?3458a238a9cc90ae69fd7f8a83ed5f67";
-
-/***/ }),
-
-/***/ "./storage/app/public/3.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/3.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ea8c5d00b2f0b976e9f21bbc7ade30c1";
-
-/***/ }),
-
-/***/ "./storage/app/public/4.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/4.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?5c005616b91d2df7c1a4d687012f8956";
-
-/***/ }),
-
-/***/ "./storage/app/public/5.png":
-/*!**********************************!*\
-  !*** ./storage/app/public/5.png ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?d955930b88b1bdf6e08e77871b87782a";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/1.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/1.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.png?eaef1700372ac75a37ec356fec4f268a";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/2.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/2.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/2.png?01e826197ad67895c714b73c700daf53";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/3.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/3.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/3.png?ceb4229bae8d3fcd50512297d5e088d9";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/4.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/4.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/4.png?0c12f39f4283807a7df9a924afe4b649";
-
-/***/ }),
-
-/***/ "./storage/app/public/backupavatars/5.png":
-/*!************************************************!*\
-  !*** ./storage/app/public/backupavatars/5.png ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
+module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
 
 /***/ }),
 
@@ -28570,10 +28592,7 @@ module.exports = "/images/5.png?5b7ba6cfc929f37c98b5a03ed0e656b6";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/unknown.png?7bac8ea29bb0a264f5c450a7ac15356c";
-=======
-module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
->>>>>>> feat/david
+module.exports = "/images/unknown.png?9af0ef1a3c52f2ce0f122ebbc18a4e7b";
 
 /***/ }),
 

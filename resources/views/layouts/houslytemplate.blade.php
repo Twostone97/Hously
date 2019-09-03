@@ -54,8 +54,8 @@
                     </ul>
                     <div class="navbar-text">
                         @guest
-                        <div id="login__open"> <a class="nav-link" href="#">Login</a></div>
-                        <div id="register__open"><a class="nav-link" href="#">Register</a></div>
+                        <div id="login__open"> <a class="nav-link" href="#">Přihlášení</a></div>
+                        <div id="register__open"><a class="nav-link" href="#">Registrace</a></div>
                         @else
                         <div>
                             <a href="/app/dashboard">{{ Auth::user()->first_name }}</a>
@@ -79,7 +79,7 @@
     <div class="auth__overlay">
         <div class="auth__overlay__modal modal__login">
             <div class="auth__overlay__modal__close" id="login__close">X</div>
-            <h4>Log in to your account</h4>
+            <h4>Přihlašte se do svého účtu</h4>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -95,7 +95,7 @@
                 </span>
                 @enderror
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" placeholder="password" required autocomplete="current-password">
+                    name="password" placeholder="heslo" required autocomplete="current-password">
                 @error('password')
                 <script>
                 document.querySelector('body').classList.add('modal__open');
@@ -108,25 +108,26 @@
                 @enderror
 
                 <button type="submit" class="btn btn-primary">
-                    {{ __('Login') }}
+                        {{ __('Přihlásit') }}
                 </button>
 
                 @if (Route::has('password.request'))
                 <br>
-                <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
+                {{-- žádný emailový server --}}
+                {{-- <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
+                    Zapoměl/a jste svoje heslo?
+                </a> --}}
                 @endif
             </form>
         </div>
         <div class="auth__overlay__modal modal__register ">
             <div class="auth__overlay__modal__close" id="register__close">X</div>
-            <h4>Register new account</h4>
+            <h4>Zaregistrujte se do naší aplikace, protože...</h4>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <div class="form-group row">
-                    <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+                    <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('Jméno') }}</label>
 
                     <div class="col-md-6">
                         <input id="first_name" type="text"
@@ -142,7 +143,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                    <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Příjmení') }}</label>
 
                     <div class="col-md-6">
                         <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror"
@@ -156,7 +157,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Birth Date') }}</label>
+                    <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Datum narození') }}</label>
 
                     <div class="col-md-6">
                         <input id="birth_date" type="date"
@@ -173,7 +174,7 @@
 
                 <div class="form-group row">
                     <label for="phone_number"
-                        class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+                        class="col-md-4 col-form-label text-md-right">{{ __('Telefoní číslo') }}</label>
 
                     <div class="col-md-6">
                         <input id="phone_number" type="number"
@@ -189,7 +190,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -204,7 +205,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Heslo') }}</label>
 
                     <div class="col-md-6">
                         <input id="password" type="password"
@@ -221,7 +222,7 @@
 
                 <div class="form-group row">
                     <label for="password-confirm"
-                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                        class="col-md-4 col-form-label text-md-right">{{ __('Potvrzení hesla') }}</label>
 
                     <div class="col-md-6">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
@@ -232,7 +233,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Register') }}
+                            {{ __('Zaregistrovat') }}
                         </button>
                     </div>
                 </div>
