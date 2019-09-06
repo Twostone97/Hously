@@ -30708,24 +30708,6 @@ var CommunityContainer = function CommunityContainer() {
         key: userListKey++,
         setUserDetail: setUserDetail
       });
-    }), users.map(function (user) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommunityListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        user_id: user.id,
-        profile_img: user.profile_image != null && true,
-        name: user.first_name,
-        surname: user.last_name,
-        key: userListKey++,
-        setUserDetail: setUserDetail
-      });
-    }), users.map(function (user) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommunityListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        user_id: user.id,
-        profile_img: user.profile_image != null && true,
-        name: user.first_name,
-        surname: user.last_name,
-        key: userListKey++,
-        setUserDetail: setUserDetail
-      });
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       exact: true,
       path: "/app/community/:userid",
@@ -31082,7 +31064,11 @@ var ERROR_FETCH = "ERROR_FETCH";
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./1.png": "./storage/app/public/1.png",
 	"./2.png": "./storage/app/public/2.png",
+	"./3.png": "./storage/app/public/3.png",
+	"./4.png": "./storage/app/public/4.png",
+	"./5.png": "./storage/app/public/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
 };
 
@@ -31108,6 +31094,17 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
+/***/ "./storage/app/public/1.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -31116,6 +31113,39 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 /***/ (function(module, exports) {
 
 module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/3.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/3.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/4.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/4.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/5.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/5.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5.png?035ce7483ee8f639767376dfc414c0e6";
 
 /***/ }),
 

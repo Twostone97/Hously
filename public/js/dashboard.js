@@ -27724,7 +27724,7 @@ function _arrayWithHoles(arr) {
 
 
 var Dashboard = function Dashboard() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
       _useState2 = _slicedToArray(_useState, 2),
       api = _useState2[0],
       setapi = _useState2[1];
@@ -27733,6 +27733,13 @@ var Dashboard = function Dashboard() {
       _useState4 = _slicedToArray(_useState3, 2),
       loaded = _useState4[0],
       setloaded = _useState4[1];
+  /*Restrictions*/
+
+
+  var all = "administrator;owner;resident;";
+  var admin = "administrator;";
+  var owner = "owner;";
+  var resident = "resident;";
 
   if (!loaded) {
     fetch("/selectprofile1").then(function (resp) {
@@ -27741,125 +27748,147 @@ var Dashboard = function Dashboard() {
       setapi(data);
     })["finally"](function () {
       setloaded(true);
+      console.log(api.profile);
     });
-    console.log(api);
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "dashboard__sections"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "49%"
-    },
-    headline: "N\xE1st\u011Bnka",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    linkTo: "./noticeboard"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "49%"
-    },
-    headline: "Messenger",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Kalend\xE1\u0159",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Na\u0161e komunita",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__["default"], null),
-    linkTo: "./community"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Service Manager",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Hlavn\xED ekonomick\xE9 ukazatele",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MainEconDisplay__WEBPACK_IMPORTED_MODULE_14__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Obsazenost jednotek",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Revize",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "J\xE1 spr\xE1vce",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "V\xFDkaz pr\xE1ce",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Opravy a investice",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Vlastn\xEDk - Struktura",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Ukolovn\xEDk - \"Kategorie aktu\xE1ln\xED\" ",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "M\u016Fj akut\xE1ln\xED pron\xE1jem",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "N\xE1\u0161 d\u016Fm",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__["default"], null),
-    linkTo: "./foo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    style: {
-      flexBasis: "32%"
-    },
-    headline: "Na\u0161e okol\xED",
-    content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__["default"], null),
-    linkTo: "./foo"
-  })));
+  if (loaded) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_dashboard_DashboardState__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      className: "dashboard__sections"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "49%"
+      },
+      headline: "N\xE1st\u011Bnka",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Noticeboard__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+      linkTo: "./noticeboard"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "49%"
+      },
+      headline: "Messenger",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Messenger__WEBPACK_IMPORTED_MODULE_8__["default"], null),
+      linkTo: "./messenger"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Kalend\xE1\u0159",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Calendar__WEBPACK_IMPORTED_MODULE_9__["default"], null),
+      linkTo: "./foo"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Na\u0161e komunita",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Community__WEBPACK_IMPORTED_MODULE_13__["default"], null),
+      linkTo: "./community"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Service Manager",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Hlavn\xED ekonomick\xE9 ukazatele",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MainEconDisplay__WEBPACK_IMPORTED_MODULE_14__["default"], null),
+      linkTo: "./foo",
+      restrict: admin + owner,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Obsazenost jednotek",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin + owner,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Revize",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "J\xE1 spr\xE1vce",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "V\xFDkaz pr\xE1ce",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Opravy a investice",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Vlastn\xEDk - Struktura",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: owner,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Ukolovn\xEDk - \"Kategorie aktu\xE1ln\xED\" ",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_Foo__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+      linkTo: "./foo",
+      restrict: admin + owner,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "M\u016Fj akut\xE1ln\xED pron\xE1jem",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_MyRent__WEBPACK_IMPORTED_MODULE_12__["default"], null),
+      linkTo: "./foo",
+      restrict: resident,
+      profile: api.profile
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "N\xE1\u0161 d\u016Fm",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_OurHouse__WEBPACK_IMPORTED_MODULE_11__["default"], null),
+      linkTo: "./foo"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_layout_DashboardBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      style: {
+        flexBasis: "32%"
+      },
+      headline: "Na\u0161e okol\xED",
+      content: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_SurroundingMap__WEBPACK_IMPORTED_MODULE_10__["default"], null),
+      linkTo: "./foo"
+    })));
+  } else {
+    return "loading";
+  }
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dashboard, null), document.querySelector("#reactApp"));
@@ -28256,11 +28285,6 @@ var Messenger = function Messenger() {
       lastmsgtxt: communityMessages[communityMessages.length - 1].text,
       lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
       avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      headline: community.community_name,
-      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
     }));
   })));
 };
@@ -28327,7 +28351,7 @@ var Noticeboard = function Noticeboard() {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // align properly the height of text areas
     document.querySelectorAll(".notices__list__item__txt").forEach(function (txtarea) {
-      txtarea.style.height = txtarea.scrollHeight + 10 + "px";
+      txtarea.style.height = 45 + "px";
     });
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -28467,32 +28491,46 @@ var DashboardBox = function DashboardBox(_ref) {
   var style = _ref.style,
       headline = _ref.headline,
       content = _ref.content,
-      linkTo = _ref.linkTo;
+      linkTo = _ref.linkTo,
+      _ref$restrict = _ref.restrict,
+      restrict = _ref$restrict === void 0 ? "administrator;owner;resident;" : _ref$restrict,
+      _ref$profile = _ref.profile,
+      profile = _ref$profile === void 0 ? "administrator;owner;resident;" : _ref$profile;
   var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  profile = profile.split(";");
+  restrict = restrict.split(";");
 
-  if (dashboardContext.loading || dashboardContext.errorFetch) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box scrollable",
-      style: style
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box__body content-loading"
-    }, dashboardContext.errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Fetch failed...\"") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/img/layout/spinner.gif"
-    })));
-  } else {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box",
-      style: style
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: linkTo
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "dashboard__sections__box__head"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "maximize__icon"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/img/icons/dashboard/boxes/maximize.svg",
-      alt: ""
-    })))), content);
+  for (var i = 0; i < profile.length; i++) {
+    if (restrict.includes(profile[i])) {
+      if (dashboardContext.loading || dashboardContext.errorFetch) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dashboard__sections__box scrollable",
+          style: style
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dashboard__sections__box__body content-loading"
+        }, dashboardContext.errorFetch ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\"Fetch failed...\"") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "/img/layout/spinner.gif"
+        })));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dashboard__sections__box",
+          style: style
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: linkTo
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dashboard__sections__box__head"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "maximize__icon"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "/img/icons/dashboard/boxes/maximize.svg",
+          alt: ""
+        })))), content);
+      }
+
+      break;
+    } else {
+      return null;
+    }
   }
 };
 
@@ -28548,7 +28586,11 @@ var MessengerItem = function MessengerItem(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./1.png": "./storage/app/public/1.png",
 	"./2.png": "./storage/app/public/2.png",
+	"./3.png": "./storage/app/public/3.png",
+	"./4.png": "./storage/app/public/4.png",
+	"./5.png": "./storage/app/public/5.png",
 	"./unknown.png": "./storage/app/public/unknown.png"
 };
 
@@ -28574,6 +28616,17 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 
 /***/ }),
 
+/***/ "./storage/app/public/1.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
 /***/ "./storage/app/public/2.png":
 /*!**********************************!*\
   !*** ./storage/app/public/2.png ***!
@@ -28582,6 +28635,39 @@ webpackContext.id = "./storage/app/public sync recursive ^\\.\\/.*\\.png$";
 /***/ (function(module, exports) {
 
 module.exports = "/images/2.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/3.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/3.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/4.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/4.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/4.png?035ce7483ee8f639767376dfc414c0e6";
+
+/***/ }),
+
+/***/ "./storage/app/public/5.png":
+/*!**********************************!*\
+  !*** ./storage/app/public/5.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/5.png?035ce7483ee8f639767376dfc414c0e6";
 
 /***/ }),
 

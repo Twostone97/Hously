@@ -21,6 +21,7 @@ mix.js("resources/js/app.js", "public/js")
     .react("resources/js/dashboard.js", "public/js/dashboard.js")
     .react("resources/js/noticeboard.js", "public/js/noticeboard.js")
     .react("resources/js/community.js", "public/js/community.js")
+    .react("resources/js/messenger.js", "public/js/messenger.js")
     .react("resources/js/houses.js", "public/js/houses.js")
 
     .browserSync({

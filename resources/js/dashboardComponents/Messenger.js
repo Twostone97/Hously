@@ -42,24 +42,6 @@ const Messenger = () => {
                                         : require(`../../../storage/app/public/unknown.png`)
                                 }
                             />
-                            <MessengerItem
-                                headline={community.community_name}
-                                lastmsgtxt={
-                                    communityMessages[
-                                        communityMessages.length - 1
-                                    ].text
-                                }
-                                lastmsgtime={
-                                    communityMessages[
-                                        communityMessages.length - 1
-                                    ].created_at
-                                }
-                                avatar={
-                                    lastMsgUser[0].profile_image == 1
-                                        ? require(`../../../storage/app/public/${lastMsgUserId}.png`)
-                                        : require(`../../../storage/app/public/unknown.png`)
-                                }
-                            />
                         </>
                     );
                 })}

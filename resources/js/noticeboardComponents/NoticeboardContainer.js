@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DashboardContext from "../context/dashboard/DashboardContext";
 import NoticeboardDeleteElement from "./NoticeboardDeleteElement";
 import NoticeboardAdminSection from "./NoticeboardAdminSection";
@@ -109,11 +110,10 @@ const NoticeboardContainer = () => {
                                     </div>
                                 )
                         )}
-
-                        {profile === "administrator" && (
-                            <NoticeboardAdminSection />
-                        )}
                     </div>
+                </div>
+                <div className="dashboard__sections__box__body subpage addnotice">
+                    {profile === "administrator" && <NoticeboardAdminSection />}
                 </div>
             </div>
         );

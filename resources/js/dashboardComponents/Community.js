@@ -33,9 +33,7 @@ const Community = () => {
                                 created={user.created_at}
                                 avatar={
                                     user.profile_image == 1
-                                        ? require(`../../../storage/app/public/${
-                                              user.id
-                                          }.png`)
+                                        ? require(`../../../storage/app/public/${user.id}.png`)
                                         : require(`../../../storage/app/public/unknown.png`)
                                 }
                             />

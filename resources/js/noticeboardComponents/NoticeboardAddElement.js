@@ -32,12 +32,10 @@ const NoticeboardAddElement = () => {
                             .content
                     }
                 />
-                <br />
-                <label htmlFor="permanent">
+                <label htmlFor="permanent" className="ispermanent">
                     Držet nahoře?{" "}
                     <input type="checkbox" name="permanent" label="permanent" />
                 </label>
-                <br />
                 <button>Přidat na nástěnku</button>
             </form>
         </div>

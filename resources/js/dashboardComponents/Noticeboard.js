@@ -11,7 +11,7 @@ const Noticeboard = () => {
         document
             .querySelectorAll(".notices__list__item__txt")
             .forEach(txtarea => {
-                txtarea.style.height = txtarea.scrollHeight + 10 + "px";
+                txtarea.style.height = 45 + "px";
             });
     }, []);
 

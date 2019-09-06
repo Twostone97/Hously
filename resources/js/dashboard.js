@@ -15,8 +15,14 @@ import Community from "./dashboardComponents/Community";
 import MainEcoDis from "./dashboardComponents/MainEconDisplay";
 
 const Dashboard = () => {
-    const [api, setapi] = useState({});
+    const [api, setapi] = useState();
     const [loaded, setloaded] = useState(false);
+
+    /*Restrictions*/
+    const all = "administrator;owner;resident;";
+    const admin = "administrator;";
+    const owner = "owner;";
+    const resident = "resident;";
 
     if (!loaded) {
         fetch("/selectprofile1")
@@ -26,115 +32,137 @@ const Dashboard = () => {
             })
             .finally(() => {
                 setloaded(true);
+                console.log(api.profile);
             });
-        console.log(api);
     }
 
-    return (
-        <DashboardState>
-            <section className="dashboard__sections">
-                <DashboardBox
-                    style={{ flexBasis: "49%" }}
-                    headline="Nástěnka"
-                    content={<Noticeboard />}
-                    linkTo="./noticeboard"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "49%" }}
-                    headline="Messenger"
-                    content={<Messenger />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Kalendář"
-                    content={<Calendar />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Naše komunita"
-                    content={<Community />}
-                    linkTo="./community"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Service Manager"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
+    if (loaded) {
+        return (
+            <DashboardState>
+                <section className="dashboard__sections">
+                    <DashboardBox
+                        style={{ flexBasis: "49%" }}
+                        headline="Nástěnka"
+                        content={<Noticeboard />}
+                        linkTo="./noticeboard"
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "49%" }}
+                        headline="Messenger"
+                        content={<Messenger />}
+                        linkTo="./messenger"
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Kalendář"
+                        content={<Calendar />}
+                        linkTo="./foo"
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Naše komunita"
+                        content={<Community />}
+                        linkTo="./community"
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Service Manager"
+                        content={<Foo />}
+                        linkTo="./foo"
+                    />
 
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Hlavní ekonomické ukazatele"
-                    content={<MainEcoDis />}
-                    linkTo="./foo"
-                />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Hlavní ekonomické ukazatele"
+                        content={<MainEcoDis />}
+                        linkTo="./foo"
+                        restrict={admin + owner}
+                        profile={api.profile}
+                    />
 
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Obsazenost jednotek"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Obsazenost jednotek"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin + owner}
+                        profile={api.profile}
+                    />
 
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Revize"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Já správce"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Výkaz práce"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Opravy a investice"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Vlastník - Struktura"
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline='Ukolovník - "Kategorie aktuální" '
-                    content={<Foo />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Můj akutální pronájem"
-                    content={<MyRent />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Náš dům"
-                    content={<OurHouse />}
-                    linkTo="./foo"
-                />
-                <DashboardBox
-                    style={{ flexBasis: "32%" }}
-                    headline="Naše okolí"
-                    content={<SurroundingMap />}
-                    linkTo="./foo"
-                />
-            </section>
-        </DashboardState>
-    );
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Revize"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Já správce"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Výkaz práce"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Opravy a investice"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Vlastník - Struktura"
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={owner}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline='Ukolovník - "Kategorie aktuální" '
+                        content={<Foo />}
+                        linkTo="./foo"
+                        restrict={admin + owner}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Můj akutální pronájem"
+                        content={<MyRent />}
+                        linkTo="./foo"
+                        restrict={resident}
+                        profile={api.profile}
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Náš dům"
+                        content={<OurHouse />}
+                        linkTo="./foo"
+                    />
+                    <DashboardBox
+                        style={{ flexBasis: "32%" }}
+                        headline="Naše okolí"
+                        content={<SurroundingMap />}
+                        linkTo="./foo"
+                    />
+                </section>
+            </DashboardState>
+        );
+    } else {
+        return "loading";
+    }
 };
 
 ReactDOM.render(<Dashboard />, document.querySelector("#reactApp"));

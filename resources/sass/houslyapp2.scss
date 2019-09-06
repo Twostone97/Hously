@@ -74,7 +74,11 @@
 
                 &.subpage {
                     display: block;
-                    height: 77vh;
+                    height: 75vh;
+                }
+
+                &.addnotice {
+                    height: 13vh;
                 }
 
                 //NOTICEBOARD BOX STYLES
@@ -166,9 +170,14 @@
                             width: 100%;
                         }
 
+                        .ispermanent {
+                            width: 35vw;
+                        }
+
                         #notice {
-                            width: 95%;
+                            width: 100%;
                             margin: 0 auto;
+                            margin-top: 20px;
                             border-color: $gray;
                         }
                     }

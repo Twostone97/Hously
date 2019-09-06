@@ -241,7 +241,7 @@
             <div class="sideNav__container">
                 <div><a href="/app/dashboard"><img src="{{ asset('img/icons/dashboard/sidenav/home.png') }}" alt=""></a></div>
                 <div><a href="/app/noticeboard"><img src="{{ asset('img/icons/dashboard/sidenav/ico09.png') }}" alt=""></a></div>
-                <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico02.png') }}" alt=""></a></div>
+                <div><a href="/app/messenger"><img src="{{ asset('img/icons/dashboard/sidenav/ico02.png') }}" alt=""></a></div>
                 <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico03.png') }}" alt=""></a></div>
                 <div><a href="/app/community"><img src="{{ asset('img/icons/dashboard/sidenav/ico10.png') }}" alt=""></a></div>
                 <div><a href="/app/foo"><img src="{{ asset('img/icons/dashboard/sidenav/ico01.png') }}" alt=""></a></div>

@@ -56,36 +56,6 @@ const CommunityContainer = () => {
                                         />
                                     );
                                 })}
-                                {users.map(user => {
-                                    return (
-                                        <CommunityListItem
-                                            user_id={user.id}
-                                            profile_img={
-                                                user.profile_image != null &&
-                                                true
-                                            }
-                                            name={user.first_name}
-                                            surname={user.last_name}
-                                            key={userListKey++}
-                                            setUserDetail={setUserDetail}
-                                        />
-                                    );
-                                })}
-                                {users.map(user => {
-                                    return (
-                                        <CommunityListItem
-                                            user_id={user.id}
-                                            profile_img={
-                                                user.profile_image != null &&
-                                                true
-                                            }
-                                            name={user.first_name}
-                                            surname={user.last_name}
-                                            key={userListKey++}
-                                            setUserDetail={setUserDetail}
-                                        />
-                                    );
-                                })}
                             </div>
                             <Switch>
                                 <Route

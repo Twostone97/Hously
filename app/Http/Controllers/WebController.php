@@ -31,6 +31,10 @@ class WebController extends Controller
         return view ('/app/community');
     }
 
+    public function messenger() {
+        return view ('/app/messenger');
+    }
+
     public function foo() {
         return view ('/app/foo');
     }

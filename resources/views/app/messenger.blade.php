@@ -1,6 +1,6 @@
 @extends ('layouts/dashboardtemplate')
 
-@section ('title') Nástěnka
+@section ('title') Messenger
 @endsection
 
 @section ('nav')
@@ -13,5 +13,5 @@
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/noticeboard.js"></script>
+<script src="/js/messenger.js"></script>
 @endsection
