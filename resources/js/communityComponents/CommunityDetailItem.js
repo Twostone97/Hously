@@ -43,7 +43,8 @@ const CommunityDetailItem = ({ match }) => {
                             method: "post",
                             body: data
                         }).then(() => {
-                            return <Redirect to="/app/messenger" />;
+                            return (window.location =
+                                "http://www.hously.test/app/messenger");
                         });
                     }}
                 >

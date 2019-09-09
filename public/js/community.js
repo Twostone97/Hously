@@ -30769,9 +30769,7 @@ var CommunityDetailItem = function CommunityDetailItem(_ref) {
         method: "post",
         body: data
       }).then(function () {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-          to: "/app/messenger"
-        });
+        return window.location = "http://www.hously.test/app/messenger";
       });
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
