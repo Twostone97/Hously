@@ -345,11 +345,13 @@ class HomeController extends Controller
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
+        $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
 
         $data = (object) [
             "communities" => $communities,
             "chats" => $chats,
             "users"=>$users,
+            "current_user"=>$current_user,
         ];
 
         return response()->json($data, 200);
@@ -376,11 +378,13 @@ class HomeController extends Controller
         $building       = $request->session()->get('building');
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image', 'email')->get();
+        $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
         
 
         $data = (object) [
             "residents" => $residents,
             "users" => $users,
+            "current_user"=>$current_user,
         ];
 
         return response()->json($data, 200);

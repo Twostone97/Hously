@@ -25723,7 +25723,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30731,19 +30731,24 @@ var CommunityContainer = function CommunityContainer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/dashboard/DashboardContext */ "./resources/js/context/dashboard/DashboardContext.js");
+
 
 
 
 var CommunityDetailItem = function CommunityDetailItem(_ref) {
   var match = _ref.match;
-  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  var users = dashboardContext.data.users;
+  var dashboardContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_dashboard_DashboardContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var _dashboardContext$dat = dashboardContext.data,
+      users = _dashboardContext$dat.users,
+      current_user = _dashboardContext$dat.current_user;
   var userid = match.params.userid;
+  console.log(current_user);
   var currentUser = users.filter(function (usr) {
     return usr.id == userid;
   });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "community__subpage__detail"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail__item"
@@ -30754,7 +30759,32 @@ var CommunityDetailItem = function CommunityDetailItem(_ref) {
     alt: ""
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "detail__item__txt"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, currentUser[0].first_name, " ", currentUser[0].last_name))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, currentUser[0].first_name, " ", currentUser[0].last_name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      e.target[0].value = "";
+      fetch("/messageroom", {
+        method: "post",
+        body: data
+      }).then(function () {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/app/messenger"
+        });
+      });
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "with",
+    value: "".concat(userid, ";").concat(current_user.id)
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Napsat zpr\xE1vu"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CommunityDetailItem);
@@ -31015,6 +31045,16 @@ var DashboardState = function DashboardState(props) {
     });
   };
 
+  var addChat = function addChat(data) {
+    //adds new message to the community
+    fetch("/chat", {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchData();
   }, []);
@@ -31027,7 +31067,8 @@ var DashboardState = function DashboardState(props) {
       fetchData: fetchData,
       fetchChats: fetchChats,
       deleteNotice: deleteNotice,
-      addNotice: addNotice
+      addNotice: addNotice,
+      addChat: addChat
     }
   }, props.children);
 };

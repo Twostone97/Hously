@@ -15,7 +15,7 @@ class CreateMessageRoomsTable extends Migration
     {
         Schema::create('message_rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer("private");
+            $table->text("with");
             $table->timestamps();
         });
     }

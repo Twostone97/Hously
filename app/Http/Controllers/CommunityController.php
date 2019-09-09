@@ -35,7 +35,10 @@ class CommunityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $community = new Community;
+        $community->community_name = $request->community_name;
+        $community->building_id = $request->session()->get('building');
+        $community->save();
     }
 
     /**

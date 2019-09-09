@@ -13,7 +13,7 @@ class ChatSeeder extends Seeder
     public function run()
     {
         Chat::create([
-            'user_id'     => 1,
+            'user_id'     => 2,
             'community_id'    => 1,
             'text'     => 'Výtah je rozbitý!',
             'warning'    => true,
@@ -21,7 +21,7 @@ class ChatSeeder extends Seeder
         ]);
 
         Chat::create([
-            'user_id'     => 2,
+            'user_id'     => 3,
             'community_id'    => 1,
             'text'     => 'Už zase!',
             'warning'    => false,
@@ -29,7 +29,7 @@ class ChatSeeder extends Seeder
         ]);
 
         Chat::create([
-            'user_id'     => 2,
+            'user_id'     => 3,
             'community_id'    => 2,
             'text'     => 'Párty u mě. V sedm večer.',
             'warning'    => false,
@@ -37,7 +37,7 @@ class ChatSeeder extends Seeder
         ]);
 
         Chat::create([
-            'user_id'     => 3,
+            'user_id'     => 4,
             'community_id'    => 2,
             'text'     => 'Budu tam.',
             'warning'    => false,

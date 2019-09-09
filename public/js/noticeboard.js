@@ -30788,6 +30788,16 @@ var DashboardState = function DashboardState(props) {
     });
   };
 
+  var addChat = function addChat(data) {
+    //adds new message to the community
+    fetch("/chat", {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchData();
   }, []);
@@ -30800,7 +30810,8 @@ var DashboardState = function DashboardState(props) {
       fetchData: fetchData,
       fetchChats: fetchChats,
       deleteNotice: deleteNotice,
-      addNotice: addNotice
+      addNotice: addNotice,
+      addChat: addChat
     }
   }, props.children);
 };

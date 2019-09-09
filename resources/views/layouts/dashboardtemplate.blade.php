@@ -52,7 +52,7 @@
                         <div id="register__open"><a class="nav-link" href="#">Registrace</a></div>
                         @else
                         <div>
-                            <img src="{{ asset('img/icons/nav/messenger.png') }}" alt="">
+                            <a href="/app/messenger"><img src="{{ asset('img/icons/nav/messenger.png') }}" alt=""></a>
                             <img src="{{ asset('img/icons/nav/notifications.png') }}" alt="">
                             <img src="{{ asset('img/icons/nav/settings.png') }}" alt="">
                             <a href="/app/dashboard">{{ Auth::user()->first_name }}</a>

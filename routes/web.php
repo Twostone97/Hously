@@ -24,6 +24,7 @@ Route::get('/app/noticeboard','WebController@noticeboard');
 Route::get('/app/community','WebController@community');
 Route::get('/app/community/{id}','WebController@community');
 Route::get('/app/messenger','WebController@messenger');
+Route::get('/app/messenger/{id}','WebController@messenger');
 Route::get('/app/foo','WebController@foo');
 //
 Route::get('/react-houses','WebController@reacthouses');
@@ -50,7 +51,7 @@ Route::get('/meapi', 'HomeController@me_api');
 
 //Api pro messanger
 Route::post('/messageroom', 'MessageRoomController@store');
-Route::post('/message', 'MessageRoomController@store');
+Route::post('/message', 'MessageController@store');
 
 
 // *************************************

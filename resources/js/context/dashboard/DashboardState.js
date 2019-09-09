@@ -55,6 +55,16 @@ const DashboardState = props => {
         });
     };
 
+    const addChat = data => {
+        //adds new message to the community
+        fetch("/chat", {
+            method: "post",
+            body: data
+        }).then(() => {
+            fetchData();
+        });
+    };
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -69,7 +79,8 @@ const DashboardState = props => {
                 fetchData,
                 fetchChats,
                 deleteNotice,
-                addNotice
+                addNotice,
+                addChat
             }}
         >
             {props.children}

@@ -27602,6 +27602,16 @@ var DashboardState = function DashboardState(props) {
     });
   };
 
+  var addChat = function addChat(data) {
+    //adds new message to the community
+    fetch("/chat", {
+      method: "post",
+      body: data
+    }).then(function () {
+      fetchData();
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchData();
   }, []);
@@ -27614,7 +27624,8 @@ var DashboardState = function DashboardState(props) {
       fetchData: fetchData,
       fetchChats: fetchChats,
       deleteNotice: deleteNotice,
-      addNotice: addNotice
+      addNotice: addNotice,
+      addChat: addChat
     }
   }, props.children);
 };
@@ -28274,18 +28285,32 @@ var Messenger = function Messenger() {
     //selecting messages in the commmunity
     var communityMessages = chats.filter(function (chat) {
       return chat.community_id == community.id;
-    }); //selecting user of the last message in the community
-
-    var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
-    var lastMsgUser = users.filter(function (user) {
-      return user.id == lastMsgUserId;
     });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      headline: community.community_name,
-      lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-      lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-      avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-    }));
+
+    if (communityMessages.length != 0) {
+      //selecting user of the last message in the community
+      var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
+      var lastMsgUser = users.filter(function (user) {
+        return user.id == lastMsgUserId;
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/app/messenger/".concat(community.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        headline: community.community_name,
+        lastmsgtxt: communityMessages[communityMessages.length - 1].text,
+        lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
+        avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+      })));
+    } else {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/app/messenger/".concat(community.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messenger_components_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        headline: community.community_name,
+        lastmsgtxt: "\u017D\xE1dn\xE9 zpr\xE1vy!",
+        lastmsgtime: "-",
+        avatar: "../../../storage/app/public/unknown.png"
+      })));
+    }
   })));
 };
 

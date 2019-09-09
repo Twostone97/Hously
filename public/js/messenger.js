@@ -25777,8 +25777,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messengerComponents/MessengerItem */ "./resources/js/messengerComponents/MessengerItem.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _messengerComponents_MessengerApp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messengerComponents/MessengerApp */ "./resources/js/messengerComponents/MessengerApp.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_4__);
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
@@ -25822,6 +25823,7 @@ function _arrayWithHoles(arr) {
 
 
 
+
 var Messenger = function Messenger() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
@@ -25833,21 +25835,39 @@ var Messenger = function Messenger() {
       api = _useState4[0],
       setapi = _useState4[1];
 
-  if (loading) {
-    //fetches chats only
+  var urlId = 1;
+
+  var fetchChat = function fetchChat() {
+    setloading(true);
     fetch("/chatapi").then(function (resp) {
       return resp.json();
     }).then(function (data) {
       return setapi(data);
     }).then(setloading(false));
+  };
+
+  if (loading) {
+    fetchChat();
+  }
+
+  var url = window.location.href;
+  url = url.split("/");
+
+  if (url.length > 5) {
+    urlId = url[url.length - 1];
   }
 
   if (!loading) {
     console.log(api);
 
-    if (Object(util__WEBPACK_IMPORTED_MODULE_3__["isUndefined"])(api)) {
+    if (Object(util__WEBPACK_IMPORTED_MODULE_4__["isUndefined"])(api)) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     } else {
+      api.communities.forEach(function (community) {
+        if (community.id == urlId) {
+          name = community.community_name;
+        }
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard__sections__box subpage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -25866,33 +25886,159 @@ var Messenger = function Messenger() {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "community__subpage__list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard__sections__box__head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Komunity")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard__sections__box__body scrollable"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messenger__container"
       }, api.communities.map(function (community) {
         //selecting messages in the commmunity
         var communityMessages = api.chats.filter(function (chat) {
           return chat.community_id == community.id;
-        }); //selecting user of the last message in the community
-
-        var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
-        var lastMsgUser = api.users.filter(function (user) {
-          return user.id == lastMsgUserId;
         });
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          headline: community.community_name,
-          lastmsgtxt: communityMessages[communityMessages.length - 1].text,
-          lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
-          avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
-        }));
+
+        if (communityMessages.length != 0) {
+          //selecting user of the last message in the community
+          var lastMsgUserId = communityMessages[communityMessages.length - 1].user_id;
+          var lastMsgUser = api.users.filter(function (user) {
+            return user.id == lastMsgUserId;
+          });
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "/app/messenger/".concat(community.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            headline: community.community_name,
+            lastmsgtxt: communityMessages[communityMessages.length - 1].text,
+            lastmsgtime: communityMessages[communityMessages.length - 1].created_at,
+            avatar: lastMsgUser[0].profile_image == 1 ? __webpack_require__("./storage/app/public sync recursive ^\\.\\/.*\\.png$")("./".concat(lastMsgUserId, ".png")) : __webpack_require__(/*! ../../storage/app/public/unknown.png */ "./storage/app/public/unknown.png")
+          })));
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "/app/messenger/".concat(community.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            headline: community.community_name,
+            lastmsgtxt: "\u017D\xE1dn\xE9 zpr\xE1vy!",
+            lastmsgtime: "-",
+            avatar: "../../storage/app/public/unknown.png"
+          })));
+        }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard__sections__box__head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Zpr\xE1vy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard__sections__box__body scrollable"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messenger__container"
+      }, "mistnosti"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "community__subpage__detail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard__sections__box__head"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "N\xE1zev komunity")), "Messenger"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard__sections__box__body",
+        style: {
+          height: "96%"
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerApp__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        chats: api.chats,
+        users: api.users,
+        current_user: api.current_user,
+        current_community: urlId,
+        reload: fetchChat
+      }))))));
     }
   }
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Messenger, null), document.querySelector("#reactApp"));
+
+/***/ }),
+
+/***/ "./resources/js/messengerComponents/MessengerApp.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/messengerComponents/MessengerApp.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MessengerApp = function MessengerApp(_ref) {
+  var chats = _ref.chats,
+      users = _ref.users,
+      current_user = _ref.current_user,
+      current_community = _ref.current_community,
+      reload = _ref.reload;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body scrollable",
+    style: {
+      height: "100%",
+      width: "100%"
+    }
+  }, chats.map(function (message) {
+    if (message.community_id == current_community) {
+      if (message.user_id == current_user.id) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "chat__bubble b__right"
+        }, "J\xE1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "chat__bubble b__left"
+        }, users.map(function (user) {
+          if (message.user_id == user.id) {
+            return "".concat(user.first_name, " ").concat(user.last_name);
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
+      }
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notices__add",
+    style: {
+      width: "100%",
+      marginTop: "20px"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    encType: "multipart/form-data",
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      var data = new FormData(e.target);
+      e.target[0].value = "";
+      fetch("/chat", {
+        method: "post",
+        body: data
+      }).then(function () {
+        reload();
+      });
+    },
+    style: {
+      width: "100%"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "community_id",
+    value: parseInt(current_community)
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "text",
+    style: {
+      width: "100%"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    id: "text",
+    name: "text",
+    style: {
+      width: "100%"
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    name: "_token",
+    value: document.querySelector('meta[name="csrf-token"]').content
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Odeslat"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MessengerApp);
 
 /***/ }),
 

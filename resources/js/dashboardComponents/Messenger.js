@@ -15,35 +15,53 @@ const Messenger = () => {
                         chat => chat.community_id == community.id
                     );
 
-                    //selecting user of the last message in the community
-                    const lastMsgUserId =
-                        communityMessages[communityMessages.length - 1].user_id;
-                    const lastMsgUser = users.filter(
-                        user => user.id == lastMsgUserId
-                    );
+                    if (communityMessages.length != 0) {
+                        //selecting user of the last message in the community
 
-                    return (
-                        <>
-                            <MessengerItem
-                                headline={community.community_name}
-                                lastmsgtxt={
-                                    communityMessages[
-                                        communityMessages.length - 1
-                                    ].text
-                                }
-                                lastmsgtime={
-                                    communityMessages[
-                                        communityMessages.length - 1
-                                    ].created_at
-                                }
-                                avatar={
-                                    lastMsgUser[0].profile_image == 1
-                                        ? require(`../../../storage/app/public/${lastMsgUserId}.png`)
-                                        : require(`../../../storage/app/public/unknown.png`)
-                                }
-                            />
-                        </>
-                    );
+                        const lastMsgUserId =
+                            communityMessages[communityMessages.length - 1]
+                                .user_id;
+                        const lastMsgUser = users.filter(
+                            user => user.id == lastMsgUserId
+                        );
+                        return (
+                            <>
+                                <a href={`/app/messenger/${community.id}`}>
+                                    <MessengerItem
+                                        headline={community.community_name}
+                                        lastmsgtxt={
+                                            communityMessages[
+                                                communityMessages.length - 1
+                                            ].text
+                                        }
+                                        lastmsgtime={
+                                            communityMessages[
+                                                communityMessages.length - 1
+                                            ].created_at
+                                        }
+                                        avatar={
+                                            lastMsgUser[0].profile_image == 1
+                                                ? require(`../../../storage/app/public/${lastMsgUserId}.png`)
+                                                : require(`../../../storage/app/public/unknown.png`)
+                                        }
+                                    />
+                                </a>
+                            </>
+                        );
+                    } else {
+                        return (
+                            <>
+                                <a href={`/app/messenger/${community.id}`}>
+                                    <MessengerItem
+                                        headline={community.community_name}
+                                        lastmsgtxt="Žádné zprávy!"
+                                        lastmsgtime="-"
+                                        avatar="../../../storage/app/public/unknown.png"
+                                    />
+                                </a>
+                            </>
+                        );
+                    }
                 })}
             </div>
         </div>

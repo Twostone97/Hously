@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Message;
+use App\MessageRoom;
 use Auth;
 use DB;
 
@@ -38,11 +38,8 @@ class MessageRoomController extends Controller
     public function store(Request $request)
     {
         $room = new MessageRoom;
-        $room->private = $request->private;
+        $room->with = $request->with;
         $room->save();
-
-        $messageroom  = DB::table('message_rooms')->orderBy("created_at", "desc")->first();
-        session(['messageroom' => $messageroom]);
     }
 
     /**
@@ -85,8 +82,8 @@ class MessageRoomController extends Controller
      * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Community $community)
+    public function destroy(Request $request )
     {
-        //
+
     }
 }
