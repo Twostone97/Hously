@@ -25962,6 +25962,9 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 var MessengerApp = function MessengerApp(_ref) {
@@ -25970,6 +25973,20 @@ var MessengerApp = function MessengerApp(_ref) {
       current_user = _ref.current_user,
       current_community = _ref.current_community,
       reload = _ref.reload;
+  var interval = null;
+
+  if (Object(util__WEBPACK_IMPORTED_MODULE_1__["isNull"])(interval)) {
+    interval = setInterval(function () {
+      reload();
+      console.log("api");
+    }, 1000);
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    return function () {
+      clearInterval(interval);
+    };
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard__sections__box__body scrollable",
     style: {

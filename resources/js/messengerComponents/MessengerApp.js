@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { isNull, isUndefined } from "util";
 
 const MessengerApp = ({
     chats,
@@ -7,6 +8,21 @@ const MessengerApp = ({
     current_community,
     reload
 }) => {
+    let interval = null;
+
+    if (isNull(interval)) {
+        interval = setInterval(() => {
+            reload();
+            console.log("api");
+        }, 1000);
+    }
+
+    useEffect(() => {
+        return () => {
+            clearInterval(interval);
+        };
+    });
+
     return (
         <>
             <div
