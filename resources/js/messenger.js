@@ -8,7 +8,7 @@ import { isNull, isUndefined } from "util";
 const Messenger = () => {
     const [loading, setloading] = useState(true);
     const [api, setapi] = useState();
-    let urlId = 1;
+    let urlId = "1";
 
     const fetchChat = () => {
         setloading(true);
@@ -29,10 +29,11 @@ const Messenger = () => {
     }
 
     if (!loading) {
-        console.log(api);
         if (isUndefined(api)) {
             return <div />;
         } else {
+            console.log(api);
+
             api.communities.forEach(community => {
                 if (community.id == urlId) {
                     name = community.community_name;
@@ -137,7 +138,31 @@ const Messenger = () => {
                                 </div>
                                 <div className="dashboard__sections__box__body scrollable">
                                     <div className="messenger__container">
-                                        mistnosti
+                                        {api.message_rooms !== null ? (
+                                            api.message_rooms.map(room => {
+                                                let uid = room.with.split(";");
+                                                let testid = uid[0];
+                                                let mruser = api.users.filter(
+                                                    user => user.id == testid
+                                                );
+                                                return (
+                                                    <>
+                                                        <a
+                                                            href={`/app/messenger/${room.id};m`}
+                                                        >
+                                                            <MessengerItem
+                                                                headline={`${mruser[0].first_name} ${mruser[0].last_name}`}
+                                                                lastmsgtxt="Žádné zprávy!"
+                                                                lastmsgtime="-"
+                                                                avatar="../../storage/app/public/unknown.png"
+                                                            />
+                                                        </a>
+                                                    </>
+                                                );
+                                            })
+                                        ) : (
+                                            <h3>Žádné zprávy</h3>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -156,6 +181,7 @@ const Messenger = () => {
                                         current_user={api.current_user}
                                         current_community={urlId}
                                         reload={fetchChat}
+                                        messages={api.messages}
                                     />
                                 </div>
                             </div>

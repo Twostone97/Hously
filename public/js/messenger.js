@@ -25835,7 +25835,7 @@ var Messenger = function Messenger() {
       api = _useState4[0],
       setapi = _useState4[1];
 
-  var urlId = 1;
+  var urlId = "1";
 
   var fetchChat = function fetchChat() {
     setloading(true);
@@ -25858,11 +25858,10 @@ var Messenger = function Messenger() {
   }
 
   if (!loading) {
-    console.log(api);
-
     if (Object(util__WEBPACK_IMPORTED_MODULE_4__["isUndefined"])(api)) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     } else {
+      console.log(api);
       api.communities.forEach(function (community) {
         if (community.id == urlId) {
           name = community.community_name;
@@ -25927,7 +25926,21 @@ var Messenger = function Messenger() {
         className: "dashboard__sections__box__body scrollable"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messenger__container"
-      }, "mistnosti"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, api.message_rooms !== null ? api.message_rooms.map(function (room) {
+        var uid = room["with"].split(";");
+        var testid = uid[0];
+        var mruser = api.users.filter(function (user) {
+          return user.id == testid;
+        });
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "/app/messenger/".concat(room.id, ";m")
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          headline: "".concat(mruser[0].first_name, " ").concat(mruser[0].last_name),
+          lastmsgtxt: "\u017D\xE1dn\xE9 zpr\xE1vy!",
+          lastmsgtime: "-",
+          avatar: "../../storage/app/public/unknown.png"
+        })));
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u017D\xE1dn\xE9 zpr\xE1vy")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "community__subpage__detail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard__sections__box__head"
@@ -25941,7 +25954,8 @@ var Messenger = function Messenger() {
         users: api.users,
         current_user: api.current_user,
         current_community: urlId,
-        reload: fetchChat
+        reload: fetchChat,
+        messages: api.messages
       }))))));
     }
   }
@@ -25972,13 +25986,18 @@ var MessengerApp = function MessengerApp(_ref) {
       users = _ref.users,
       current_user = _ref.current_user,
       current_community = _ref.current_community,
-      reload = _ref.reload;
+      reload = _ref.reload,
+      messages = _ref.messages; // const scrollToBottom = element => {
+  //     const el = document.querySelector(element);
+  //     el.scrollTop = el.scrollHeight;
+  // };
+  // scrollToBottom(".messangerscroll");
+
   var interval = null;
 
   if (Object(util__WEBPACK_IMPORTED_MODULE_1__["isNull"])(interval)) {
     interval = setInterval(function () {
       reload();
-      console.log("api");
     }, 1000);
   }
 
@@ -25987,72 +26006,143 @@ var MessengerApp = function MessengerApp(_ref) {
       clearInterval(interval);
     };
   });
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body scrollable",
-    style: {
-      height: "100%",
-      width: "100%"
-    }
-  }, chats.map(function (message) {
-    if (message.community_id == current_community) {
-      if (message.user_id == current_user.id) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "chat__bubble b__right"
-        }, "J\xE1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "chat__bubble b__left"
-        }, users.map(function (user) {
-          if (message.user_id == user.id) {
-            return "".concat(user.first_name, " ").concat(user.last_name);
-          }
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
+  current_community = current_community.split(";");
+
+  if (current_community.length > 1) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box__body scrollable messangerscroll",
+      style: {
+        height: "100%",
+        width: "100%"
       }
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "notices__add",
-    style: {
-      width: "100%",
-      marginTop: "20px"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    encType: "multipart/form-data",
-    onSubmit: function onSubmit(e) {
-      e.preventDefault();
-      var data = new FormData(e.target);
-      e.target[0].value = "";
-      fetch("/chat", {
-        method: "post",
-        body: data
-      }).then(function () {
-        reload();
-      });
-    },
-    style: {
-      width: "100%"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "community_id",
-    value: parseInt(current_community)
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "text",
-    style: {
-      width: "100%"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-    id: "text",
-    name: "text",
-    style: {
-      width: "100%"
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "hidden",
-    name: "_token",
-    value: document.querySelector('meta[name="csrf-token"]').content
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit"
-  }, "Odeslat"))));
+    }, messages.map(function (message) {
+      if (message.message_room == current_community[0]) {
+        if (message.user_id == current_user.id) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__bubble b__right"
+          }, "J\xE1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.message);
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__bubble b__left"
+          }, users.map(function (user) {
+            if (message.user_id == user.id) {
+              return "".concat(user.first_name, " ").concat(user.last_name);
+            }
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.message);
+        }
+      }
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__add",
+      style: {
+        width: "100%",
+        marginTop: "20px"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      encType: "multipart/form-data",
+      onSubmit: function onSubmit(e) {
+        e.preventDefault();
+        var data = new FormData(e.target);
+        e.target[0].value = "";
+        fetch("/message", {
+          method: "post",
+          body: data
+        }).then(function () {
+          reload();
+        });
+      },
+      style: {
+        width: "100%"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "hidden",
+      name: "message_room",
+      value: parseInt(current_community[0])
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      htmlFor: "message",
+      style: {
+        width: "100%"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      id: "message",
+      name: "message",
+      style: {
+        width: "100%"
+      }
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "hidden",
+      name: "_token",
+      value: document.querySelector('meta[name="csrf-token"]').content
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "submit"
+    }, "Odeslat"))));
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dashboard__sections__box__body scrollable messangerscroll",
+      style: {
+        height: "100%",
+        width: "100%"
+      }
+    }, chats.map(function (message) {
+      if (message.community_id == current_community[0]) {
+        if (message.user_id == current_user.id) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__bubble b__right"
+          }, "J\xE1", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__bubble b__left"
+          }, users.map(function (user) {
+            if (message.user_id == user.id) {
+              return "".concat(user.first_name, " ").concat(user.last_name);
+            }
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), message.text);
+        }
+      }
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "notices__add",
+      style: {
+        width: "100%",
+        marginTop: "20px"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      encType: "multipart/form-data",
+      onSubmit: function onSubmit(e) {
+        e.preventDefault();
+        var data = new FormData(e.target);
+        e.target[0].value = "";
+        fetch("/chat", {
+          method: "post",
+          body: data
+        }).then(function () {
+          reload();
+        });
+      },
+      style: {
+        width: "100%"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "hidden",
+      name: "community_id",
+      value: parseInt(current_community[0])
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      htmlFor: "text",
+      style: {
+        width: "100%"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      id: "text",
+      name: "text",
+      style: {
+        width: "100%"
+      }
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "hidden",
+      name: "_token",
+      value: document.querySelector('meta[name="csrf-token"]').content
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "submit"
+    }, "Odeslat"))));
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MessengerApp);

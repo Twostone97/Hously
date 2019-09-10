@@ -16,8 +16,7 @@ const DashboardCommonChats = ({ communities, chats, users }) => {
             fetch("/chatapi")
                 .then(resp => resp.json())
                 .then(data => setlistOfChats(data.chats));
-            console.log("chatapi");
-            scrollToBottom(".chat__container");
+            scrollToBottom(".dashboard__sections__box__body scrollable");
         }, 2000);
     }
 

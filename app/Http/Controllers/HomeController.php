@@ -340,19 +340,52 @@ class HomeController extends Controller
 
     public function chat_api (Request $request)
     {
+        $mr = [];
+        $filtered_messages = [];
 
         $building       = $request->session()->get('building');
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
         $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
+        $message_rooms  = DB::table('message_rooms')->get();
+        $messages       = DB::table("messages")->get();
+        
+
+        $needle = (string)Auth::user()->id;
+
+        foreach ($message_rooms as $room) {
+            $array = explode(";", $room->with);
+            if (in_array($needle, $array)) {
+                $mr[] = $room;
+            }
+        }
+
+        
+
+        if (count($messages) > 0) {
+            foreach ($mr as $room) {
+                foreach ($messages as $message) {
+                    if ($room->id == $message->message_room) {
+                        $filtered_messages[] = $message;
+                    }
+                }
+            }
+        }
+            
+        
+        
 
         $data = (object) [
             "communities" => $communities,
             "chats" => $chats,
             "users"=>$users,
             "current_user"=>$current_user,
+            "message_rooms"=>$mr,
+            "messages" => $filtered_messages
         ];
+
+
 
         return response()->json($data, 200);
     }

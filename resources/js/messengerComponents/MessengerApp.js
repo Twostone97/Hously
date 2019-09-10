@@ -6,14 +6,21 @@ const MessengerApp = ({
     users,
     current_user,
     current_community,
-    reload
+    reload,
+    messages
 }) => {
+    // const scrollToBottom = element => {
+    //     const el = document.querySelector(element);
+    //     el.scrollTop = el.scrollHeight;
+    // };
+
+    // scrollToBottom(".messangerscroll");
+
     let interval = null;
 
     if (isNull(interval)) {
         interval = setInterval(() => {
             reload();
-            console.log("api");
         }, 1000);
     }
 
@@ -23,82 +30,165 @@ const MessengerApp = ({
         };
     });
 
-    return (
-        <>
-            <div
-                className="dashboard__sections__box__body scrollable"
-                style={{ height: "100%", width: "100%" }}
-            >
-                {chats.map(message => {
-                    if (message.community_id == current_community) {
-                        if (message.user_id == current_user.id) {
-                            return (
-                                <div className="chat__bubble b__right">
-                                    Já
-                                    <br />
-                                    {message.text}
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div className="chat__bubble b__left">
-                                    {users.map(user => {
-                                        if (message.user_id == user.id) {
-                                            return `${user.first_name} ${user.last_name}`;
-                                        }
-                                    })}
-                                    <br />
-                                    {message.text}
-                                </div>
-                            );
-                        }
-                    }
-                })}
-            </div>
-            <div
-                className="notices__add"
-                style={{ width: "100%", marginTop: "20px" }}
-            >
-                <form
-                    encType="multipart/form-data"
-                    onSubmit={e => {
-                        e.preventDefault();
-                        const data = new FormData(e.target);
-                        e.target[0].value = "";
-                        fetch("/chat", {
-                            method: "post",
-                            body: data
-                        }).then(() => {
-                            reload();
-                        });
-                    }}
-                    style={{ width: "100%" }}
+    current_community = current_community.split(";");
+
+    if (current_community.length > 1) {
+        return (
+            <>
+                <div
+                    className="dashboard__sections__box__body scrollable messangerscroll"
+                    style={{ height: "100%", width: "100%" }}
                 >
-                    <input
-                        type="hidden"
-                        name="community_id"
-                        value={parseInt(current_community)}
-                    />
-                    <label htmlFor="text" style={{ width: "100%" }}>
-                        <textarea
-                            id="text"
-                            name="text"
-                            style={{ width: "100%" }}
-                        />
-                    </label>
-                    <input
-                        type="hidden"
-                        name="_token"
-                        value={
-                            document.querySelector('meta[name="csrf-token"]')
-                                .content
+                    {messages.map(message => {
+                        if (message.message_room == current_community[0]) {
+                            if (message.user_id == current_user.id) {
+                                return (
+                                    <div className="chat__bubble b__right">
+                                        Já
+                                        <br />
+                                        {message.message}
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div className="chat__bubble b__left">
+                                        {users.map(user => {
+                                            if (message.user_id == user.id) {
+                                                return `${user.first_name} ${user.last_name}`;
+                                            }
+                                        })}
+                                        <br />
+                                        {message.message}
+                                    </div>
+                                );
+                            }
                         }
-                    />
-                    <button type="submit">Odeslat</button>
-                </form>
-            </div>
-        </>
-    );
+                    })}
+                </div>
+                <div
+                    className="notices__add"
+                    style={{ width: "100%", marginTop: "20px" }}
+                >
+                    <form
+                        encType="multipart/form-data"
+                        onSubmit={e => {
+                            e.preventDefault();
+                            const data = new FormData(e.target);
+                            e.target[0].value = "";
+                            fetch("/message", {
+                                method: "post",
+                                body: data
+                            }).then(() => {
+                                reload();
+                            });
+                        }}
+                        style={{ width: "100%" }}
+                    >
+                        <input
+                            type="hidden"
+                            name="message_room"
+                            value={parseInt(current_community[0])}
+                        />
+                        <label htmlFor="message" style={{ width: "100%" }}>
+                            <textarea
+                                id="message"
+                                name="message"
+                                style={{ width: "100%" }}
+                            />
+                        </label>
+                        <input
+                            type="hidden"
+                            name="_token"
+                            value={
+                                document.querySelector(
+                                    'meta[name="csrf-token"]'
+                                ).content
+                            }
+                        />
+                        <button type="submit">Odeslat</button>
+                    </form>
+                </div>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <div
+                    className="dashboard__sections__box__body scrollable messangerscroll"
+                    style={{ height: "100%", width: "100%" }}
+                >
+                    {chats.map(message => {
+                        if (message.community_id == current_community[0]) {
+                            if (message.user_id == current_user.id) {
+                                return (
+                                    <div className="chat__bubble b__right">
+                                        Já
+                                        <br />
+                                        {message.text}
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div className="chat__bubble b__left">
+                                        {users.map(user => {
+                                            if (message.user_id == user.id) {
+                                                return `${user.first_name} ${user.last_name}`;
+                                            }
+                                        })}
+                                        <br />
+                                        {message.text}
+                                    </div>
+                                );
+                            }
+                        }
+                    })}
+                </div>
+                <div
+                    className="notices__add"
+                    style={{ width: "100%", marginTop: "20px" }}
+                >
+                    <form
+                        encType="multipart/form-data"
+                        onSubmit={e => {
+                            e.preventDefault();
+                            const data = new FormData(e.target);
+                            e.target[0].value = "";
+                            fetch("/chat", {
+                                method: "post",
+                                body: data
+                            }).then(() => {
+                                reload();
+                            });
+                        }}
+                        style={{ width: "100%" }}
+                    >
+                        <input
+                            type="hidden"
+                            name="community_id"
+                            value={parseInt(current_community[0])}
+                        />
+                        <label htmlFor="text" style={{ width: "100%" }}>
+                            <textarea
+                                id="text"
+                                name="text"
+                                style={{ width: "100%" }}
+                            />
+                        </label>
+                        <input
+                            type="hidden"
+                            name="_token"
+                            value={
+                                document.querySelector(
+                                    'meta[name="csrf-token"]'
+                                ).content
+                            }
+                        />
+                        <button type="submit">Odeslat</button>
+                    </form>
+                </div>
+            </>
+        );
+    }
 };
 
 export default MessengerApp;
