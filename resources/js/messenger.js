@@ -141,10 +141,19 @@ const Messenger = () => {
                                         {api.message_rooms !== null ? (
                                             api.message_rooms.map(room => {
                                                 let uid = room.with.split(";");
-                                                let testid = uid[0];
+                                                let testid = "0";
+                                                if (
+                                                    uid[0] ==
+                                                    api.current_user.id
+                                                ) {
+                                                    testid = uid[1];
+                                                } else {
+                                                    testid = uid[0];
+                                                }
                                                 let mruser = api.users.filter(
                                                     user => user.id == testid
                                                 );
+                                                console.log(uid);
                                                 return (
                                                     <>
                                                         <a
@@ -152,7 +161,7 @@ const Messenger = () => {
                                                         >
                                                             <MessengerItem
                                                                 headline={`${mruser[0].first_name} ${mruser[0].last_name}`}
-                                                                lastmsgtxt="Žádné zprávy!"
+                                                                lastmsgtxt="Žádné nové zprávy!"
                                                                 lastmsgtime="-"
                                                                 avatar="../../storage/app/public/unknown.png"
                                                             />

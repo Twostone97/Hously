@@ -25928,15 +25928,23 @@ var Messenger = function Messenger() {
         className: "messenger__container"
       }, api.message_rooms !== null ? api.message_rooms.map(function (room) {
         var uid = room["with"].split(";");
-        var testid = uid[0];
+        var testid = "0";
+
+        if (uid[0] == api.current_user.id) {
+          testid = uid[1];
+        } else {
+          testid = uid[0];
+        }
+
         var mruser = api.users.filter(function (user) {
           return user.id == testid;
         });
+        console.log(uid);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/app/messenger/".concat(room.id, ";m")
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
           headline: "".concat(mruser[0].first_name, " ").concat(mruser[0].last_name),
-          lastmsgtxt: "\u017D\xE1dn\xE9 zpr\xE1vy!",
+          lastmsgtxt: "\u017D\xE1dn\xE9 nov\xE9 zpr\xE1vy!",
           lastmsgtime: "-",
           avatar: "../../storage/app/public/unknown.png"
         })));
