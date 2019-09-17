@@ -32,8 +32,19 @@ const Dashboard = () => {
             })
             .finally(() => {
                 setloaded(true);
-                console.log(api.profile);
             });
+    }
+
+    if (false) {
+        document.getElementById("messengerIco").innerHTML = `<img
+        src="http://www.hously.test/img/icons/nav/messengernew.png"
+        alt=""
+    ></img>`;
+    } else {
+        document.getElementById("messengerIco").innerHTML = `<img
+        src="http://www.hously.test/img/icons/nav/messenger.png"
+        alt=""
+    ></img>`;
     }
 
     if (loaded) {

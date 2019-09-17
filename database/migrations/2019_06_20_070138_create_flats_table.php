@@ -16,9 +16,27 @@ class CreateFlatsTable extends Migration
         Schema::create('flats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('building_id');
-            $table->integer('floor');
-            $table->integer('number');
+            $table->unsignedBigInteger('floor_id');
+            $table->string('label');
             $table->boolean('residential');
+            $table->string('type');
+            $table->string('dispozition');
+            $table->integer('rooms');
+            $table->integer('size');
+            $table->boolean('balcony');
+            $table->boolean('heating');
+            $table->boolean('warm_water');
+            $table->boolean('cold_water');
+            $table->boolean('electricity');
+            $table->date('electricity_check_first');
+            $table->date('electricity_check_last');
+            $table->boolean('gas');
+            $table->boolean('antena');
+            $table->boolean('EZS');
+            $table->boolean('EPS');
+            $table->boolean('data');
+            $table->boolean('CCTV');
+            $table->boolean('available');
             $table->timestamps();
         });
     }

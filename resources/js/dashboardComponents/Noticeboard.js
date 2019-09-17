@@ -25,9 +25,8 @@ const Noticeboard = () => {
                                 <textarea
                                     className="notices__list__item__txt"
                                     readOnly
-                                >
-                                    {notice.text}
-                                </textarea>
+                                    defaultValue={notice.text}
+                                ></textarea>
 
                                 <div className="notices__list__item__footer">
                                     <div>
@@ -49,9 +48,8 @@ const Noticeboard = () => {
                                 <textarea
                                     className="notices__list__item__txt"
                                     readOnly
-                                >
-                                    {notice.text}
-                                </textarea>
+                                    defaultValue={notice.text}
+                                ></textarea>
 
                                 <div className="notices__list__item__footer">
                                     <div>

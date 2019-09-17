@@ -25861,7 +25861,6 @@ var Messenger = function Messenger() {
     if (Object(util__WEBPACK_IMPORTED_MODULE_4__["isUndefined"])(api)) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     } else {
-      console.log(api);
       api.communities.forEach(function (community) {
         if (community.id == urlId) {
           name = community.community_name;
@@ -25939,15 +25938,36 @@ var Messenger = function Messenger() {
         var mruser = api.users.filter(function (user) {
           return user.id == testid;
         });
-        console.log(uid);
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/app/messenger/".concat(room.id, ";m")
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          headline: "".concat(mruser[0].first_name, " ").concat(mruser[0].last_name),
-          lastmsgtxt: "\u017D\xE1dn\xE9 nov\xE9 zpr\xE1vy!",
-          lastmsgtime: "-",
-          avatar: "../../storage/app/public/unknown.png"
-        })));
+        var roommessages = api.messages.filter(function (message) {
+          return message.message_room == room.id;
+        });
+        var newMessage = false;
+
+        if (roommessages.length > 0) {
+          if (roommessages[roommessages.length - 1].created_at == roommessages[roommessages.length - 1].updated_at) {
+            newMessage = true;
+          }
+        }
+
+        if (newMessage) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "/app/messenger/".concat(room.id, ";m")
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            headline: "".concat(mruser[0].first_name, " ").concat(mruser[0].last_name),
+            lastmsgtxt: "M\xE1te nep\u0159e\u010Dten\xE9 zpr\xE1vy.",
+            lastmsgtime: "-",
+            avatar: "../../storage/app/public/unknown.png"
+          })));
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "/app/messenger/".concat(room.id, ";m")
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messengerComponents_MessengerItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            headline: "".concat(mruser[0].first_name, " ").concat(mruser[0].last_name),
+            lastmsgtxt: "\u017D\xE1dn\xE9 nov\xE9 zpr\xE1vy!",
+            lastmsgtime: "-",
+            avatar: "../../storage/app/public/unknown.png"
+          })));
+        }
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u017D\xE1dn\xE9 zpr\xE1vy")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "community__subpage__detail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -26014,7 +26034,33 @@ var MessengerApp = function MessengerApp(_ref) {
       clearInterval(interval);
     };
   });
-  current_community = current_community.split(";");
+  current_community = current_community.split(";"); //returns current date and time YY-mm-dd hh-mm-ss
+
+  var getDate = function getDate() {
+    var today = new Date();
+    var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + " " + time;
+    return dateTime;
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    messages.forEach(function (message) {
+      if (message.message_room == current_community[0]) {
+        message.updated_at = "".concat(getDate());
+        console.log(message);
+        var formData = new FormData();
+        formData.append("id", message.id);
+        formData.append("updated_at", message.updated_at);
+        formData.append("_token", document.querySelector('meta[name="csrf-token"]').content);
+        var data = formData;
+        fetch("/messageread", {
+          method: "post",
+          body: data
+        });
+      }
+    });
+  }, []);
 
   if (current_community.length > 1) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

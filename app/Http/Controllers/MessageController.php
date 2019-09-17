@@ -73,9 +73,11 @@ class MessageController extends Controller
      * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Community $community)
+    public function update(Request $request)
     {
-        //
+        DB::table('messages')
+            ->where('id', $request->id)
+            ->update(['updated_at' => (string)$request->updated_at]);
     }
 
     /**

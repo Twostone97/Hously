@@ -7,7 +7,9 @@ a {
     }
 }
 .dashboard__container {
-    margin-top: 80px;
+    margin-top: 8vh;
+    min-height: 85vh;
+    height: fit-content;
 
     .dashboard__sections {
         display: flex;
@@ -25,7 +27,7 @@ a {
 
             &.subpage {
                 flex-basis: 98%;
-                min-height: 80vh;
+                min-height: 85vh;
                 margin: 0 auto;
             }
 
@@ -64,7 +66,7 @@ a {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
-                height: 20rem;
+                height: 37vh;
                 background-color: $dash-3;
                 border-width: 0px 1px 1px 1px;
                 border-color: black;
@@ -77,7 +79,7 @@ a {
 
                 &.subpage {
                     display: block;
-                    height: 75vh;
+                    height: 83vh;
                 }
 
                 &.addnotice {

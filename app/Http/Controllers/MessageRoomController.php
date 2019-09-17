@@ -37,9 +37,16 @@ class MessageRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $room = new MessageRoom;
-        $room->with = $request->with;
-        $room->save();
+        $hold = explode(";", $request->with);
+        $with = "{$hold[1]};{$hold[0]}";
+
+        $message_rooms  = DB::table('message_rooms')->where('with', '=', $request->with)->orWhere('with', '=', $with)->get();
+
+        if (count($message_rooms) == 0) {
+            $room = new MessageRoom;
+            $room->with = $request->with;
+            $room->save();
+        }
     }
 
     /**

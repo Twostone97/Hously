@@ -27759,8 +27759,11 @@ var Dashboard = function Dashboard() {
       setapi(data);
     })["finally"](function () {
       setloaded(true);
-      console.log(api.profile);
     });
+  }
+
+  if (false) {} else {
+    document.getElementById("messengerIco").innerHTML = "<img\n        src=\"http://www.hously.test/img/icons/nav/messenger.png\"\n        alt=\"\"\n    ></img>";
   }
 
   if (loaded) {
@@ -28388,8 +28391,9 @@ var Noticeboard = function Noticeboard() {
       className: "notices__list__item item__featured"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
       className: "notices__list__item__txt",
-      readOnly: true
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      readOnly: true,
+      defaultValue: notice.text
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "notices__list__item__footer"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "item__featured__tag"
@@ -28399,8 +28403,9 @@ var Noticeboard = function Noticeboard() {
       className: "notices__list__item"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
       className: "notices__list__item__txt",
-      readOnly: true
-    }, notice.text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      readOnly: true,
+      defaultValue: notice.text
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "notices__list__item__footer"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\u0159\xEDlohy:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Vytvo\u0159eno: ", notice.created_at))));
   })));

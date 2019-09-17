@@ -32,8 +32,6 @@ const Messenger = () => {
         if (isUndefined(api)) {
             return <div />;
         } else {
-            console.log(api);
-
             api.communities.forEach(community => {
                 if (community.id == urlId) {
                     name = community.community_name;
@@ -153,21 +151,61 @@ const Messenger = () => {
                                                 let mruser = api.users.filter(
                                                     user => user.id == testid
                                                 );
-                                                console.log(uid);
-                                                return (
-                                                    <>
-                                                        <a
-                                                            href={`/app/messenger/${room.id};m`}
-                                                        >
-                                                            <MessengerItem
-                                                                headline={`${mruser[0].first_name} ${mruser[0].last_name}`}
-                                                                lastmsgtxt="Žádné nové zprávy!"
-                                                                lastmsgtime="-"
-                                                                avatar="../../storage/app/public/unknown.png"
-                                                            />
-                                                        </a>
-                                                    </>
+
+                                                let roommessages = api.messages.filter(
+                                                    message =>
+                                                        message.message_room ==
+                                                        room.id
                                                 );
+
+                                                let newMessage = false;
+
+                                                if (roommessages.length > 0) {
+                                                    if (
+                                                        roommessages[
+                                                            roommessages.length -
+                                                                1
+                                                        ].created_at ==
+                                                        roommessages[
+                                                            roommessages.length -
+                                                                1
+                                                        ].updated_at
+                                                    ) {
+                                                        newMessage = true;
+                                                    }
+                                                }
+
+                                                if (newMessage) {
+                                                    return (
+                                                        <>
+                                                            <a
+                                                                href={`/app/messenger/${room.id};m`}
+                                                            >
+                                                                <MessengerItem
+                                                                    headline={`${mruser[0].first_name} ${mruser[0].last_name}`}
+                                                                    lastmsgtxt="Máte nepřečtené zprávy."
+                                                                    lastmsgtime="-"
+                                                                    avatar="../../storage/app/public/unknown.png"
+                                                                />
+                                                            </a>
+                                                        </>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <>
+                                                            <a
+                                                                href={`/app/messenger/${room.id};m`}
+                                                            >
+                                                                <MessengerItem
+                                                                    headline={`${mruser[0].first_name} ${mruser[0].last_name}`}
+                                                                    lastmsgtxt="Žádné nové zprávy!"
+                                                                    lastmsgtime="-"
+                                                                    avatar="../../storage/app/public/unknown.png"
+                                                                />
+                                                            </a>
+                                                        </>
+                                                    );
+                                                }
                                             })
                                         ) : (
                                             <h3>Žádné zprávy</h3>

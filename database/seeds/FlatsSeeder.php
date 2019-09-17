@@ -12,146 +12,311 @@ class FlatsSeeder extends Seeder
      */
     public function run()
     {
+
+        // 1
+
         Flat::create([
             'building_id'     => 1,
-            'floor'    => 1,
-            'number' => 1,
+            'floor_id'     => 1,
+            'label' => '1',
             'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
         ]);
 
         Flat::create([
             'building_id'     => 1,
-            'floor'    => 1,
-            'number' => 2,
+            'floor_id'     => 1,
+            'label' => '2',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 1,
+            'label' => '3',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 1,
+            'label' => '4',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        // 2
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 2,
+            'label' => '5',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 2,
+            'label' => '6',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 2,
+            'label' => '7',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 2,
+            'label' => '8',
+            'residential' => 1,
+            'dispozition' => "3(kk)",
+            'rooms' => 3,
+            'size' => 25,
+            'type' => 'obytná',
+            'balcony' => 1,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 1,
+        ]);
+
+        // 0
+
+        Flat::create([
+            'building_id'     => 1,
+            'floor_id'     => 3,
+            'label' => '-1',
             'residential' => 0,
+            'dispozition' => "1",
+            'rooms' => 3,
+            'size' => 10,
+            'type' => 'technologický',
+            'balcony' => 0,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 0,
         ]);
 
         Flat::create([
             'building_id'     => 1,
-            'floor'    => 1,
-            'number' => 3,
+            'floor_id' => 3,
+            'label' => '-2',
             'residential' => 0,
-        ]);
-        
-        Flat::create([
-            'building_id'     => 1,
-            'floor'    => 1,
-            'number' => 4,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 1,
-            'floor'    => 2,
-            'number' => 5,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 1,
-            'floor'    => 2,
-            'number' => 6,
-            'residential' => 1,
+            'dispozition' => "1",
+            'rooms' => 3,
+            'size' => 10,
+            'type' => 'skladovací',
+            'balcony' => 0,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 1,
+            'available' => 0,
         ]);
 
         Flat::create([
             'building_id'     => 1,
-            'floor'    => 2,
-            'number' => 7,
-            'residential' => 1,
-        ]);
-        
-        Flat::create([
-            'building_id'     => 1,
-            'floor'    => 2,
-            'number' => 8,
-            'residential' => 1,
-        ]);
-
-
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 1,
-            'number' => 1,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 1,
-            'number' => 2,
+            'floor_id'     => 3,
+            'label' => '-3',
             'residential' => 0,
+            'dispozition' => "1",
+            'rooms' => 1,
+            'size' => 10,
+            'type' => 'smíšený',
+            'balcony' => 0,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 0,
         ]);
 
         Flat::create([
-            'building_id'     => 2,
-            'floor'    => 1,
-            'number' => 3,
+            'building_id'     => 1,
+            'floor_id'     => 3,
+            'label' => '-4',
             'residential' => 0,
-        ]);
-        
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 1,
-            'number' => 4,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 2,
-            'number' => 5,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 2,
-            'number' => 6,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 2,
-            'number' => 7,
-            'residential' => 1,
-        ]);
-        
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 2,
-            'number' => 8,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 3,
-            'number' => 9,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 3,
-            'number' => 10,
-            'residential' => 1,
-        ]);
-
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 3,
-            'number' => 11,
-            'residential' => 1,
-        ]);
-        
-        Flat::create([
-            'building_id'     => 2,
-            'floor'    => 3,
-            'number' => 12,
-            'residential' => 1,
+            'dispozition' => "1",
+            'rooms' => 1,
+            'size' => 10,
+            'type' => 'smíšený',
+            'balcony' => 0,
+            'heating' => 1,
+            'warm_water' => 1,
+            'cold_water' => 1,
+            'electricity' => 1,
+            'electricity_check_first' => '2019-06-20',
+            'electricity_check_last' => '2019-08-20',
+            'gas' => 1,
+            'antena' => 1,
+            'EZS' => 1,
+            'EPS' => 1,
+            'data' => 1,
+            'CCTV' => 0,
+            'available' => 0,
         ]);
     }
 }

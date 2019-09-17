@@ -212,6 +212,7 @@ class HomeController extends Controller
         $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
         $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
 
+
         foreach ($residents as $resid) {
             $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
         }
@@ -375,6 +376,7 @@ class HomeController extends Controller
             
         
         
+        
 
         $data = (object) [
             "communities" => $communities,
@@ -386,6 +388,43 @@ class HomeController extends Controller
         ];
 
 
+
+        return response()->json($data, 200);
+    }
+
+    public function unread_messages()
+    {
+        $newMessage = false;
+
+        $message_rooms  = DB::table('message_rooms')->get();
+        $messages       = DB::table("messages")->get();
+
+        $needle = (string)Auth::user()->id;
+
+        foreach ($message_rooms as $room) {
+            $array = explode(";", $room->with);
+            if (in_array($needle, $array)) {
+                $mr[] = $room;
+            }
+        }
+
+        
+
+        if (count($messages) > 0) {
+            foreach ($mr as $room) {
+                foreach ($messages as $message) {
+                    if ($room->id == $message->message_room) {
+                        $filtered_messages[] = $message;
+                    }
+                }
+            }
+        }
+
+        dd($filtered_messages); 
+
+        $data = (object) [
+            "newMessage" => $newMessage,
+        ];
 
         return response()->json($data, 200);
     }

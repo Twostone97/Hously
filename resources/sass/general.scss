@@ -166,7 +166,7 @@ header {
         z-index: 1000;
 
         @media screen and (min-width: 992px) {
-            height: 80px;
+            height: 8vh;
             min-height: 0px;
         }
     }
@@ -178,6 +178,7 @@ header {
 
     .navbar {
         background-color: $gray;
+        height: 8vh;
 
         .navbar-brand img {
             width: 50px;

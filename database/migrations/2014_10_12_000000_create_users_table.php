@@ -19,6 +19,10 @@ class CreateUsersTable extends Migration
             $table->mediumText('last_name');
             $table->date('birth_date');
             $table->integer('phone_number');
+            $table->string('street')->nullable();
+            $table->integer('house_number')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

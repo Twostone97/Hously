@@ -25,8 +25,27 @@ class CreateBuildingsTable extends Migration
             $table->integer('floors_bellow_ground');
             $table->boolean('heating');
             $table->boolean('gas');
-            $table->boolean('elevator');
             $table->string('house_rules')->nullable();
+            $table->integer('size');
+            $table->string('construction');
+            $table->integer('garden');
+            $table->string('roof');
+            $table->string('roof_cover');
+            $table->string('facade');
+            $table->boolean('worm_water');
+            $table->boolean('cold_water');
+            $table->boolean('elevator');
+            $table->boolean('electricity');
+            $table->date('electricity_check_first');
+            $table->date('electricity_check_last');
+            $table->boolean('conductor');
+            $table->date('conductor_check_first');
+            $table->date('conductor_check_last');
+            $table->boolean('antena');
+            $table->boolean('data');
+            $table->boolean('EZS');
+            $table->boolean('EPS');
+            $table->boolean('CCTV');
             $table->timestamps();
         });
     }

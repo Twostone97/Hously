@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommunitySeeder::class);
         $this->call(NoticeboardSeeder::class);
         $this->call(NoticeSeeder::class);
+        $this->call(FloorSeeder::class);
         $this->call(SuperuserSeeder::class);
     }
 }

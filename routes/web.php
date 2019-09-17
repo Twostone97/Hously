@@ -24,6 +24,7 @@ Route::get('/app/noticeboard','WebController@noticeboard');
 Route::get('/app/community','WebController@community');
 Route::get('/app/community/{id}','WebController@community');
 Route::get('/app/messenger','WebController@messenger');
+Route::get('/app/usersettings','WebController@usersettings');
 Route::get('/app/messenger/{id}','WebController@messenger');
 Route::get('/app/foo','WebController@foo');
 //
@@ -45,6 +46,7 @@ Route::get('/react-houses-api','HomeController@reacthouses');
 Route::get('/selectbuildingapi', 'HomeController@selectBuildingApi');
 Route::get('/selectprofile{building}', 'HomeController@selectProfile');
 Route::get('/chatapi', 'HomeController@chat_api'); 
+Route::get('/unreadmessages', 'HomeController@unread_messages'); 
 Route::get('/noticeapi', 'HomeController@notice_api');
 Route::get('/communityapi', 'HomeController@community_api');
 Route::get('/meapi', 'HomeController@me_api');
@@ -52,6 +54,7 @@ Route::get('/meapi', 'HomeController@me_api');
 //Api pro messanger
 Route::post('/messageroom', 'MessageRoomController@store');
 Route::post('/message', 'MessageController@store');
+Route::post('/messageread', 'MessageController@update');
 
 
 // *************************************

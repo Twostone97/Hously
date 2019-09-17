@@ -29,6 +29,8 @@ Dostupné Byty
 
         <div class="page__main__flat">
             @foreach ($allbuildings as $building)
+            
+            
             <h3> Adresa: {{$building->street}} {{$building->house_number}}</h3>
             <div class="page__main__flat__container">
 
@@ -36,9 +38,10 @@ Dostupné Byty
 
                 @foreach ($list_of_flats as $one_flat)
                 @if ($building->id === $one_flat->building_id)
+                @if ($one_flat->available)
                 <div class="page__main__flat__container__item">
                     <div class="page__main__flat__container__item__head">
-                        Byt číslo {{$one_flat->number}}
+                        Byt číslo {{$one_flat->label}}
                     </div>
 
                     <div class="page__main__flat__container__item__body">
@@ -47,21 +50,26 @@ Dostupné Byty
                         <div><strong>Adresa:</strong></div>
                         <div>{{$building->street}} {{$building->house_number}}, {{$building->city}}</div>
                         <div><strong>Na patře:</strong></div>
-                        <div>{{$one_flat->floor}}</div>
+                        @foreach ($allfloors as $floor)
+                        @if ($one_flat->floor_id == $floor->id)
+                        <div>{{$floor->label}}</div>
+                        @endif
+                        @endforeach
                         <div><strong>Typ:</strong></div>
-                        <div>{{$one_flat->residential?"Residential":"Commercial"}}</div>
+                        <div>{{$one_flat->residential?"Obytný":"Obchodní"}}</div>
                         <div><strong>Výměra:</strong></div>
-                        <div>{{rand(25,50)}} m2</div>
-                        <div><strong>Pokojů:</strong></div>
-                        <div>{{rand(1,4)}} </div>
-
+                        <div>{{$one_flat->size}} m2</div>
+                        <div><strong>Dispozice:</strong></div>
+                        <div>{{$one_flat->dispozition}} </div>
                     </div>
                 </div>
+                @endif
                 @endif
                 @endforeach
 
 
             </div>
+            
             @endforeach
         </div>
 

@@ -32,6 +32,46 @@ const MessengerApp = ({
 
     current_community = current_community.split(";");
 
+    //returns current date and time YY-mm-dd hh-mm-ss
+    const getDate = () => {
+        var today = new Date();
+        var date =
+            today.getFullYear() +
+            "-" +
+            (today.getMonth() + 1) +
+            "-" +
+            today.getDate();
+        var time =
+            today.getHours() +
+            ":" +
+            today.getMinutes() +
+            ":" +
+            today.getSeconds();
+        var dateTime = date + " " + time;
+        return dateTime;
+    };
+
+    useEffect(() => {
+        messages.forEach(message => {
+            if (message.message_room == current_community[0]) {
+                message.updated_at = `${getDate()}`;
+                console.log(message);
+                let formData = new FormData();
+                formData.append("id", message.id);
+                formData.append("updated_at", message.updated_at);
+                formData.append(
+                    "_token",
+                    document.querySelector('meta[name="csrf-token"]').content
+                );
+                let data = formData;
+                fetch("/messageread", {
+                    method: "post",
+                    body: data
+                });
+            }
+        });
+    }, []);
+
     if (current_community.length > 1) {
         return (
             <>

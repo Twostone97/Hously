@@ -35,6 +35,10 @@ class WebController extends Controller
         return view ('/app/messenger');
     }
 
+    public function usersettings() {
+        return view ('/app/usersettings');
+    }
+
     public function foo() {
         return view ('/app/foo');
     }
@@ -52,7 +56,7 @@ class WebController extends Controller
         $allbuildings   = DB::table('buildings')->get();
         $allflats       = DB::table('flats')->get();
         $allowners      = DB::table('owners')->get();
-        $allusers      = DB::table('users')->get();
+        $allusers       = DB::table('users')->get();
         $allresidents   = DB::table('residents')->get();
 
 
@@ -77,9 +81,10 @@ class WebController extends Controller
     public function flats(){
         $list_of_flats=[];
         $list_of_resident=[];
-        $allflats        = DB:: table('flats')-> get();
-        $allbuildings    = DB:: table('buildings')->get();
-        $allresidents_Id = DB:: table('residents')->select('flat_id')->get()->toArray();
+        $allflats        = DB::table('flats')-> get();
+        $allbuildings    = DB::table('buildings')->get();
+        $allfloors       = DB::table('floors')->get();
+        $allresidents_Id = DB::table('residents')->select('flat_id')->get()->toArray();
 
         foreach ($allresidents_Id as $resident) {
             $list_of_resident[]=$resident->flat_id;
@@ -97,6 +102,6 @@ class WebController extends Controller
       
 
 
-        return view ('/pages/flats', compact("list_of_flats","allbuildings","allflats"));
+        return view ('/pages/flats', compact("list_of_flats","allbuildings","allflats", "allfloors"));
     }
 }
