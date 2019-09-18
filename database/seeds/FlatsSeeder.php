@@ -19,11 +19,11 @@ class FlatsSeeder extends Seeder
             'building_id'     => 1,
             'floor_id'     => 1,
             'label' => '1',
-            'residential' => 1,
-            'dispozition' => "3(kk)",
+            'residential' => 0,
+            'dispozition' => "3",
             'rooms' => 3,
-            'size' => 25,
-            'type' => 'obytná',
+            'size' => 50,
+            'type' => 'obchodní',
             'balcony' => 1,
             'heating' => 1,
             'warm_water' => 1,
@@ -36,19 +36,21 @@ class FlatsSeeder extends Seeder
             'EZS' => 1,
             'EPS' => 1,
             'data' => 1,
-            'CCTV' => 0,
+            'CCTV' => 1,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
             'building_id'     => 1,
             'floor_id'     => 1,
             'label' => '2',
-            'residential' => 1,
-            'dispozition' => "3(kk)",
+            'residential' => 0,
+            'dispozition' => "3",
             'rooms' => 3,
-            'size' => 25,
-            'type' => 'obytná',
+            'size' => 50,
+            'type' => 'obchodní',
             'balcony' => 1,
             'heating' => 1,
             'warm_water' => 1,
@@ -61,8 +63,10 @@ class FlatsSeeder extends Seeder
             'EZS' => 1,
             'EPS' => 1,
             'data' => 1,
-            'CCTV' => 0,
+            'CCTV' => 1,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
@@ -72,7 +76,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -87,7 +91,9 @@ class FlatsSeeder extends Seeder
             'EPS' => 1,
             'data' => 1,
             'CCTV' => 0,
-            'available' => 1,
+            'available' => 0,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
@@ -97,7 +103,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -113,6 +119,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         // 2
@@ -124,7 +132,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -140,6 +148,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
@@ -149,7 +159,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -165,6 +175,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
@@ -174,7 +186,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -190,6 +202,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         Flat::create([
@@ -199,7 +213,7 @@ class FlatsSeeder extends Seeder
             'residential' => 1,
             'dispozition' => "3(kk)",
             'rooms' => 3,
-            'size' => 25,
+            'size' => 50,
             'type' => 'obytná',
             'balcony' => 1,
             'heating' => 1,
@@ -215,6 +229,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 1,
+            'rent' => 40000,
+            'fees' => 3000,
         ]);
 
         // 0
@@ -226,7 +242,7 @@ class FlatsSeeder extends Seeder
             'residential' => 0,
             'dispozition' => "1",
             'rooms' => 3,
-            'size' => 10,
+            'size' => 15,
             'type' => 'technologický',
             'balcony' => 0,
             'heating' => 1,
@@ -242,6 +258,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 0,
+            'rent' => 35000,
+            'fees' => 3500,
         ]);
 
         Flat::create([
@@ -251,7 +269,7 @@ class FlatsSeeder extends Seeder
             'residential' => 0,
             'dispozition' => "1",
             'rooms' => 3,
-            'size' => 10,
+            'size' => 50,
             'type' => 'skladovací',
             'balcony' => 0,
             'heating' => 1,
@@ -267,6 +285,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 1,
             'available' => 0,
+            'rent' => 50000,
+            'fees' => 4000,
         ]);
 
         Flat::create([
@@ -276,7 +296,7 @@ class FlatsSeeder extends Seeder
             'residential' => 0,
             'dispozition' => "1",
             'rooms' => 1,
-            'size' => 10,
+            'size' => 15,
             'type' => 'smíšený',
             'balcony' => 0,
             'heating' => 1,
@@ -292,6 +312,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 0,
+            'rent' => 45000,
+            'fees' => 3500,
         ]);
 
         Flat::create([
@@ -301,7 +323,7 @@ class FlatsSeeder extends Seeder
             'residential' => 0,
             'dispozition' => "1",
             'rooms' => 1,
-            'size' => 10,
+            'size' => 15,
             'type' => 'smíšený',
             'balcony' => 0,
             'heating' => 1,
@@ -317,6 +339,8 @@ class FlatsSeeder extends Seeder
             'data' => 1,
             'CCTV' => 0,
             'available' => 0,
+            'rent' => 45000,
+            'fees' => 3500,
         ]);
     }
 }

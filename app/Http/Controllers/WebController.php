@@ -35,8 +35,8 @@ class WebController extends Controller
         return view ('/app/messenger');
     }
 
-    public function usersettings() {
-        return view ('/app/usersettings');
+    public function flatavailability() {
+        return view ('/app/flatavailability');
     }
 
     public function foo() {

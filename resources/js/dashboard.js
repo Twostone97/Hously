@@ -13,6 +13,7 @@ import OurHouse from "./dashboardComponents/OurHouse";
 import MyRent from "./dashboardComponents/MyRent";
 import Community from "./dashboardComponents/Community";
 import MainEcoDis from "./dashboardComponents/MainEconDisplay";
+import Flatavailability from "./dashboardComponents/Flatavailability";
 
 const Dashboard = () => {
     const [api, setapi] = useState();
@@ -94,8 +95,8 @@ const Dashboard = () => {
                     <DashboardBox
                         style={{ flexBasis: "32%" }}
                         headline="Obsazenost jednotek"
-                        content={<Foo />}
-                        linkTo="./foo"
+                        content={<Flatavailability />}
+                        linkTo="./flatavailability"
                         restrict={admin + owner}
                         profile={api.profile}
                     />

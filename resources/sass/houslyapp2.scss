@@ -6,6 +6,37 @@ a {
         text-decoration: none;
     }
 }
+
+canvas {
+    z-index: 5;
+}
+
+.pieholder {
+    display: flex;
+}
+
+.obje {
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+        border: 2px solid black;
+        text-align: left;
+        padding: 8px;
+        font-weight: 700;
+    }
+
+    td {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: lightblue;
+    }
+}
+
 .dashboard__container {
     margin-top: 8vh;
     min-height: 85vh;

@@ -1,6 +1,6 @@
 @extends ('layouts/dashboardtemplate')
 
-@section ('title') Uživatele Nastavení
+@section ('title') Obsazenost jednotek
 @endsection
 
 @section ('nav')
@@ -13,5 +13,5 @@
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/usersettings.js"></script>
+<script src="/js/flatavailability.js"></script>
 @endsection

@@ -37,6 +37,8 @@ class CreateFlatsTable extends Migration
             $table->boolean('data');
             $table->boolean('CCTV');
             $table->boolean('available');
+            $table->integer('rent');
+            $table->integer('fees');
             $table->timestamps();
         });
     }
