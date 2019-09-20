@@ -34,10 +34,18 @@ const Table = () => {
         <>
             <div className="dashboard__sections__box subpage">
                 <div className="dashboard__sections__box__head">
-                    <h2>Obsazenost Jednotek</h2>
+                    <h2>Obsazenost jednotek</h2>
+                    <a href="/app/dashboard">
+                        <div className="close__icon">
+                            <img
+                                src="/img/icons/dashboard/boxes/close.svg"
+                                alt=""
+                            />
+                        </div>
+                    </a>
                 </div>
                 <div
-                    className="dashboard__sections__box__body subpage"
+                    className="dashboard__sections__box__body subpage scrollable"
                     style={{ padding: 10 }}
                 >
                     <table className="obje">

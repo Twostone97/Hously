@@ -69,11 +69,11 @@ class FlatController extends Controller
      */
     public function edit(Request $request, Flat $flat, $id)
     {
-        DB::table('flats')
+        DB::table('units')
         ->where('id', $id)
         ->update([
-            'number' => $request->number,
-            'floor' => $request->floor,
+            'label' => $request->number,
+            'floor_id' => $request->floor,
             'residential' => $request->residential,]);
         
             $id = $request->building_id;
@@ -102,7 +102,7 @@ class FlatController extends Controller
      */
     public function destroy(Flat $flat, $id, Request $request)
     {
-        DB::table('flats')
+        DB::table('units')
         ->where('id', $id)
         ->delete();
 

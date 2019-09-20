@@ -39,6 +39,10 @@ class WebController extends Controller
         return view ('/app/flatavailability');
     }
 
+    public function myrent() {
+        return view ('/app/myrent');
+    }
+
     public function foo() {
         return view ('/app/foo');
     }
@@ -54,7 +58,7 @@ class WebController extends Controller
     public function houses() {
         $taken_flats = [];
         $allbuildings   = DB::table('buildings')->get();
-        $allflats       = DB::table('flats')->get();
+        $allflats       = DB::table('units')->get();
         $allowners      = DB::table('owners')->get();
         $allusers       = DB::table('users')->get();
         $allresidents   = DB::table('residents')->get();
@@ -81,7 +85,7 @@ class WebController extends Controller
     public function flats(){
         $list_of_flats=[];
         $list_of_resident=[];
-        $allflats        = DB::table('flats')-> get();
+        $allflats        = DB::table('units')-> get();
         $allbuildings    = DB::table('buildings')->get();
         $allfloors       = DB::table('floors')->get();
         $allresidents_Id = DB::table('residents')->select('flat_id')->get()->toArray();

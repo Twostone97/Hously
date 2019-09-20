@@ -48,9 +48,13 @@ const Pie = () => {
                                     color: "#000"
                                 }
                             },
-
                             dataLabels: {
-                                enabled: true
+                                enabled: true,
+                                offsetX: 0,
+                                offsetY: 0,
+                                style: {
+                                    fontSize: "17px"
+                                }
                             }
                         }}
                         series={residential}
@@ -65,7 +69,7 @@ const Pie = () => {
                                 position: "top"
                             },
                             title: {
-                                text: "Kommerční jednotky",
+                                text: "Komerční jednotky",
                                 align: "center",
                                 style: {
                                     fontSize: "20px",
@@ -74,7 +78,13 @@ const Pie = () => {
                             },
 
                             dataLabels: {
-                                enabled: true
+                                enabled: true,
+                                offsetX: 0,
+                                offsetY: 0,
+                                style: {
+                                    fontSize: "17px",
+                                    fontFamily: "Helvetica, Arial, sans-serif"
+                                }
                             }
                         }}
                         series={commercial}

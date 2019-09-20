@@ -25,6 +25,7 @@ Route::get('/app/community','WebController@community');
 Route::get('/app/community/{id}','WebController@community');
 Route::get('/app/messenger','WebController@messenger');
 Route::get('/app/flatavailability','WebController@flatavailability');
+Route::get('/app/myrent','WebController@myrent');
 Route::get('/app/messenger/{id}','WebController@messenger');
 Route::get('/app/foo','WebController@foo');
 //

@@ -26968,8 +26968,15 @@ var Table = function Table() {
     className: "dashboard__sections__box subpage"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard__sections__box__head"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Obsazenost Jednotek")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard__sections__box__body subpage",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Obsazenost jednotek"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/app/dashboard"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "close__icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/icons/dashboard/boxes/close.svg",
+    alt: ""
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard__sections__box__body subpage scrollable",
     style: {
       padding: 10
     }

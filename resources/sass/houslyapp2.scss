@@ -7,12 +7,17 @@ a {
     }
 }
 
-canvas {
-    z-index: 5;
-}
-
 .pieholder {
     display: flex;
+}
+
+.pnajmu {
+    tr {
+        td {
+            padding-right: 3rem;
+            padding-left: 1rem;
+        }
+    }
 }
 
 .obje {
@@ -41,6 +46,20 @@ canvas {
     margin-top: 8vh;
     min-height: 85vh;
     height: fit-content;
+
+    .oneThird {
+        display: flex;
+        align-content: space-between;
+        padding: 10px;
+
+        .dashboard__sections {
+            &__box {
+                &.subpage {
+                    min-height: 80vh;
+                }
+            }
+        }
+    }
 
     .dashboard__sections {
         display: flex;

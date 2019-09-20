@@ -153,7 +153,7 @@ const Dashboard = () => {
                         style={{ flexBasis: "32%" }}
                         headline="Můj akutální pronájem"
                         content={<MyRent />}
-                        linkTo="./foo"
+                        linkTo="./myrent"
                         restrict={resident}
                         profile={api.profile}
                     />

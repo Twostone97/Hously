@@ -62,7 +62,7 @@ class HomeController extends Controller
             $building = $owner->building_id;
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
-            $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
             $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get();
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
@@ -84,13 +84,13 @@ class HomeController extends Controller
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
-            $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
             $notices        = $noticeboard !== null ? DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->get() : null;
             $residents      = DB::table('residents')->where('building_id', '=', $building)->get();
             $users          = DB::table('users')->get();
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "žádná pravidla" ;
-            $last_flat_number = DB::table('flats')->where("building_id", "=", $building)->orderBy("number", 'desc')->first();
+            $last_flat_number = DB::table('units')->where("building_id", "=", $building)->orderBy("number", 'desc')->first();
             foreach ($residents as $resid) {
                 $residents_in_flats[$resid->flat_id] = DB::table('users')->where('id', '=', $resid->user_id)->first();
             }
@@ -132,7 +132,7 @@ class HomeController extends Controller
             $allowners      = DB::table('owners')->get();
             $alladmins      = DB::table('administrators')->get();
             $allbuildings   = DB::table('buildings')->get();
-            $allflats       = DB::table('flats')->get();
+            $allflats       = DB::table('units')->get();
         }
         return view('auth/home', compact('chats', 'users', 'communities', 'current_user', 'resident', 'date', 'contract', 'building', 'notices', 'noticeboard', 'flats', 'rentcontracts', 'file', 'file_id', 'this_building', 'residents', 'owners', 'rules', 'profil', 'allresidents', 'allowners', 'alladmins', 'allbuildings', 'community', 'allflats'));
     }
@@ -150,6 +150,7 @@ class HomeController extends Controller
         $current_user = null;
         $this_building = null;
         $flats = null;
+        $flats = null;
         $residents_in_flats = [];
         $rentcontracts = null;
         $daterent = null;
@@ -163,7 +164,7 @@ class HomeController extends Controller
             session(['building' => $building]);
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
-            $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
             $date           = explode('-' ,$current_user->birth_date);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
@@ -177,7 +178,7 @@ class HomeController extends Controller
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
-            $flats          = DB::table('flats')->where('building_id', '=', $building)->get();
+            $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
             $date           = explode('-' ,$current_user->birth_date);
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
@@ -193,6 +194,7 @@ class HomeController extends Controller
             $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $file_id        = $resident->id;
             $file           = Storage::url("contract/{$resident->flat_id}.pdf");
+            $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
             $date           = explode('-' ,$current_user->birth_date);
@@ -200,12 +202,14 @@ class HomeController extends Controller
             $current_user->birth_date = $date;
             $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
             $daterent           = explode('-' ,$resident->begining_of_current_rent);
+            $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $daterent           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
         } else {
             $profil = null;
         }
                         
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
+        $floors         = DB::table('floors')->where('building_id', '=', $building)->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
         $notices        = DB::table('notices')->where('noticeboard_id', '=', $noticeboard->id)->orderBy('created_at', 'desc')->get();
@@ -229,6 +233,7 @@ class HomeController extends Controller
             "notices" => $notices,  
             "rentcontracts" => $rentcontracts,
             "flats" => $flats,
+            "floors" => $floors,
             "contract" => $contract,
             "contract_id" => $file_id,
             "contract_url" => $file,
@@ -303,8 +308,8 @@ class HomeController extends Controller
 
     public function bedit ($id)
     {
-            $flats          = DB::table('flats')->where('building_id', '=', $id)->get();
-            $last_flat_number = DB::table('flats')->where('building_id', '=', $id)->orderBy("number", "desc")->value('number');
+            $flats          = DB::table('units')->where('building_id', '=', $id)->get();
+            $last_flat_number = DB::table('units')->where('building_id', '=', $id)->orderBy("number", "desc")->value('number');
             $building  = DB::table('buildings')->where('id', '=', $id)->first();
             $residents      = DB::table('residents')->where('building_id', '=', $id)->get();
             $users          = DB::table('users')->select('id', 'first_name', 'last_name', 'birth_date', 'phone_number', 'profile_image')->get();
@@ -316,7 +321,7 @@ class HomeController extends Controller
     public function reacthouses() {
         $taken_flats = [];
         $allbuildings   = DB::table('buildings')->get();
-        $allflats       = DB::table('flats')->get();
+        $allflats       = DB::table('units')->get();
         $allowners      = DB::table('owners')->get();
         $allusers      = DB::table('users')->get();
         $allresidents   = DB::select('call obyvatelé');
