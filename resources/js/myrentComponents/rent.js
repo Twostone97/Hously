@@ -102,7 +102,9 @@ const Rent = () => {
         });
 
         let current_flat = flats.filter(flat => {
-            return flat.id == current_resident[0].flat_id;
+            if (flat.type == "Obytná") {
+                return flat.id == current_resident[0].flat_id;
+            }
         });
 
         let current_floor = floors.filter(floor => {
@@ -142,7 +144,7 @@ const Rent = () => {
                             </tr>
                             <tr>
                                 <td>Plocha jednotky:</td>
-                                <td>{current_flat[0].size}</td>
+                                <td>{current_flat[0].size + " m2"}</td>
                             </tr>
                             <tr>
                                 <td>Účel jednotky:</td>
@@ -178,32 +180,43 @@ const Rent = () => {
                             </tr>
                             <tr>
                                 <td>Vytápění samostatné měření:</td>
-                                <td>{current_flat[0].heating_measurement}</td>
-                            </tr>
-                            <tr>
-                                <td>Studená voda samostatné měření:</td>
                                 <td>
-                                    {current_flat[0].cold_water_measurement}
+                                    {current_flat[0].heating_measurement
+                                        ? `Má ${current_flat[0].heating_measurement_q} měření`
+                                        : "Nemá"}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Studená voda samostatné měření:</td>
                                 <td>
-                                    {current_flat[0].warm_water_measurement}
+                                    {current_flat[0].cold_water_measurement
+                                        ? `Má ${current_flat[0].cold_water_measurement_q} měření`
+                                        : "Nemá"}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Studená voda samostatné měření:</td>
+                                <td>
+                                    {current_flat[0].warm_water_measurement
+                                        ? `Má ${current_flat[0].warm_water_measurement_q} měření`
+                                        : "Nemá"}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Elektřina samostatné měření:</td>
                                 <td>
-                                    {
-                                        current_flat[0]
-                                            .electricity_unit_measurement
-                                    }
+                                    {current_flat[0].electricity_measurement
+                                        ? `Má ${current_flat[0].electricity_measurement_q} měření`
+                                        : "Nemá"}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Plyn samostatné měření:</td>
-                                <td>{current_flat[0].gas_measurement}</td>
+                                <td>
+                                    {current_flat[0].gas_measurement
+                                        ? `Má ${current_flat[0].gas_measurement_q} měření`
+                                        : "Nemá"}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Telefoní přípojka</td>

@@ -1,16 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DashboardState from "./context/dashboard/DashboardState";
-import Contract from "./myrentComponents/contract";
-import Financial from "./myrentComponents/financial";
-import Rent from "./myrentComponents/rent";
+import Houserules from "./ourhouseComponents/houserules";
+import Importantinfo from "./ourhouseComponents/importantcontacts";
+import Technicalinfo from "./ourhouseComponents/technicalinfo";
 
 const Myrent = () => {
+    let url = window.location.href;
+    url = url.split(";");
     return (
         <DashboardState>
             <div className="dashboard__sections__box subpage">
                 <div className="dashboard__sections__box__head">
-                    <h2>Můj aktuální pronájem</h2>
+                    <h2>Náš dům</h2>
                     <a href="/app/dashboard">
                         <div className="close__icon">
                             <img
@@ -21,11 +23,14 @@ const Myrent = () => {
                     </a>
                 </div>
                 <div className="dashboard__sections__box__body subpage scrollable">
-                    <div className="third">
-                        <Contract />
-                        <Financial />
-                        <Rent />
-                    </div>
+                    {url[1] == 1 ? (
+                        <div className="half">
+                            <Importantinfo />
+                            <Houserules />
+                        </div>
+                    ) : (
+                        <Technicalinfo />
+                    )}
                 </div>
             </div>
         </DashboardState>

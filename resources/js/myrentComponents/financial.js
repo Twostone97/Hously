@@ -20,6 +20,8 @@ const Financial = () => {
         "Prosinec"
     ];
 
+    let month = 0;
+
     return (
         <>
             <div className="dashboard__sections__box subpage">
@@ -39,13 +41,15 @@ const Financial = () => {
                             <th>Účel</th>
                         </tr>
                         {měsíce.map(měsíc => {
+                            let pay = Math.floor(Math.random() * 500) + 100;
+                            month++;
                             return (
                                 <tr>
                                     <td>{měsíc}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{pay + "00"}</td>
+                                    <td>{pay + "00"}</td>
+                                    <td>{`28. ${month}. 2019`}</td>
+                                    <td>{"Měsíční nájem"}</td>
                                 </tr>
                             );
                         })}

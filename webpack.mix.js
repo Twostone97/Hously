@@ -25,6 +25,8 @@ mix.js("resources/js/app.js", "public/js")
     .react("resources/js/houses.js", "public/js/houses.js")
     .react("resources/js/flatavailability.js", "public/js/flatavailability.js")
     .react("resources/js/myrent.js", "public/js/myrent.js")
+    .react("resources/js/ourhouse.js", "public/js/ourhouse.js")
+    .react("resources/js/ownerstructure.js", "public/js/ownerstructure.js")
 
     .browserSync({
         host: "www.hously.test",

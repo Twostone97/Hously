@@ -49,7 +49,6 @@ const DashboardBox = ({
                     </div>
                 );
             }
-            break;
         } else {
             return null;
         }

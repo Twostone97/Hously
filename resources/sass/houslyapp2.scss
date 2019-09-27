@@ -18,6 +18,24 @@ a {
             padding-left: 1rem;
         }
     }
+    .member {
+        margin-top: 6rem;
+    }
+}
+.techinfo {
+    position: fixed;
+    overflow: auto;
+    background-color: $dash-3;
+    border: 1px solid black;
+    top: 18vh;
+    margin-left: 6vw;
+    z-index: 4;
+    tr {
+        td {
+            padding-right: 3rem;
+            padding-left: 1rem;
+        }
+    }
 }
 
 .obje {
@@ -47,15 +65,47 @@ a {
     min-height: 85vh;
     height: fit-content;
 
-    .oneThird {
+    .third {
         display: flex;
         align-content: space-between;
         padding: 10px;
+
+        @media screen and (orientation: portrait) {
+            flex-direction: column;
+        }
 
         .dashboard__sections {
             &__box {
                 &.subpage {
                     min-height: 80vh;
+                    max-width: 33%;
+                    min-width: 33%;
+                    @media screen and (orientation: portrait) {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .half {
+        display: flex;
+        align-content: space-between;
+        padding: 10px;
+
+        @media screen and (orientation: portrait) {
+            flex-direction: column;
+        }
+
+        .dashboard__sections {
+            &__box {
+                &.subpage {
+                    min-height: 80vh;
+                    max-width: 50%;
+                    min-width: 50%;
+                    @media screen and (orientation: portrait) {
+                        min-width: 100%;
+                    }
                 }
             }
         }

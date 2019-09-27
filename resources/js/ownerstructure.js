@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DashboardState from "./context/dashboard/DashboardState";
-import Contract from "./myrentComponents/contract";
-import Financial from "./myrentComponents/financial";
-import Rent from "./myrentComponents/rent";
+import Structure from "./ownerstructureComponents/structure";
+import Owner from "./ownerstructureComponents/owner";
 
-const Myrent = () => {
+const Ownerstructure = () => {
     return (
         <DashboardState>
             <div className="dashboard__sections__box subpage">
                 <div className="dashboard__sections__box__head">
-                    <h2>Můj aktuální pronájem</h2>
+                    <h2>Struktura Vlastníka</h2>
                     <a href="/app/dashboard">
                         <div className="close__icon">
                             <img
@@ -21,10 +20,9 @@ const Myrent = () => {
                     </a>
                 </div>
                 <div className="dashboard__sections__box__body subpage scrollable">
-                    <div className="third">
-                        <Contract />
-                        <Financial />
-                        <Rent />
+                    <div className="half">
+                        <Owner />
+                        <Structure />
                     </div>
                 </div>
             </div>
@@ -32,4 +30,4 @@ const Myrent = () => {
     );
 };
 
-ReactDOM.render(<Myrent />, document.querySelector("#reactApp"));
+ReactDOM.render(<Ownerstructure />, document.querySelector("#reactApp"));

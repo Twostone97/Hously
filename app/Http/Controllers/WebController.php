@@ -43,6 +43,14 @@ class WebController extends Controller
         return view ('/app/myrent');
     }
 
+    public function ourhouse() {
+        return view ('/app/ourhouse');
+    }
+
+    public function ownerstructure() {
+        return view ('/app/ownerstructure');
+    }
+
     public function foo() {
         return view ('/app/foo');
     }

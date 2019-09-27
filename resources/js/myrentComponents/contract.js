@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import DashboardContext from "../context/dashboard/DashboardContext";
+import { isDate } from "util";
 
 const Contract = () => {
     const dashboardContext = useContext(DashboardContext);
@@ -12,8 +13,9 @@ const Contract = () => {
     } = dashboardContext.data;
 
     const displayDate = date => {
+        date.toString();
         let array = date.split("-");
-        return `${array[0]}`;
+        return `${`${array[2]}. ${array[1]}. ${array[0]}`}`;
     };
 
     if (dashboardContext.loading || dashboardContext.errorFetch) {
@@ -91,7 +93,7 @@ const Contract = () => {
                         <h2>Nájemní smlouva</h2>
                     </div>
                     <div
-                        className="dashboard__sections__box__body subpage"
+                        className="dashboard__sections__box__body subpage scrollable"
                         style={{ height: "80vh" }}
                     >
                         <table className="pnajmu">
@@ -116,7 +118,8 @@ const Contract = () => {
                                 <td>Nájemní smlouva uzavřena dne:</td>
                                 <td>
                                     {displayDate(
-                                        current_resident[0].created_at
+                                        current_resident[0]
+                                            .begining_of_first_rent
                                     )}
                                 </td>
                             </tr>

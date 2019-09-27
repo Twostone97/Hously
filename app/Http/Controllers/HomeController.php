@@ -150,27 +150,28 @@ class HomeController extends Controller
         $current_user = null;
         $this_building = null;
         $flats = null;
-        $flats = null;
+        $floors = null;
         $residents_in_flats = [];
         $rentcontracts = null;
         $daterent = null;
-        $profile =  null;
+        $owners_authority = null;
+        $owners_entity = null;
+        $owners_entity_interest = null;
+        
 
         //Speciální data dostupná pouze danému profilu
         if (DB::table('owners')->where('user_id', '=', Auth::user()->id)->first() != null) {    
             $owner         = DB::table('owners')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'owner';
             $building = $owner->building_id;
-            session(['building' => $building]);
+            session(['building' => $building]); 
             $owners         = DB::table('owners')->where('building_id', '=', $building)->get();
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
-            $date           = explode('-' ,$current_user->birth_date);
-            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-            $current_user->birth_date = $date;
-            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
-        } elseif (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "Žádná pravidla!" ;
+        } 
+        if (DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $administrator = DB::table('administrators')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'administrator';
             $building = $administrator->building_id;
@@ -180,35 +181,31 @@ class HomeController extends Controller
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
-            $date           = explode('-' ,$current_user->birth_date);
-            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-            $current_user->birth_date = $date;
-            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
-        } elseif (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "Žádná pravidla!" ;
+        } 
+        if (DB::table('residents')->where('user_id', '=', Auth::user()->id)->first() != null) {
             $resident      = DB::table('residents')->where('user_id', '=', Auth::user()->id)->first();
             $profil = 'resident';
             $building = $resident->building_id;
             session(['building' => $building]);
             $contract       = DB::table('contracts')->where('id', '=', $resident->contract_id)->first();
-            $date           = explode('-' ,$resident->begining_of_current_rent);
-            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
             $file_id        = $resident->id;
             $file           = Storage::url("contract/{$resident->flat_id}.pdf");
             $flats          = DB::table('units')->where('building_id', '=', $building)->get();
             $rentcontracts  = DB::table('contracts')->where('type', '=', 'Nájemní')->get();
             $current_user   = DB::table('users')->where('id', '=', Auth::user()->id)->first();
-            $date           = explode('-' ,$current_user->birth_date);
-            $date           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-            $current_user->birth_date = $date;
-            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "House rules empty. No rules. Anarchy!!!" ;
+            $rules          = Storage::exists("house_rules/{$building}.txt") ? Storage::get("house_rules/{$building}.txt") : "Žádná pravidla!" ;
             $daterent           = explode('-' ,$resident->begining_of_current_rent);
             $this_building  = DB::table('buildings')->where('id', '=', $building)->first();
             $daterent           = "{$date[2]}. {$date[1]}. {$date[0]}";     //Převedení data z formátu YY-mm-dd na formát dd. mm. YY
-        } else {
-            $profil = null;
-        }
+        } 
                         
         $chats          = DB::table('chats')->orderBy('created_at', 'asc')->get();
+        $owners_entity  = DB::table('owners_entity')->where("buildings_id", "=", $building)->first();
+        if ($owners_entity != null) {
+            $owners_authority  = DB::table('owners_entity_authority')->where("owners_entity_id", "=", $owners_entity->id)->get();
+            $owners_entity_interest  = DB::table('owners_entity_interest')->where("owners_entity_id", "=", $owners_entity->id)->get();    
+        }
         $floors         = DB::table('floors')->where('building_id', '=', $building)->get();
         $communities    = DB::table('communities')->where('building_id', '=', $building)->get();
         $noticeboard    = DB::table('noticeboards')->where('building_id', '=', $building)->first();
@@ -222,7 +219,6 @@ class HomeController extends Controller
         }
 
         $data = (object) [
-            "profile" => $profil,
             "residents" => $residents,
             "owners" => $owners,
             "communities" => $communities,
@@ -239,9 +235,12 @@ class HomeController extends Controller
             "contract_url" => $file,
             "residents_in_flat" => $residents_in_flats,
             "users"=>$users,
-            "rules"=>$rules
+            "rules"=>$rules,
+            "owners_entity"=>$owners_entity,
+            "owners_authority"=>$owners_authority,
+            "owners_entity_interest"=>$owners_entity_interest,
         ];
-        
+
         return response()->json($data, 200);
     }
 

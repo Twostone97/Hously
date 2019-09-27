@@ -14,10 +14,12 @@ import MyRent from "./dashboardComponents/MyRent";
 import Community from "./dashboardComponents/Community";
 import MainEcoDis from "./dashboardComponents/MainEconDisplay";
 import Flatavailability from "./dashboardComponents/Flatavailability";
+import { isNull } from "util";
 
 const Dashboard = () => {
     const [api, setapi] = useState();
     const [loaded, setloaded] = useState(false);
+    const [building, setbuilding] = useState(null);
 
     /*Restrictions*/
     const all = "administrator;owner;resident;";
@@ -25,8 +27,8 @@ const Dashboard = () => {
     const owner = "owner;";
     const resident = "resident;";
 
-    if (!loaded) {
-        fetch("/selectprofile1")
+    const fetchProfile = api => {
+        fetch(`/selectprofile${api.building}`)
             .then(resp => resp.json())
             .then(data => {
                 setapi(data);
@@ -34,6 +36,16 @@ const Dashboard = () => {
             .finally(() => {
                 setloaded(true);
             });
+    };
+
+    if (building == null) {
+        fetch("/thisbuilding")
+            .then(resp => resp.json())
+            .then(data => {
+                setbuilding(data);
+            });
+    } else if (!loaded && !isNull(building)) {
+        fetchProfile(building);
     }
 
     if (false) {
@@ -137,7 +149,7 @@ const Dashboard = () => {
                         style={{ flexBasis: "32%" }}
                         headline="Vlastník - Struktura"
                         content={<Foo />}
-                        linkTo="./foo"
+                        linkTo="./ownerstructure"
                         restrict={owner}
                         profile={api.profile}
                     />
@@ -161,7 +173,7 @@ const Dashboard = () => {
                         style={{ flexBasis: "32%" }}
                         headline="Náš dům"
                         content={<OurHouse />}
-                        linkTo="./foo"
+                        linkTo="./ourhouse"
                     />
                     <DashboardBox
                         style={{ flexBasis: "32%" }}
