@@ -27,7 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "apexcharts": "^3.8.6",
+        "apexcharts": "^3.24.0",
         "chart.js": "^2.8.0",
         "csurf": "^1.10.0",
         "react": "^16.8.6",
